@@ -49,6 +49,7 @@ public class View extends JPanel{
 	public int getImageHeight() {
 		return ih;
 	}
+	
 	//would add Direct z if using direction
 	public void update(int x, int y) {
 		
