@@ -1,4 +1,6 @@
 /Controller.class
+/GameObject.class
 /Model.class
 /View.class
-/GameObject.class
+/Controller$ClickListener.class
+/Controller$PauseListener.class
