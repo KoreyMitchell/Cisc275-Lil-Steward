@@ -1,5 +1,9 @@
 
 public class Obstacle {
+	int xloc;
+	int yloc;
+	String name;
+	
 	public int getXloc() {
 		return xloc;
 	}
@@ -18,7 +22,5 @@ public class Obstacle {
 	public void setName(String name) {
 		this.name = name;
 	}
-	int xloc;
-	int yloc;
-	String name;
+
 }

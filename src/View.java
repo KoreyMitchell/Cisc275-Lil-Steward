@@ -1,30 +1,39 @@
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class View extends JPanel{
-	int x;
-	int y;
-	int w = 500;
-	int h = 300;
-	int iw = 165;
-	int ih = 165;
-	int frameCount = 10;
-	int picNum = 0;
-	int arrayCounter = 0;
+	Player playerCharacter;
+	Image  playerImage;
+	ArrayList<NativePlant> listOfNativePlants;
+	Image nPlantImage;
+	Toolbar toolbar;
+	Image toolbarImage;
+	ToDoList todolist;
+	Image listBackground;
+	ArrayList<Obstacle> obstacleList;
+	Image obstacleImage;
+	ArrayList<GroundPatch> groundList;
+	Image groundImage;
+	Image bglImage;
+	
 	
 	BufferedImage[][] pica;
 	JFrame frame;
 	private JButton pauseButton = new JButton("pause");
 	MouseListener mouseListener;
-	
+
 	private BufferedImage createImage(File filo) {
 		return null;
 		
@@ -35,21 +44,6 @@ public class View extends JPanel{
 		
 	}
 
-	public int getWidth() {
-		return w;
-	}
-	public int getHeight() {
-		return h;
-	}
-
-	public int getImageWidth() {
-		return iw;
-	}
-
-	public int getImageHeight() {
-		return ih;
-	}
-	
 	//would add Direct z if using direction
 	public void update(int x, int y) {
 		
@@ -60,6 +54,27 @@ public class View extends JPanel{
 	}
 	
 	   void addMouseListener(MouseAdapter listenForClick) {
-		   frame.addMouseListener(listenForClick);
+		frame.addMouseListener(listenForClick);
 	}
+	   
+	   public void keyPressed(KeyEvent e) {
+//
+//		    int key = e.getKeyCode();
+//
+//		    if (key == KeyEvent.VK_LEFT) {
+//		        dx = -1;
+//		    }
+//
+//		    if (key == KeyEvent.VK_RIGHT) {
+//		        dx = 1;
+//		    }
+//
+//		    if (key == KeyEvent.VK_UP) {
+//		        dy = -1;
+//		    }
+//
+//		    if (key == KeyEvent.VK_DOWN) {
+//		        dy = 1;
+//		    }
+		}
 }

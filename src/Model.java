@@ -1,17 +1,19 @@
+import java.util.ArrayList;
 
 public class Model {
-	//List Attributes of Model
-	int x;
-	int y;
-	int w;
-	int h;
-	int iw;
-	int ih;
-	int thisXIncr;
-	int thisYIncr;
+	//Attributes of Model
+	
+	Player playerCharacter;
+	ArrayList<NativePlant> listOfNativePlants;
+	ArrayList<InvasivePlant> listOfInvasivePlants;
+	Toolbar toolbar;
+	ToDoList todolist;
+	ArrayList<Obstacle> obstacleList;
+	ArrayList<GroundPatch> groundList;
+	
 	
 	//Methods
-	public static void main(String[] args) {
+	public static void demoMain(String[] args) {
 		// TODO Auto-generated method stub
 
 	}
@@ -24,28 +26,9 @@ public class Model {
 		
 	}
 	
-	public int getX() {
-		return x;
-	}
 
-	public int getY() {
-		return y;
+	public static void update() {
+		
 	}
-	
-	public void setXIncr(int x) {
-		thisXIncr = x;
-	}
-	
-	public void setYIncr(int y) {
-		thisYIncr = y;
-	}
-	
-	public int getXIncr() {
-		return thisXIncr;
-	}
-	
-	public int getYIncr() {
-		return thisYIncr;
-}
 	
 }
