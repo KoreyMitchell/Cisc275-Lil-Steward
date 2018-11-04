@@ -15,21 +15,21 @@ import javax.swing.JPanel;
 
 public class View extends JPanel{
 	Player playerCharacter;
-	Image  playerImage;
+	BufferedImage  playerImage;
 	ArrayList<NativePlant> listOfNativePlants;
-	Image nPlantImage;
+	BufferedImage nPlantImage;
 	Toolbar toolbar;
-	Image toolbarImage;
+	BufferedImage toolbarImage;
 	ToDoList todolist;
-	Image listBackground;
+	BufferedImage listBackground;
 	ArrayList<Obstacle> obstacleList;
-	Image obstacleImage;
+	BufferedImage obstacleImage;
 	ArrayList<GroundPatch> groundList;
-	Image groundImage;
-	Image bglImage;
+	BufferedImage groundImage;
+	BufferedImage bglImage;
 	
 	
-	BufferedImage[][] pica;
+	//BufferedImage[][] pica;
 	JFrame frame;
 	private JButton pauseButton = new JButton("pause");
 	MouseListener mouseListener;
