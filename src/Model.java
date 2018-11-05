@@ -29,9 +29,10 @@ public class Model {
 	}
 	
 	public void updateLocationAndDirection() {
-		
+		//TODO: using arrow keys: up down left right
 	}
 	
+	//we also need update methods for all the other elements in the model
 
 	public static void update() {
 		
