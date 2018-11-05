@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Model {
-	//Attributes of Model
+	 //Attributes of Model
 	
 	Player playerCharacter;
 	ArrayList<NativePlant> listOfNativePlants;
@@ -13,13 +13,19 @@ public class Model {
 	
 	
 	//Methods
-	public static void demoMain(String[] args) {
-		// TODO Auto-generated method stub
+	public static void main(String[] args) {
+		// Text-only version of gameplay for demonstration purposes
 
+		Model m = new Model();
+		
+		System.out.println("Your location is: "+ m.playerCharacter.getXloc() + ", "+ m.playerCharacter.getYloc());
+		
 	}
 	
 	public Model() {
-		
+		playerCharacter = new Player();
+		playerCharacter.setXloc(0);
+		playerCharacter.setYloc(0);
 	}
 	
 	public void updateLocationAndDirection() {
