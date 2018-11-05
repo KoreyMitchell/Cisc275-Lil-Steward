@@ -1,22 +1,19 @@
 
-public class NativePlant {
+public class NativePlant extends GameObject {
+
 	int xloc;
 	int yloc;
 	String name;
 	
+	public NativePlant(int xloc, int yloc, String name) {
+		super(xloc, yloc);
+		this.name = name;
+	}
 	
-	public int getXloc() {
-		return xloc;
+	public NativePlant() { // By default, Java calls parent constructor w/o super()
+		this.name = (String) null;
 	}
-	public void setXloc(int xloc) {
-		this.xloc = xloc;
-	}
-	public int getYloc() {
-		return yloc;
-	}
-	public void setYloc(int yloc) {
-		this.yloc = yloc;
-	}
+	
 	public String getName() {
 		return name;
 	}

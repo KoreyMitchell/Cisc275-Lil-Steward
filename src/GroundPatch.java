@@ -2,23 +2,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Test;
 
-public class GroundPatch {
+public class GroundPatch extends GameObject {
 	int xloc;
 	int yloc;
 	boolean isFilled;
 	
-	public int getXloc() {
-		return xloc;
+	public GroundPatch(int xloc, int yloc, boolean isFilled) {
+		super(xloc, yloc);
+		this.isFilled = isFilled;
+		
 	}
-	public void setXloc(int xloc) {
-		this.xloc = xloc;
+	public GroundPatch() { // By default, Java calls parent constructor w/o super()
+		this.isFilled = (Boolean) null;
 	}
-	public int getYloc() {
-		return yloc;
-	}
-	public void setYloc(int yloc) {
-		this.yloc = yloc;
-	}
+	
 	public boolean isFilled() {
 		return isFilled;
 	}

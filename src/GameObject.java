@@ -4,6 +4,15 @@ public class GameObject {
 	int xloc;
 	int yloc;
 	
+	public GameObject(int xloc, int yloc) {
+		this.xloc = xloc;
+		this.yloc = yloc;
+	}
+	public GameObject() { 
+		this.xloc = (Integer)null;
+		this.yloc = (Integer)null;
+	}
+	
 	public int getXloc() {
 		return xloc;
 	}
@@ -19,7 +28,7 @@ public class GameObject {
 
 	  @Test
 	    public void testMultiplyException() {
-		  GameObject tester = new GameObject();
+		  //GameObject tester = new GameObject();
 	        //assertEquals("Result", result, tester.multiply(m1, m2));
 	    }
 }

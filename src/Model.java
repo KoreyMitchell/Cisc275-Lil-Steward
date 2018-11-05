@@ -23,7 +23,7 @@ public class Model {
 	}
 	
 	public Model() {
-		playerCharacter = new Player();
+		playerCharacter = new Player(0,0,0);
 		playerCharacter.setXloc(0);
 		playerCharacter.setYloc(0);
 	}

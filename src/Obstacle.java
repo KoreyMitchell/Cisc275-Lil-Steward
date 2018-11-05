@@ -1,21 +1,19 @@
 
-public class Obstacle {
+public class Obstacle extends GameObject {
+
 	int xloc;
 	int yloc;
 	String name;
 	
-	public int getXloc() {
-		return xloc;
+	public Obstacle(int xloc, int yloc, String name) {
+		super(xloc, yloc);
+		this.name = name;
 	}
-	public void setXloc(int xloc) {
-		this.xloc = xloc;
+	
+	public Obstacle() { // By default, Java calls parent constructor w/o super()
+		this.name = (String) null;
 	}
-	public int getYloc() {
-		return yloc;
-	}
-	public void setYloc(int yloc) {
-		this.yloc = yloc;
-	}
+	
 	public String getName() {
 		return name;
 	}

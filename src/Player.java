@@ -1,21 +1,18 @@
 
-public class Player {
+public class Player extends GameObject {
+
 	int xloc;
 	int yloc;
 	int level;
 	
-	public int getXloc() {
-		return xloc;
+	public Player(int xloc, int yloc, int level) {
+		super(xloc, yloc);
+		this.level = level;
 	}
-	public void setXloc(int xloc) {
-		this.xloc = xloc;
+	public Player() { // By default, Java calls parent constructor w/o super()
+		this.level = (Integer) null;
 	}
-	public int getYloc() {
-		return yloc;
-	}
-	public void setYloc(int yloc) {
-		this.yloc = yloc;
-	}
+	
 	public int getLevel() {
 		return level;
 	}
