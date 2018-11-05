@@ -1,3 +1,6 @@
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.Test;
 
 public class GroundPatch {
 	int xloc;
@@ -22,5 +25,7 @@ public class GroundPatch {
 	public void setFilled(boolean isFilled) {
 		this.isFilled = isFilled;
 	}
-	
+
+
 }
+

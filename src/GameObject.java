@@ -1,3 +1,4 @@
+import org.junit.Test;
 
 public class GameObject {
 	int xloc;
@@ -16,5 +17,9 @@ public class GameObject {
 		this.yloc = yloc;
 	}
 
-	
+	  @Test
+	    public void testMultiplyException() {
+		  GameObject tester = new GameObject();
+	        //assertEquals("Result", result, tester.multiply(m1, m2));
+	    }
 }
