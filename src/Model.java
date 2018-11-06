@@ -28,8 +28,36 @@ public class Model {
 		playerCharacter.setYloc(0);
 	}
 	
-	public void updateLocationAndDirection() {
+	public void updatePlayerLocation() {
 		//TODO: using arrow keys: up down left right
+	}
+	
+	public void updatePlayerDirection() {
+		//TODO: using arrow keys: up down left right
+	}
+	
+	public void updatePlayer() {
+		//TODO: uses both updatePlayerDirection and Location
+	}
+	
+	public void addNativePlant(int x, int y) {
+		//TODO: adds a NativePlant to listOfNativePlants at the x and y specified
+	}
+	
+	public void removeInvasivePlant(int x, int y) {
+		//TODO: removes an InvasivePlant with the x and y specified from the list of invasive plants
+	}
+	
+	public void switchTool() {
+		//TODO: switches the Toolbar between modes
+	}
+	
+	public void addTask() {
+		//TODO: adds an item to the ToDoList
+	}
+	
+	public void removeTask() {
+		//TODO: removes an item from the ToDoList
 	}
 	
 	//we also need update methods for all the other elements in the model
