@@ -52,11 +52,11 @@ public class Model {
 		//TODO: switches the Toolbar between modes
 	}
 	
-	public void addTask() {
+	public void addTask(String s) {
 		//TODO: adds an item to the ToDoList
 	}
 	
-	public void removeTask() {
+	public void removeTask(String s) {
 		//TODO: removes an item from the ToDoList
 	}
 	
