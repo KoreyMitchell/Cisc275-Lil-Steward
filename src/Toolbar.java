@@ -5,11 +5,11 @@ public class Toolbar {
 	int level;
 	
 	public void LevelUp() {
-		
+		level++;
 	}
 	
 	public void toolSwitch() {
-		
+		isShovel = !isShovel;
 	}
 	
 	public boolean isShovel() {
