@@ -4,7 +4,7 @@ public class ToDoList {
 
 	ArrayList<String> tasks = new ArrayList<>();
 	boolean isCompleted;
-	
+
 	public ArrayList<String> getTasks() {
 		return tasks;
 	}
@@ -21,10 +21,12 @@ public class ToDoList {
 		this.isCompleted = isCompleted;
 	}
 
-	
 	public void taskRemove(String s) {
-		
+
 	}
-	
-	
+
+	public void taskAdd(String s) {
+		tasks.add(s);
+	}
+
 }

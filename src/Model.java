@@ -42,6 +42,7 @@ public class Model {
 	
 	public void addNativePlant(int x, int y) {
 		//TODO: adds a NativePlant to listOfNativePlants at the x and y specified
+		listOfNativePlants.add(new NativePlant(x,y,"goldenrod"));
 	}
 	
 	public void removeInvasivePlant(int x, int y) {
@@ -50,10 +51,12 @@ public class Model {
 	
 	public void switchTool() {
 		//TODO: switches the Toolbar between modes
+		toolbar.toolSwitch();
 	}
 	
 	public void addTask(String s) {
 		//TODO: adds an item to the ToDoList
+		todolist.taskAdd(s);
 	}
 	
 	public void removeTask(String s) {
