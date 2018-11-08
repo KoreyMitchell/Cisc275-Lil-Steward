@@ -20,7 +20,9 @@ public class Controller {
 	}
 	
 	public static void main(String[] args) {
-		// Gameplay
+		View a = new View();
+		a.initialize();
+		
 
 	}
 	

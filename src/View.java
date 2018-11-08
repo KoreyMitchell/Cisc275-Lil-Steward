@@ -1,19 +1,12 @@
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.ArrayList;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
-public class View extends JPanel{
+
+public class View extends JPanel implements ActionListener, Runnable{
 	Player playerCharacter;
 	BufferedImage  playerImage;
 	ArrayList<NativePlant> listOfNativePlants;
@@ -28,53 +21,123 @@ public class View extends JPanel{
 	BufferedImage groundImage;
 	BufferedImage bglImage;
 	
-	
-	//BufferedImage[][] pica;
-	JFrame frame;
-	private JButton pauseButton = new JButton("pause");
-	MouseListener mouseListener;
 
-	private BufferedImage createImage(File filo) {
-		return null;
-		
+	
+	Player p;
+	public Image img;
+	Timer time;
+	int v = 172;
+	Thread animator;
+
+	boolean a = false;
+	boolean done2 = false;
+	
+	public View() {
+		p = new Player(75, 172, 0);
+		addKeyListener(new AL());
+		setFocusable(true);
+		ImageIcon i = new ImageIcon("res/Person-Images/Background.jpg");
+		img = i.getImage();
+		time = new Timer(5, this);
+		time.start();
 	}
 	
-	// Override this JPanel's paint method to cycle through picture array and draw
+	public void initialize(){
+		JFrame frame = new JFrame();
+		frame.add(new View());	
+		frame.setTitle("2-D Test Game");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(700,365);
+		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		p.move();
+		repaint();
+	}
+
 	public void paint(Graphics g) {
-		
+		if (p.dy == 1 && done2 == false) {
+			done2 = true;
+			animator = new Thread(this);
+			animator.start();
+		}
+
+		super.paint(g);
+		Graphics2D g2d = (Graphics2D) g;
+
+		if ((p.getXloc() - 590) % 2400 == 0)// p.getX() == 590 || p.getX() == 2990)
+			p.nx = 0;
+		if ((p.getXloc() - 1790) % 2400 == 0)// p.getX() == 1790 || p.getX() == 4190)
+			p.nx2 = 0;
+
+		g2d.drawImage(img, 685 - p.getnX2(), 0, null);
+		if (p.getXloc() > 590) {
+			g2d.drawImage(img, 685 - p.getnX(), 0, null);
+		}
+		g2d.drawImage(p.getImage(), p.left, v, null);
+
+		if (p.getdx() == -1) {
+			g2d.drawImage(img, 685 - p.getnX2(), 0, null);
+			g2d.drawImage(p.getImage(), p.left, v, null);
+		}
 	}
 
-	//would add Direct z if using direction
-	public void update(int x, int y) {
-		
-	}
-	
-	void addPauseListener(ActionListener listenForPauseButton) {
-		pauseButton.addActionListener(listenForPauseButton);
-	}
-	
-	   void addMouseListener(MouseAdapter listenForClick) {
-		frame.addMouseListener(listenForClick);
-	}
-	   
-	   public void keyPressed(KeyEvent e) {
-//
-//		    int key = e.getKeyCode();
-//
-//		    if (key == KeyEvent.VK_LEFT) {
-//		        dx = -1;
-//		    }
-//
-//		    if (key == KeyEvent.VK_RIGHT) {
-//		        dx = 1;
-//		    }
-//
-//		    if (key == KeyEvent.VK_UP) {
-//		        dy = -1;
-//		    }
-//
-//		    if (key == KeyEvent.VK_DOWN) {
-//		        dy = 1;
-//		    }
+	private class AL extends KeyAdapter {
+		public void keyReleased(KeyEvent e) {
+			p.keyReleased(e);
 		}
+
+		public void keyPressed(KeyEvent e) {
+			p.keyPressed(e);
+		}
+	}
+
+	boolean h = false;
+	boolean done = false;
+
+	public void cycle() {
+
+		if (h == false)
+			v--;
+		if (v == 125)
+			h = true;
+		if (h == true && v <= 172) {
+			v++;
+			if (v == 172) {
+				done = true;
+			}
+		}
+	}
+
+	public void run() {
+
+		long beforeTime, timeDiff, sleep;
+
+		beforeTime = System.currentTimeMillis();
+
+		while (done == false) {
+
+			cycle();
+
+			timeDiff = System.currentTimeMillis() - beforeTime;
+			sleep = 10 - timeDiff;
+
+			if (sleep < 0)
+				sleep = 2;
+			try {
+				Thread.sleep(sleep);
+			} catch (InterruptedException e) {
+				System.out.println("interrupted");
+			}
+
+			beforeTime = System.currentTimeMillis();
+		}
+		done = false;
+		h = false;
+		done2 = false;
+	}
+
+
 }
