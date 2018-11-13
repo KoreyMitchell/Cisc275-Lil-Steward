@@ -5,7 +5,6 @@ import java.awt.event.*;
 import javax.swing.*;
 
 
-
 public class View extends JPanel implements ActionListener, Runnable{
 	Player playerCharacter;
 	BufferedImage  playerImage;
@@ -20,7 +19,10 @@ public class View extends JPanel implements ActionListener, Runnable{
 	ArrayList<GroundPatch> groundList;
 	BufferedImage groundImage;
 	BufferedImage bglImage;
-	
+	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	int screenHeight = screenSize.getSize().height;
+	int screenWidth = screenSize.getSize().width;
+	JButton button = new JButton("Close");
 
 	
 	Player p;
@@ -46,8 +48,10 @@ public class View extends JPanel implements ActionListener, Runnable{
 		JFrame frame = new JFrame();
 		frame.add(new View());	
 		frame.setTitle("2-D Test Game");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(700,365);
+		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
+		frame.setSize(screenSize);
+		frame.setUndecorated(true);  //uncomment this to run the game in fullscreen mode
+		//frame.setSize(700,365);
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
 	}
@@ -56,12 +60,14 @@ public class View extends JPanel implements ActionListener, Runnable{
 		p.move();
 		repaint();
 	}
+	
 
 	public void paint(Graphics g) {
 		if (p.dy == 1 && done2 == false) {
 			done2 = true;
 			animator = new Thread(this);
 			animator.start();
+			//System.out.print(p.nx);
 		}
 
 		super.paint(g);
@@ -93,6 +99,7 @@ public class View extends JPanel implements ActionListener, Runnable{
 			p.keyPressed(e);
 		}
 	}
+
 
 	boolean h = false;
 	boolean done = false;
@@ -138,6 +145,6 @@ public class View extends JPanel implements ActionListener, Runnable{
 		h = false;
 		done2 = false;
 	}
-
+	
 
 }

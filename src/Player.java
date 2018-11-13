@@ -7,7 +7,7 @@ public class Player extends GameObject {
 
 	int xloc, yloc, level;
 	int dx, dy, nx, nx2, left;
-	Image still, jump, reverse;
+	Image still, jump, reverse, holder;
 
 	ImageIcon s = new ImageIcon("res/Person-Images/Person-Right.png");
 	ImageIcon j = new ImageIcon("res/Person-Images/Person-Front.png");
@@ -16,11 +16,12 @@ public class Player extends GameObject {
 	public Player(int xloc, int yloc, int level) { // call with 75
 		super(xloc, yloc);
 		this.level = level;
-		left = 150;
+		left = 0;
 		nx = 0;
 		nx2 = 685;
 		still = s.getImage();
-
+		holder = still;
+		jump = j.getImage();
 	}
 
 	public Player() { // By default, Java calls parent constructor w/o super()
@@ -52,16 +53,13 @@ public class Player extends GameObject {
 	}
 
 	public void move() {
-		if (dx != -1) {
-			if (left + dx <= 150) {
+		if (dx == 1) {
+			if (left + dx <= 1366-50) {
 				left += dx;
-			} else {
-				xloc = xloc + dx;
-				nx2 = nx2 + dx;
-				nx = nx + dx;
 			}
-		} else {
-			if (left + dx > 0) {
+		}
+		else if (dx == -1) {
+			if (left + dx >= 0) {
 				left = left + dx;
 			}
 		}
@@ -70,18 +68,19 @@ public class Player extends GameObject {
 		int key = e.getKeyCode();
 		if (key == KeyEvent.VK_LEFT)
 		{		dx = -1;
-		still = l.getImage();		}
+		still = l.getImage();
+		holder = still;}
 		
 		if (key == KeyEvent.VK_RIGHT)
 			{dx = 1;
-		still = s.getImage();	
+		still = s.getImage();
+		holder = still;
 			}
 		
 		if (key == KeyEvent.VK_UP)
 			{dy = 1;
 			still = j.getImage();
 			}			}
-
 	public void keyReleased(KeyEvent e) {
 		int key = e.getKeyCode();
 
@@ -93,7 +92,10 @@ public class Player extends GameObject {
 		
 		if (key == KeyEvent.VK_UP)
 			{dy = 0;
-			still = s.getImage();}
+			still = holder;}
+		if (key == KeyEvent.VK_Q) {
+			System.exit(0);
+		}
 			}
 
 }
