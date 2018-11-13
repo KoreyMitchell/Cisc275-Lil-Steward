@@ -52,50 +52,50 @@ public class Player extends GameObject {
 		return still;
 	}
 
-	public void move() {
-		if (dx == 1) {
-			if (left + dx <= 1366-50) {
-				left += dx;
-			}
-		}
-		else if (dx == -1) {
-			if (left + dx >= 0) {
-				left = left + dx;
-			}
-		}
-	}
-	public void keyPressed(KeyEvent e) {
-		int key = e.getKeyCode();
-		if (key == KeyEvent.VK_LEFT)
-		{		dx = -1;
-		still = l.getImage();
-		holder = still;}
-		
-		if (key == KeyEvent.VK_RIGHT)
-			{dx = 1;
-		still = s.getImage();
-		holder = still;
-			}
-		
-		if (key == KeyEvent.VK_UP)
-			{dy = 1;
-			still = j.getImage();
-			}			}
-	public void keyReleased(KeyEvent e) {
-		int key = e.getKeyCode();
-
-		if (key == KeyEvent.VK_LEFT)
-			dx = 0;
-
-		if (key == KeyEvent.VK_RIGHT)
-			dx = 0;
-		
-		if (key == KeyEvent.VK_UP)
-			{dy = 0;
-			still = holder;}
-		if (key == KeyEvent.VK_Q) {
-			System.exit(0);
-		}
-			}
+//	public void move() {
+//		if (dx == 1) {
+//			if (left + dx <= 1366-50) {
+//				left += dx;
+//			}
+//		}
+//		else if (dx == -1) {
+//			if (left + dx >= 0) {
+//				left = left + dx;
+//			}
+//		}
+//	}
+//	public void keyPressed(KeyEvent e) {
+//		int key = e.getKeyCode();
+//		if (key == KeyEvent.VK_LEFT)
+//		{		dx = -1;
+//		still = l.getImage();
+//		holder = still;}
+//		
+//		if (key == KeyEvent.VK_RIGHT)
+//			{dx = 1;
+//		still = s.getImage();
+//		holder = still;
+//			}
+//		
+//		if (key == KeyEvent.VK_UP)
+//			{dy = 1;
+//			still = j.getImage();
+//			}			}
+//	public void keyReleased(KeyEvent e) {
+//		int key = e.getKeyCode();
+//
+//		if (key == KeyEvent.VK_LEFT)
+//			dx = 0;
+//
+//		if (key == KeyEvent.VK_RIGHT)
+//			dx = 0;
+//		
+//		if (key == KeyEvent.VK_UP)
+//			{dy = 0;
+//			still = holder;}
+//		if (key == KeyEvent.VK_Q) {
+//			System.exit(0);
+//		}
+//			}
 
 }

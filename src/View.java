@@ -26,6 +26,7 @@ public class View extends JPanel implements ActionListener, Runnable{
 
 	
 	Player p;
+	Model m;
 	public Image img;
 	Timer time;
 	int v = 172;
@@ -36,7 +37,8 @@ public class View extends JPanel implements ActionListener, Runnable{
 	
 	public View() {
 		p = new Player(75, 172, 0);
-		addKeyListener(new AL());
+		m = new Model();
+		//addKeyListener(new AL());
 		setFocusable(true);
 		ImageIcon i = new ImageIcon("res/Person-Images/Background.jpg");
 		img = i.getImage();
@@ -48,7 +50,7 @@ public class View extends JPanel implements ActionListener, Runnable{
 		JFrame frame = new JFrame();
 		frame.add(new View());	
 		frame.setTitle("2-D Test Game");
-		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
+		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 		frame.setSize(screenSize);
 		frame.setUndecorated(true);  //uncomment this to run the game in fullscreen mode
 		//frame.setSize(700,365);
@@ -57,7 +59,7 @@ public class View extends JPanel implements ActionListener, Runnable{
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		p.move();
+		m.move();
 		repaint();
 	}
 	
@@ -92,11 +94,11 @@ public class View extends JPanel implements ActionListener, Runnable{
 
 	private class AL extends KeyAdapter {
 		public void keyReleased(KeyEvent e) {
-			p.keyReleased(e);
+			keyReleased(e);
 		}
 
 		public void keyPressed(KeyEvent e) {
-			p.keyPressed(e);
+			keyPressed(e);
 		}
 	}
 
