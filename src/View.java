@@ -52,7 +52,7 @@ public class View extends JPanel implements ActionListener, Runnable{
 		frame.setTitle("2-D Test Game");
 		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 		frame.setSize(screenSize);
-		frame.setUndecorated(true);  //uncomment this to run the game in fullscreen mode
+		//frame.setUndecorated(true);  //uncomment this to run the game in fullscreen mode
 		//frame.setSize(700,365);
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);

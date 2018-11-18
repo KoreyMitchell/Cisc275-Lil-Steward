@@ -45,6 +45,7 @@ public class Model {
 	public void up() {
 		vely = -1.5;
 		velx = 0;
+		updatePlayerLocation("up");
 		System.out.print(playerCharacter.getXloc());
 		System.out.print(playerCharacter.getYloc());
 	}
@@ -52,16 +53,25 @@ public class Model {
 	public void down() {
 		vely = 1.5;
 		velx = 0;
+		updatePlayerLocation("down");
+		System.out.print(playerCharacter.getXloc());
+		System.out.print(playerCharacter.getYloc());
 	}
 
 	public void left() {
 		vely = 0;
 		velx = -1.5;
+		updatePlayerLocation("left");
+		System.out.print(playerCharacter.getXloc());
+		System.out.print(playerCharacter.getYloc());
 	}
 
 	public void right() {
 		vely = 0;
 		velx = 1.5;
+		updatePlayerLocation("right");
+		System.out.print(playerCharacter.getXloc());
+		System.out.print(playerCharacter.getYloc());
 	}
 
 //	public void keyPressed(KeyEvent e) {
@@ -103,6 +113,32 @@ public class Model {
 //		}
 //	}
 
+	public void updatePlayerLocation(String input) {
+		
+		int currx = playerCharacter.getXloc();
+		int curry = playerCharacter.getYloc();
+		if(input.equals("up")&&currx>0) {
+			//move character up
+			
+			playerCharacter.setXloc(currx-10);
+			System.out.println("Player moved up");
+		}
+		else if(input.equals("down")&&currx<200) {
+			//move character down
+			playerCharacter.setXloc(currx+10);
+			System.out.println("Player moved down");
+		}
+		else if(input.equals("left")&&curry>0) {
+			//move character left
+			playerCharacter.setYloc(curry-10);
+			System.out.println("Player moved left");
+		}
+		else if(input.equals("right")&&curry<200) {
+			//move character right
+			playerCharacter.setYloc(curry+10);
+			System.out.println("Player moved right");
+		}
+	}
 	public void updatePlayerLocation() {
 		// TODO: using arrow keys: up down left right
 	}
