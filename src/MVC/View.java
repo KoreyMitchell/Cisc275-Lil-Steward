@@ -58,6 +58,7 @@ public class View extends JPanel{
 	}
 	
 	public void initialize(MouseListener m, KeyListener k) {
+		//this method was meant to add the Controller listeners to View, but we're changing it so that the Listeners are in the View instead
 		JFrame frame = new JFrame();
 		frame.add(this);
 		frame.setTitle("Wetlands Game");
@@ -75,7 +76,7 @@ public class View extends JPanel{
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
 		
-		
+		//draw each of the game objects 
 		for(GroundPatch gr : groundList) {
 			g2d.drawImage(groundimg,gr.getXloc(),gr.getYloc(), null);
 		}
@@ -91,37 +92,43 @@ public class View extends JPanel{
 		g2d.drawImage(playerimg,player.getXloc(),player.getYloc(), null);
 	}
 	
+	//set player location to match input player
 	public void setPlayer(PlayerCharacter p) {
 		player.setXloc(p.getXloc());
 		player.setYloc(p.getYloc());
 	}
 	
+	//set list of native plants to input
 	public void setNativePlants(ArrayList<NativePlant> n) {
 		nativePlants.clear();
 		nativePlants.addAll(n);
 	}
 	
+	//set list of invasive plants to input
 	public void setInvasivePlants(ArrayList<InvasivePlant> in) {
 		invasivePlants.clear();
 		invasivePlants.addAll(in);
 	}
 	
+	//set list of plantable ground to input
 	public void setPatches(ArrayList<GroundPatch> g) {
 		groundList.clear();
 		groundList.addAll(g);
 	}
 	
+	//set obstacles to input
 	public void setObstacles(ArrayList<Obstacle> o ) {
 		obstacleList.clear();
 		obstacleList.addAll(o);
 	}
 	
+	//set tool to input
 	public void setTool(Tool t) {
 		tool = t;
 	}
 	
 	public void printStuff() {
-		//For testing purposes: prints the location of all the objects
+		//For testing purposes: prints the location of all the objects to console
 		System.out.println("Your location is: " + player.getXloc() + ", " + player.getYloc());
 		for(GroundPatch gr : groundList) {
 			System.out.println("Plantable ground at " + gr.getXloc() + " and " + gr.getYloc());

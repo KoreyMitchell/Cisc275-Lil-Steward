@@ -11,24 +11,14 @@ public class Controller implements MouseListener, KeyListener {
 	View view;
 	
 	public static void main(String[] args) {
+		//makes an instance of Controller
 		Controller c = new Controller();
 		
 		
-		/*for (int i = 0; i < 1000; i++) {
-			//TODO: update model
-			
-			//update view to match model
-			
-			//TODO:repaint?
-			
-			
-			//this is just for testing purposes
-			c.syncViewToModel(c.model);
-			c.view.repaint();
-			c.view.printStuff();
-		}*/
+		
 		
 		c.view.initialize(c,c);
+		
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
             	c.syncViewToModel(c.model);
@@ -41,6 +31,7 @@ public class Controller implements MouseListener, KeyListener {
 	}
 	
 	Controller(){
+		
 		model = new Model();
 		view = new View();
 		
@@ -48,6 +39,7 @@ public class Controller implements MouseListener, KeyListener {
 	}
 	
 	public void syncViewToModel(Model m){
+		//sets all variables in view to match their equivalents in the model
 		view.setPlayer(m.player);
 		view.setInvasivePlants(m.invasivePlants);
 		view.setNativePlants(m.nativePlants);
@@ -57,6 +49,8 @@ public class Controller implements MouseListener, KeyListener {
 		
 	}
 
+	
+	//this stuff can go in View
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// Call method in model 
