@@ -1,9 +1,11 @@
 package MVC;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -24,6 +26,10 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	ArrayList<Obstacle> obstacleList;
 	Tool tool;
 	Controller control;
+	
+	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	int screenHeight = screenSize.getSize().height;
+	int screenWidth = screenSize.getSize().width;
 
 	Image playerimg;
 	Image groundimg;
@@ -63,7 +69,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		frame.setTitle("Wetlands Game");
 		frame.setLayout(new GridLayout(1,1));
 		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
-		frame.setSize(700, 365);
+		frame.setSize(screenSize);
+		//frame.setSize(700, 365);
 		//frame.pack();
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);

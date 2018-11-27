@@ -29,10 +29,12 @@ public class GameObject {
 	        if (!(o instanceof GameObject)) {
 	            return false;
 	        }
+	        
 	        GameObject test = (GameObject) o;
 
-	        return test.getXloc()==xloc &&
-	                test.getYloc() == yloc;
+	       
+	        return (test.getXloc()<=xloc+50 && test.getXloc()>xloc-50) &&
+	               (test.getYloc()<= yloc+50 && test.getYloc()>yloc-50);
 	 }
 	 
 	 @Override

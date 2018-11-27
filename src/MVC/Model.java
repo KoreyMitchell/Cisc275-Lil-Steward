@@ -1,5 +1,6 @@
 package MVC;
 
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -96,6 +97,7 @@ public class Model {
 
 	public void addNativePlant(int x, int y) {
 		// only plant if there is an unplanted patch of ground at this x and y
+	
 		GroundPatch g = new GroundPatch(x, y);
 		if (groundList.contains(g)) {
 			System.out.println("You can plant here!");
@@ -137,6 +139,33 @@ public class Model {
 		// if not, the player can move
 		return true;
 
+	}
+
+	public void checkAndMove(KeyEvent e) {
+		// TODO Auto-generated method stub
+Obstacle o;
+		
+		int s = e.getKeyCode();
+		if(s==KeyEvent.VK_LEFT) {
+		o = new Obstacle((player.getXloc()-1),player.getYloc());	
+		}
+		else if(s==KeyEvent.VK_RIGHT) {
+			o = new Obstacle((player.getXloc()+1),player.getYloc());
+		}
+		else if(s==KeyEvent.VK_UP) {
+			o = new Obstacle(player.getXloc(),player.getYloc()-1);
+		}
+		else {
+			o = new Obstacle((player.getXloc()-1),player.getYloc()+1);
+		}
+	
+		
+		if(obstacleList.contains(o)) {
+			System.out.println("You hit an obstacle");
+			
+		}
+		else {player.updatePlayerLocation(e);}
+		
 	}
 
 }

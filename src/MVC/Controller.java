@@ -49,6 +49,7 @@ public class Controller implements MouseListener, KeyListener {
 		System.out.println("Controller read click from view");
 		//TODO: call click methods from model 
 		model.addNativePlant(x, y);
+		model.removeInvasivePlant(x, y);
 		//model.player.setXloc(x);
 		//model.player.setYloc(y);
 		//System.out.println(model.player.getXloc());
@@ -59,7 +60,7 @@ public class Controller implements MouseListener, KeyListener {
 	public void key(KeyEvent e) {
 		System.out.println("Controller read key from view");
 	
-		model.player.updatePlayerLocation(e);
+		model.checkAndMove(e);
 		System.out.println(model.player.getXloc());
 		syncViewToModel(model);
 		view.repaint();
