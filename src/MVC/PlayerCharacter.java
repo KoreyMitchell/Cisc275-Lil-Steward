@@ -37,28 +37,28 @@ public class PlayerCharacter extends GameObject{
 	public void updatePlayerLocation(KeyEvent e) {
 		//TODO: use String version of this method but with KeyEvents
 		System.out.println("Player moved");
-		int id = e.getID();
+		int id = e.getKeyCode();
 		int temp;
 		System.out.println("The id is " + id);
 		
 		switch( id ) { 
-        case KeyEvent.VK_UP:
+        case KeyEvent.VK_LEFT:
             // up 
         	System.out.println("Up pressed");
         	temp = getXloc()-1;
 			setXloc(temp);
             break;
-        case KeyEvent.VK_DOWN:
+        case KeyEvent.VK_RIGHT:
             // down 
         	temp = getXloc()+1;
 			setXloc(temp);
             break;
-        case KeyEvent.VK_LEFT:
+        case KeyEvent.VK_UP:
             // left
         	temp = getYloc()-1;
 			setYloc(temp);
             break;
-        case KeyEvent.VK_RIGHT :
+        case KeyEvent.VK_DOWN :
             // right
         	temp = getYloc()+1;
 			setYloc(temp);
