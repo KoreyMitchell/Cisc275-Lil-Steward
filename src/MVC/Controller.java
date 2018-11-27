@@ -15,6 +15,7 @@ public class Controller implements MouseListener, KeyListener {
 		Controller c = new Controller();
 
 		c.view.initialize();
+		c.view.setControl(c);
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -42,6 +43,26 @@ public class Controller implements MouseListener, KeyListener {
 		view.setObstacles(m.obstacleList);
 		view.setTool(m.tool);
 
+	}
+	
+	public void click(int x, int y) {
+		System.out.println("Controller read click from view");
+		//TODO: call click methods from model 
+		model.addNativePlant(x, y);
+		//model.player.setXloc(x);
+		//model.player.setYloc(y);
+		//System.out.println(model.player.getXloc());
+		syncViewToModel(model);
+		view.repaint();
+	}
+	
+	public void key(KeyEvent e) {
+		System.out.println("Controller read key from view");
+	
+		model.player.updatePlayerLocation(e);
+		System.out.println(model.player.getXloc());
+		syncViewToModel(model);
+		view.repaint();
 	}
 
 	// this stuff can go in View

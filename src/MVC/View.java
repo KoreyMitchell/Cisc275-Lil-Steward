@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -14,7 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
-public class View extends JPanel implements MouseListener{
+public class View extends JPanel implements MouseListener, KeyListener{
 
 	PlayerCharacter player;
 	ArrayList<NativePlant> nativePlants;
@@ -22,6 +23,7 @@ public class View extends JPanel implements MouseListener{
 	ArrayList<GroundPatch> groundList;
 	ArrayList<Obstacle> obstacleList;
 	Tool tool;
+	Controller control;
 
 	Image playerimg;
 	Image groundimg;
@@ -66,7 +68,8 @@ public class View extends JPanel implements MouseListener{
 		frame.setVisible(true);
 		frame.setLocationRelativeTo(null);
 		frame.addMouseListener(this);
-		//frame.addKeyListener(k);
+		frame.addKeyListener(this);
+		addKeyListener(this);
 	}
 
 	public void paint(Graphics g) {
@@ -88,6 +91,11 @@ public class View extends JPanel implements MouseListener{
 			g2d.drawImage(nplantimg, n.getXloc(), n.getYloc(), null);
 		}
 		g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
+	}
+	
+	//set view's controller to match input controller
+	public void setControl(Controller c) {
+		control = c;
 	}
 
 	// set player location to match input player
@@ -148,6 +156,7 @@ public class View extends JPanel implements MouseListener{
 		// TODO Auto-generated method stub
 		System.out.println("Mouse clicked");
 		
+		control.click(arg0.getX(),arg0.getY());
 	}
 
 	@Override
@@ -172,6 +181,27 @@ public class View extends JPanel implements MouseListener{
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("Key pressed");
+		control.key(e);
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("Key pressed");
+		control.key(e);
 	}
 
 }
