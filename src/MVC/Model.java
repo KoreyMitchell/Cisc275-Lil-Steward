@@ -99,10 +99,10 @@ public class Model {
 		GroundPatch g = new GroundPatch(x, y);
 		if (groundList.contains(g)) {
 			System.out.println("You can plant here!");
-			//add new plant to the list of native plants
+			// add new plant to the list of native plants
 			NativePlant n = new NativePlant(x, y);
 			nativePlants.add(n);
-			//remove the plantable ground, since it is now planted
+			// remove the plantable ground, since it is now planted
 			groundList.remove(g);
 		}
 
@@ -116,7 +116,7 @@ public class Model {
 	}
 
 	public boolean checkMove(String s) {
-		//checks to see if player's move is valid
+		// checks to see if player's move is valid
 		Obstacle o;
 		if (s.equals("up")) {
 			o = new Obstacle((player.getXloc() - 1), player.getYloc());
@@ -128,12 +128,13 @@ public class Model {
 			o = new Obstacle((player.getXloc() - 1), player.getYloc() + 1);
 		}
 
-		//if the list of obstacles contains an obstacle with the x and y given, the player cannot move there
+		// if the list of obstacles contains an obstacle with the x and y given, the
+		// player cannot move there
 		if (obstacleList.contains(o)) {
 			System.out.println("You hit an obstacle");
 			return false;
 		}
-		//if not, the player can move
+		// if not, the player can move
 		return true;
 
 	}
