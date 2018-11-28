@@ -1,6 +1,9 @@
 package MVC;
 
 import org.junit.Test;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MyTests {
@@ -8,13 +11,14 @@ public class MyTests {
     @Test
     public void ControllerTest() {
         Controller tester = new Controller(); // MyClass is tested
-    	assertEquals(0, tester.model, "this should fail");
+        assertThat(tester.model, is(not(0)));
     }
     
     @Test
 	public void GameObjectTest() {
     	GameObject tester = new GameObject(); // MyClass is tested
 
+    	
 	    }
     @Test
     public void GroundPatchTest() {
@@ -29,12 +33,13 @@ public class MyTests {
     	InvasivePlant tester = new InvasivePlant(0, 0);
     	assertEquals(0, tester.getXloc(), "this should fail");
 
+    	assertEquals(0, tester.hashCode(), "this should fail");
 	    }
     
     @Test
     public void ModelTest() {
     	Model tester = new Model();
-    	assertEquals(0, tester.checkMove("up"), "this should fail");
+    	assertThat(tester.checkMove("up"), is(not(0)));
 
 	    }
     @Test
@@ -42,25 +47,36 @@ public class MyTests {
     	NativePlant tester = new NativePlant(0, 0);
     	assertEquals(0, tester.getXloc(), "this should fail");
 
+    	assertEquals(0, tester.hashCode(), "this should fail");
 	    }
     @Test
     public void ObstacleTest() {
     	Obstacle tester = new Obstacle(0, 0);
     	assertEquals(0, tester.getXloc(), "this should fail");
 
+    	assertEquals(0, tester.hashCode(), "this should fail");
 	    }
     @Test
     public void PlayerTest() {
     	PlayerCharacter tester = new PlayerCharacter();
-    	assertEquals(0, tester.getXloc(), "this should fail");
+    	assertEquals(10, tester.getXloc(), "this should fail");
+    	assertThat(tester.getXloc(), is(not(0)));
 
+    	assertThat(tester.hashCode(), is(not(0)));
+    	
 	    }
  
     @Test
     public void Tool() {
     	Tool tester = new Tool(false);
-    	assertEquals(0, tester.isShovel(), "this should fail");
+    	assertThat(tester.isShovel(),is(not(0)));
+    	assertThat(tester.isShovel(),is(not(true)));
+    	assertThat(tester.isShovel(),is(false));
+    	
+    	tester.switchTool();
 
+    	assertThat(tester.isShovel(),is(true));
+    	
 	    }
     @Test
     public void ViewTest() {
