@@ -34,8 +34,8 @@ public class GameObject {
 	        GameObject test = (GameObject) o;
 
 	       
-	        return (test.getXloc()<=xloc && test.getXloc()>xloc-100) &&
-	               (test.getYloc()<= yloc && test.getYloc()>yloc-100);
+	        return (test.getXloc()<=xloc+80 && test.getXloc()>xloc-60) &&
+	               (test.getYloc()<= yloc+80 && test.getYloc()>yloc-70);
 	 }
 	 
 	 @Override
