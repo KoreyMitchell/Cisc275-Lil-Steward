@@ -64,8 +64,11 @@ public class MyTests {
     	assertEquals(10, tester.getXloc(), "this should fail");
     	assertThat(tester.getXloc(), is(not(0)));
 
+    	int temp = tester.getXloc()-1;
     	assertThat(tester.hashCode(), is(not(0)));
-    	
+    	tester.updatePlayerLocation("up");
+    	//assertThat(tester.updatePlayerLocation(e);) TODO figure out how to make example keyevent for testing
+    	assertThat(tester.getXloc(), is(temp));
 	    }
  
     @Test
