@@ -25,6 +25,7 @@ public class GameObject {
 	 @Override
 	    public boolean equals(Object o) {
 
+		 //System.out.println("Equals called");
 	        if (o == this) return true;
 	        if (!(o instanceof GameObject)) {
 	            return false;
@@ -33,8 +34,8 @@ public class GameObject {
 	        GameObject test = (GameObject) o;
 
 	       
-	        return (test.getXloc()<=xloc+50 && test.getXloc()>xloc-50) &&
-	               (test.getYloc()<= yloc+50 && test.getYloc()>yloc-50);
+	        return (test.getXloc()<=xloc && test.getXloc()>xloc-100) &&
+	               (test.getYloc()<= yloc && test.getYloc()>yloc-100);
 	 }
 	 
 	 @Override

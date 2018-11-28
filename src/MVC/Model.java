@@ -74,20 +74,22 @@ public class Model {
 		invasivePlants = new ArrayList<InvasivePlant>();
 		groundList = new ArrayList<GroundPatch>();
 		obstacleList = new ArrayList<Obstacle>();
-		tool = new Tool(true);
+		tool = new Tool(false);
 
 		// board conditions at start
 		GroundPatch grp1 = new GroundPatch(10, 12);
+		GroundPatch grp2 = new GroundPatch(2000, 520);
 		groundList.add(grp1);
+		groundList.add(grp2);
 
 		Obstacle ob1 = new Obstacle(90, 90);
 		obstacleList.add(ob1);
 
-		InvasivePlant inv1 = new InvasivePlant(10, 10);
-		InvasivePlant inv2 = new InvasivePlant(20, 20);
-		InvasivePlant inv3 = new InvasivePlant(30, 30);
-		InvasivePlant inv4 = new InvasivePlant(20, 10);
-		InvasivePlant inv5 = new InvasivePlant(30, 10);
+		InvasivePlant inv1 = new InvasivePlant(1000, 10);
+		InvasivePlant inv2 = new InvasivePlant(200, 200);
+		InvasivePlant inv3 = new InvasivePlant(300, 30);
+		InvasivePlant inv4 = new InvasivePlant(20, 100);
+		InvasivePlant inv5 = new InvasivePlant(300, 100);
 		invasivePlants.add(inv1);
 		invasivePlants.add(inv2);
 		invasivePlants.add(inv3);

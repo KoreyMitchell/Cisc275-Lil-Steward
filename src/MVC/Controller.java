@@ -74,8 +74,10 @@ public class Controller implements MouseListener, KeyListener {
 		int clicky = arg0.getY();
 		if (model.tool.isShovel()) {
 			model.addNativePlant(clickx, clicky);
-		} else
+		} else {
 			model.removeInvasivePlant(clickx, clicky);
+		}
+		System.out.println(model.tool.isShovel());
 		syncViewToModel(model);
 		view.repaint();
 
