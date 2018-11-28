@@ -18,7 +18,9 @@ public class MyTests {
 	public void GameObjectTest() {
     	GameObject tester = new GameObject(); // MyClass is tested
 
-    	
+    	GameObject tester2 = new GameObject();
+    	assertThat(tester.equals("horse"), is(false));
+    	assertThat(tester.equals(tester2), is(true));
 	    }
     @Test
     public void GroundPatchTest() {
@@ -74,9 +76,11 @@ public class MyTests {
     	assertThat(tester.isShovel(),is(false));
     	
     	tester.switchTool();
-
-    	assertThat(tester.isShovel(),is(true));
     	
+    	assertThat(tester.isShovel(),is(true));
+    	assertThat(tester.isShovel(),is(not(false)));
+    	tester.setShovel(false);
+    	assertThat(tester.isShovel(),is(false));
 	    }
     @Test
     public void ViewTest() {
