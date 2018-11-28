@@ -11,6 +11,9 @@ public class Model {
 	ArrayList<GroundPatch> groundList;
 	ArrayList<Obstacle> obstacleList;
 	Tool tool;
+	
+	int plantsPlanted;
+	int plantsRemoved;
 
 	
 
@@ -22,6 +25,8 @@ public class Model {
 		groundList = new ArrayList<GroundPatch>();
 		obstacleList = new ArrayList<Obstacle>();
 		tool = new Tool(false);
+		plantsPlanted = 0;
+		plantsRemoved = 0;
 
 		// board conditions at start
 		GroundPatch grp1 = new GroundPatch(10, 12);
@@ -32,7 +37,7 @@ public class Model {
 		Obstacle ob1 = new Obstacle(90, 90);
 		obstacleList.add(ob1);
 
-		InvasivePlant inv1 = new InvasivePlant(1000, 10);
+		InvasivePlant inv1 = new InvasivePlant(10, 10);
 		InvasivePlant inv2 = new InvasivePlant(200, 200);
 		InvasivePlant inv3 = new InvasivePlant(300, 30);
 		InvasivePlant inv4 = new InvasivePlant(20, 100);
@@ -55,6 +60,7 @@ public class Model {
 			nativePlants.add(n);
 			// remove the plantable ground, since it is now planted
 			groundList.remove(g);
+			plantsPlanted++;
 		}
 
 	}
@@ -63,7 +69,11 @@ public class Model {
 		// removes an InvasivePlant with the x and y specified from the list of
 		// invasive plants
 		InvasivePlant inv = new InvasivePlant(x, y);
+		if (invasivePlants.contains(inv)) {
+			plantsRemoved++;
+		}
 		invasivePlants.remove(inv);
+		
 	}
 
 
@@ -155,6 +165,9 @@ Obstacle o;
 			for (Obstacle ob : m.obstacleList) {
 				System.out.println("Obstacle" + " at " + ob.getXloc() + " and " + ob.getYloc());
 			}
+			
+			//Print plants planted and removed
+			System.out.println("Planted " + m.plantsPlanted + " goldenrod plants and removed " + m.plantsRemoved +" phragmites");
 
 			// Choose an action to take
 			System.out.println("Choose: up, down, left, right, plant, remove");
