@@ -12,6 +12,114 @@ public class Model {
 	ArrayList<Obstacle> obstacleList;
 	Tool tool;
 
+	
+
+	Model() {
+		// initialize local variables
+		player = new PlayerCharacter();
+		nativePlants = new ArrayList<NativePlant>();
+		invasivePlants = new ArrayList<InvasivePlant>();
+		groundList = new ArrayList<GroundPatch>();
+		obstacleList = new ArrayList<Obstacle>();
+		tool = new Tool(true);
+
+		// board conditions at start
+		GroundPatch grp1 = new GroundPatch(10, 12);
+		groundList.add(grp1);
+
+		Obstacle ob1 = new Obstacle(90, 90);
+		obstacleList.add(ob1);
+
+		InvasivePlant inv1 = new InvasivePlant(10, 10);
+		InvasivePlant inv2 = new InvasivePlant(20, 20);
+		InvasivePlant inv3 = new InvasivePlant(30, 30);
+		InvasivePlant inv4 = new InvasivePlant(20, 10);
+		InvasivePlant inv5 = new InvasivePlant(30, 10);
+		invasivePlants.add(inv1);
+		invasivePlants.add(inv2);
+		invasivePlants.add(inv3);
+		invasivePlants.add(inv4);
+		invasivePlants.add(inv5);
+	}
+
+	public void addNativePlant(int x, int y) {
+		// only plant if there is an unplanted patch of ground at this x and y
+	
+		GroundPatch g = new GroundPatch(x, y);
+		if (groundList.contains(g)) {
+			System.out.println("You can plant here!");
+			// add new plant to the list of native plants
+			NativePlant n = new NativePlant(x, y);
+			nativePlants.add(n);
+			// remove the plantable ground, since it is now planted
+			groundList.remove(g);
+		}
+
+	}
+
+	public void removeInvasivePlant(int x, int y) {
+		// removes an InvasivePlant with the x and y specified from the list of
+		// invasive plants
+		InvasivePlant inv = new InvasivePlant(x, y);
+		invasivePlants.remove(inv);
+	}
+
+
+
+	public void checkAndMove(KeyEvent e) {
+		// TODO Auto-generated method stub
+Obstacle o;
+		
+		int s = e.getKeyCode();
+		if(s==KeyEvent.VK_LEFT) {
+		o = new Obstacle((player.getXloc()-1),player.getYloc());	
+		}
+		else if(s==KeyEvent.VK_RIGHT) {
+			o = new Obstacle((player.getXloc()+1),player.getYloc());
+		}
+		else if(s==KeyEvent.VK_UP) {
+			o = new Obstacle(player.getXloc(),player.getYloc()-1);
+		}
+		else {
+			o = new Obstacle((player.getXloc()-1),player.getYloc()+1);
+		}
+	
+		
+		if(obstacleList.contains(o)) {
+			System.out.println("You hit an obstacle");
+			
+		}
+		else {player.updatePlayerLocation(e);}
+		
+	}
+	
+	
+	//**------------------For testing---------------------------**//
+	public boolean checkMove(String s) {
+		// checks to see if player's move is valid
+		Obstacle o;
+		if (s.equals("up")) {
+			o = new Obstacle((player.getXloc() - 1), player.getYloc());
+		} else if (s.equals("down")) {
+			o = new Obstacle((player.getXloc() + 1), player.getYloc());
+		} else if (s.equals("left")) {
+			o = new Obstacle(player.getXloc(), player.getYloc() - 1);
+		} else {
+			o = new Obstacle((player.getXloc() - 1), player.getYloc() + 1);
+		}
+
+		// if the list of obstacles contains an obstacle with the x and y given, the
+		// player cannot move there
+		if (obstacleList.contains(o)) {
+			System.out.println("You hit an obstacle");
+			return false;
+		}
+		// if not, the player can move
+		return true;
+
+	}
+	
+
 	public static void main(String[] args) {
 		Model m = new Model();
 		// Use a loop and a scanner class that takes input of arrow keys to make test
@@ -64,108 +172,8 @@ public class Model {
 				m.removeInvasivePlant(m.player.getXloc(), m.player.getYloc());
 			}
 		}
-
-	}
-
-	Model() {
-		// initialize local variables
-		player = new PlayerCharacter();
-		nativePlants = new ArrayList<NativePlant>();
-		invasivePlants = new ArrayList<InvasivePlant>();
-		groundList = new ArrayList<GroundPatch>();
-		obstacleList = new ArrayList<Obstacle>();
-		tool = new Tool(true);
-
-		// board conditions at start
-		GroundPatch grp1 = new GroundPatch(10, 12);
-		groundList.add(grp1);
-
-		Obstacle ob1 = new Obstacle(90, 90);
-		obstacleList.add(ob1);
-
-		InvasivePlant inv1 = new InvasivePlant(10, 10);
-		InvasivePlant inv2 = new InvasivePlant(20, 20);
-		InvasivePlant inv3 = new InvasivePlant(30, 30);
-		InvasivePlant inv4 = new InvasivePlant(20, 10);
-		InvasivePlant inv5 = new InvasivePlant(30, 10);
-		invasivePlants.add(inv1);
-		invasivePlants.add(inv2);
-		invasivePlants.add(inv3);
-		invasivePlants.add(inv4);
-		invasivePlants.add(inv5);
-	}
-
-	public void addNativePlant(int x, int y) {
-		// only plant if there is an unplanted patch of ground at this x and y
-	
-		GroundPatch g = new GroundPatch(x, y);
-		if (groundList.contains(g)) {
-			System.out.println("You can plant here!");
-			// add new plant to the list of native plants
-			NativePlant n = new NativePlant(x, y);
-			nativePlants.add(n);
-			// remove the plantable ground, since it is now planted
-			groundList.remove(g);
-		}
-
-	}
-
-	public void removeInvasivePlant(int x, int y) {
-		// removes an InvasivePlant with the x and y specified from the list of
-		// invasive plants
-		InvasivePlant inv = new InvasivePlant(x, y);
-		invasivePlants.remove(inv);
-	}
-
-	public boolean checkMove(String s) {
-		// checks to see if player's move is valid
-		Obstacle o;
-		if (s.equals("up")) {
-			o = new Obstacle((player.getXloc() - 1), player.getYloc());
-		} else if (s.equals("down")) {
-			o = new Obstacle((player.getXloc() + 1), player.getYloc());
-		} else if (s.equals("left")) {
-			o = new Obstacle(player.getXloc(), player.getYloc() - 1);
-		} else {
-			o = new Obstacle((player.getXloc() - 1), player.getYloc() + 1);
-		}
-
-		// if the list of obstacles contains an obstacle with the x and y given, the
-		// player cannot move there
-		if (obstacleList.contains(o)) {
-			System.out.println("You hit an obstacle");
-			return false;
-		}
-		// if not, the player can move
-		return true;
-
-	}
-
-	public void checkAndMove(KeyEvent e) {
-		// TODO Auto-generated method stub
-Obstacle o;
 		
-		int s = e.getKeyCode();
-		if(s==KeyEvent.VK_LEFT) {
-		o = new Obstacle((player.getXloc()-1),player.getYloc());	
-		}
-		else if(s==KeyEvent.VK_RIGHT) {
-			o = new Obstacle((player.getXloc()+1),player.getYloc());
-		}
-		else if(s==KeyEvent.VK_UP) {
-			o = new Obstacle(player.getXloc(),player.getYloc()-1);
-		}
-		else {
-			o = new Obstacle((player.getXloc()-1),player.getYloc()+1);
-		}
-	
-		
-		if(obstacleList.contains(o)) {
-			System.out.println("You hit an obstacle");
-			
-		}
-		else {player.updatePlayerLocation(e);}
-		
+
 	}
 
 }

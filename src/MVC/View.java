@@ -140,23 +140,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		tool = t;
 	}
 
-	public void printStuff() {
-		// For testing purposes: prints the location of all the objects to console
-		System.out.println("Your location is: " + player.getXloc() + ", " + player.getYloc());
-		for (GroundPatch gr : groundList) {
-			System.out.println("Plantable ground at " + gr.getXloc() + " and " + gr.getYloc());
 
-		}
-		for (NativePlant nat : nativePlants) {
-			System.out.println("Goldenrod" + " at " + nat.getXloc() + " and " + nat.getYloc());
-		}
-		for (InvasivePlant nat : invasivePlants) {
-			System.out.println("Phragmites" + " at " + nat.getXloc() + " and " + nat.getYloc());
-		}
-		for (Obstacle ob : obstacleList) {
-			System.out.println("Obstacle" + " at " + ob.getXloc() + " and " + ob.getYloc());
-		}
-	}
 
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
@@ -209,6 +193,24 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		// TODO Auto-generated method stub
 		System.out.println("Key pressed");
 		control.key(e);
+	}
+	//**--------------------------Testing-----------------------------**//
+	public void printStuff() {
+		// For testing purposes: prints the location of all the objects to console
+		System.out.println("Your location is: " + player.getXloc() + ", " + player.getYloc());
+		for (GroundPatch gr : groundList) {
+			System.out.println("Plantable ground at " + gr.getXloc() + " and " + gr.getYloc());
+
+		}
+		for (NativePlant nat : nativePlants) {
+			System.out.println("Goldenrod" + " at " + nat.getXloc() + " and " + nat.getYloc());
+		}
+		for (InvasivePlant nat : invasivePlants) {
+			System.out.println("Phragmites" + " at " + nat.getXloc() + " and " + nat.getYloc());
+		}
+		for (Obstacle ob : obstacleList) {
+			System.out.println("Obstacle" + " at " + ob.getXloc() + " and " + ob.getYloc());
+		}
 	}
 
 }
