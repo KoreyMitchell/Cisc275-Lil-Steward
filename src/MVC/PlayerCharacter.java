@@ -2,6 +2,7 @@ package MVC;
 
 import java.awt.event.KeyEvent;
 
+
 public class PlayerCharacter extends GameObject{
 
 	PlayerCharacter(){
@@ -15,6 +16,7 @@ public class PlayerCharacter extends GameObject{
 		int id = e.getKeyCode();
 		int temp;
 		System.out.println("The id is " + id);
+		
 		
 		switch( id ) { 
         case KeyEvent.VK_LEFT:
@@ -38,13 +40,18 @@ public class PlayerCharacter extends GameObject{
         	temp = getYloc()+10;
 			setYloc(temp);
             break;
+        
+		}
 
-     }
+
 	}
 	
 	
+
 	
-	 //Used for testing Model//
+	
+	
+	 //----------------------Used for testing Model-------------------------//
 	public void updatePlayerLocation(String input) {
 		// takes a string as input and updates location
 		int temp;
