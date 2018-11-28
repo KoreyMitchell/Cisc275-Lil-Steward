@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
@@ -36,7 +37,11 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	Image nplantimg;
 	Image iplantimg;
 	Image rockimg;
+	Image bgimg;
+  ///  JLabel background1 = new JLabel(new ImageIcon("res/Person-Images/Background.jpg"));
 
+	public Image img;//vague
+	
 	public View() {
 		player = new PlayerCharacter();
 		nativePlants = new ArrayList<NativePlant>();
@@ -44,9 +49,13 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		groundList = new ArrayList<GroundPatch>();
 		obstacleList = new ArrayList<Obstacle>();
 		tool = new Tool(true);
-
+		
 		setFocusable(true);
+		
 		requestFocusInWindow();
+		
+		//Images
+		ImageIcon bgImage = new ImageIcon("res/Person-Images/Background.jpg");
 		ImageIcon playericon = new ImageIcon("images/player.png");
 		ImageIcon groundicon = new ImageIcon("images/ground.png");
 		ImageIcon nplanticon = new ImageIcon("images/nativeplant.png");
@@ -57,7 +66,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		nplantimg = nplanticon.getImage();
 		iplantimg = iplanticon.getImage();
 		rockimg = rockicon.getImage();
-
+		bgimg = bgImage.getImage();
 	}
 
 	public void initialize() {
@@ -66,6 +75,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		
 		JFrame frame = new JFrame();
 		frame.add(this);
+		frame.pack();
+		frame.setResizable(false);     
+		
 		frame.setTitle("Wetlands Game");
 		frame.setLayout(new GridLayout(1,1));
 		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
@@ -79,11 +91,14 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		addKeyListener(this);
 	}
 
-	public void paint(Graphics g) {
-
-		super.paint(g);
+	public void paintComponent(Graphics g) {
+		
+		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
-
+		
+		//draw background image, need to find another image to make fullscreen
+		g2d.drawImage(bgimg, 0, 0, null);
+		
 		// draw each of the game objects
 		for (GroundPatch gr : groundList) {
 			g2d.drawImage(groundimg, gr.getXloc(), gr.getYloc(), null);
@@ -97,7 +112,10 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		for (NativePlant n : nativePlants) {
 			g2d.drawImage(nplantimg, n.getXloc(), n.getYloc(), null);
 		}
+		//draw the playerimage
 		g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
+
+	
 	}
 	
 	//set view's controller to match input controller
