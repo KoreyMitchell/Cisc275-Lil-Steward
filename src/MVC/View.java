@@ -119,6 +119,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			addKeyListener(this);
 			
 <<<<<<< HEAD
+<<<<<<< HEAD
 			//Menu stuff
 			menu= new MenuView();
 			this.addMouseListener(new MenuMouseClick());
@@ -126,6 +127,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 =======
 			//this.addMouseListener(new MenuModel());
 >>>>>>> ee95fa02ac7cfbcce1d5d17b07a898f66c40841e
+=======
+			//this.addMouseListener(new MenuModel());
+>>>>>>> refs/remotes/origin/cleanedbeta
 	}
 
 	public void paintComponent(Graphics g) {
