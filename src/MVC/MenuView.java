@@ -27,7 +27,6 @@ public class MenuView  extends View{
 	public Rectangle quitButton = new Rectangle(screenWidth/2-35,250,100,50);
 	public Rectangle anotherButton = new Rectangle(screenWidth/2-35,350,100,50);
 
-	
 	public void render(Graphics g) {
 		//2d graphics for buttons
 		Graphics2D g2d = (Graphics2D) g;

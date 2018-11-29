@@ -41,7 +41,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	Image rockimg;
 	Image backgroundimg;
 	Image scaled_bg_img;
-	
+	Image menuimg;
+	Image scaled_bg_img_menu;
+
 	private MenuView menu;
     
 	//TODO: Will use these to check for multiple key presses
@@ -62,20 +64,26 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		requestFocusInWindow();
 		
 		//Images
-		ImageIcon bgImage = new ImageIcon("images/background.png");
+		ImageIcon bgImage = new ImageIcon("images/grass_template2.jpg");
+		ImageIcon bgMenuImage = new ImageIcon("images/background.png");
+		
 		ImageIcon playericon = new ImageIcon("images/player.png");
 		ImageIcon groundicon = new ImageIcon("images/ground.png");
 		ImageIcon nplanticon = new ImageIcon("images/nativeplant.png");
 		ImageIcon iplanticon = new ImageIcon("images/phragmites.png");
 		ImageIcon rockicon = new ImageIcon("images/rock.png");
+		
 		playerimg = playericon.getImage();
 		groundimg = groundicon.getImage();
 		nplantimg = nplanticon.getImage();
 		iplantimg = iplanticon.getImage();
 		rockimg = rockicon.getImage();
 		backgroundimg = bgImage.getImage();
+		menuimg = bgMenuImage.getImage();
+		
 		//scale image to screen size
 		scaled_bg_img = backgroundimg.getScaledInstance(screenWidth, screenHeight, Image.SCALE_DEFAULT);   
+		scaled_bg_img_menu = menuimg.getScaledInstance(screenWidth, screenHeight, Image.SCALE_DEFAULT);   
 	}
 	//state of game
 	public enum STATE{
@@ -90,7 +98,6 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	public void initialize() {
 		// this method was meant to add the Controller listeners to View, but we're
 		// changing it so that the Listeners are in the View instead
-			menu= new MenuView();
 		
 			JFrame frame = new JFrame();
 			frame.add(this);
@@ -109,7 +116,10 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			frame.addKeyListener(this);
 			addKeyListener(this);
 			
-			this.addMouseListener(new MenuModel());
+			//Menu stuff
+			menu= new MenuView();
+			this.addMouseListener(new MenuMouseClick());
+			
 	}
 
 	public void paintComponent(Graphics g) {
@@ -121,6 +131,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 
 		//if in GAME state
 		if(State == STATE.GAME) {
+			g2d.drawImage(scaled_bg_img, 0, 0, null);
+
 			// draw each of the game objects
 			for (GroundPatch gr : groundList) {
 				g2d.drawImage(groundimg, gr.getXloc(), gr.getYloc(), null);
@@ -138,6 +150,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
 		
 		}else if(State ==STATE.MENU) {//if game state is not in game,draw menu
+			g2d.drawImage(scaled_bg_img_menu, 0, 0, null);
 			menu.render(g);
 		}
 		

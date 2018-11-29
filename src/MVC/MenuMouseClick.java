@@ -4,7 +4,7 @@ import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class MenuModel extends MenuView implements MouseListener {
+public class MenuMouseClick extends MenuView implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -47,7 +47,6 @@ public class MenuModel extends MenuView implements MouseListener {
 			if(my >= 350 && my <= 400)
 			{
 				//Pressed other button
-				System.exit(1);
 			}
 		}
 
