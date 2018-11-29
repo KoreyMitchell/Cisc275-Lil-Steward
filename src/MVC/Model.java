@@ -79,21 +79,45 @@ public class Model {
 
 
 	public void checkAndMove(KeyEvent e) {
-		// TODO Auto-generated method stub
-Obstacle o;
+		// TODO Make character move diagonally 
+		Obstacle o;
 		
 		int s = e.getKeyCode();
 		if(s==KeyEvent.VK_LEFT) {
 		o = new Obstacle((player.getXloc()-1),player.getYloc());	
+			if(s==KeyEvent.VK_LEFT&&s==KeyEvent.VK_UP) {
+				
+			}
+			if(s==KeyEvent.VK_LEFT&&s==KeyEvent.VK_DOWN) {
+				
+			}
 		}
 		else if(s==KeyEvent.VK_RIGHT) {
 			o = new Obstacle((player.getXloc()+1),player.getYloc());
+			if(s==KeyEvent.VK_RIGHT&&s==KeyEvent.VK_UP) {
+				
+				}
+			if(s==KeyEvent.VK_LEFT&&s==KeyEvent.VK_DOWN) {
+			
+			}
 		}
 		else if(s==KeyEvent.VK_UP) {
 			o = new Obstacle(player.getXloc(),player.getYloc()-1);
+			if(s==KeyEvent.VK_UP&&s==KeyEvent.VK_LEFT) {
+				
+			}
+			if(s==KeyEvent.VK_UP&&s==KeyEvent.VK_RIGHT) {
+		
+			}
 		}
 		else {
 			o = new Obstacle((player.getXloc()-1),player.getYloc()+1);
+			if(s==KeyEvent.VK_DOWN&&s==KeyEvent.VK_LEFT) {
+				
+			}
+			if(s==KeyEvent.VK_DOWN&&s==KeyEvent.VK_RIGHT) {
+		
+			}
 		}
 	
 		
@@ -106,7 +130,8 @@ Obstacle o;
 	}
 	
 	
-	//**------------------For testing---------------------------**//
+//**----------------------------For testing-----------------------------------**//
+//**--------------------------------------------------------------------------**//
 	public boolean checkMove(String s) {
 		// checks to see if player's move is valid
 		Obstacle o;

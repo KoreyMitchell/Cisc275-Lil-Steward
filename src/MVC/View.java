@@ -27,6 +27,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	ArrayList<Obstacle> obstacleList;
 	Tool tool;
 	Controller control;
+	ArrayList<Integer> keys=new ArrayList();
 	
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	int screenHeight = screenSize.getSize().height;
@@ -38,11 +39,15 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	Image iplantimg;
 	Image rockimg;
 	Image bgimg;
+	Image scaledImage;
   ///  JLabel background1 = new JLabel(new ImageIcon("res/Person-Images/Background.jpg"));
 
 	public Image img;//vague
-	
+    boolean isUpPressed, isDownPressed, isRightPressed,isLeftPressed;
+	boolean[] keyArray = new boolean[4];
+    
 	public View() {
+		//new StartScreen();
 		player = new PlayerCharacter();
 		nativePlants = new ArrayList<NativePlant>();
 		invasivePlants = new ArrayList<InvasivePlant>();
@@ -67,6 +72,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		iplantimg = iplanticon.getImage();
 		rockimg = rockicon.getImage();
 		bgimg = bgImage.getImage();
+		//scale image to screen size
+		scaledImage = bgimg.getScaledInstance(screenWidth, screenHeight, Image.SCALE_DEFAULT);   
 	}
 
 	public void initialize() {
@@ -92,12 +99,12 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	}
 
 	public void paintComponent(Graphics g) {
-		
+		//Image scaledImage = originalImage.getScaledInstance(JPanel.getWidth(),jPanel.getHeight(),Image.SCALE_SMOOTH);
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
 		
 		//draw background image, need to find another image to make fullscreen
-		g2d.drawImage(bgimg, 0, 0, null);
+		g2d.drawImage(scaledImage, 0, 0, null);
 		
 		// draw each of the game objects
 		for (GroundPatch gr : groundList) {
@@ -158,8 +165,6 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		tool = t;
 	}
 
-
-
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
@@ -195,14 +200,14 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("Key pressed");
 		control.key(e);
-		
+	 
+		System.out.println("Key pressed");
+	
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -212,7 +217,10 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		System.out.println("Key pressed");
 		control.key(e);
 	}
-	//**--------------------------Testing-----------------------------**//
+	
+	
+	
+//**-------------------------------Testing-----------------------------------------------**//
 	public void printStuff() {
 		// For testing purposes: prints the location of all the objects to console
 		System.out.println("Your location is: " + player.getXloc() + ", " + player.getYloc());
