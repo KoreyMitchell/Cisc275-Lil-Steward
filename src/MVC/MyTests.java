@@ -53,6 +53,10 @@ public class MyTests {
     public void ModelTest() {
     	Model tester = new Model();
     	assertThat(tester.checkMove("up"), is(not(0)));
+    	assertThat(tester.checkMove("down"), is(not(0)));
+    	assertThat(tester.checkMove("left"), is(not(0)));
+    	assertThat(tester.checkMove("right"), is(not(0)));
+    	
 
 	    }
     @Test
@@ -133,7 +137,13 @@ public class MyTests {
     @Test
     public void ViewTest() {
     	View tester = new View();
+    	Controller c = new Controller();
     	//assertEquals(0, tester., "this should fail");
+    	tester.setControl(c);
+    	assertThat(tester.control, is(c));
+    	tester.printStuff();
 
+    	tester.initialize();
 	    }
+    
 }
