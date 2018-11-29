@@ -47,6 +47,7 @@ public class MyTests {
     	assertEquals(0, tester.getXloc(), "this should fail");
 
     	assertEquals(0, tester.hashCode(), "this should fail");
+    	
 	    }
     
     @Test
