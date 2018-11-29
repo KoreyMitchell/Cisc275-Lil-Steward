@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -38,16 +39,17 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	Image nplantimg;
 	Image iplantimg;
 	Image rockimg;
-	Image bgimg;
-	Image scaledImage;
-  ///  JLabel background1 = new JLabel(new ImageIcon("res/Person-Images/Background.jpg"));
-
-	public Image img;//vague
-    boolean isUpPressed, isDownPressed, isRightPressed,isLeftPressed;
+	Image backgroundimg;
+	Image scaled_bg_img;
+	
+	private MenuView menu;
+    
+	//TODO: Will use these to check for multiple key presses
+	boolean isUpPressed, isDownPressed, isRightPressed,isLeftPressed;
 	boolean[] keyArray = new boolean[4];
+	
     
 	public View() {
-		//new StartScreen();
 		player = new PlayerCharacter();
 		nativePlants = new ArrayList<NativePlant>();
 		invasivePlants = new ArrayList<InvasivePlant>();
@@ -60,7 +62,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		requestFocusInWindow();
 		
 		//Images
-		ImageIcon bgImage = new ImageIcon("res/Person-Images/Background.jpg");
+		ImageIcon bgImage = new ImageIcon("images/background.png");
 		ImageIcon playericon = new ImageIcon("images/player.png");
 		ImageIcon groundicon = new ImageIcon("images/ground.png");
 		ImageIcon nplanticon = new ImageIcon("images/nativeplant.png");
@@ -71,58 +73,74 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		nplantimg = nplanticon.getImage();
 		iplantimg = iplanticon.getImage();
 		rockimg = rockicon.getImage();
-		bgimg = bgImage.getImage();
+		backgroundimg = bgImage.getImage();
 		//scale image to screen size
-		scaledImage = bgimg.getScaledInstance(screenWidth, screenHeight, Image.SCALE_DEFAULT);   
+		scaled_bg_img = backgroundimg.getScaledInstance(screenWidth, screenHeight, Image.SCALE_DEFAULT);   
 	}
+	//state of game
+	public enum STATE{
+		MENU,
+		GAME,
+		
+	};
+	
+	//Initialize state to Menu, to skip menu for testing change state to GAME
+	public static STATE State = STATE.MENU;
 
 	public void initialize() {
 		// this method was meant to add the Controller listeners to View, but we're
 		// changing it so that the Listeners are in the View instead
+			menu= new MenuView();
 		
-		JFrame frame = new JFrame();
-		frame.add(this);
-		frame.pack();
-		frame.setResizable(false);     
-		
-		frame.setTitle("Wetlands Game");
-		frame.setLayout(new GridLayout(1,1));
-		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
-		frame.setSize(screenSize);
-		//frame.setSize(700, 365);
-		//frame.pack();
-		frame.setVisible(true);
-		frame.setLocationRelativeTo(null);
-		frame.addMouseListener(this);
-		frame.addKeyListener(this);
-		addKeyListener(this);
+			JFrame frame = new JFrame();
+			frame.add(this);
+			frame.pack();
+			frame.setResizable(false);     
+			
+			frame.setTitle("Wetlands Game");
+			frame.setLayout(new GridLayout(1,1));
+			frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+			frame.setSize(screenSize);
+			//frame.setSize(700, 365);
+			//frame.pack();
+			frame.setVisible(true);
+			frame.setLocationRelativeTo(null);
+			frame.addMouseListener(this);
+			frame.addKeyListener(this);
+			addKeyListener(this);
+			
+			this.addMouseListener(new MenuModel());
 	}
 
 	public void paintComponent(Graphics g) {
-		//Image scaledImage = originalImage.getScaledInstance(JPanel.getWidth(),jPanel.getHeight(),Image.SCALE_SMOOTH);
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
 		
-		//draw background image, need to find another image to make fullscreen
-		g2d.drawImage(scaledImage, 0, 0, null);
-		
-		// draw each of the game objects
-		for (GroundPatch gr : groundList) {
-			g2d.drawImage(groundimg, gr.getXloc(), gr.getYloc(), null);
-		}
-		for (Obstacle o : obstacleList) {
-			g2d.drawImage(rockimg, o.getXloc(), o.getYloc(), null);
-		}
-		for (InvasivePlant in : invasivePlants) {
-			g2d.drawImage(iplantimg, in.getXloc(), in.getYloc(), null);
-		}
-		for (NativePlant n : nativePlants) {
-			g2d.drawImage(nplantimg, n.getXloc(), n.getYloc(), null);
-		}
-		//draw the playerimage
-		g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
+		//draw background
+		g2d.drawImage(scaled_bg_img, 0, 0, null);
 
-	
+		//if in GAME state
+		if(State == STATE.GAME) {
+			// draw each of the game objects
+			for (GroundPatch gr : groundList) {
+				g2d.drawImage(groundimg, gr.getXloc(), gr.getYloc(), null);
+			}
+			for (Obstacle o : obstacleList) {
+				g2d.drawImage(rockimg, o.getXloc(), o.getYloc(), null);
+			}
+			for (InvasivePlant in : invasivePlants) {
+				g2d.drawImage(iplantimg, in.getXloc(), in.getYloc(), null);
+			}
+			for (NativePlant n : nativePlants) {
+				g2d.drawImage(nplantimg, n.getXloc(), n.getYloc(), null);
+			}
+			//draw the playerimage
+			g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
+		
+		}else if(State ==STATE.MENU) {//if game state is not in game,draw menu
+			menu.render(g);
+		}
+		
 	}
 	
 	//set view's controller to match input controller

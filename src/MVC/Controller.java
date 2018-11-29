@@ -13,10 +13,10 @@ public class Controller {
 	public static void main(String[] args) {
 		// makes an instance of Controller
 		Controller c = new Controller();
-
+		
 		c.view.initialize();
 		c.view.setControl(c);
-
+		
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				c.syncViewToModel(c.model);
@@ -28,7 +28,6 @@ public class Controller {
 	}
 
 	Controller() {
-
 		model = new Model();
 		view = new View();
 
@@ -82,8 +81,5 @@ public class Controller {
 		view.repaint();
 
 	}
-
-	
-
 
 }
