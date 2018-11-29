@@ -1,6 +1,10 @@
 package MVC;
 
+import java.awt.Image;
+
 public class GameObject {
+	//image file
+	Image img;
 
 	//X and Y locations
 	private int xloc;

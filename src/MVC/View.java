@@ -30,6 +30,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	Controller control;
 	ArrayList<Integer> keys=new ArrayList();
 	
+	JFrame frame;
+	
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	int screenHeight = screenSize.getSize().height;
 	int screenWidth = screenSize.getSize().width;
@@ -99,7 +101,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		// this method was meant to add the Controller listeners to View, but we're
 		// changing it so that the Listeners are in the View instead
 		
-			JFrame frame = new JFrame();
+			frame = new JFrame();
 			frame.add(this);
 			frame.pack();
 			frame.setResizable(false);     
@@ -116,10 +118,14 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			frame.addKeyListener(this);
 			addKeyListener(this);
 			
+<<<<<<< HEAD
 			//Menu stuff
 			menu= new MenuView();
 			this.addMouseListener(new MenuMouseClick());
 			
+=======
+			//this.addMouseListener(new MenuModel());
+>>>>>>> ee95fa02ac7cfbcce1d5d17b07a898f66c40841e
 	}
 
 	public void paintComponent(Graphics g) {
@@ -197,11 +203,17 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent arg0) {
+	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("Mouse clicked");
+		int mx = e.getX();	//x value of mouse
+		int my = e.getY();	//y value of mouse
 		
-		control.click(arg0.getX(),arg0.getY());
+		if(State == STATE.GAME) {
+		control.click(mx,my);
+		}
+		else {System.out.println("Mouse clicked");
+			
+		}
 	}
 
 	@Override
@@ -217,8 +229,33 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	}
 
 	@Override
-	public void mousePressed(MouseEvent arg0) {
+	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
+		int mx = e.getX();	//x value of mouse
+		int my = e.getY();	//y value of mouse
+		
+		if(State == STATE.MENU) {
+		if(mx >= screenWidth/2-35 && mx <= screenWidth/2 +65 )
+		{	//first button
+			if(my >= 150 && my <= 200)
+			{
+				//Pressed play button
+				View.State = View.STATE.GAME;
+			}
+			//second button
+			if(my >= 250 && my <= 300)
+			{
+				//Pressed quit button
+				System.exit(1);
+			}
+			//third button
+			if(my >= 350 && my <= 400)
+			{
+				//Pressed other button
+				System.exit(1);
+			}
+		}
+		}
 		
 	}
 
