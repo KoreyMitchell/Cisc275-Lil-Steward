@@ -21,7 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class MenuView  extends View{
+public class Menu  extends View{
 	//initialize buttons, (x,y,w,h)
 	public Rectangle playButton = new Rectangle(screenWidth/2-35,150,100,50);
 	public Rectangle quitButton = new Rectangle(screenWidth/2-35,250,100,50);

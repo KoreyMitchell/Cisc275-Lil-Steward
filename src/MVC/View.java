@@ -14,6 +14,7 @@ import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -45,8 +46,11 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	Image scaled_bg_img;
 	Image menuimg;
 	Image scaled_bg_img_menu;
+	
 
-	private MenuView menu;
+	private Menu menu;
+	
+	ToolBar toolbar;
     
 	//TODO: Will use these to check for multiple key presses
 	boolean isUpPressed, isDownPressed, isRightPressed,isLeftPressed;
@@ -116,20 +120,14 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			frame.setLocationRelativeTo(null);
 			frame.addMouseListener(this);
 			frame.addKeyListener(this);
-			addKeyListener(this);
 			
-<<<<<<< HEAD
-<<<<<<< HEAD
+			addKeyListener(this); 	//makes player move		
+
 			//Menu stuff
-			menu= new MenuView();
-			this.addMouseListener(new MenuMouseClick());
+			menu= new Menu();
 			
-=======
-			//this.addMouseListener(new MenuModel());
->>>>>>> ee95fa02ac7cfbcce1d5d17b07a898f66c40841e
-=======
-			//this.addMouseListener(new MenuModel());
->>>>>>> refs/remotes/origin/cleanedbeta
+			
+			
 	}
 
 	public void paintComponent(Graphics g) {
@@ -137,12 +135,16 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		Graphics2D g2d = (Graphics2D) g;
 		
 		//draw background
-		g2d.drawImage(scaled_bg_img, 0, 0, null);
+		//g2d.drawImage(scaled_bg_img, 0, 0, null);
 
 		//if in GAME state
 		if(State == STATE.GAME) {
 			g2d.drawImage(scaled_bg_img, 0, 0, null);
-
+			
+			//add toolbar to game, doesnt work
+			toolbar = new ToolBar();
+			frame.add(toolbar);
+			
 			// draw each of the game objects
 			for (GroundPatch gr : groundList) {
 				g2d.drawImage(groundimg, gr.getXloc(), gr.getYloc(), null);
@@ -158,6 +160,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			}
 			//draw the playerimage
 			g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
+			
+			
 		
 		}else if(State ==STATE.MENU) {//if game state is not in game,draw menu
 			g2d.drawImage(scaled_bg_img_menu, 0, 0, null);
