@@ -175,11 +175,11 @@ public class View extends JPanel implements MouseListener, KeyListener{
 //theres Some Stuff happening here w the merge im just gonna leave it and see if i can fix it
 
 //draw background image, need to find another image to make fullscreen
-		g2d.drawImage(bgimg, 0, 0, null);
+		//g2d.drawImage(bgimg, 0, 0, null);
 		//draw background image, need to find another image to make fullscreen
-		g2d.drawImage(bgimg, 0, 0, getWidth(), getHeight(), null);
+		//g2d.drawImage(bgimg, 0, 0, getWidth(), getHeight(), null);
 		//draw background
-		//g2d.drawImage(scaled_bg_img, 0, 0, null);
+		g2d.drawImage(scaled_bg_img, 0, 0, null);
 
 		//if in GAME state
 		if(State == STATE.GAME) {
@@ -259,9 +259,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		// TODO Auto-generated method stub
 		//System.out.println("Mouse clicked");
 		System.out.println("Mouse clicked");
-		control.click(arg0.getX(),arg0.getY());
+		control.click(e.getX(),e.getY());
 		//plantedCount++;
-		paintPlantedInfo(plantedCount, arg0.getX(), arg0.getY());
+		paintPlantedInfo(plantedCount, e.getX(), e.getY());
 		
 		int mx = e.getX();	//x value of mouse
 		int my = e.getY();	//y value of mouse
