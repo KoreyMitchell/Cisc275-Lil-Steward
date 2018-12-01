@@ -14,8 +14,11 @@ import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
-import javax.swing.JDialog;
+<<<<<<< HEAD
 import javax.swing.JButton;
+=======
+import javax.swing.JDialog;
+>>>>>>> levelup
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -34,6 +37,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	ArrayList<Integer> keys=new ArrayList();
 	
 	JFrame frame;
+	
 	
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	int screenHeight = screenSize.getSize().height;
@@ -56,11 +60,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	Image menuimg;
 	Image scaled_bg_img_menu;
 	
-	//Menu
+
 	private Menu menu;
-	
-	//EndScreen
-	private EndScreen endScreen;
 	
 	ToolBar toolbar;
     
@@ -82,18 +83,22 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		requestFocusInWindow();
 		
 		//Images
-		//ImageIcon bgImage = new ImageIcon("res/Person-Images/Background.jpg");
-		//ImageIcon playericon = new ImageIcon("images/player.png");
-		//ImageIcon bgImage = new ImageIcon("res/Person-Images/BackGround1.jpg");
+<<<<<<< HEAD
 		ImageIcon bgImage = new ImageIcon("images/grass_template2.jpg");
 		ImageIcon bgMenuImage = new ImageIcon("images/background.png");
 		
 		ImageIcon playericon = new ImageIcon("images/player.png");
+=======
+		ImageIcon bgImage = new ImageIcon("res/Person-Images/BackGround1.jpg");
+>>>>>>> levelup
 		ImageIcon groundicon = new ImageIcon("images/ground.png");
 		ImageIcon nplanticon = new ImageIcon("images/nativeplant.png");
 		ImageIcon iplanticon = new ImageIcon("images/phragmites.png");
 		ImageIcon rockicon = new ImageIcon("images/rock.png");
-		//playerimg = playericon.getImage();
+<<<<<<< HEAD
+		
+		playerimg = playericon.getImage();
+=======
 		ImageIcon playerImageFront = new ImageIcon("images/Person_FRONT.png");
 		ImageIcon playerImageBack = new ImageIcon("images/Person_BACK.png");
 		ImageIcon playerImageRight = new ImageIcon("images/Person_RIGHT.png");
@@ -103,22 +108,25 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		playerimgRight = playerImageRight.getImage();
 		playerimgLeft = playerImageLeft.getImage();
 		playerimg = playerimgFront;
-		
-		playerimg = playericon.getImage();
+>>>>>>> levelup
 		groundimg = groundicon.getImage();
 		nplantimg = nplanticon.getImage();
 		iplantimg = iplanticon.getImage();
 		rockimg = rockicon.getImage();
+<<<<<<< HEAD
 		backgroundimg = bgImage.getImage();
 		menuimg = bgMenuImage.getImage();
+		
+		//scale image to screen size
+		scaled_bg_img = backgroundimg.getScaledInstance(screenWidth, screenHeight, Image.SCALE_DEFAULT);   
+		scaled_bg_img_menu = menuimg.getScaledInstance(screenWidth, screenHeight, Image.SCALE_DEFAULT);   
+=======
+		bgimg = bgImage.getImage();
 		
 		
 
 		
 		
-		//scale image to screen size
-		scaled_bg_img = backgroundimg.getScaledInstance(screenWidth, screenHeight, Image.SCALE_DEFAULT);   
-		scaled_bg_img_menu = menuimg.getScaledInstance(screenWidth, screenHeight, Image.SCALE_DEFAULT);   
 	}
 	
 	public void paintPlantedInfo(int plantedCount,int x, int y) {
@@ -131,12 +139,13 @@ public class View extends JPanel implements MouseListener, KeyListener{
 //                "New Message!", 
 //                JOptionPane.PLAIN_MESSAGE);
 		
+>>>>>>> levelup
 	}
 	//state of game
 	public enum STATE{
 		MENU,
 		GAME,
-		END
+		
 	};
 	
 	//Initialize state to Menu, to skip menu for testing change state to GAME
@@ -146,6 +155,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		// this method was meant to add the Controller listeners to View, but we're
 		// changing it so that the Listeners are in the View instead
 		
+<<<<<<< HEAD
 			frame = new JFrame();
 			frame.add(this);
 			frame.pack();
@@ -167,40 +177,44 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			//Menu stuff
 			menu= new Menu();
 			
-			//Toolbar
-			toolbar = new ToolBar(frame);
-	    //   frame.add(toolbar);
 			
-			 JButton button = new JButton("Click here!");
-		     JPanel panel = new JPanel();
-		     panel.add(button);
-		        // And JPanel needs to be added to the JFrame itself!
-		        this.getRootPane().add(panel);
+			
+=======
+		JFrame frame = new JFrame();
+		frame.add(this);
+		frame.pack();
+		frame.setResizable(false);     
+		
+		frame.setTitle("Wetlands Game");
+		frame.setLayout(new GridLayout(1,1));
+		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+		frame.setSize(screenSize);
+		//frame.setSize(700, 365);
+		//frame.pack();
+		frame.setVisible(true);
+		frame.setLocationRelativeTo(null);
+		frame.addMouseListener(this);
+		frame.addKeyListener(this);
+		addKeyListener(this);
 
-		        setVisible(true);
-			
+>>>>>>> levelup
 	}
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
 		
-//theres Some Stuff happening here w the merge im just gonna leave it and see if i can fix it
-
-//draw background image, need to find another image to make fullscreen
-		//g2d.drawImage(bgimg, 0, 0, null);
-		//draw background image, need to find another image to make fullscreen
-		//g2d.drawImage(bgimg, 0, 0, getWidth(), getHeight(), null);
+<<<<<<< HEAD
 		//draw background
-		g2d.drawImage(scaled_bg_img, 0, 0, null);
+		//g2d.drawImage(scaled_bg_img, 0, 0, null);
 
 		//if in GAME state
 		if(State == STATE.GAME) {
 			g2d.drawImage(scaled_bg_img, 0, 0, null);
 			
 			//add toolbar to game, doesnt work
-//			toolbar = new ToolBar();
-//			frame.add(toolbar);
+			toolbar = new ToolBar();
+			frame.add(toolbar);
 			
 			// draw each of the game objects
 			for (GroundPatch gr : groundList) {
@@ -214,20 +228,21 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			}
 			for (NativePlant n : nativePlants) {
 				g2d.drawImage(nplantimg, n.getXloc(), n.getYloc(), null);
-			}	
+			}
 			//draw the playerimage
 			g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
+			
+			
+=======
+		//draw background image, need to find another image to make fullscreen
+		g2d.drawImage(bgimg, 0, 0, getWidth(), getHeight(), null);
+>>>>>>> levelup
 		
 		}else if(State ==STATE.MENU) {//if game state is not in game,draw menu
 			g2d.drawImage(scaled_bg_img_menu, 0, 0, null);
 			menu.render(g);
-		
-		}else if(State == STATE.END) {	//if game is ended
-			//g2d.drawImage(backgroundimg, 0, 0, null);
-			endScreen.render(g);
 		}
 		
-	
 	}
 	
 	//set view's controller to match input controller
@@ -273,21 +288,23 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		//System.out.println("Mouse clicked");
-		System.out.println("Mouse clicked");
-		control.click(e.getX(),e.getY());
-		//plantedCount++;
-		paintPlantedInfo(plantedCount, e.getX(), e.getY());
-		
+<<<<<<< HEAD
 		int mx = e.getX();	//x value of mouse
 		int my = e.getY();	//y value of mouse
 		
-if(State == STATE.GAME) {
+		if(State == STATE.GAME) {
 		control.click(mx,my);
 		}
 		else {System.out.println("Mouse clicked");
 			
 		}
+=======
+		System.out.println("Mouse clicked");
+		control.click(arg0.getX(),arg0.getY());
+		//plantedCount++;
+		paintPlantedInfo(plantedCount, arg0.getX(), arg0.getY());
+		
+		
 		
 	}
 
@@ -305,9 +322,8 @@ if(State == STATE.GAME) {
 
 	public void setPlantsRemoved(int plantsRemoved) {
 		this.plantsRemoved = plantsRemoved;
-}
-		
-	
+>>>>>>> levelup
+	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
@@ -327,28 +343,27 @@ if(State == STATE.GAME) {
 		int mx = e.getX();	//x value of mouse
 		int my = e.getY();	//y value of mouse
 		
-		if(State == STATE.MENU) 
-		{
-			if(mx >= screenWidth/2-35 && mx <= screenWidth/2 +65 )
-			{	//first button
-				if(my >= 150 && my <= 200)
-				{
-					//Pressed play button
-					View.State = View.STATE.GAME;
-				}
-				//second button
-				if(my >= 250 && my <= 300)
-				{
-					//Pressed quit button
-					System.exit(1);
-				}
-				//third button
-				if(my >= 350 && my <= 400)
-				{
-					//Pressed other button
-					System.exit(1);
-				}
+		if(State == STATE.MENU) {
+		if(mx >= screenWidth/2-35 && mx <= screenWidth/2 +65 )
+		{	//first button
+			if(my >= 150 && my <= 200)
+			{
+				//Pressed play button
+				View.State = View.STATE.GAME;
 			}
+			//second button
+			if(my >= 250 && my <= 300)
+			{
+				//Pressed quit button
+				System.exit(1);
+			}
+			//third button
+			if(my >= 350 && my <= 400)
+			{
+				//Pressed other button
+				System.exit(1);
+			}
+		}
 		}
 		
 	}

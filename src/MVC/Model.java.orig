@@ -11,17 +11,17 @@ public class Model {
 	ArrayList<GroundPatch> groundList;
 	ArrayList<Obstacle> obstacleList;
 	Tool tool;
+<<<<<<< HEAD
+	
 	int plantsPlanted;
 	int plantsRemoved;
-<<<<<<< HEAD
-	boolean win = false;
 =======
+	int plantsPlanted;
+	int plantsRemoved;
 	int level;
-	
-	
+>>>>>>> levelup
 
 	
->>>>>>> f489adc089690c3edbb2aea42ba53184485152d0
 
 	Model() {
 		// initialize local variables
@@ -33,7 +33,10 @@ public class Model {
 		tool = new Tool(false);
 		plantsPlanted = 0;
 		plantsRemoved = 0;
+<<<<<<< HEAD
+=======
 		level = 1;
+>>>>>>> levelup
 
 		// board conditions at start
 		GroundPatch grp1 = new GroundPatch(10, 12);
@@ -69,7 +72,7 @@ public class Model {
 			groundList.remove(g);
 			plantsPlanted++;
 		}
-		
+
 	}
 
 	public void removeInvasivePlant(int x, int y) {
@@ -78,12 +81,12 @@ public class Model {
 		InvasivePlant inv = new InvasivePlant(x, y);
 		if (invasivePlants.contains(inv)) {
 			plantsRemoved++;
-		
+<<<<<<< HEAD
 		}
+=======
+		};
+>>>>>>> levelup
 		invasivePlants.remove(inv);
-		if(plantsRemoved == 3) {
-			win = true;
-		}
 		
 	}
 
@@ -99,6 +102,7 @@ public class Model {
 			}
 		}
 	}
+
 
 	public void checkAndMove(KeyEvent e) {
 		// TODO Make character move diagonally 
