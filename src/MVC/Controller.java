@@ -22,6 +22,7 @@ public class Controller implements MouseListener {
 				c.syncViewToModel(c.model);
 				c.view.repaint();
 				c.view.printStuff();
+				//c.model.checkLvlUp();
 			}
 		});
 
@@ -58,6 +59,7 @@ public class Controller implements MouseListener {
 		//System.out.println(model.player.getXloc());
 		syncViewToModel(model);
 		view.repaint();
+		model.checkLvlUp();
 	}
 	
 	public void key(KeyEvent e) {

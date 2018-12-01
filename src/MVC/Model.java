@@ -13,6 +13,7 @@ public class Model {
 	Tool tool;
 	int plantsPlanted;
 	int plantsRemoved;
+	int level;
 
 	
 
@@ -26,6 +27,7 @@ public class Model {
 		tool = new Tool(false);
 		plantsPlanted = 0;
 		plantsRemoved = 0;
+		level = 1;
 
 		// board conditions at start
 		GroundPatch grp1 = new GroundPatch(10, 12);
@@ -74,6 +76,18 @@ public class Model {
 		invasivePlants.remove(inv);
 	}
 
+	public void checkLvlUp() {
+		System.out.println("Levelup checked");
+		if(groundList.isEmpty()&&invasivePlants.isEmpty()) {
+			if(level<3) {
+				level++;
+				System.out.println(level);
+			}
+			else {
+				//game is over
+			}
+		}
+	}
 
 
 	public void checkAndMove(KeyEvent e) {
