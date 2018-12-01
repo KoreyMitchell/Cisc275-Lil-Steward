@@ -14,8 +14,7 @@ public class Model {
 	
 	int plantsPlanted;
 	int plantsRemoved;
-
-	
+	boolean win = false;
 
 	Model() {
 		// initialize local variables
@@ -62,7 +61,7 @@ public class Model {
 			groundList.remove(g);
 			plantsPlanted++;
 		}
-
+		
 	}
 
 	public void removeInvasivePlant(int x, int y) {
@@ -73,9 +72,11 @@ public class Model {
 			plantsRemoved++;
 		}
 		invasivePlants.remove(inv);
+		if(plantsRemoved == 3) {
+			win = true;
+		}
 		
 	}
-
 
 
 	public void checkAndMove(KeyEvent e) {

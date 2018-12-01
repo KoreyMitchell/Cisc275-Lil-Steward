@@ -41,8 +41,11 @@ public class Controller {
 		view.setPatches(m.groundList);
 		view.setObstacles(m.obstacleList);
 		view.setTool(m.tool);
+		
+		
 
 	}
+
 	
 	public void click(int x, int y) {
 		System.out.println("Controller read click from view");
@@ -66,7 +69,6 @@ public class Controller {
 	}
 
 	// this stuff can go in View
-	
 	public void mouseClicked(MouseEvent arg0) {
 		// Call method in model
 		int clickx = arg0.getX();

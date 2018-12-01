@@ -5,20 +5,21 @@ import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class ToolBar extends View{
-	   public ToolBar() {
+	   public ToolBar(JFrame frame) {
 	        JPanel panel = new JPanel();
-	        JButton go = new JButton("Shovel");
-	        JButton stop = new JButton("Planter");
+	        JButton shovel = new JButton("Shovel");
+	        JButton planter = new JButton("Planter");
+	        	       
+	        //add buttons to jpanel
+	        panel.add(shovel);
+	        panel.add(planter);
 	        
-	        GridBagConstraints c = new GridBagConstraints();
-	       
-	        panel.add(go);
-	        panel.add(stop);
-
+	        //add panel to the bottom
 	        add(panel, BorderLayout.SOUTH);
-
+	        frame.add(panel);
 	    }
 }

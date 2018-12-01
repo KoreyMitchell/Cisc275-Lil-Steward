@@ -47,8 +47,11 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	Image menuimg;
 	Image scaled_bg_img_menu;
 	
-
+	//Menu
 	private Menu menu;
+	
+	//EndScreen
+	private EndScreen endScreen;
 	
 	ToolBar toolbar;
     
@@ -95,7 +98,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	public enum STATE{
 		MENU,
 		GAME,
-		
+		END
 	};
 	
 	//Initialize state to Menu, to skip menu for testing change state to GAME
@@ -126,7 +129,17 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			//Menu stuff
 			menu= new Menu();
 			
+			//Toolbar
+			toolbar = new ToolBar(frame);
+	    //   frame.add(toolbar);
 			
+			 JButton button = new JButton("Click here!");
+		     JPanel panel = new JPanel();
+		     panel.add(button);
+		        // And JPanel needs to be added to the JFrame itself!
+		        this.getRootPane().add(panel);
+
+		        setVisible(true);
 			
 	}
 
@@ -142,8 +155,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			g2d.drawImage(scaled_bg_img, 0, 0, null);
 			
 			//add toolbar to game, doesnt work
-			toolbar = new ToolBar();
-			frame.add(toolbar);
+//			toolbar = new ToolBar();
+//			frame.add(toolbar);
 			
 			// draw each of the game objects
 			for (GroundPatch gr : groundList) {
@@ -157,17 +170,20 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			}
 			for (NativePlant n : nativePlants) {
 				g2d.drawImage(nplantimg, n.getXloc(), n.getYloc(), null);
-			}
+			}	
 			//draw the playerimage
 			g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
-			
-			
 		
 		}else if(State ==STATE.MENU) {//if game state is not in game,draw menu
 			g2d.drawImage(scaled_bg_img_menu, 0, 0, null);
 			menu.render(g);
+		
+		}else if(State == STATE.END) {	//if game is ended
+			//g2d.drawImage(backgroundimg, 0, 0, null);
+			endScreen.render(g);
 		}
 		
+	
 	}
 	
 	//set view's controller to match input controller
@@ -242,27 +258,28 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		int mx = e.getX();	//x value of mouse
 		int my = e.getY();	//y value of mouse
 		
-		if(State == STATE.MENU) {
-		if(mx >= screenWidth/2-35 && mx <= screenWidth/2 +65 )
-		{	//first button
-			if(my >= 150 && my <= 200)
-			{
-				//Pressed play button
-				View.State = View.STATE.GAME;
+		if(State == STATE.MENU) 
+		{
+			if(mx >= screenWidth/2-35 && mx <= screenWidth/2 +65 )
+			{	//first button
+				if(my >= 150 && my <= 200)
+				{
+					//Pressed play button
+					View.State = View.STATE.GAME;
+				}
+				//second button
+				if(my >= 250 && my <= 300)
+				{
+					//Pressed quit button
+					System.exit(1);
+				}
+				//third button
+				if(my >= 350 && my <= 400)
+				{
+					//Pressed other button
+					System.exit(1);
+				}
 			}
-			//second button
-			if(my >= 250 && my <= 300)
-			{
-				//Pressed quit button
-				System.exit(1);
-			}
-			//third button
-			if(my >= 350 && my <= 400)
-			{
-				//Pressed other button
-				System.exit(1);
-			}
-		}
 		}
 		
 	}
