@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -58,6 +59,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	//Menu
 	private Menu menu;
+	private GameMenuv2 menu2;
 	
 	//EndScreen
 	private EndScreen endScreen;
@@ -166,7 +168,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 
 			//Menu stuff
 			menu= new Menu();
-			
+			menu2 = new GameMenuv2();
 			//Toolbar
 			toolbar = new ToolBar(frame);
 	    //   frame.add(toolbar);
@@ -277,7 +279,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		System.out.println("Mouse clicked");
 		control.click(e.getX(),e.getY());
 		//plantedCount++;
-		paintPlantedInfo(plantedCount, e.getX(), e.getY());
+		//paintPlantedInfo(plantedCount, e.getX(), e.getY());
 		
 		int mx = e.getX();	//x value of mouse
 		int my = e.getY();	//y value of mouse
@@ -326,7 +328,11 @@ if(State == STATE.GAME) {
 		// TODO Auto-generated method stub
 		int mx = e.getX();	//x value of mouse
 		int my = e.getY();	//y value of mouse
-		
+		/*
+		 * 	public Rectangle playButton = new Rectangle(screenWidth/2-35,150,100,50);
+			public Rectangle quitButton = new Rectangle(screenWidth/2-35,250,100,50);
+			public Rectangle anotherButton = new Rectangle(screenWidth/2-35,350,100,50);
+		 */
 		if(State == STATE.MENU) 
 		{
 			if(mx >= screenWidth/2-35 && mx <= screenWidth/2 +65 )

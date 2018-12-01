@@ -42,13 +42,10 @@ public class Controller {
 		view.setPatches(m.groundList);
 		view.setObstacles(m.obstacleList);
 		view.setTool(m.tool);
-<<<<<<< HEAD
-		
-		
-=======
+
 		view.setPlantedCount(m.plantsPlanted);
 		view.setPlantsRemoved(m.plantsRemoved);
->>>>>>> f489adc089690c3edbb2aea42ba53184485152d0
+
 
 		
 	}

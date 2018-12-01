@@ -13,15 +13,12 @@ public class Model {
 	Tool tool;
 	int plantsPlanted;
 	int plantsRemoved;
-<<<<<<< HEAD
 	boolean win = false;
-=======
 	int level;
 	
 	
 
 	
->>>>>>> f489adc089690c3edbb2aea42ba53184485152d0
 
 	Model() {
 		// initialize local variables
