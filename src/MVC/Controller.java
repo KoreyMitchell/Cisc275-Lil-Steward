@@ -59,12 +59,25 @@ public class Controller implements MouseListener {
 	
 	public void key(KeyEvent e) {
 		System.out.println("Controller read key from view");
-	
+		int s = e.getKeyCode();
+		if(s==KeyEvent.VK_UP) {
+			view.playerimg = view.playerimgBack; 
+		}
+		if(s==KeyEvent.VK_DOWN) {
+			view.playerimg = view.playerimgFront; 
+		}
+		if(s==KeyEvent.VK_RIGHT) {
+			view.playerimg = view.playerimgRight; 
+		}
+		if(s==KeyEvent.VK_LEFT) {
+			view.playerimg = view.playerimgLeft; 
+		}
 		model.checkAndMove(e);
 		System.out.println(model.player.getXloc());
 		syncViewToModel(model);
 		view.repaint();
 	}
+	
 
 	// this stuff can go in View
 	@Override

@@ -13,8 +13,10 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
@@ -28,10 +30,17 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	Tool tool;
 	Controller control;
 	
+	
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	int screenHeight = screenSize.getSize().height;
 	int screenWidth = screenSize.getSize().width;
+	int plantedCount = 0;
+	int manFrameCountRight = 0;
 
+	Image playerimgFront;
+	Image playerimgBack;
+	Image playerimgRight;
+	Image playerimgLeft;
 	Image playerimg;
 	Image groundimg;
 	Image nplantimg;
@@ -55,18 +64,42 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		requestFocusInWindow();
 		
 		//Images
-		ImageIcon bgImage = new ImageIcon("res/Person-Images/Background.jpg");
-		ImageIcon playericon = new ImageIcon("images/player.png");
+		ImageIcon bgImage = new ImageIcon("res/Person-Images/BackGround1.jpg");
 		ImageIcon groundicon = new ImageIcon("images/ground.png");
 		ImageIcon nplanticon = new ImageIcon("images/nativeplant.png");
 		ImageIcon iplanticon = new ImageIcon("images/phragmites.png");
 		ImageIcon rockicon = new ImageIcon("images/rock.png");
-		playerimg = playericon.getImage();
+		ImageIcon playerImageFront = new ImageIcon("images/Person_FRONT.png");
+		ImageIcon playerImageBack = new ImageIcon("images/Person_BACK.png");
+		ImageIcon playerImageRight = new ImageIcon("images/Person_RIGHT.png");
+		ImageIcon playerImageLeft = new ImageIcon("images/Person_LEFT.png");
+		playerimgFront = playerImageFront.getImage();
+		playerimgBack = playerImageBack.getImage();
+		playerimgRight = playerImageRight.getImage();
+		playerimgLeft = playerImageLeft.getImage();
+		playerimg = playerimgFront;
 		groundimg = groundicon.getImage();
 		nplantimg = nplanticon.getImage();
 		iplantimg = iplanticon.getImage();
 		rockimg = rockicon.getImage();
 		bgimg = bgImage.getImage();
+		
+		
+
+		
+		
+	}
+	
+	public void paintPlantedInfo(int plantedCount,int x, int y) {
+	    final JOptionPane pane = new JOptionPane("You've planted a new plant! #" + plantedCount);
+	    final JDialog d = pane.createDialog((JFrame)null, "New Message!");
+	    d.setLocation(x,y);
+	    d.setVisible(true);
+//		JOptionPane.showMessageDialog(null, 
+//                "You've planted a new plant! #" + plantedCount, 
+//                "New Message!", 
+//                JOptionPane.PLAIN_MESSAGE);
+		
 	}
 
 	public void initialize() {
@@ -89,6 +122,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		frame.addMouseListener(this);
 		frame.addKeyListener(this);
 		addKeyListener(this);
+
 	}
 
 	public void paintComponent(Graphics g) {
@@ -97,7 +131,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		Graphics2D g2d = (Graphics2D) g;
 		
 		//draw background image, need to find another image to make fullscreen
-		g2d.drawImage(bgimg, 0, 0, null);
+		g2d.drawImage(bgimg, 0, 0, getWidth(), getHeight(), null);
 		
 		// draw each of the game objects
 		for (GroundPatch gr : groundList) {
@@ -164,8 +198,12 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		System.out.println("Mouse clicked");
-		
 		control.click(arg0.getX(),arg0.getY());
+		plantedCount++;
+		paintPlantedInfo(plantedCount, arg0.getX(), arg0.getY());
+		
+		
+		
 	}
 
 	@Override
