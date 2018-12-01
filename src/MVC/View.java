@@ -261,7 +261,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		System.out.println("Mouse clicked");
 		control.click(e.getX(),e.getY());
 		//plantedCount++;
-		paintPlantedInfo(plantedCount, e.getX(), e.getY());
+		//paintPlantedInfo(plantedCount, e.getX(), e.getY());
 		
 		int mx = e.getX();	//x value of mouse
 		int my = e.getY();	//y value of mouse
