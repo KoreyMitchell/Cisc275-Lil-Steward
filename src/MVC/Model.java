@@ -30,27 +30,9 @@ public class Model {
 		tool = new Tool(false);
 		plantsPlanted = 0;
 		plantsRemoved = 0;
-		level = 1;
+		level = 2;
 
-		// board conditions at start
-		GroundPatch grp1 = new GroundPatch(10, 12);
-		GroundPatch grp2 = new GroundPatch(2000, 520);
-		groundList.add(grp1);
-		groundList.add(grp2);
-
-		Obstacle ob1 = new Obstacle(90, 90);
-		obstacleList.add(ob1);
-
-		InvasivePlant inv1 = new InvasivePlant(10, 10);
-		InvasivePlant inv2 = new InvasivePlant(200, 200);
-		InvasivePlant inv3 = new InvasivePlant(300, 30);
-		InvasivePlant inv4 = new InvasivePlant(20, 100);
-		InvasivePlant inv5 = new InvasivePlant(300, 100);
-		invasivePlants.add(inv1);
-		invasivePlants.add(inv2);
-		invasivePlants.add(inv3);
-		invasivePlants.add(inv4);
-		invasivePlants.add(inv5);
+		levelPreset(level);
 	}
 
 	public void addNativePlant(int x, int y) {
@@ -89,11 +71,75 @@ public class Model {
 		if(groundList.isEmpty()&&invasivePlants.isEmpty()) {
 			if(level<3) {
 				level++;
+				levelPreset(level);
 				System.out.println(level);
 			}
 			else {
-				//game is over
+				//TODO: game is over
 			}
+		}
+	}
+	
+	public void levelPreset(int lvl) {
+		switch(lvl) {
+		case 0 :{
+			//TODO: tutorial mode
+			System.out.println("Tutorial mode selected");
+		}
+		case 1:{
+			//TODO: level one 
+			System.out.println("Level one selected");
+			// board conditions at start
+			GroundPatch grp1 = new GroundPatch(10, 12);
+			GroundPatch grp2 = new GroundPatch(2000, 520);
+			groundList.add(grp1);
+			groundList.add(grp2);
+
+			Obstacle ob1 = new Obstacle(90, 90);
+			obstacleList.add(ob1);
+
+			InvasivePlant inv1 = new InvasivePlant(10, 10);
+			InvasivePlant inv2 = new InvasivePlant(200, 200);
+			InvasivePlant inv3 = new InvasivePlant(300, 30);
+			InvasivePlant inv4 = new InvasivePlant(20, 100);
+			InvasivePlant inv5 = new InvasivePlant(300, 100);
+			invasivePlants.add(inv1);
+			invasivePlants.add(inv2);
+			invasivePlants.add(inv3);
+			invasivePlants.add(inv4);
+			invasivePlants.add(inv5);
+		}
+		case 2:{
+			//TODO: level two
+			System.out.println("Level two selected");
+			for(int i =0; i<30; i++) {
+				GroundPatch grp1 = new GroundPatch(20*i, 30*i);
+				groundList.add(grp1);
+				Obstacle ob1 = new Obstacle(90*i, 90);
+				Obstacle ob3 = new Obstacle(90*i+300, 300);
+				//Obstacle ob2 = new Obstacle (300, 20*i+300);
+				//Obstacle ob4 = new Obstacle (1000, 30*i+600);
+				Obstacle ob5 = new Obstacle(80*i, 1590);
+				for(int j = 0; j<10;j++) {
+					Obstacle ob = new Obstacle(250+500*j, 25*i+800);
+					Obstacle ob2 = new Obstacle (500*j, 20*i+300);
+					obstacleList.add(ob);
+					obstacleList.add(ob2);
+				}
+				obstacleList.add(ob1);
+				
+				obstacleList.add(ob3);
+				//.add(ob4);
+				obstacleList.add(ob5);
+				InvasivePlant inv1 = new InvasivePlant(25*i, 13*i);
+				invasivePlants.add(inv1);
+			}
+		}
+		case 3:{
+			//TODO: level three 
+			System.out.println("Level three selected");
+		}
+	
 		}
 	}
 
