@@ -11,11 +11,9 @@ public class Model {
 	ArrayList<GroundPatch> groundList;
 	ArrayList<Obstacle> obstacleList;
 	Tool tool;
+	
 	int plantsPlanted;
 	int plantsRemoved;
-	int level;
-	
-	
 
 	
 
@@ -29,7 +27,6 @@ public class Model {
 		tool = new Tool(false);
 		plantsPlanted = 0;
 		plantsRemoved = 0;
-		level = 1;
 
 		// board conditions at start
 		GroundPatch grp1 = new GroundPatch(10, 12);
@@ -74,24 +71,11 @@ public class Model {
 		InvasivePlant inv = new InvasivePlant(x, y);
 		if (invasivePlants.contains(inv)) {
 			plantsRemoved++;
-		
 		}
 		invasivePlants.remove(inv);
 		
 	}
 
-	public void checkLvlUp() {
-		System.out.println("Levelup checked");
-		if(groundList.isEmpty()&&invasivePlants.isEmpty()) {
-			if(level<3) {
-				level++;
-				System.out.println(level);
-			}
-			else {
-				//game is over
-			}
-		}
-	}
 
 
 	public void checkAndMove(KeyEvent e) {

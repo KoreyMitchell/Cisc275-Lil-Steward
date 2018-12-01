@@ -11,11 +11,15 @@ public class Model {
 	ArrayList<GroundPatch> groundList;
 	ArrayList<Obstacle> obstacleList;
 	Tool tool;
+<<<<<<< HEAD
+	
+	int plantsPlanted;
+	int plantsRemoved;
+=======
 	int plantsPlanted;
 	int plantsRemoved;
 	int level;
-	
-	
+>>>>>>> levelup
 
 	
 
@@ -29,7 +33,10 @@ public class Model {
 		tool = new Tool(false);
 		plantsPlanted = 0;
 		plantsRemoved = 0;
+<<<<<<< HEAD
+=======
 		level = 1;
+>>>>>>> levelup
 
 		// board conditions at start
 		GroundPatch grp1 = new GroundPatch(10, 12);
@@ -74,8 +81,11 @@ public class Model {
 		InvasivePlant inv = new InvasivePlant(x, y);
 		if (invasivePlants.contains(inv)) {
 			plantsRemoved++;
-		
+<<<<<<< HEAD
 		}
+=======
+		};
+>>>>>>> levelup
 		invasivePlants.remove(inv);
 		
 	}

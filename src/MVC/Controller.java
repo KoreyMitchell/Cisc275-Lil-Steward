@@ -22,6 +22,7 @@ public class Controller {
 				c.syncViewToModel(c.model);
 				c.view.repaint();
 				c.view.printStuff();
+				//c.model.checkLvlUp();
 			}
 		});
 
@@ -41,7 +42,10 @@ public class Controller {
 		view.setPatches(m.groundList);
 		view.setObstacles(m.obstacleList);
 		view.setTool(m.tool);
+		view.setPlantedCount(m.plantsPlanted);
+		view.setPlantsRemoved(m.plantsRemoved);
 
+		
 	}
 	
 	public void click(int x, int y) {
@@ -54,16 +58,30 @@ public class Controller {
 		//System.out.println(model.player.getXloc());
 		syncViewToModel(model);
 		view.repaint();
+		model.checkLvlUp();
 	}
 	
 	public void key(KeyEvent e) {
 		System.out.println("Controller read key from view");
-	
+		int s = e.getKeyCode();
+		if(s==KeyEvent.VK_UP) {
+			view.playerimg = view.playerimgBack; 
+		}
+		if(s==KeyEvent.VK_DOWN) {
+			view.playerimg = view.playerimgFront; 
+		}
+		if(s==KeyEvent.VK_RIGHT) {
+			view.playerimg = view.playerimgRight; 
+		}
+		if(s==KeyEvent.VK_LEFT) {
+			view.playerimg = view.playerimgLeft; 
+		}
 		model.checkAndMove(e);
 		System.out.println(model.player.getXloc());
 		syncViewToModel(model);
 		view.repaint();
 	}
+	
 
 	// this stuff can go in View
 	

@@ -14,8 +14,6 @@ public class Model {
 	int plantsPlanted;
 	int plantsRemoved;
 	int level;
-	
-	
 
 	
 
@@ -40,7 +38,7 @@ public class Model {
 		Obstacle ob1 = new Obstacle(90, 90);
 		obstacleList.add(ob1);
 
-		InvasivePlant inv1 = new InvasivePlant(10, 10);
+		InvasivePlant inv1 = new InvasivePlant(1000, 10);
 		InvasivePlant inv2 = new InvasivePlant(200, 200);
 		InvasivePlant inv3 = new InvasivePlant(300, 30);
 		InvasivePlant inv4 = new InvasivePlant(20, 100);
@@ -74,10 +72,8 @@ public class Model {
 		InvasivePlant inv = new InvasivePlant(x, y);
 		if (invasivePlants.contains(inv)) {
 			plantsRemoved++;
-		
-		}
+		};
 		invasivePlants.remove(inv);
-		
 	}
 
 	public void checkLvlUp() {
@@ -95,45 +91,21 @@ public class Model {
 
 
 	public void checkAndMove(KeyEvent e) {
-		// TODO Make character move diagonally 
-		Obstacle o;
+		// TODO Auto-generated method stub
+Obstacle o;
 		
 		int s = e.getKeyCode();
 		if(s==KeyEvent.VK_LEFT) {
 		o = new Obstacle((player.getXloc()-1),player.getYloc());	
-			if(s==KeyEvent.VK_LEFT&&s==KeyEvent.VK_UP) {
-				
-			}
-			if(s==KeyEvent.VK_LEFT&&s==KeyEvent.VK_DOWN) {
-				
-			}
 		}
 		else if(s==KeyEvent.VK_RIGHT) {
 			o = new Obstacle((player.getXloc()+1),player.getYloc());
-			if(s==KeyEvent.VK_RIGHT&&s==KeyEvent.VK_UP) {
-				
-				}
-			if(s==KeyEvent.VK_LEFT&&s==KeyEvent.VK_DOWN) {
-			
-			}
 		}
 		else if(s==KeyEvent.VK_UP) {
 			o = new Obstacle(player.getXloc(),player.getYloc()-1);
-			if(s==KeyEvent.VK_UP&&s==KeyEvent.VK_LEFT) {
-				
-			}
-			if(s==KeyEvent.VK_UP&&s==KeyEvent.VK_RIGHT) {
-		
-			}
 		}
 		else {
 			o = new Obstacle((player.getXloc()-1),player.getYloc()+1);
-			if(s==KeyEvent.VK_DOWN&&s==KeyEvent.VK_LEFT) {
-				
-			}
-			if(s==KeyEvent.VK_DOWN&&s==KeyEvent.VK_RIGHT) {
-		
-			}
 		}
 	
 		
@@ -146,8 +118,7 @@ public class Model {
 	}
 	
 	
-//**----------------------------For testing-----------------------------------**//
-//**--------------------------------------------------------------------------**//
+	//**------------------For testing---------------------------**//
 	public boolean checkMove(String s) {
 		// checks to see if player's move is valid
 		Obstacle o;
@@ -206,9 +177,6 @@ public class Model {
 			for (Obstacle ob : m.obstacleList) {
 				System.out.println("Obstacle" + " at " + ob.getXloc() + " and " + ob.getYloc());
 			}
-			
-			//Print plants planted and removed
-			System.out.println("Planted " + m.plantsPlanted + " goldenrod plants and removed " + m.plantsRemoved +" phragmites");
 
 			// Choose an action to take
 			System.out.println("Choose: up, down, left, right, plant, remove");
