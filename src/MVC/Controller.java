@@ -42,7 +42,10 @@ public class Controller implements MouseListener {
 		view.setPatches(m.groundList);
 		view.setObstacles(m.obstacleList);
 		view.setTool(m.tool);
+		view.setPlantedCount(m.plantsPlanted);
+		view.setPlantsRemoved(m.plantsRemoved);
 
+		
 	}
 	
 	public void click(int x, int y) {

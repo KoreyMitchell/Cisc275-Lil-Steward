@@ -11,6 +11,8 @@ public class Model {
 	ArrayList<GroundPatch> groundList;
 	ArrayList<Obstacle> obstacleList;
 	Tool tool;
+	int plantsPlanted;
+	int plantsRemoved;
 
 	
 
@@ -22,6 +24,8 @@ public class Model {
 		groundList = new ArrayList<GroundPatch>();
 		obstacleList = new ArrayList<Obstacle>();
 		tool = new Tool(false);
+		plantsPlanted = 0;
+		plantsRemoved = 0;
 
 		// board conditions at start
 		GroundPatch grp1 = new GroundPatch(10, 12);
@@ -55,6 +59,7 @@ public class Model {
 			nativePlants.add(n);
 			// remove the plantable ground, since it is now planted
 			groundList.remove(g);
+			plantsPlanted++;
 		}
 
 	}
@@ -63,6 +68,9 @@ public class Model {
 		// removes an InvasivePlant with the x and y specified from the list of
 		// invasive plants
 		InvasivePlant inv = new InvasivePlant(x, y);
+		if (invasivePlants.contains(inv)) {
+			plantsRemoved++;
+		};
 		invasivePlants.remove(inv);
 	}
 

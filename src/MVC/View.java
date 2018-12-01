@@ -35,6 +35,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	int screenHeight = screenSize.getSize().height;
 	int screenWidth = screenSize.getSize().width;
 	int plantedCount = 0;
+	int plantsRemoved = 0;
 	int manFrameCountRight = 0;
 
 	Image playerimgFront;
@@ -91,7 +92,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	}
 	
 	public void paintPlantedInfo(int plantedCount,int x, int y) {
-	    final JOptionPane pane = new JOptionPane("You've planted a new plant! #" + plantedCount);
+	    final JOptionPane pane = new JOptionPane("You've planted " + plantedCount + " native plants and removed " + plantsRemoved + " invasive Phragmites plants!");
 	    final JDialog d = pane.createDialog((JFrame)null, "New Message!");
 	    d.setLocation(x,y);
 	    d.setVisible(true);
@@ -199,11 +200,27 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		// TODO Auto-generated method stub
 		System.out.println("Mouse clicked");
 		control.click(arg0.getX(),arg0.getY());
-		plantedCount++;
+		//plantedCount++;
 		paintPlantedInfo(plantedCount, arg0.getX(), arg0.getY());
 		
 		
 		
+	}
+
+	public int getPlantedCount() {
+		return plantedCount;
+	}
+
+	public void setPlantedCount(int plantedCount) {
+		this.plantedCount = plantedCount;
+	}
+
+	public int getPlantsRemoved() {
+		return plantsRemoved;
+	}
+
+	public void setPlantsRemoved(int plantsRemoved) {
+		this.plantsRemoved = plantsRemoved;
 	}
 
 	@Override
