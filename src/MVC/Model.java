@@ -29,9 +29,13 @@ public class Model {
 		tool = new Tool(false);
 		plantsPlanted = 0;
 		plantsRemoved = 0;
+<<<<<<< HEAD
 		level = 1;
 <<<<<<< HEAD
 =======
+=======
+		level = 0;
+>>>>>>> a5857dacc173a800c624ee589584dcc19813745a
 		
 >>>>>>> dda4d10d9e453cbaa1cfcdc8dd9bd92ca4585139
 
@@ -66,7 +70,7 @@ public class Model {
 			System.out.println("You can plant here!");
 			// add new plant to the list of native plants
 			
-			NativePlant n = new NativePlant(x, y);
+			NativePlant n = new NativePlant(player.getXloc(), player.getYloc());
 			nativePlants.add(n);
 			// remove the plantable ground, since it is now planted
 			groundList.remove(g);
