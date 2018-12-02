@@ -41,8 +41,10 @@ public class PlayerCharacter extends GameObject{
         	temp = getYloc()+10;
 			setYloc(temp);
             break;
-        
+	
+
 		}
+			
 
 
 	}

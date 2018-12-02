@@ -27,6 +27,7 @@ public class Menu  extends View{
 	public Rectangle quitButton = new Rectangle(screenWidth/2-35,250,100,50);
 	public Rectangle anotherButton = new Rectangle(screenWidth/2-35,350,100,50);
 
+
 	public void render(Graphics g) {
 		//2d graphics for buttons
 		Graphics2D g2d = (Graphics2D) g;
@@ -43,9 +44,7 @@ public class Menu  extends View{
 		g.drawString("Play",playButton.x+30,playButton.y+30);
 		g.drawString("Quit",quitButton.x+30,quitButton.y+30);
 		g.drawString("Help",anotherButton.x+30,anotherButton.y+30);
-	System.out.println("Play Button: "+playButton.getBounds());
-	System.out.println("Quit Button: "+quitButton.getBounds());
-	System.out.println("Other Button: "+anotherButton.getBounds());
+	
 
 		g2d.draw(playButton);
 		g2d.draw(quitButton);

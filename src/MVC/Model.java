@@ -13,7 +13,7 @@ public class Model {
 	Tool tool;
 	int plantsPlanted;
 	int plantsRemoved;
-	boolean win = true;
+	boolean win = false;
 	int level;
 	int screenHeight;
 	int screenWidth;
@@ -29,7 +29,7 @@ public class Model {
 		tool = new Tool(false);
 		plantsPlanted = 0;
 		plantsRemoved = 0;
-		level = 2;
+		level = 1;
 
 		// levelPreset(level);
 	}
@@ -64,6 +64,8 @@ public class Model {
 			plantsPlanted++;
 		}
 		
+		
+		
 	}
 
 	public void removeInvasivePlant(int x, int y) {
@@ -74,19 +76,18 @@ public class Model {
 			plantsRemoved++;
 			invasivePlants.remove(inv);
 		}
-		
 
 	}
 
 	public void checkLvlUp() {
 		System.out.println("Levelup checked");
-		if (groundList.isEmpty() && invasivePlants.isEmpty()) {
+		while (groundList.isEmpty() && invasivePlants.isEmpty()) {
 			if (level < 3) {
-				level++;
 				levelPreset(level);
 				System.out.println(level);
+				level++;
 			} else {
-				// TODO: game is over
+				win = true;
 			}
 		}
 	}
@@ -97,6 +98,7 @@ public class Model {
 			// TODO: tutorial mode
 			System.out.println("Tutorial mode selected");
 		}
+
 		case 1: {
 			// TODO: level one
 			System.out.println("Level one selected");
@@ -148,7 +150,8 @@ public class Model {
 				}
 
 				// .add(ob4);
-
+				
+				
 				InvasivePlant inv1 = new InvasivePlant(25 * i, 13 * i);
 				invasivePlants.add(inv1);
 			}
@@ -160,7 +163,8 @@ public class Model {
 
 		}
 	}
-
+	
+	//Checks for obstacles 
 	public void checkAndMove(KeyEvent e) {
 		// TODO Make character move diagonally
 		Obstacle o;
@@ -173,6 +177,7 @@ public class Model {
 				outBound=true;
 			}
 //			if (s == KeyEvent.VK_LEFT && s == KeyEvent.VK_UP) {
+//			
 //
 //			}
 //			if (s == KeyEvent.VK_LEFT && s == KeyEvent.VK_DOWN) {
@@ -202,7 +207,7 @@ public class Model {
 //			}
 		} else {
 			o = new Obstacle(player.getXloc(), player.getYloc() + 10);
-			if(player.getYloc()+10>screenHeight-80) {
+			if(player.getYloc()+10>screenHeight-175) {
 				outBound=true;
 			}
 //			if (s == KeyEvent.VK_DOWN && s == KeyEvent.VK_LEFT) {
@@ -224,13 +229,7 @@ public class Model {
 		}
 
 	}
-	//checks to see if player completed the level
-	public boolean checkEnd() {
-		if(plantsRemoved ==0) {		//just testing
-			win = true;
-		}
-		return win;
-	}
+
 
 //**----------------------------For testing-----------------------------------**//
 //**--------------------------------------------------------------------------**//

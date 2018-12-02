@@ -66,7 +66,6 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	//Menu
 	private Menu menu;
-	private GameMenuv2 menu2;
 	
 	//EndScreen
 	private EndScreen endScreen;
@@ -180,10 +179,11 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		
 	        addKeyListener(this); 	//makes player move		
 
-			//Menu stuff
+			//Create a new Menu
 			menu= new Menu();
-
+			
 			//toolbar = new ToolBar();
+			endScreen = new EndScreen();
 	}
 
 	public void paintComponent(Graphics g) {
@@ -215,9 +215,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		}else if(State ==STATE.MENU) {//if game state is not in game,draw menu
 			g2d.drawImage(scaled_bg_img_menu, 0, 0, null);
 			menu.render(g);
+			//menu = new Menu();
 		
-		}else if(State == STATE.END) {	//if game is ended
-			//g2d.drawImage(backgroundimg, 0, 0, null);
+		}else if(State == STATE.END) {
 			endScreen.render(g);
 		}
 		
@@ -329,26 +329,31 @@ public class View extends JPanel implements MouseListener, KeyListener{
 
 		
 		if(State == STATE.MENU) {
-		if(mx >= screenWidth/2-25 && mx <= screenWidth/2 + 75 )
-		{	//first button
-			if(my >= 180 && my <= 230)
-			{
-				System.out.print(mx + " " +  my);
-				//Pressed play button
-				View.State = View.STATE.GAME;
-			}
-			//second button
-			if(my >= 280 && my <= 330)
-			{
-				//Pressed quit button
-				System.exit(1);
-			}
-			//third button
-			if(my >= 380 && my <= 430)
-			{
-				//Pressed other button
-				System.exit(1);
-			}
+			if(mx >= screenWidth/2-25 && mx <= screenWidth/2 + 75 )
+			{	//first button
+				if(my >= 180 && my <= 230)
+				{
+					System.out.print(mx + " " +  my);
+					//Pressed play button
+					View.State = View.STATE.GAME;
+				}
+				//second button
+				if(my >= 280 && my <= 330)
+				{
+					//Pressed quit button
+					System.exit(1);
+				}
+				//third button
+				if(my >= 380 && my <= 430)
+				{
+					//Pressed other button
+					System.exit(1);
+				}
+		}
+		else if(State == STATE.END) //if game is ended call EndScreen
+		{	
+			//code for mouse presses on end screen
+			
 		}
 
 		}

@@ -5,6 +5,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import MVC.View.STATE;
+
 public class Controller {
 
 	Model model;
@@ -50,6 +52,7 @@ public class Controller {
 		view.setPlantedCount(m.plantsPlanted);
 		view.setPlantsRemoved(m.plantsRemoved);
 		
+		
 	}
 	
 
@@ -67,6 +70,9 @@ public class Controller {
 		syncViewToModel(model);
 		view.repaint();
 		model.checkLvlUp();
+		if(model.win == true) {
+			View.State = STATE.END;
+		}
 	
 	}
 	
@@ -92,22 +98,6 @@ public class Controller {
 	}
 	
 
-	// this stuff can go in View
-	public void mouseClicked(MouseEvent arg0) {
-		// Call method in model
-		int clickx = arg0.getX();
-		int clicky = arg0.getY();
-		if (model.tool.isShovel()) {
-			model.addNativePlant(clickx, clicky);
-		} else {
-			model.removeInvasivePlant(clickx, clicky);
-		}
-	
-		System.out.println(model.tool.isShovel());
-		syncViewToModel(model);
-		view.repaint();
-		
-		
-	}
+
 
 }
