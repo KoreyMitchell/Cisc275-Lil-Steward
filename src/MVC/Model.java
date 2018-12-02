@@ -87,9 +87,10 @@ public class Model {
 		System.out.println("Levelup checked");
 		if (groundList.isEmpty() && invasivePlants.isEmpty()) {
 			if (level < 3) {
-				level++;
+				
 				levelPreset(level);
 				System.out.println(level);
+				level++;
 			} else {
 				// TODO: game is over
 			}
