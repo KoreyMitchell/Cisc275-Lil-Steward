@@ -350,7 +350,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 
 		
 		if(State == STATE.MENU) {
-		if(mx >= screenWidth/2-25 && mx <= screenWidth/2 + 75 )
+		if(mx >= screenWidth/2-65 && mx <= screenWidth/2 + 35 )
 		{	//first button
 			if(my >= 180 && my <= 230)
 			{
