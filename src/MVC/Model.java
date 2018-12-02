@@ -62,6 +62,7 @@ public class Model {
 		if (groundList.contains(g)&&g.equals(player)) {
 			System.out.println("You can plant here!");
 			// add new plant to the list of native plants
+			
 			NativePlant n = new NativePlant(x, y);
 			nativePlants.add(n);
 			// remove the plantable ground, since it is now planted
