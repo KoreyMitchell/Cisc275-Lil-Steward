@@ -38,8 +38,9 @@ public class GameObject {
 	        GameObject test = (GameObject) o;
 
 	       
-	        return (test.getXloc()<=xloc+80 && test.getXloc()>xloc-60) &&
-	               (test.getYloc()<= yloc+80 && test.getYloc()>yloc-70);
+	        //returns dimensions of obstacles. These are specifically for the bush.
+	        return (test.getXloc()<=xloc+35 && test.getXloc()>xloc-40) &&
+	               (test.getYloc()<= yloc+70 && test.getYloc()>yloc-60);
 	 }
 	 
 	 @Override

@@ -69,7 +69,6 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	//Menu
 	private Menu menu;
-	private GameMenuv2 menu2;
 	
 	//EndScreen
 	private EndScreen endScreen;
@@ -231,7 +230,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		
 		}else if(State ==STATE.MENU) {//if game state is not in game,draw menu
 			g2d.drawImage(scaled_bg_img_menu, 0, 0, null);
-			menu.render(g);
+			menu.renderMenu(g);
 		
 		}else if(State == STATE.END) {	//if game is ended
 			//g2d.drawImage(backgroundimg, 0, 0, null);
