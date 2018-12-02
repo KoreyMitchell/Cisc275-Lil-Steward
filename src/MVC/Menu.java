@@ -24,9 +24,9 @@ import javax.swing.JTextField;
 public class Menu  extends View{
 
 	//initialize buttons, (x,y,w,h)
-	public Rectangle playButton = new Rectangle(screenWidth/2-35,150,100,50);
-	public Rectangle tutorialButton = new Rectangle(screenWidth/2-35,250,100,50);
-	public Rectangle quitButton = new Rectangle(screenWidth/2-35,350,100,50);
+	public Rectangle playButton = new Rectangle(screenWidth/2-75,150,100,50);
+	public Rectangle tutorialButton = new Rectangle(screenWidth/2-75,250,100,50);
+	public Rectangle quitButton = new Rectangle(screenWidth/2-75,350,100,50);
 
 	public void renderMenu(Graphics g) {
 		for (int i =0; i<=3; i++) {
