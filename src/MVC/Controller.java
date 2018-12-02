@@ -3,7 +3,7 @@ package MVC;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;import MVC.View.STATE;
+import java.awt.event.MouseListener;
 
 public class Controller {
 
@@ -95,7 +95,6 @@ public class Controller {
 	// this stuff can go in View
 	public void mouseClicked(MouseEvent arg0) {
 		// Call method in model
-		if(view.State == STATE.e)
 		int clickx = arg0.getX();
 		int clicky = arg0.getY();
 		if (model.tool.isShovel()) {
@@ -103,12 +102,12 @@ public class Controller {
 		} else {
 			model.removeInvasivePlant(clickx, clicky);
 		}
-		
 	
 		System.out.println(model.tool.isShovel());
 		syncViewToModel(model);
 		view.repaint();
-
+		
+		
 	}
 
 }

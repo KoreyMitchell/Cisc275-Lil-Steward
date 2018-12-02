@@ -13,7 +13,7 @@ public class Model {
 	Tool tool;
 	int plantsPlanted;
 	int plantsRemoved;
-	boolean win = false;
+	boolean win = true;
 	int level;
 	int screenHeight;
 	int screenWidth;
@@ -226,7 +226,7 @@ public class Model {
 	}
 	//checks to see if player completed the level
 	public boolean checkEnd() {
-		if(plantsRemoved ==2) {		//just testing
+		if(plantsRemoved ==0) {		//just testing
 			win = true;
 		}
 		return win;

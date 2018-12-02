@@ -384,11 +384,11 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	public void drawEndScreen() {
 		
-//		super.paintComponent(g);
-//		Font fnt0 = new Font("arial",Font.BOLD,50); //font,bold,size		
-//		g.setFont(fnt0);		
-//		g.setColor(Color.ORANGE);
-//		g.drawString("Game Over",screenWidth/2-150,100 );
+		super.paintComponent(g);
+		Font fnt0 = new Font("arial",Font.BOLD,50); //font,bold,size		
+		g.setFont(fnt0);		
+		g.setColor(Color.ORANGE);
+		g.drawString("Game Over",screenWidth/2-150,100 );
 	}
 	
 //**-------------------------------Testing-----------------------------------------------**//
