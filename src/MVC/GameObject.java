@@ -2,9 +2,27 @@ package MVC;
 
 import java.awt.Image;
 
+import javax.swing.ImageIcon;
+
 public class GameObject {
 	//image file
+	
+	ImageIcon imic;
 	Image img;
+	int imagewidth;
+	int imageheight;
+
+	
+	public ImageIcon getImic() {
+		return imic;
+	}
+
+	public void setImic(ImageIcon imic) {
+		this.imic = imic;
+		img = imic.getImage();
+		imagewidth = imic.getIconWidth();
+		imageheight = imic.getIconHeight();
+	}
 
 	//X and Y locations
 	private int xloc;
@@ -38,8 +56,8 @@ public class GameObject {
 	        GameObject test = (GameObject) o;
 
 	       
-	        return (test.getXloc()<=xloc+80 && test.getXloc()>xloc-60) &&
-	               (test.getYloc()<= yloc+80 && test.getYloc()>yloc-70);
+	        return (test.getXloc()<=xloc+imagewidth && test.getXloc()>xloc-imagewidth) &&
+	               (test.getYloc()<= yloc+imageheight && test.getYloc()>yloc-imageheight);
 	 }
 	 
 	 @Override
