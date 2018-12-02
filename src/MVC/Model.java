@@ -136,6 +136,7 @@ public class Model {
 				Obstacle ob3 = new Obstacle(90*i+300, 300);
 				obstacleList.add(ob3);
 				Obstacle ob5 = new Obstacle(90*i, screenHeight-300);
+				
 				obstacleList.add(ob5);
 				}
 				
