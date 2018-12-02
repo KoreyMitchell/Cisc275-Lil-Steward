@@ -24,8 +24,8 @@ import javax.swing.JTextField;
 public class Menu  extends View{
 	//initialize buttons, (x,y,w,h)
 	public Rectangle playButton = new Rectangle(screenWidth/2-35,150,100,50);
-	public Rectangle quitButton = new Rectangle(screenWidth/2-35,250,100,50);
-	public Rectangle anotherButton = new Rectangle(screenWidth/2-35,350,100,50);
+	public Rectangle tutorialButton = new Rectangle(screenWidth/2-35,250,100,50);
+	public Rectangle quitButton = new Rectangle(screenWidth/2-35,350,100,50);
 
 	public void render(Graphics g) {
 		//2d graphics for buttons
@@ -41,15 +41,15 @@ public class Menu  extends View{
 		Font fnt1 = new Font("arial",Font.BOLD,20); //font,bold,size		
 		g.setFont(fnt1);
 		g.drawString("Play",playButton.x+30,playButton.y+30);
+		g.drawString("Tutorial",tutorialButton.x+30,tutorialButton.y+30);
 		g.drawString("Quit",quitButton.x+30,quitButton.y+30);
-		g.drawString("Help",anotherButton.x+30,anotherButton.y+30);
 	System.out.println("Play Button: "+playButton.getBounds());
+	System.out.println("Tutorial Button: "+tutorialButton.getBounds());
 	System.out.println("Quit Button: "+quitButton.getBounds());
-	System.out.println("Other Button: "+anotherButton.getBounds());
 
 		g2d.draw(playButton);
+		g2d.draw(tutorialButton);
 		g2d.draw(quitButton);
-		g2d.draw(anotherButton);
 		
 	}
 
