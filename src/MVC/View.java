@@ -1,5 +1,6 @@
 package MVC;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -20,6 +21,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JToolBar;
 import javax.swing.border.Border;
 
 public class View extends JPanel implements MouseListener, KeyListener{
@@ -158,6 +160,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			frame.setLocationRelativeTo(null);
 			frame.addMouseListener(this);
 			frame.addKeyListener(this);
+			toolbar = new ToolBar();
+	        
 			
 			addKeyListener(this); 	//makes player move		
 
@@ -186,8 +190,11 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			g2d.drawImage(scaled_bg_img, 0, 0, null);
 			
 			//add toolbar to game, doesnt work
-			toolbar = new ToolBar();
-			frame.add(toolbar);
+			JPanel panel = new JPanel (new BorderLayout());
+			JPanel buttonPanel = new JPanel(new GridLayout(5,5));
+	        JButton go = new JButton("Shovel");
+			buttonPanel.add(go);
+			panel.add(buttonPanel, BorderLayout.SOUTH);
 			
 			// draw each of the game objects
 			for (GroundPatch gr : groundList) {
@@ -259,6 +266,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		// TODO Auto-generated method stub
 		//System.out.println("Mouse clicked");
 		System.out.println("Mouse clicked");
+		System.out.println(e.getX() + " " + e.getY());
 		control.click(e.getX(),e.getY());
 		//plantedCount++;
 		//paintPlantedInfo(plantedCount, e.getX(), e.getY());
@@ -269,7 +277,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 if(State == STATE.GAME) {
 		control.click(mx,my);
 		}
-		else {System.out.println("Mouse clicked");
+		 {System.out.println("Mouse clicked");
 			
 		}
 		
@@ -312,21 +320,22 @@ if(State == STATE.GAME) {
 		int my = e.getY();	//y value of mouse
 		
 		if(State == STATE.MENU) {
-		if(mx >= screenWidth/2-35 && mx <= screenWidth/2 +65 )
+		if(mx >= screenWidth/2-25 && mx <= screenWidth/2 + 75 )
 		{	//first button
-			if(my >= 150 && my <= 200)
+			if(my >= 180 && my <= 230)
 			{
+				System.out.print(mx + " " +  my);
 				//Pressed play button
 				View.State = View.STATE.GAME;
 			}
 			//second button
-			if(my >= 250 && my <= 300)
+			if(my >= 280 && my <= 330)
 			{
 				//Pressed quit button
 				System.exit(1);
 			}
 			//third button
-			if(my >= 350 && my <= 400)
+			if(my >= 380 && my <= 430)
 			{
 				//Pressed other button
 				System.exit(1);
