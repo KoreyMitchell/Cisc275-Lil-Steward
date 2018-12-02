@@ -17,6 +17,7 @@ public class Model {
 	int level;
 	int screenHeight;
 	int screenWidth;
+	//Random random = new Random();
 
 	Model() {
 		// initialize local variables
@@ -53,7 +54,7 @@ public class Model {
 		// only plant if there is an unplanted patch of ground at this x and y
 
 		GroundPatch g = new GroundPatch(x, y);
-		if (groundList.contains(g)) {
+		if (groundList.contains(g)&&g.equals(player)) {
 			System.out.println("You can plant here!");
 			// add new plant to the list of native plants
 			NativePlant n = new NativePlant(x, y);
@@ -69,11 +70,11 @@ public class Model {
 		// removes an InvasivePlant with the x and y specified from the list of
 		// invasive plants
 		InvasivePlant inv = new InvasivePlant(x, y);
-		if (invasivePlants.contains(inv)) {
+		if (invasivePlants.contains(inv)&&inv.equals(player)) {
 			plantsRemoved++;
-
+			invasivePlants.remove(inv);
 		}
-		invasivePlants.remove(inv);
+		
 
 	}
 
