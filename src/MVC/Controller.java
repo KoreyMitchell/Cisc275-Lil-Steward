@@ -17,6 +17,7 @@ public class Controller {
 		c.view.initialize();
 		c.view.setControl(c);
 		
+		
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				c.syncViewToModel(c.model);
@@ -31,7 +32,10 @@ public class Controller {
 	Controller() {
 		model = new Model();
 		view = new View();
+		model.setScreenWidth(view.screenWidth);
+		model.setScreenHeight(view.screenHeight);
 
+		model.levelPreset(model.level);
 	}
 
 	public void syncViewToModel(Model m) {
