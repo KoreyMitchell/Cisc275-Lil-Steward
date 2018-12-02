@@ -66,7 +66,6 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	//Menu
 	private Menu menu;
-	private GameMenuv2 menu2;
 	
 	//EndScreen
 	private EndScreen endScreen;
