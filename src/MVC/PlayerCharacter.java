@@ -2,6 +2,8 @@ package MVC;
 
 import java.awt.event.KeyEvent;
 
+import javax.swing.ImageIcon;
+
 
 public class PlayerCharacter extends GameObject{
 
@@ -9,6 +11,7 @@ public class PlayerCharacter extends GameObject{
 		setXloc(10);
 		setYloc(10);
 		Direction d = Direction.SOUTH;
+		setImic(new ImageIcon("images/Person_FRONT.png"));
 	}
 	
 	public void updatePlayerLocation(KeyEvent e) {
@@ -102,5 +105,7 @@ public class PlayerCharacter extends GameObject{
 
 
 	}
+	
+	
 	
 }

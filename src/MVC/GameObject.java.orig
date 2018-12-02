@@ -7,7 +7,6 @@ import javax.swing.ImageIcon;
 public class GameObject {
 	//image file
 	
-	//aaaaaaaaa
 	ImageIcon imic;
 	Image img;
 	int imagewidth;
@@ -57,9 +56,14 @@ public class GameObject {
 	        GameObject test = (GameObject) o;
 
 	       
-	       
+<<<<<<< HEAD
 	        return (test.getXloc()<=xloc+imagewidth && test.getXloc()>xloc-imagewidth) &&
 	               (test.getYloc()<= yloc+imageheight && test.getYloc()>yloc-imageheight);
+=======
+	        //returns dimensions of obstacles. These are specifically for the bush.
+	        return (test.getXloc()<=xloc+35 && test.getXloc()>xloc-40) &&
+	               (test.getYloc()<= yloc+70 && test.getYloc()>yloc-60);
+>>>>>>> bcd7f0492268c005edb3167d0533ee827572b57a
 	 }
 	 
 	 @Override

@@ -1,5 +1,7 @@
 package MVC;
 
+import javax.swing.ImageIcon;
+
 public class NativePlant extends GameObject {
 
 	String name = "native";
@@ -7,6 +9,7 @@ public class NativePlant extends GameObject {
 	public NativePlant(int x, int y) {
 		setXloc(x);
 		setYloc(y);
+		setImic(new ImageIcon("images/nativeplant.png"));
 	}
 	
 	@Override 

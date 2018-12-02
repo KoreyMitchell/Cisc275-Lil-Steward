@@ -30,8 +30,16 @@ public class Model {
 		plantsPlanted = 0;
 		plantsRemoved = 0;
 		level = 1;
+<<<<<<< HEAD
+=======
+		
+>>>>>>> dda4d10d9e453cbaa1cfcdc8dd9bd92ca4585139
 
 		// levelPreset(level);
+	}
+	
+	public void setLevel(int lev) {
+		level = lev;
 	}
 
 	public int getScreenHeight() {
@@ -83,9 +91,11 @@ public class Model {
 		System.out.println("Levelup checked");
 		while (groundList.isEmpty() && invasivePlants.isEmpty()) {
 			if (level < 3) {
+				System.out.println(invasivePlants.isEmpty());
 				levelPreset(level);
-				System.out.println(level);
+				System.out.println(invasivePlants.isEmpty());
 				level++;
+				break;
 			} else {
 				win = true;
 			}
@@ -97,6 +107,11 @@ public class Model {
 		case 0: {
 			// TODO: tutorial mode
 			System.out.println("Tutorial mode selected");
+			Obstacle ob1 = new Obstacle(90, 90);
+			obstacleList.add(ob1);
+			InvasivePlant inv1 = new InvasivePlant(300, 100);
+			invasivePlants.add(inv1);
+			break;
 		}
 
 		case 1: {
@@ -121,6 +136,7 @@ public class Model {
 			invasivePlants.add(inv3);
 			invasivePlants.add(inv4);
 			invasivePlants.add(inv5);
+			break;
 		}
 		case 2: {
 			// TODO: level two
@@ -155,10 +171,12 @@ public class Model {
 				InvasivePlant inv1 = new InvasivePlant(25 * i, 13 * i);
 				invasivePlants.add(inv1);
 			}
+			break;
 		}
 		case 3: {
 			// TODO: level three
 			System.out.println("Level three selected");
+			break;
 		}
 
 		}
