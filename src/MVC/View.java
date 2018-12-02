@@ -1,11 +1,14 @@
 package MVC;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -38,8 +41,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	JFrame frame;
 	
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	int screenHeight = screenSize.getSize().height;
+	int screenHeight = (int) screenSize.getHeight();
 	int screenWidth = screenSize.getSize().width;
+	
 	int plantedCount = 0;
 	int plantsRemoved = 0;
 	int manFrameCountRight = 0;
@@ -58,8 +62,14 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	Image menuimg;
 	Image scaled_bg_img_menu;
 	
-
+	Graphics g;
+	
+	//Menu
 	private Menu menu;
+	private GameMenuv2 menu2;
+	
+	//EndScreen
+	private EndScreen endScreen;
 	
 	ToolBar toolbar;
     
@@ -81,18 +91,17 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		requestFocusInWindow();
 		
 		//Images
-		//ImageIcon bgImage = new ImageIcon("res/Person-Images/Background.jpg");
-		//ImageIcon playericon = new ImageIcon("images/player.png");
-		//ImageIcon bgImage = new ImageIcon("res/Person-Images/BackGround1.jpg");
+	
 		ImageIcon bgImage = new ImageIcon("images/grass_template2.jpg");
 		ImageIcon bgMenuImage = new ImageIcon("images/background.png");
 		
-		ImageIcon playericon = new ImageIcon("images/player.png");
+		//Items
 		ImageIcon groundicon = new ImageIcon("images/ground.png");
 		ImageIcon nplanticon = new ImageIcon("images/nativeplant.png");
 		ImageIcon iplanticon = new ImageIcon("images/phragmites.png");
 		ImageIcon rockicon = new ImageIcon("images/rock.png");
-		//playerimg = playericon.getImage();
+		
+		//Player 
 		ImageIcon playerImageFront = new ImageIcon("images/Person_FRONT.png");
 		ImageIcon playerImageBack = new ImageIcon("images/Person_BACK.png");
 		ImageIcon playerImageRight = new ImageIcon("images/Person_RIGHT.png");
@@ -103,16 +112,13 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		playerimgLeft = playerImageLeft.getImage();
 		playerimg = playerimgFront;
 		
-		playerimg = playericon.getImage();
+		//Get image from ImageIcon and store in Image variables
 		groundimg = groundicon.getImage();
 		nplantimg = nplanticon.getImage();
 		iplantimg = iplanticon.getImage();
 		rockimg = rockicon.getImage();
 		backgroundimg = bgImage.getImage();
 		menuimg = bgMenuImage.getImage();
-		
-		
-
 		
 		
 		//scale image to screen size
@@ -135,7 +141,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	public enum STATE{
 		MENU,
 		GAME,
-		
+		END
 	};
 	
 	//Initialize state to Menu, to skip menu for testing change state to GAME
@@ -160,42 +166,36 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			frame.setLocationRelativeTo(null);
 			frame.addMouseListener(this);
 			frame.addKeyListener(this);
-			toolbar = new ToolBar();
 	        
+			//Toolbar
+			JButton b=new JButton("Tool",new ImageIcon("images/rock.png")); 
+	        JPanel panel = new JPanel();
+			b.setBounds(100,screenHeight-300,150, 150);  
+			frame.add(b); 
+			b.setVisible(true);
 			
-			addKeyListener(this); 	//makes player move		
+			panel.add(b);
+	       // this.getRootPane().add(panel);
+	        setVisible(true);
+		
+	        addKeyListener(this); 	//makes player move		
 
 			//Menu stuff
 			menu= new Menu();
-			
-			
-			
+
+			//toolbar = new ToolBar();
 	}
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
 		
-//theres Some Stuff happening here w the merge im just gonna leave it and see if i can fix it
-
-//draw background image, need to find another image to make fullscreen
-		//g2d.drawImage(bgimg, 0, 0, null);
-		//draw background image, need to find another image to make fullscreen
-		//g2d.drawImage(bgimg, 0, 0, getWidth(), getHeight(), null);
-		//draw background
 		g2d.drawImage(scaled_bg_img, 0, 0, null);
 
 		//if in GAME state
 		if(State == STATE.GAME) {
 			g2d.drawImage(scaled_bg_img, 0, 0, null);
-			
-			//add toolbar to game, doesnt work
-			JPanel panel = new JPanel (new BorderLayout());
-			JPanel buttonPanel = new JPanel(new GridLayout(5,5));
-	        JButton go = new JButton("Shovel");
-			buttonPanel.add(go);
-			panel.add(buttonPanel, BorderLayout.SOUTH);
-			
+	
 			// draw each of the game objects
 			for (GroundPatch gr : groundList) {
 				g2d.drawImage(groundimg, gr.getXloc(), gr.getYloc(), null);
@@ -208,17 +208,20 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			}
 			for (NativePlant n : nativePlants) {
 				g2d.drawImage(nplantimg, n.getXloc(), n.getYloc(), null);
-			}
+			}	
 			//draw the playerimage
 			g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
-			
-			
 		
 		}else if(State ==STATE.MENU) {//if game state is not in game,draw menu
 			g2d.drawImage(scaled_bg_img_menu, 0, 0, null);
 			menu.render(g);
+		
+		}else if(State == STATE.END) {	//if game is ended
+			//g2d.drawImage(backgroundimg, 0, 0, null);
+			endScreen.render(g);
 		}
 		
+	
 	}
 	
 	//set view's controller to match input controller
@@ -274,13 +277,12 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		int mx = e.getX();	//x value of mouse
 		int my = e.getY();	//y value of mouse
 		
-if(State == STATE.GAME) {
-		control.click(mx,my);
-		}
-		 {System.out.println("Mouse clicked");
-			
-		}
-		
+		if(State == STATE.GAME) 
+		{
+			control.click(mx,my);
+		}	 
+			System.out.println("Mouse clicked");
+	
 	}
 
 	public int getPlantedCount() {
@@ -318,6 +320,13 @@ if(State == STATE.GAME) {
 		// TODO Auto-generated method stub
 		int mx = e.getX();	//x value of mouse
 		int my = e.getY();	//y value of mouse
+
+		/*
+		 * 	public Rectangle playButton = new Rectangle(screenWidth/2-35,150,100,50);
+			public Rectangle quitButton = new Rectangle(screenWidth/2-35,250,100,50);
+			public Rectangle anotherButton = new Rectangle(screenWidth/2-35,350,100,50);
+		 */
+
 		
 		if(State == STATE.MENU) {
 		if(mx >= screenWidth/2-25 && mx <= screenWidth/2 + 75 )
@@ -341,6 +350,7 @@ if(State == STATE.GAME) {
 				System.exit(1);
 			}
 		}
+
 		}
 		
 	}
@@ -372,7 +382,14 @@ if(State == STATE.GAME) {
 		control.key(e);
 	}
 	
-	
+	public void drawEndScreen() {
+		
+		super.paintComponent(g);
+		Font fnt0 = new Font("arial",Font.BOLD,50); //font,bold,size		
+		g.setFont(fnt0);		
+		g.setColor(Color.ORANGE);
+		g.drawString("Game Over",screenWidth/2-150,100 );
+	}
 	
 //**-------------------------------Testing-----------------------------------------------**//
 	public void printStuff() {

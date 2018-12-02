@@ -13,6 +13,7 @@ public class Model {
 	Tool tool;
 	int plantsPlanted;
 	int plantsRemoved;
+	boolean win = true;
 	int level;
 	int screenHeight;
 	int screenWidth;
@@ -62,7 +63,7 @@ public class Model {
 			groundList.remove(g);
 			plantsPlanted++;
 		}
-
+		
 	}
 
 	public void removeInvasivePlant(int x, int y) {
@@ -167,8 +168,8 @@ public class Model {
 
 		int s = e.getKeyCode();
 		if (s == KeyEvent.VK_LEFT) {
-			o = new Obstacle((player.getXloc() - 1), player.getYloc());
-			if(player.getXloc()-1<0) {
+			o = new Obstacle((player.getXloc() - 10), player.getYloc());
+			if(player.getXloc()-10<0) {
 				outBound=true;
 			}
 //			if (s == KeyEvent.VK_LEFT && s == KeyEvent.VK_UP) {
@@ -178,8 +179,8 @@ public class Model {
 //
 //			}
 		} else if (s == KeyEvent.VK_RIGHT) {
-			o = new Obstacle((player.getXloc() + 1), player.getYloc());
-			if(player.getXloc()+1 > screenWidth-70) {
+			o = new Obstacle((player.getXloc() + 10), player.getYloc());
+			if(player.getXloc()+10 > screenWidth-70) {
 				outBound=true;
 			}
 //			if (s == KeyEvent.VK_RIGHT && s == KeyEvent.VK_UP) {
@@ -189,8 +190,8 @@ public class Model {
 //
 //			}
 		} else if (s == KeyEvent.VK_UP) {
-			o = new Obstacle(player.getXloc(), player.getYloc() - 1);
-			if(player.getYloc()-1<0) {
+			o = new Obstacle(player.getXloc(), player.getYloc() - 10);
+			if(player.getYloc()-10<0) {
 				outBound=true;
 			}
 //			if (s == KeyEvent.VK_UP && s == KeyEvent.VK_LEFT) {
@@ -200,8 +201,8 @@ public class Model {
 //
 //			}
 		} else {
-			o = new Obstacle(player.getXloc(), player.getYloc() + 1);
-			if(player.getYloc()+1>screenHeight-70) {
+			o = new Obstacle(player.getXloc(), player.getYloc() + 10);
+			if(player.getYloc()+10>screenHeight-80) {
 				outBound=true;
 			}
 //			if (s == KeyEvent.VK_DOWN && s == KeyEvent.VK_LEFT) {
@@ -222,6 +223,13 @@ public class Model {
 			player.updatePlayerLocation(e);
 		}
 
+	}
+	//checks to see if player completed the level
+	public boolean checkEnd() {
+		if(plantsRemoved ==0) {		//just testing
+			win = true;
+		}
+		return win;
 	}
 
 //**----------------------------For testing-----------------------------------**//

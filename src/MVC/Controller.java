@@ -46,15 +46,19 @@ public class Controller {
 		view.setPatches(m.groundList);
 		view.setObstacles(m.obstacleList);
 		view.setTool(m.tool);
+
 		view.setPlantedCount(m.plantsPlanted);
 		view.setPlantsRemoved(m.plantsRemoved);
-
 		
 	}
+	
+
 	
 	public void click(int x, int y) {
 		System.out.println("Controller read click from view");
 		//TODO: call click methods from model 
+		
+
 		model.addNativePlant(x, y);
 		model.removeInvasivePlant(x, y);
 		//model.player.setXloc(x);
@@ -63,6 +67,7 @@ public class Controller {
 		syncViewToModel(model);
 		view.repaint();
 		model.checkLvlUp();
+	
 	}
 	
 	public void key(KeyEvent e) {
@@ -88,7 +93,6 @@ public class Controller {
 	
 
 	// this stuff can go in View
-	
 	public void mouseClicked(MouseEvent arg0) {
 		// Call method in model
 		int clickx = arg0.getX();
@@ -98,10 +102,12 @@ public class Controller {
 		} else {
 			model.removeInvasivePlant(clickx, clicky);
 		}
+	
 		System.out.println(model.tool.isShovel());
 		syncViewToModel(model);
 		view.repaint();
-
+		
+		
 	}
 
 }
