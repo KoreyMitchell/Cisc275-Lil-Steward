@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 public class GameObject {
 	//image file
 	
+	//aaaaaaaaa
 	ImageIcon imic;
 	Image img;
 	int imagewidth;

@@ -94,6 +94,7 @@ public class Controller {
 
 	// this stuff can go in View
 	public void mouseClicked(MouseEvent arg0) {
+		model.level = view.level;
 		// Call method in model
 		int clickx = arg0.getX();
 		int clicky = arg0.getY();

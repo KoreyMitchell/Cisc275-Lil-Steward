@@ -47,6 +47,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	int plantedCount = 0;
 	int plantsRemoved = 0;
 	int manFrameCountRight = 0;
+	
+	int level = 0;
 
 	Image playerimgFront;
 	Image playerimgBack;
@@ -61,6 +63,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	Image scaled_bg_img;
 	Image menuimg;
 	Image scaled_bg_img_menu;
+	Image tutorialNote1;
 	
 	Graphics g;
 	
@@ -93,6 +96,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 		ImageIcon bgImage = new ImageIcon("images/grass_template2.jpg");
 		ImageIcon bgMenuImage = new ImageIcon("images/background.png");
+		ImageIcon tutNote1 = new ImageIcon("images/stickynote_phragmites.png");
 		
 		//Items
 		ImageIcon groundicon = new ImageIcon("images/ground.png");
@@ -118,6 +122,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		rockimg = rockicon.getImage();
 		backgroundimg = bgImage.getImage();
 		menuimg = bgMenuImage.getImage();
+		tutorialNote1 = tutNote1.getImage();
 		
 		
 		//scale image to screen size
@@ -142,6 +147,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		GAME,
 		END
 	};
+	
+	
 	
 	//Initialize state to Menu, to skip menu for testing change state to GAME
 	public static STATE State = STATE.MENU;
@@ -193,6 +200,15 @@ public class View extends JPanel implements MouseListener, KeyListener{
 
 		//if in GAME state
 		if(State == STATE.GAME) {
+			if(level == 0) {
+				g2d.drawImage(scaled_bg_img, 0, 0, null);
+				g2d.drawImage(tutorialNote1, 50, 50, null);
+				g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
+			
+				
+			}
+			else if(level == 1) {
+				
 			g2d.drawImage(scaled_bg_img, 0, 0, null);
 	
 			// draw each of the game objects
@@ -210,6 +226,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			}	
 			//draw the playerimage
 			g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
+			}
 		
 		}else if(State ==STATE.MENU) {//if game state is not in game,draw menu
 			g2d.drawImage(scaled_bg_img_menu, 0, 0, null);
@@ -221,6 +238,11 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		}
 		
 	
+	}
+	
+	//set view's level to match model's
+	public void setLevel(int lev) {
+		level = lev;
 	}
 	
 	//set view's controller to match input controller
@@ -334,13 +356,15 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			{
 				System.out.print(mx + " " +  my);
 				//Pressed play button
+				level = 1;
 				View.State = View.STATE.GAME;
 			}
 			//second button
 			if(my >= 280 && my <= 330)
 			{
-				//Pressed quit button
-				System.exit(1);
+				//Pressed tutorial button
+				level = 0;
+				View.State = View.STATE.GAME;
 			}
 			//third button
 			if(my >= 380 && my <= 430)

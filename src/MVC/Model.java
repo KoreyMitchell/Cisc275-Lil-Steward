@@ -29,9 +29,14 @@ public class Model {
 		tool = new Tool(false);
 		plantsPlanted = 0;
 		plantsRemoved = 0;
-		level = 2;
+		level = 0;
+		
 
 		// levelPreset(level);
+	}
+	
+	public void setLevel(int lev) {
+		level = lev;
 	}
 
 	public int getScreenHeight() {
@@ -96,6 +101,10 @@ public class Model {
 		case 0: {
 			// TODO: tutorial mode
 			System.out.println("Tutorial mode selected");
+			Obstacle ob1 = new Obstacle(90, 90);
+			obstacleList.add(ob1);
+			InvasivePlant inv1 = new InvasivePlant(300, 100);
+			invasivePlants.add(inv1);
 		}
 		case 1: {
 			// TODO: level one

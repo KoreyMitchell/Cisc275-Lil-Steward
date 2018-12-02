@@ -22,10 +22,38 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class Menu  extends View{
-	// draw button areas, (x,y,w,h)
-	public Rectangle playButton = new Rectangle(screenWidth/2-75,150,100,50);
-	public Rectangle tutorialButton = new Rectangle(screenWidth/2-75,250,100,50);
-	public Rectangle quitButton = new Rectangle(screenWidth/2-75,350,100,50);
+
+	//initialize buttons, (x,y,w,h)
+	public Rectangle playButton = new Rectangle(screenWidth/2-35,150,100,50);
+	public Rectangle tutorialButton = new Rectangle(screenWidth/2-35,250,100,50);
+	public Rectangle quitButton = new Rectangle(screenWidth/2-35,350,100,50);
+
+	public void render(Graphics g) {
+		//2d graphics for buttons
+		Graphics2D g2d = (Graphics2D) g;
+		
+		//Title 
+		Font fnt0 = new Font("arial",Font.BOLD,50); //font,bold,size		
+		g.setFont(fnt0);		
+		g.setColor(Color.white);
+		g.drawString("Estuary Game",screenWidth/2-150,100 );
+		
+		//Buttons
+		Font fnt1 = new Font("arial",Font.BOLD,20); //font,bold,size		
+		g.setFont(fnt1);
+		g.drawString("Play",playButton.x+30,playButton.y+30);
+		g.drawString("Tutorial",tutorialButton.x+30,tutorialButton.y+30);
+		g.drawString("Quit",quitButton.x+30,quitButton.y+30);
+	System.out.println("Play Button: "+playButton.getBounds());
+	System.out.println("Tutorial Button: "+tutorialButton.getBounds());
+	System.out.println("Quit Button: "+quitButton.getBounds());
+
+		g2d.draw(playButton);
+		g2d.draw(tutorialButton);
+		g2d.draw(quitButton);
+		
+	}
+
 
 	public void renderMenu(Graphics g) {
 		for (int i =0; i<=3; i++) {
