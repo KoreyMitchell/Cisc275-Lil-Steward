@@ -16,10 +16,6 @@ public class Model {
 	int level;
 	int screenHeight;
 	int screenWidth;
-	
-	
-
-	
 
 	Model() {
 		// initialize local variables
@@ -33,7 +29,7 @@ public class Model {
 		plantsRemoved = 0;
 		level = 2;
 
-		//levelPreset(level);
+		// levelPreset(level);
 	}
 
 	public int getScreenHeight() {
@@ -54,7 +50,7 @@ public class Model {
 
 	public void addNativePlant(int x, int y) {
 		// only plant if there is an unplanted patch of ground at this x and y
-	
+
 		GroundPatch g = new GroundPatch(x, y);
 		if (groundList.contains(g)) {
 			System.out.println("You can plant here!");
@@ -74,34 +70,33 @@ public class Model {
 		InvasivePlant inv = new InvasivePlant(x, y);
 		if (invasivePlants.contains(inv)) {
 			plantsRemoved++;
-		
+
 		}
 		invasivePlants.remove(inv);
-		
+
 	}
 
 	public void checkLvlUp() {
 		System.out.println("Levelup checked");
-		if(groundList.isEmpty()&&invasivePlants.isEmpty()) {
-			if(level<3) {
+		if (groundList.isEmpty() && invasivePlants.isEmpty()) {
+			if (level < 3) {
 				level++;
 				levelPreset(level);
 				System.out.println(level);
-			}
-			else {
-				//TODO: game is over
+			} else {
+				// TODO: game is over
 			}
 		}
 	}
-	
+
 	public void levelPreset(int lvl) {
-		switch(lvl) {
-		case 0 :{
-			//TODO: tutorial mode
+		switch (lvl) {
+		case 0: {
+			// TODO: tutorial mode
 			System.out.println("Tutorial mode selected");
 		}
-		case 1:{
-			//TODO: level one 
+		case 1: {
+			// TODO: level one
 			System.out.println("Level one selected");
 			// board conditions at start
 			GroundPatch grp1 = new GroundPatch(10, 12);
@@ -123,102 +118,95 @@ public class Model {
 			invasivePlants.add(inv4);
 			invasivePlants.add(inv5);
 		}
-		case 2:{
-			//TODO: level two
+		case 2: {
+			// TODO: level two
 			System.out.println("Level two selected" + screenHeight);
-			
-			for(int i =0; i<30; i++) {
-				GroundPatch grp1 = new GroundPatch(20*i, 30*i);
+
+			for (int i = 0; i < 15; i++) {
+				GroundPatch grp1 = new GroundPatch(20 * i, 30 * i);
 				groundList.add(grp1);
-				if(90*i < screenWidth-300) {
-				Obstacle ob1 = new Obstacle(90*i, 90);
-				obstacleList.add(ob1);
-				Obstacle ob3 = new Obstacle(90*i+300, 300);
-				obstacleList.add(ob3);
-				Obstacle ob5 = new Obstacle(90*i, screenHeight-300);
-				
-				obstacleList.add(ob5);
+				if (90 * i < screenWidth - 300) {
+					Obstacle ob1 = new Obstacle(90 * i, 90);
+					obstacleList.add(ob1);
+					Obstacle ob3 = new Obstacle(90 * i + 300, 300);
+					obstacleList.add(ob3);
+					Obstacle ob5 = new Obstacle(90 * i, screenHeight - 300);
+
+					obstacleList.add(ob5);
 				}
-				
-				//Obstacle ob2 = new Obstacle (300, 20*i+300);
-				//Obstacle ob4 = new Obstacle (1000, 30*i+600);
-				
-				for(int j = 0; j<10;j++) {
-					Obstacle ob = new Obstacle(250+500*j, screenHeight - (20*i)-300);
-					Obstacle ob2 = new Obstacle (500*j, 20*i+300);
+
+				// Obstacle ob2 = new Obstacle (300, 20*i+300);
+				// Obstacle ob4 = new Obstacle (1000, 30*i+600);
+
+				for (int j = 0; j < 10; j++) {
+					Obstacle ob = new Obstacle(250 + 500 * j, screenHeight - (20 * i) - 300);
+					Obstacle ob2 = new Obstacle(500 * j, 20 * i + 300);
 					obstacleList.add(ob);
 					obstacleList.add(ob2);
 				}
-				
-				
-				
-				//.add(ob4);
-				
-				InvasivePlant inv1 = new InvasivePlant(25*i, 13*i);
+
+				// .add(ob4);
+
+				InvasivePlant inv1 = new InvasivePlant(25 * i, 13 * i);
 				invasivePlants.add(inv1);
 			}
 		}
-		case 3:{
-			//TODO: level three 
+		case 3: {
+			// TODO: level three
 			System.out.println("Level three selected");
 		}
-	
+
 		}
 	}
-
 
 	public void checkAndMove(KeyEvent e) {
-		// TODO Make character move diagonally 
+		// TODO Make character move diagonally
 		Obstacle o;
-		
+
 		int s = e.getKeyCode();
-		if(s==KeyEvent.VK_LEFT) {
-		o = new Obstacle((player.getXloc()-1),player.getYloc());	
-			if(s==KeyEvent.VK_LEFT&&s==KeyEvent.VK_UP) {
-				
+		if (s == KeyEvent.VK_LEFT) {
+			o = new Obstacle((player.getXloc() - 1), player.getYloc());
+			if (s == KeyEvent.VK_LEFT && s == KeyEvent.VK_UP) {
+
 			}
-			if(s==KeyEvent.VK_LEFT&&s==KeyEvent.VK_DOWN) {
-				
+			if (s == KeyEvent.VK_LEFT && s == KeyEvent.VK_DOWN) {
+
 			}
-		}
-		else if(s==KeyEvent.VK_RIGHT) {
-			o = new Obstacle((player.getXloc()+1),player.getYloc());
-			if(s==KeyEvent.VK_RIGHT&&s==KeyEvent.VK_UP) {
-				
-				}
-			if(s==KeyEvent.VK_LEFT&&s==KeyEvent.VK_DOWN) {
-			
+		} else if (s == KeyEvent.VK_RIGHT) {
+			o = new Obstacle((player.getXloc() + 1), player.getYloc());
+			if (s == KeyEvent.VK_RIGHT && s == KeyEvent.VK_UP) {
+
 			}
-		}
-		else if(s==KeyEvent.VK_UP) {
-			o = new Obstacle(player.getXloc(),player.getYloc()-1);
-			if(s==KeyEvent.VK_UP&&s==KeyEvent.VK_LEFT) {
-				
+			if (s == KeyEvent.VK_LEFT && s == KeyEvent.VK_DOWN) {
+
 			}
-			if(s==KeyEvent.VK_UP&&s==KeyEvent.VK_RIGHT) {
-		
+		} else if (s == KeyEvent.VK_UP) {
+			o = new Obstacle(player.getXloc(), player.getYloc() - 1);
+			if (s == KeyEvent.VK_UP && s == KeyEvent.VK_LEFT) {
+
 			}
-		}
-		else {
-			o = new Obstacle((player.getXloc()-1),player.getYloc()+1);
-			if(s==KeyEvent.VK_DOWN&&s==KeyEvent.VK_LEFT) {
-				
+			if (s == KeyEvent.VK_UP && s == KeyEvent.VK_RIGHT) {
+
 			}
-			if(s==KeyEvent.VK_DOWN&&s==KeyEvent.VK_RIGHT) {
-		
+		} else {
+			o = new Obstacle((player.getXloc() - 1), player.getYloc() + 1);
+			if (s == KeyEvent.VK_DOWN && s == KeyEvent.VK_LEFT) {
+
+			}
+			if (s == KeyEvent.VK_DOWN && s == KeyEvent.VK_RIGHT) {
+
 			}
 		}
-	
-		
-		if(obstacleList.contains(o)) {
+
+		if (obstacleList.contains(o)) {
 			System.out.println("You hit an obstacle");
-			
+
+		} else {
+			player.updatePlayerLocation(e);
 		}
-		else {player.updatePlayerLocation(e);}
-		
+
 	}
-	
-	
+
 //**----------------------------For testing-----------------------------------**//
 //**--------------------------------------------------------------------------**//
 	public boolean checkMove(String s) {
@@ -244,7 +232,6 @@ public class Model {
 		return true;
 
 	}
-	
 
 	public static void main(String[] args) {
 		Model m = new Model();
@@ -279,9 +266,10 @@ public class Model {
 			for (Obstacle ob : m.obstacleList) {
 				System.out.println("Obstacle" + " at " + ob.getXloc() + " and " + ob.getYloc());
 			}
-			
-			//Print plants planted and removed
-			System.out.println("Planted " + m.plantsPlanted + " goldenrod plants and removed " + m.plantsRemoved +" phragmites");
+
+			// Print plants planted and removed
+			System.out.println(
+					"Planted " + m.plantsPlanted + " goldenrod plants and removed " + m.plantsRemoved + " phragmites");
 
 			// Choose an action to take
 			System.out.println("Choose: up, down, left, right, plant, remove");
@@ -301,7 +289,6 @@ public class Model {
 				m.removeInvasivePlant(m.player.getXloc(), m.player.getYloc());
 			}
 		}
-		
 
 	}
 
