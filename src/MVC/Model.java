@@ -208,6 +208,13 @@ public class Model {
 		}
 
 	}
+	//checks to see if player completed the level
+	public boolean checkEnd() {
+		if(plantsRemoved ==2) {		//just testing
+			win = true;
+		}
+		return win;
+	}
 
 //**----------------------------For testing-----------------------------------**//
 //**--------------------------------------------------------------------------**//

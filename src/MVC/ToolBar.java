@@ -4,22 +4,17 @@ import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class ToolBar extends View{
-	   public ToolBar(JFrame frame) {
-	        JPanel panel = new JPanel();
-	        JButton shovel = new JButton("Shovel");
-	        JButton planter = new JButton("Planter");
-	        	       
-	        //add buttons to jpanel
-	        panel.add(shovel);
-	        panel.add(planter);
-	        
-	        //add panel to the bottom
-	        add(panel, BorderLayout.SOUTH);
-	        frame.add(panel);
+	   public ToolBar() {
+			//Toolbar
+			JButton b=new JButton("Tool",new ImageIcon("images/rock.png"));    
+			b.setBounds(100,screenHeight-300,150, 150);  
+			frame.add(b); 
+			b.setVisible(true);
 	    }
 }

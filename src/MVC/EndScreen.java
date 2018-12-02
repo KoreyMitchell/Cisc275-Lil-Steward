@@ -12,7 +12,8 @@ public class EndScreen extends View{
 		Font fnt0 = new Font("arial",Font.BOLD,50); //font,bold,size		
 		g.setFont(fnt0);		
 		g.setColor(Color.ORANGE);
-		g.drawString("Game Over Loser",screenWidth/2-150,100 );
+		g.drawString("Game Over",screenWidth/2-150,100 );
 		
 	}
+	
 }
