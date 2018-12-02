@@ -58,7 +58,7 @@ public class Model {
 	public void addNativePlant(int x, int y) {
 		// only plant if there is an unplanted patch of ground at this x and y
 
-		GroundPatch g = new GroundPatch(x, y);
+		GroundPatch g = new GroundPatch(player.getXloc(), player.getYloc());
 		if (groundList.contains(g)&&g.equals(player)) {
 			System.out.println("You can plant here!");
 			// add new plant to the list of native plants
@@ -113,10 +113,11 @@ public class Model {
 			// TODO: level one
 			System.out.println("Level one selected");
 			// board conditions at start
-			GroundPatch grp1 = new GroundPatch(10, 12);
-			GroundPatch grp2 = new GroundPatch(2000, 520);
+			for(int i = 0; i<24;i++) {
+			GroundPatch grp1 = new GroundPatch(20, 120*i);
+			
 			groundList.add(grp1);
-			groundList.add(grp2);
+			}
 
 			Obstacle ob1 = new Obstacle(90, 90);
 			obstacleList.add(ob1);
