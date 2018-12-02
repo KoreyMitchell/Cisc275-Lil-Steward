@@ -164,46 +164,62 @@ public class Model {
 	public void checkAndMove(KeyEvent e) {
 		// TODO Make character move diagonally
 		Obstacle o;
+		boolean outBound=false;
 
 		int s = e.getKeyCode();
 		if (s == KeyEvent.VK_LEFT) {
 			o = new Obstacle((player.getXloc() - 1), player.getYloc());
-			if (s == KeyEvent.VK_LEFT && s == KeyEvent.VK_UP) {
-
+			if(player.getXloc()-1<0) {
+				outBound=true;
 			}
-			if (s == KeyEvent.VK_LEFT && s == KeyEvent.VK_DOWN) {
-
-			}
+//			if (s == KeyEvent.VK_LEFT && s == KeyEvent.VK_UP) {
+//
+//			}
+//			if (s == KeyEvent.VK_LEFT && s == KeyEvent.VK_DOWN) {
+//
+//			}
 		} else if (s == KeyEvent.VK_RIGHT) {
 			o = new Obstacle((player.getXloc() + 1), player.getYloc());
-			if (s == KeyEvent.VK_RIGHT && s == KeyEvent.VK_UP) {
-
+			if(player.getXloc()+1 > screenWidth-70) {
+				outBound=true;
 			}
-			if (s == KeyEvent.VK_LEFT && s == KeyEvent.VK_DOWN) {
-
-			}
+//			if (s == KeyEvent.VK_RIGHT && s == KeyEvent.VK_UP) {
+//
+//			}
+//			if (s == KeyEvent.VK_LEFT && s == KeyEvent.VK_DOWN) {
+//
+//			}
 		} else if (s == KeyEvent.VK_UP) {
 			o = new Obstacle(player.getXloc(), player.getYloc() - 1);
-			if (s == KeyEvent.VK_UP && s == KeyEvent.VK_LEFT) {
-
+			if(player.getYloc()-1<0) {
+				outBound=true;
 			}
-			if (s == KeyEvent.VK_UP && s == KeyEvent.VK_RIGHT) {
-
-			}
+//			if (s == KeyEvent.VK_UP && s == KeyEvent.VK_LEFT) {
+//
+//			}
+//			if (s == KeyEvent.VK_UP && s == KeyEvent.VK_RIGHT) {
+//
+//			}
 		} else {
-			o = new Obstacle((player.getXloc() - 1), player.getYloc() + 1);
-			if (s == KeyEvent.VK_DOWN && s == KeyEvent.VK_LEFT) {
-
+			o = new Obstacle(player.getXloc(), player.getYloc() + 1);
+			if(player.getYloc()+1>screenHeight-70) {
+				outBound=true;
 			}
-			if (s == KeyEvent.VK_DOWN && s == KeyEvent.VK_RIGHT) {
-
-			}
+//			if (s == KeyEvent.VK_DOWN && s == KeyEvent.VK_LEFT) {
+//
+//			}
+//			if (s == KeyEvent.VK_DOWN && s == KeyEvent.VK_RIGHT) {
+//
+//			}
 		}
 
-		if (obstacleList.contains(o)) {
-			System.out.println("You hit an obstacle");
+		if (obstacleList.contains(o)||outBound) {
+			System.out.println("You can't move there");
 
-		} else {
+		} 
+		
+		
+		else {
 			player.updatePlayerLocation(e);
 		}
 
