@@ -75,7 +75,7 @@ public class Model {
 	public void removeInvasivePlant(int x, int y) {
 		// removes an InvasivePlant with the x and y specified from the list of
 		// invasive plants
-		InvasivePlant inv = new InvasivePlant(x, y);
+		InvasivePlant inv = new InvasivePlant(player.getXloc(), player.getYloc());
 		if (invasivePlants.contains(inv)&&inv.equals(player)) {
 			plantsRemoved++;
 			invasivePlants.remove(inv);
