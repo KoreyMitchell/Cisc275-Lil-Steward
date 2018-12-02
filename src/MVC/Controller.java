@@ -35,7 +35,7 @@ public class Controller {
 		model.setScreenWidth(view.screenWidth);
 		model.setScreenHeight(view.screenHeight);
 
-		model.levelPreset(model.level);
+		//model.levelPreset(model.level);
 	}
 
 	public void syncViewToModel(Model m) {

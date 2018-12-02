@@ -29,7 +29,7 @@ public class Model {
 		tool = new Tool(false);
 		plantsPlanted = 0;
 		plantsRemoved = 0;
-		level = 0;
+		level = 1;
 		
 
 		// levelPreset(level);
@@ -85,12 +85,13 @@ public class Model {
 
 	public void checkLvlUp() {
 		System.out.println("Levelup checked");
-		if (groundList.isEmpty() && invasivePlants.isEmpty()) {
+		while (groundList.isEmpty() && invasivePlants.isEmpty()) {
 			if (level < 3) {
-				
+				System.out.println(invasivePlants.isEmpty());
 				levelPreset(level);
-				System.out.println(level);
+				System.out.println(invasivePlants.isEmpty());
 				level++;
+				break;
 			} else {
 				// TODO: game is over
 			}
@@ -106,6 +107,7 @@ public class Model {
 			obstacleList.add(ob1);
 			InvasivePlant inv1 = new InvasivePlant(300, 100);
 			invasivePlants.add(inv1);
+			break;
 		}
 		case 1: {
 			// TODO: level one
@@ -129,6 +131,7 @@ public class Model {
 			invasivePlants.add(inv3);
 			invasivePlants.add(inv4);
 			invasivePlants.add(inv5);
+			break;
 		}
 		case 2: {
 			// TODO: level two
@@ -162,10 +165,12 @@ public class Model {
 				InvasivePlant inv1 = new InvasivePlant(25 * i, 13 * i);
 				invasivePlants.add(inv1);
 			}
+			break;
 		}
 		case 3: {
 			// TODO: level three
 			System.out.println("Level three selected");
+			break;
 		}
 
 		}
