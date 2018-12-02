@@ -1,2 +1,6 @@
 *.class
+<<<<<<< HEAD
 .*.sw
+=======
+.*.sw
+>>>>>>> cac02dc5efb8c7a4eef3def28398bb94bb1c40bc

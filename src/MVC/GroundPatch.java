@@ -9,5 +9,21 @@ public class GroundPatch extends GameObject {
 		setXloc(x);
 		setYloc(y);
 	}
+	
+	@Override
+    public boolean equals(Object o) {
+
+	 //System.out.println("Equals called");
+        if (o == this) return true;
+        if (!(o instanceof GameObject)) {
+            return false;
+        }
+        
+        GameObject test = (GameObject) o;
+
+       
+        return (test.getXloc()<=getXloc()+imagewidth && test.getXloc()>getXloc()-imagewidth) &&
+               (test.getYloc()<= getYloc()+imageheight+50 && test.getYloc()>getYloc()-imageheight);
+ }
 
 }
