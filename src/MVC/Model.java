@@ -29,15 +29,7 @@ public class Model {
 		tool = new Tool(false);
 		plantsPlanted = 0;
 		plantsRemoved = 0;
-<<<<<<< HEAD
-		level = 1;
-<<<<<<< HEAD
-=======
-=======
-		level = 0;
->>>>>>> a5857dacc173a800c624ee589584dcc19813745a
-		
->>>>>>> dda4d10d9e453cbaa1cfcdc8dd9bd92ca4585139
+		level =1;
 
 		// levelPreset(level);
 	}
@@ -231,7 +223,7 @@ public class Model {
 //			}
 		} else {
 			o = new Obstacle(player.getXloc(), player.getYloc() + 10);
-			if(player.getYloc()+10>screenHeight-175) {
+			if(player.getYloc()+10>screenHeight-115) {
 				outBound=true;
 			}
 //			if (s == KeyEvent.VK_DOWN && s == KeyEvent.VK_LEFT) {

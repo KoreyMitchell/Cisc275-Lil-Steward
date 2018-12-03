@@ -259,8 +259,6 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			endScreen.render(g);
 		}
 		
-		
-	
 	}
 	
 	//set view's level to match model's
