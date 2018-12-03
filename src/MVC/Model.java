@@ -68,9 +68,6 @@ public class Model {
 			groundList.remove(g);
 			plantsPlanted++;
 		}
-		
-		
-		
 	}
 
 	public void removeInvasivePlant(int x, int y) {
@@ -86,13 +83,13 @@ public class Model {
 
 	public void checkLvlUp() {
 		System.out.println("Levelup checked");
-		while (groundList.isEmpty() && invasivePlants.isEmpty()) {
+		if (groundList.isEmpty() && invasivePlants.isEmpty()) {
 			if (level < 3) {
 				System.out.println(invasivePlants.isEmpty());
 				levelPreset(level);
 				System.out.println(invasivePlants.isEmpty());
 				level++;
-				break;
+				//break;
 			} else {
 				win = true;
 			}
@@ -174,6 +171,8 @@ public class Model {
 		case 3: {
 			// TODO: level three
 			System.out.println("Level three selected");
+			levelPreset(2);
+			
 			break;
 		}
 
