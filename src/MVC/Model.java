@@ -112,6 +112,8 @@ public class Model {
 			invasivePlants.clear();
 			groundList.clear();
 			obstacleList.clear();
+			player.setXloc(0);
+			player.setYloc(0);
 			System.out.println("Tutorial mode selected");
 			Obstacle ob1 = new Obstacle(90, 90);
 			obstacleList.add(ob1);
@@ -127,6 +129,8 @@ public class Model {
 			invasivePlants.clear();
 			groundList.clear();
 			obstacleList.clear();
+			player.setXloc(0);
+			player.setYloc(0);
 			// TODO: level one
 			System.out.println("Level one selected");
 			// board conditions at start
@@ -154,7 +158,8 @@ public class Model {
 		case 2: {
 			// TODO: level two
 			System.out.println("Level two selected" + screenHeight);
-
+			player.setXloc(0);
+			player.setYloc(0);
 			for (int i = 0; i < 15; i++) {
 				GroundPatch grp1 = new GroundPatch(20 * i, 30 * i);
 				groundList.add(grp1);
@@ -189,6 +194,8 @@ public class Model {
 		case 3: {
 			// TODO: level three
 			System.out.println("Level three selected");
+			player.setXloc(0);
+			player.setYloc(0);
 			levelPreset(2);
 			
 			break;
