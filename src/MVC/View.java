@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -158,6 +160,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		// this method was meant to add the Controller listeners to View, but we're
 		// changing it so that the Listeners are in the View instead
 		
+		
 			frame = new JFrame();
 			frame.add(this);
 			frame.pack();
@@ -169,10 +172,19 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			frame.setSize(screenSize);
 			//frame.setSize(700, 365);
 			//frame.pack();
+			
+			
 			frame.setVisible(true);
 			frame.setLocationRelativeTo(null);
 			frame.addMouseListener(this);
 			frame.addKeyListener(this);
+			
+			GraphicsEnvironment env =
+		            GraphicsEnvironment.getLocalGraphicsEnvironment();
+		        GraphicsDevice device = env.getDefaultScreenDevice();
+		        device.setFullScreenWindow(frame);
+			
+			
 	        
 			//Toolbar
 			JButton b=new JButton("Tool",new ImageIcon("images/rock.png")); 
