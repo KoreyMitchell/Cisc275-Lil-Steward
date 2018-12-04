@@ -183,7 +183,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		            GraphicsEnvironment.getLocalGraphicsEnvironment();
 		        GraphicsDevice device = env.getDefaultScreenDevice();
 		        device.setFullScreenWindow(frame);
-			
+			//test
 			
 	        
 			//Toolbar
