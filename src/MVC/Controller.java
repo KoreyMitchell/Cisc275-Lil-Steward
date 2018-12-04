@@ -91,6 +91,13 @@ public class Controller {
 		if(s==KeyEvent.VK_LEFT) {
 			view.playerimg = view.playerimgLeft; 
 		}
+		if(s==KeyEvent.VK_ESCAPE) {
+			view.State = STATE.MENU;
+			model.escapeReset();
+			model.level = model.level-1;
+			view.level = view.level-1;
+		}
+		
 		model.checkAndMove(e);
 		System.out.println(model.player.getXloc());
 		syncViewToModel(model);

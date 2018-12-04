@@ -82,7 +82,7 @@ public class Model {
 	}
 
 	public void checkLvlUp() {
-		System.out.println("Levelup checked");
+		System.out.println("Levelup checked: Level is: "+level);
 		if (groundList.isEmpty() && invasivePlants.isEmpty()) {
 			if (level < 3) {
 				System.out.println(invasivePlants.isEmpty());
@@ -94,6 +94,14 @@ public class Model {
 				win = true;
 			}
 		}
+	}
+	public void escapeReset() {
+		nativePlants.clear();
+		invasivePlants.clear();
+		groundList.clear();
+		obstacleList.clear();
+		player.setXloc(10);
+		player.setYloc(10);
 	}
 
 	public void levelPreset(int lvl) {
