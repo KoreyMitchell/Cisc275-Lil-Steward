@@ -1,15 +1,16 @@
 package MVC;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class EndScreen extends View{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JFrame f;
 
 	public void render(Graphics g) {

@@ -1,9 +1,6 @@
 package MVC;
 
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import MVC.View.STATE;
 
@@ -53,6 +50,9 @@ public class Controller {
 		view.setPlantsRemoved(m.plantsRemoved);
 		
 		
+	}
+	public void syncModelToView(View v) {
+		model.setLevel(v.level);
 	}
 	
 

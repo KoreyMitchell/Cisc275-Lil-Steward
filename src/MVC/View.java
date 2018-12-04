@@ -1,6 +1,5 @@
 package MVC;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -8,27 +7,26 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JToolBar;
-import javax.swing.border.Border;
 
 public class View extends JPanel implements MouseListener, KeyListener{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	PlayerCharacter player;
 	ArrayList<NativePlant> nativePlants;
 	ArrayList<InvasivePlant> invasivePlants;
@@ -36,7 +34,6 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	ArrayList<Obstacle> obstacleList;
 	Tool tool;
 	Controller control;
-	ArrayList<Integer> keys=new ArrayList();
 	
 	JFrame frame;
 	
@@ -72,6 +69,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	//EndScreen
 	private EndScreen endScreen;
+	//TEST
+	//private EndGameTest test;
 	
 	ToolBar toolbar;
     
@@ -145,6 +144,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	public enum STATE{
 		MENU,
 		GAME,
+		TEST,
 		END
 	};
 	
@@ -153,6 +153,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	//Initialize state to Menu, to skip menu for testing change state to GAME
 	public static STATE State = STATE.MENU;
 
+	@SuppressWarnings("static-access")
 	public void initialize() {
 		// this method was meant to add the Controller listeners to View, but we're
 		// changing it so that the Listeners are in the View instead
@@ -189,7 +190,11 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			//Create a new Menu
 			menu= new Menu();
 			
+			//create a a new endgame test
+			//test  = new  EndGameTest();
+			
 			//toolbar = new ToolBar();
+			
 			endScreen = new EndScreen();
 	}
 
@@ -202,10 +207,6 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		//if in GAME state
 		if(State == STATE.GAME) {
 			if(level == 0) {
-				nativePlants.clear();
-				invasivePlants.clear();
-				groundList.clear();
-				obstacleList.clear();
 				g2d.drawImage(scaled_bg_img, 0, 0, null);
 				g2d.drawImage(tutorialNote1, 50, 50, null);
 				g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
@@ -251,6 +252,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
 			}
 		
+		}else if (State == STATE.TEST) {
+			g2d.drawImage(scaled_bg_img_menu, 0, 0, null);
+			//test.EndGameTest();
 		}else if(State ==STATE.MENU) {//if game state is not in game,draw menu
 			g2d.drawImage(scaled_bg_img_menu, 0, 0, null);
 			menu.renderMenu(g);
@@ -373,22 +377,22 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		if(State == STATE.MENU) {
 		if(mx >= screenWidth/2-65 && mx <= screenWidth/2 + 35 )
 		{	//first button
-			if(my >= 180 && my <= 230)
+			if(my >= 230 && my <= 280)
 			{
 				System.out.print(mx + " " +  my);
 				//Pressed play button
-				level = 1;
-				View.State = View.STATE.GAME;
-			}
-			//second button
-			if(my >= 280 && my <= 330)
-			{
-				//Pressed tutorial button
 				level = 0;
 				View.State = View.STATE.GAME;
 			}
+// 			//second button
+// 			if(my >= 280 && my <= 330)
+// 			{
+// 				//Pressed tutorial button
+// 				level = 0;
+// 				View.State = View.STATE.GAME;
+// 			}
 			//third button
-			if(my >= 380 && my <= 430)
+			if(my >= 330 && my <= 380)
 			{
 				//Pressed other button
 				System.exit(1);
