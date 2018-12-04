@@ -24,16 +24,16 @@ import javax.swing.JTextField;
 public class Menu  extends View{
 
 	//initialize buttons, (x,y,w,h)
-	public Rectangle playButton = new Rectangle(screenWidth/2-75,150,100,50);
-	public Rectangle tutorialButton = new Rectangle(screenWidth/2-75,250,100,50);
-	public Rectangle quitButton = new Rectangle(screenWidth/2-75,350,100,50);
+	public Rectangle playButton = new Rectangle(screenWidth/2-75,200,100,50);
+//	public Rectangle tutorialButton = new Rectangle(screenWidth/2-75,250,100,50);
+	public Rectangle quitButton = new Rectangle(screenWidth/2-75,300,100,50);
 
 	public void renderMenu(Graphics g) {
 		for (int i =0; i<=3; i++) {
 			switch (i){
 			case 0: //sets color of play button
 					g.setColor(Color.GREEN);
-					g.fillRect(screenWidth/2-75,150,100,50);
+					g.fillRect(screenWidth/2-75,200,100,50);
 					
 // 			case 1: //sets color of tutorial button
 // 					g.setColor(Color.yellow);
@@ -41,7 +41,7 @@ public class Menu  extends View{
 					
 			case 1: //sets color of quit button
 					g.setColor(Color.red);
-					g.fillRect(screenWidth/2-75,350,100,50);
+					g.fillRect(screenWidth/2-75,200,100,50);
 					
 			case 2: //2d graphics for buttons
 					Graphics2D g2d = (Graphics2D) g;
@@ -50,7 +50,7 @@ public class Menu  extends View{
 					Font fnt0 = new Font("arial",Font.BOLD,50); //font,bold,size		
 					g.setFont(fnt0);		
 					g.setColor(Color.black);
-					g.drawString("Estuary Game",screenWidth/2-190,100 );
+					g.drawString("Estuary Game",screenWidth/2-190,150 );
 					
 					//Buttons
 					Font fnt1 = new Font("arial",Font.BOLD,20); //font,bold,size
