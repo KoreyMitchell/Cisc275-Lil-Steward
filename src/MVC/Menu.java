@@ -35,15 +35,15 @@ public class Menu  extends View{
 					g.setColor(Color.GREEN);
 					g.fillRect(screenWidth/2-75,150,100,50);
 					
-			case 1: //sets color of tutorial button
-					g.setColor(Color.yellow);
-					g.fillRect(screenWidth/2-75,250,100,50);
+// 			case 1: //sets color of tutorial button
+// 					g.setColor(Color.yellow);
+// 					g.fillRect(screenWidth/2-75,250,100,50);
 					
-			case 2: //sets color of quit button
+			case 1: //sets color of quit button
 					g.setColor(Color.red);
 					g.fillRect(screenWidth/2-75,350,100,50);
 					
-			case 3: //2d graphics for buttons
+			case 2: //2d graphics for buttons
 					Graphics2D g2d = (Graphics2D) g;
 					
 					//Title 
@@ -56,11 +56,11 @@ public class Menu  extends View{
 					Font fnt1 = new Font("arial",Font.BOLD,20); //font,bold,size
 					g.setFont(fnt1);
 					g.drawString("Play",playButton.x+30,playButton.y+32);
-					g.drawString("Tutorial",tutorialButton.x+15,tutorialButton.y+32);
+//					g.drawString("Tutorial",tutorialButton.x+15,tutorialButton.y+32);
 					g.drawString("Quit",quitButton.x+30,quitButton.y+32);
 	
 					g2d.draw(playButton);
-					g2d.draw(tutorialButton);
+//					g2d.draw(tutorialButton);
 					g2d.draw(quitButton);
 			}
 		}
