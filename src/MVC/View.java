@@ -201,6 +201,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 
 		//if in GAME state
 		if(State == STATE.GAME) {
+			//Tutorial
 			if(level == 0) {
 				nativePlants.clear();
 				invasivePlants.clear();
@@ -209,7 +210,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 				g2d.drawImage(scaled_bg_img, 0, 0, null);
 				g2d.drawImage(tutorialNote1, 50, 50, null);
 				g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
-			// need reset
+				// need reset
 				
 				// draw each of the game objects
 				for (GroundPatch gr : groundList) {
@@ -230,10 +231,10 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			
 				
 			}
-			else if(level == 1) {
-				
+			else if(level <=3 && level !=0) {
+		
 			g2d.drawImage(scaled_bg_img, 0, 0, null);
-	
+			
 			// draw each of the game objects
 			for (GroundPatch gr : groundList) {
 				g2d.drawImage(groundimg, gr.getXloc(), gr.getYloc(), null);
@@ -247,8 +248,10 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			for (NativePlant n : nativePlants) {
 				g2d.drawImage(nplantimg, n.getXloc(), n.getYloc(), null);
 			}	
+			
 			//draw the playerimage
 			g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
+			
 			}
 		
 		}else if(State ==STATE.MENU) {//if game state is not in game,draw menu
@@ -323,7 +326,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		{
 			control.click(mx,my);
 		}	 
-			System.out.println("Mouse clicked");
+			//System.out.println("Mouse clicked");
 	
 	}
 
@@ -410,7 +413,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		// TODO Auto-generated method stub
 		control.key(e);
 	 
-		System.out.println("Key pressed");
+		//System.out.println("Key pressed");
 	
 	}
 
@@ -422,8 +425,11 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println("Key pressed");
+		//System.out.println("Key pressed");
 		control.key(e);
+		
+	//	int s = e.getKeyCode();
+	
 	}
 	
 	public void drawEndScreen() {

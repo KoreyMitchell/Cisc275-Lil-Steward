@@ -59,7 +59,6 @@ public class Model {
 
 		GroundPatch g = new GroundPatch(player.getXloc(), player.getYloc());
 		if (groundList.contains(g)&&g.equals(player)) {
-			System.out.println("You can plant here!");
 			// add new plant to the list of native plants
 			
 			NativePlant n = new NativePlant(player.getXloc(), player.getYloc());
@@ -82,15 +81,16 @@ public class Model {
 	}
 
 	public void checkLvlUp() {
-		System.out.println("Levelup checked");
+		//System.out.println("Levelup checked");
 		if (groundList.isEmpty() && invasivePlants.isEmpty()) {
-			if (level < 3) {
-				System.out.println(invasivePlants.isEmpty());
+			if (level <= 3) {
+				//System.out.println(invasivePlants.isEmpty());
 				levelPreset(level);
-				System.out.println(invasivePlants.isEmpty());
+				//System.out.println(invasivePlants.isEmpty());
 				level++;
 				//break;
 			} else {
+				System.out.println("Level " + level + " end game");
 				win = true;
 			}
 		}
@@ -100,7 +100,7 @@ public class Model {
 		switch (lvl) {
 		case 0: {
 			// TODO: tutorial mode
-			System.out.println("Tutorial mode selected");
+			System.out.println("Level " +level +" selected");
 			Obstacle ob1 = new Obstacle(90, 90);
 			obstacleList.add(ob1);
 			InvasivePlant inv1 = new InvasivePlant(300, 100);
@@ -110,9 +110,9 @@ public class Model {
 
 		case 1: {
 			// TODO: level one
-			System.out.println("Level one selected");
+			System.out.println("Level " +level +" selected");
 			// board conditions at start
-			for(int i = 0; i<24;i++) {
+			for(int i = 0; i<2;i++) {
 			GroundPatch grp1 = new GroundPatch(20, 120*i);
 			
 			groundList.add(grp1);
@@ -135,7 +135,7 @@ public class Model {
 		}
 		case 2: {
 			// TODO: level two
-			System.out.println("Level two selected" + screenHeight);
+			System.out.println("Level " +level +" selected");
 
 			for (int i = 0; i < 15; i++) {
 				GroundPatch grp1 = new GroundPatch(20 * i, 30 * i);
@@ -165,14 +165,16 @@ public class Model {
 				
 				InvasivePlant inv1 = new InvasivePlant(25 * i, 13 * i);
 				invasivePlants.add(inv1);
+				break;
+
 			}
-			break;
 		}
 		case 3: {
 			// TODO: level three
-			System.out.println("Level three selected");
-			levelPreset(2);
-			
+			System.out.println("Level " +level +" selected");
+			InvasivePlant inv1 = new InvasivePlant(10, 10);
+			invasivePlants.add(inv1);
+
 			break;
 		}
 
@@ -234,7 +236,7 @@ public class Model {
 		}
 
 		if (obstacleList.contains(o)||outBound) {
-			System.out.println("You can't move there");
+			//System.out.println("You can't move there");
 
 		} 
 		
@@ -264,7 +266,7 @@ public class Model {
 		// if the list of obstacles contains an obstacle with the x and y given, the
 		// player cannot move there
 		if (obstacleList.contains(o)) {
-			System.out.println("You hit an obstacle");
+			//System.out.println("You hit an obstacle");
 			return false;
 		}
 		// if not, the player can move
