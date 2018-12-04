@@ -41,8 +41,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	int screenHeight = (int) screenSize.getHeight();
 	int screenWidth = screenSize.getSize().width;
 	
-	int plantedCount = 0;
-	int plantsRemoved = 0;
+	static int plantedCount = 0;
+	static int plantsRemoved = 0;
 	int manFrameCountRight = 0;
 	
 	int level = 0;
