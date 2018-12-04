@@ -72,6 +72,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	//EndScreen
 	private EndScreen endScreen;
+	//TEST
+	private EndGameTest test;
 	
 	ToolBar toolbar;
     
@@ -145,6 +147,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	public enum STATE{
 		MENU,
 		GAME,
+		TEST,
 		END
 	};
 	
@@ -189,7 +192,11 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			//Create a new Menu
 			menu= new Menu();
 			
+			//create a a new endgame test
+			test  = new  EndGameTest();
+			
 			//toolbar = new ToolBar();
+			
 			endScreen = new EndScreen();
 	}
 
@@ -251,6 +258,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
 			}
 		
+		}else if (State == STATE.TEST) {
+			g2d.drawImage(scaled_bg_img_menu, 0, 0, null);
+			//test.EndGameTest();
 		}else if(State ==STATE.MENU) {//if game state is not in game,draw menu
 			g2d.drawImage(scaled_bg_img_menu, 0, 0, null);
 			menu.renderMenu(g);
