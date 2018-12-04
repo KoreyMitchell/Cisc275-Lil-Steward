@@ -20,6 +20,9 @@ public class EndScreen extends View{
 		g.setFont(fnt0);		
 		g.setColor(Color.RED);
 		g.drawString("Congratulations",screenWidth/2-150,100 );
+		g.drawString("Game Over!",screenWidth/2-150,100 );
+		g.drawString("You planted " + plantedCount + " native plants!", screenWidth/2-150,300);
+		g.drawString("You removed " + plantsRemoved + " invasive plants!", screenWidth/2-150,500);
 		
 	}
 	
