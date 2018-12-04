@@ -27,7 +27,6 @@ public EndGameTest() {
 super("Test your Knowledge");
 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
 setLayout(new FlowLayout());
 Container c = getContentPane();
 
