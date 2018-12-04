@@ -29,7 +29,7 @@ public class Model {
 		tool = new Tool(false);
 		plantsPlanted = 0;
 		plantsRemoved = 0;
-		level =1;
+		level = 0;
 
 		// levelPreset(level);
 	}
@@ -108,15 +108,21 @@ public class Model {
 			Obstacle ob1 = new Obstacle(90, 90);
 			obstacleList.add(ob1);
 			InvasivePlant inv1 = new InvasivePlant(300, 100);
+			InvasivePlant inv2 = new InvasivePlant(400, 100);
 			invasivePlants.add(inv1);
+			invasivePlants.add(inv2);
 			break;
 		}
 
 		case 1: {
+			nativePlants.clear();
+			invasivePlants.clear();
+			groundList.clear();
+			obstacleList.clear();
 			// TODO: level one
 			System.out.println("Level one selected");
 			// board conditions at start
-			for(int i = 0; i<24;i++) {
+			for(int i = 0; i<3;i++) {
 			GroundPatch grp1 = new GroundPatch(20, 120*i);
 			
 			groundList.add(grp1);
