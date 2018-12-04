@@ -41,7 +41,7 @@ public class Menu  extends View{
 					
 			case 1: //sets color of quit button
 					g.setColor(Color.red);
-					g.fillRect(screenWidth/2-75,200,100,50);
+					g.fillRect(screenWidth/2-75,300,100,50);
 					
 			case 2: //2d graphics for buttons
 					Graphics2D g2d = (Graphics2D) g;
