@@ -18,10 +18,10 @@ public class EndScreen extends View{
 		//Title 
 		Font fnt0 = new Font("arial",Font.BOLD,50); //font,bold,size		
 		g.setFont(fnt0);		
-		g.setColor(Color.RED);
-		g.drawString("Congratulations!",screenWidth/2-150,100 );
-		g.drawString("You planted " + plantedCount + " native plants!", screenWidth/2-150,300);
-		g.drawString("You removed " + plantsRemoved + " invasive plants!", screenWidth/2-150,500);
+		g.setColor(Color.WHITE);
+		g.drawString("Congratulations!",screenWidth/2,100 );
+		g.drawString("You planted " + plantedCount + " native plants!", screenWidth/2,300);
+		g.drawString("You removed " + plantsRemoved + " invasive plants!", screenWidth/2,500);
 		
 	}
 	
