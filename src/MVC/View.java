@@ -390,13 +390,13 @@ public class View extends JPanel implements MouseListener, KeyListener{
 				level = 1;
 				View.State = View.STATE.GAME;
 			}
-			//second button
-			if(my >= 280 && my <= 330)
-			{
-				//Pressed tutorial button
-				level = 0;
-				View.State = View.STATE.GAME;
-			}
+// 			//second button
+// 			if(my >= 280 && my <= 330)
+// 			{
+// 				//Pressed tutorial button
+// 				level = 0;
+// 				View.State = View.STATE.GAME;
+// 			}
 			//third button
 			if(my >= 380 && my <= 430)
 			{
