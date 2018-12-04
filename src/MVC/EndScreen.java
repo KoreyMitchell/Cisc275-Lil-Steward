@@ -22,6 +22,7 @@ public class EndScreen extends View{
 		g.drawString("Congratulations!",screenWidth/2,100 );
 		g.drawString("You planted " + plantedCount + " native plants!", screenWidth/2,300);
 		g.drawString("You removed " + plantsRemoved + " invasive plants!", screenWidth/2,500);
+		g.drawString("Play again", screenWidth/2,800);
 		
 	}
 	
