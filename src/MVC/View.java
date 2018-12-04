@@ -45,7 +45,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	int plantsRemoved = 0;
 	int manFrameCountRight = 0;
 	
-	int level = 0;
+	int level;
 
 	Image playerimgFront;
 	Image playerimgBack;
@@ -206,12 +206,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 
 		//if in GAME state
 		if(State == STATE.GAME) {
-			//Tutorial
+			level=0;
 			if(level == 0) {
-				nativePlants.clear();
-				invasivePlants.clear();
-				groundList.clear();
-				obstacleList.clear();
+			
 				g2d.drawImage(scaled_bg_img, 0, 0, null);
 				g2d.drawImage(tutorialNote1, 50, 50, null);
 				g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);

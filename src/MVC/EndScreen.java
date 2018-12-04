@@ -19,7 +19,7 @@ public class EndScreen extends View{
 		Font fnt0 = new Font("arial",Font.BOLD,50); //font,bold,size		
 		g.setFont(fnt0);		
 		g.setColor(Color.RED);
-		g.drawString("Game Over Loser",screenWidth/2-150,100 );
+		g.drawString("Congratulations",screenWidth/2-150,100 );
 		
 	}
 	
