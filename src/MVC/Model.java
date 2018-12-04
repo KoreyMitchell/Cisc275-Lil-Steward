@@ -86,7 +86,7 @@ public class Model {
 			if (level <= 3) {
 				//System.out.println(invasivePlants.isEmpty());
 				levelPreset(level);
-				//System.out.println(invasivePlants.isEmpty());
+				System.out.println("Level "+level+" complete");
 				level++;
 				//break;
 			} else {
@@ -104,7 +104,7 @@ public class Model {
 			invasivePlants.clear();
 			groundList.clear();
 			obstacleList.clear();
-			System.out.println("Tutorial mode selected");
+			System.out.println("Level " +level +" selected");
 			Obstacle ob1 = new Obstacle(90, 90);
 			obstacleList.add(ob1);
 			InvasivePlant inv1 = new InvasivePlant(300, 100);
