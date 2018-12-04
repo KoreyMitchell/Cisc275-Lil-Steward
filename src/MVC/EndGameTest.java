@@ -5,8 +5,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 
 
 public class EndGameTest extends JFrame {
@@ -139,7 +137,8 @@ private class answerButtonHandler implements ActionListener {
 
 public static void main(String args[]) {
 
- EndGameTest tester = new EndGameTest();
+ @SuppressWarnings("unused")
+EndGameTest tester = new EndGameTest();
 
 }
 }

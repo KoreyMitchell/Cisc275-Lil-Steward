@@ -10,7 +10,7 @@ public class PlayerCharacter extends GameObject{
 	PlayerCharacter(){
 		setXloc(10);
 		setYloc(10);
-		Direction d = Direction.SOUTH;
+		//Direction d = Direction.SOUTH;
 		setImic(new ImageIcon("images/Person_FRONT.png"));
 	}
 	

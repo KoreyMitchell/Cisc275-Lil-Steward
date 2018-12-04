@@ -1,6 +1,5 @@
 package MVC;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -8,27 +7,26 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JToolBar;
-import javax.swing.border.Border;
 
 public class View extends JPanel implements MouseListener, KeyListener{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	PlayerCharacter player;
 	ArrayList<NativePlant> nativePlants;
 	ArrayList<InvasivePlant> invasivePlants;
@@ -36,7 +34,6 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	ArrayList<Obstacle> obstacleList;
 	Tool tool;
 	Controller control;
-	ArrayList<Integer> keys=new ArrayList();
 	
 	JFrame frame;
 	
@@ -73,7 +70,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	//EndScreen
 	private EndScreen endScreen;
 	//TEST
-	private EndGameTest test;
+	//private EndGameTest test;
 	
 	ToolBar toolbar;
     
@@ -156,6 +153,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	//Initialize state to Menu, to skip menu for testing change state to GAME
 	public static STATE State = STATE.MENU;
 
+	@SuppressWarnings("static-access")
 	public void initialize() {
 		// this method was meant to add the Controller listeners to View, but we're
 		// changing it so that the Listeners are in the View instead
@@ -193,7 +191,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			menu= new Menu();
 			
 			//create a a new endgame test
-			test  = new  EndGameTest();
+			//test  = new  EndGameTest();
 			
 			//toolbar = new ToolBar();
 			

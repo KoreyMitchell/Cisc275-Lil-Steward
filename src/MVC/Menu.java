@@ -1,28 +1,16 @@
 package MVC;
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GridLayout;
 import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 public class Menu  extends View{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//initialize buttons, (x,y,w,h)
 	public Rectangle playButton = new Rectangle(screenWidth/2-75,200,100,50);
 //	public Rectangle tutorialButton = new Rectangle(screenWidth/2-75,250,100,50);
