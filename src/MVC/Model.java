@@ -100,7 +100,11 @@ public class Model {
 		switch (lvl) {
 		case 0: {
 			// TODO: tutorial mode
-			System.out.println("Level " +level +" selected");
+			nativePlants.clear();
+			invasivePlants.clear();
+			groundList.clear();
+			obstacleList.clear();
+			System.out.println("Tutorial mode selected");
 			Obstacle ob1 = new Obstacle(90, 90);
 			obstacleList.add(ob1);
 			InvasivePlant inv1 = new InvasivePlant(300, 100);
@@ -331,6 +335,7 @@ public class Model {
 			}
 		}
 
+		sc.close();
 	}
 
 }
