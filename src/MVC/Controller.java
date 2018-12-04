@@ -51,6 +51,9 @@ public class Controller {
 		
 		
 	}
+	public void syncModelToView(View v) {
+		model.setLevel(v.level);
+	}
 	
 
 	
