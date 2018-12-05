@@ -11,6 +11,7 @@ boolean passedTest = false;
 private static final long serialVersionUID = 1L;
 
 public JFrame f;
+
 public JTextField userInput;
 public JTextField userInput1;
 public JTextField userInput2;
