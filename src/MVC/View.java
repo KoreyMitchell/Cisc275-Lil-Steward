@@ -9,6 +9,7 @@ import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -41,7 +42,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	int screenHeight = (int) screenSize.getHeight();
-	int screenWidth = screenSize.getSize().width;
+	int screenWidth = (int) screenSize.width;
 	
 	static int plantedCount = 0;
 	static int plantsRemoved = 0;
@@ -74,6 +75,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	//private EndGameTest test;
 	
 	ToolBar toolbar;
+	Menu menu;
     
 	//TODO: Will use these to check for multiple key presses
 	boolean isUpPressed, isDownPressed, isRightPressed,isLeftPressed;
@@ -389,38 +391,26 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		System.out.println(screenWidth);
 		int mx = e.getX();	//x value of mouse
 		int my = e.getY();	//y value of mouse
-
-		/*
-		 * 	public Rectangle playButton = new Rectangle(screenWidth/2-35,150,100,50);
-			public Rectangle quitButton = new Rectangle(screenWidth/2-35,250,100,50);
-			public Rectangle anotherButton = new Rectangle(screenWidth/2-35,350,100,50);
-		 */
-
-		
+	
+//		 	Rectangle playButton = new Rectangle(screenWidth/2-35,150,100,50);
+//			Rectangle quitButton = new Rectangle(screenWidth/2-35,250,100,50);
+//			Rectangle anotherButton = new Rectangle(screenWidth/2-35,350,100,50);
+			
 		if(State == STATE.MENU) {
-		if(mx >= 165 && mx <= 386 )
+			menu.renderMenu(g);
+		if(mx <= screenWidth/2 )
 
 		{	//first button
-			if(my >= 308 && my <= 386)
+			if((my <= screenHeight/2)&&(my>=(screenHeight/2)-150))
 			{
 				System.out.print(mx + " " +  my);
 				//Pressed play button
 				level = 0;
 				View.State = View.STATE.GAME;
 			}
-<<<<<<< HEAD
-// 			//second button
-// 			if(my >= 280 && my <= 330)
-// 			{
-// 				//Pressed tutorial button
-// 				level = 0;
-// 				View.State = View.STATE.GAME;
-// 			}
-			//third button
-=======
+
 			//second button
->>>>>>> 3968f21948e3c01e35b257d57800277f535e35f3
-			if(my >= 423 && my <= 501)
+			if(my >= screenHeight/2)
 			{
 				//Pressed other button
 				System.exit(1);
