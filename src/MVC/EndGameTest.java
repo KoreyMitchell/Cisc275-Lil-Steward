@@ -8,10 +8,10 @@ import java.awt.event.ActionListener;
 public class EndGameTest extends JFrame {
 
 private static final long serialVersionUID = 1L;
-
-private JTextField userInput;
-private JTextField userInput1;
-private JTextField userInput2;
+public JFrame f;
+public JTextField userInput;
+public JTextField userInput1;
+public JTextField userInput2;
 
 Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 int screenHeight = (int) screenSize.getHeight();
@@ -25,7 +25,7 @@ int aCounter = 0; //counter for correct answers
 public EndGameTest() {
 super("Test your Knowledge");
 
-JFrame f = new JFrame();
+f = new JFrame();
 f.setLayout(new BorderLayout());
 
 JPanel p = new JPanel(new GridLayout(10,10));
@@ -69,10 +69,10 @@ p.add(userInput2);
 f.add(p, BorderLayout.CENTER);
 
 
-setSize(screenSize);
-setLocationRelativeTo(null);
-setVisible(true);
-setResizable(false);
+f.setSize(screenSize);
+f.setLocationRelativeTo(null);
+f.setVisible(true);
+f.setResizable(false);
 
 
 d.addActionListener(new answerButtonHandler());
