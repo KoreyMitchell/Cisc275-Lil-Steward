@@ -6,17 +6,28 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Menu.
+ */
 public class Menu  extends View{
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/** The play button. */
 	//initialize buttons, (x,y,w,h)
 	public Rectangle playButton = new Rectangle(screenWidth/5,screenHeight/3,200,75);
+	
+	/** The quit button. */
 	//public Rectangle tutorialButton = new Rectangle(screenWidth/2-75,250,100,50);
 	public Rectangle quitButton = new Rectangle(screenWidth/5,screenHeight/4*2,200,75);
 
+	/**
+	 * Render menu.
+	 *
+	 * @param g the g
+	 */
 	public void renderMenu(Graphics g) {
 		for (int i =0; i<=2; i++) {
 			switch (i){

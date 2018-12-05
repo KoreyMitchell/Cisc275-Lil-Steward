@@ -23,66 +23,134 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class View.
+ */
 public class View extends JPanel implements MouseListener, KeyListener{
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/** The player. */
 	PlayerCharacter player;
+	
+	/** The native plants. */
 	ArrayList<NativePlant> nativePlants;
+	
+	/** The invasive plants. */
 	ArrayList<InvasivePlant> invasivePlants;
+	
+	/** The ground list. */
 	ArrayList<GroundPatch> groundList;
+	
+	/** The obstacle list. */
 	ArrayList<Obstacle> obstacleList;
+	
+	/** The tool. */
 	Tool tool;
+	
+	/** The control. */
 	Controller control;
 	
+	/** The frame. */
 	JFrame frame;
 	
+	/** The screen size. */
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	
+	/** The screen height. */
 	int screenHeight = (int) screenSize.getHeight();
+	
+	/** The screen width. */
 	int screenWidth = screenSize.getSize().width;
 	
+	/** The planted count. */
 	static int plantedCount = 0;
+	
+	/** The plants removed. */
 	static int plantsRemoved = 0;
+	
+	/** The man frame count right. */
 	int manFrameCountRight = 0;
 	
+	/** The level. */
 	int level = 0;
 
+	/** The playerimg front. */
 	Image playerimgFront;
+	
+	/** The playerimg back. */
 	Image playerimgBack;
+	
+	/** The playerimg right. */
 	Image playerimgRight;
+	
+	/** The playerimg left. */
 	Image playerimgLeft;
+	
+	/** The playerimg. */
 	Image playerimg;
+	
+	/** The groundimg. */
 	Image groundimg;
+	
+	/** The nplantimg. */
 	Image nplantimg;
+	
+	/** The iplantimg. */
 	Image iplantimg;
+	
+	/** The rockimg. */
 	Image rockimg;
+	
+	/** The backgroundimg. */
 	Image backgroundimg;
+	
+	/** The scaled bg img. */
 	Image scaled_bg_img;
+	
+	/** The menuimg. */
 	Image menuimg;
+	
+	/** The scaled bg img menu. */
 	Image scaled_bg_img_menu;
+	
+	/** The tutorial note 1. */
 	Image tutorialNote1;
+	
+	/** The tutorial note 2. */
 	Image tutorialNote2;
 	
+	/** The g. */
 	Graphics g;
 	
+	/** The menu. */
 	//Menu
 	private Menu menu;
 	
+	/** The end screen. */
 	//EndScreen
 	private EndScreen endScreen;
 	//TEST
 	//private EndGameTest test;
 	
+	
+	/** The toolbar. */
 	ToolBar toolbar;
     
+	/** The is left pressed. */
 	//TODO: Will use these to check for multiple key presses
 	boolean isUpPressed, isDownPressed, isRightPressed,isLeftPressed;
+	
+	/** The key array. */
 	boolean[] keyArray = new boolean[4];
 	
     
 	
+	/**
+	 * Instantiates a new view.
+	 */
 	public View() {
 		player = new PlayerCharacter();
 		nativePlants = new ArrayList<NativePlant>();
@@ -135,6 +203,13 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		scaled_bg_img_menu = menuimg.getScaledInstance(screenWidth, screenHeight, Image.SCALE_DEFAULT);   
 	}
 	
+	/**
+	 * Paint planted info.
+	 *
+	 * @param plantedCount the planted count
+	 * @param x the x
+	 * @param y the y
+	 */
 	public void paintPlantedInfo(int plantedCount,int x, int y) {
 	    final JOptionPane pane = new JOptionPane("You've planted " + plantedCount + " native plants and removed " + plantsRemoved + " invasive Phragmites plants!");
 	    final JDialog d = pane.createDialog((JFrame)null, "New Message!");
@@ -146,19 +221,35 @@ public class View extends JPanel implements MouseListener, KeyListener{
 //                JOptionPane.PLAIN_MESSAGE);
 		
 	}
+	
+	/**
+	 * The Enum STATE.
+	 */
 	//state of game
 	public enum STATE{
+		
+		/** The menu. */
 		MENU,
+		
+		/** The game. */
 		GAME,
+		
+		/** The test. */
 		TEST,
+		
+		/** The end. */
 		END
 	};
 	
 	
 	
+	/** The State. */
 	//Initialize state to Menu, to skip menu for testing change state to GAME
 	public static STATE State = STATE.MENU;
 
+	/**
+	 * Initialize.
+	 */
 	@SuppressWarnings("static-access")
 	public void initialize() {
 		// this method was meant to add the Controller listeners to View, but we're
@@ -213,6 +304,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			endScreen = new EndScreen();
 	}
 
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
@@ -282,51 +376,94 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		
 	}
 	
+	/**
+	 * Sets the level.
+	 *
+	 * @param lev the new level
+	 */
 	//set view's level to match model's
 	public void setLevel(int lev) {
 		level = lev;
 	}
 	
+	/**
+	 * Sets the control.
+	 *
+	 * @param c the new control
+	 */
 	//set view's controller to match input controller
 	public void setControl(Controller c) {
 		control = c;
 	}
 
+	/**
+	 * Sets the player.
+	 *
+	 * @param p the new player
+	 */
 	// set player location to match input player
 	public void setPlayer(PlayerCharacter p) {
 		player.setXloc(p.getXloc());
 		player.setYloc(p.getYloc());
 	}
 
+	/**
+	 * Sets the native plants.
+	 *
+	 * @param n the new native plants
+	 */
 	// set list of native plants to input
 	public void setNativePlants(ArrayList<NativePlant> n) {
 		nativePlants.clear();
 		nativePlants.addAll(n);
 	}
 
+	/**
+	 * Sets the invasive plants.
+	 *
+	 * @param in the new invasive plants
+	 */
 	// set list of invasive plants to input
 	public void setInvasivePlants(ArrayList<InvasivePlant> in) {
 		invasivePlants.clear();
 		invasivePlants.addAll(in);
 	}
 
+	/**
+	 * Sets the patches.
+	 *
+	 * @param g the new patches
+	 */
 	// set list of plantable ground to input
 	public void setPatches(ArrayList<GroundPatch> g) {
 		groundList.clear();
 		groundList.addAll(g);
 	}
 
+	/**
+	 * Sets the obstacles.
+	 *
+	 * @param o the new obstacles
+	 */
 	// set obstacles to input
 	public void setObstacles(ArrayList<Obstacle> o) {
 		obstacleList.clear();
 		obstacleList.addAll(o);
 	}
 
+	/**
+	 * Sets the tool.
+	 *
+	 * @param t the new tool
+	 */
 	// set tool to input
 	public void setTool(Tool t) {
 		tool = t;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -353,36 +490,65 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	}
 
+	/**
+	 * Gets the planted count.
+	 *
+	 * @return the planted count
+	 */
 	public int getPlantedCount() {
 		return plantedCount;
 	}
 
+	/**
+	 * Sets the planted count.
+	 *
+	 * @param plantedCount the new planted count
+	 */
 	public void setPlantedCount(int plantedCount) {
 		this.plantedCount = plantedCount;
 	}
 
+	/**
+	 * Gets the plants removed.
+	 *
+	 * @return the plants removed
+	 */
 	public int getPlantsRemoved() {
 		return plantsRemoved;
 	}
 
+	/**
+	 * Sets the plants removed.
+	 *
+	 * @param plantsRemoved the new plants removed
+	 */
 	public void setPlantsRemoved(int plantsRemoved) {
 		this.plantsRemoved = plantsRemoved;
 }
 		
 	
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -419,12 +585,18 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
+	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
@@ -434,11 +606,17 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
+	 */
 	@Override
 	public void keyReleased(KeyEvent e) {
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
+	 */
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
@@ -446,6 +624,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		control.key(e);
 	}
 	
+	/**
+	 * Draw end screen.
+	 */
 	public void drawEndScreen() {
 		
 		super.paintComponent(g);
@@ -455,6 +636,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		g.drawString("Game Over",screenWidth/2-150,100 );
 	}
 	
+/**
+ * Prints the stuff.
+ */
 //**-------------------------------Testing-----------------------------------------------**//
 	public void printStuff() {
 		// For testing purposes: prints the location of all the objects to console

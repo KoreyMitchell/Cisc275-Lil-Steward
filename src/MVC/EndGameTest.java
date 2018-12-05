@@ -5,23 +5,51 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EndGameTest.
+ */
 public class EndGameTest extends JFrame {
 
+/** The Constant serialVersionUID. */
 private static final long serialVersionUID = 1L;
+
+/** The f. */
 public JFrame f;
+
+/** The user input. */
 public JTextField userInput;
+
+/** The user input 1. */
 public JTextField userInput1;
+
+/** The user input 2. */
 public JTextField userInput2;
 
+/** The screen size. */
 Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+/** The screen height. */
 int screenHeight = (int) screenSize.getHeight();
+
+/** The screen width. */
 int screenWidth = screenSize.getSize().width;
 
+/** The question. */
 public int question=1;
+
+/** The answer. */
 String answer; //correct answer to the questions
+
+/** The counter. */
 int counter =0; //counter for tries it takes to answer all questions
+
+/** The a counter. */
 int aCounter = 0; //counter for correct answers
 
+/**
+ * Instantiates a new end game test.
+ */
 public EndGameTest() {
 super("Test your Knowledge");
 
@@ -80,6 +108,11 @@ d.addActionListener(new answerButtonHandler());
 }
 
 
+/**
+ * Change answer.
+ *
+ * @return the string
+ */
 public String changeAnswer() {
 	switch (question) {
 	case 1:
@@ -101,7 +134,14 @@ public String changeAnswer() {
 	return answer;
 }
 
+/**
+ * The Class answerButtonHandler.
+ */
 private class answerButtonHandler implements ActionListener {
+	
+	/* (non-Javadoc)
+	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	 */
 	public void actionPerformed(ActionEvent e) {
 
 		String getUserInput;
@@ -147,6 +187,11 @@ private class answerButtonHandler implements ActionListener {
 }
 
 
+/**
+ * The main method.
+ *
+ * @param args the arguments
+ */
 public static void main(String args[]) {
 
  @SuppressWarnings("unused")

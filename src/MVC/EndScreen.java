@@ -8,14 +8,26 @@ import java.awt.Rectangle;
 
 import javax.swing.JFrame;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EndScreen.
+ */
 public class EndScreen extends View{
 	
 //	Rectangle plantedRec = new Rectangle( screenWidth/2-410,250,685,60);
 //	Rectangle PlayRec = new Rectangle(screenWidth/2-410,450,765,60);
 	
-	private static final long serialVersionUID = 1L;
+	/** The Constant serialVersionUID. */
+private static final long serialVersionUID = 1L;
+	
+	/** The f. */
 	JFrame f;
 
+	/**
+	 * Render.
+	 *
+	 * @param g the g
+	 */
 	public void render(Graphics g) {
 		//g.drawImage(scaled_bg_img, 0, 0, null);
 		Graphics2D g2d= (Graphics2D) g;

@@ -5,24 +5,63 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Model.
+ */
 public class Model {
+	
+	/** The player. */
 	PlayerCharacter player;
+	
+	/** The native plants. */
 	ArrayList<NativePlant> nativePlants;
+	
+	/** The invasive plants. */
 	ArrayList<InvasivePlant> invasivePlants;
+	
+	/** The ground list. */
 	ArrayList<GroundPatch> groundList;
+	
+	/** The obstacle list. */
 	ArrayList<Obstacle> obstacleList;
+	
+	/** The tool. */
 	Tool tool;
+	
+	/** The plants planted. */
 	int plantsPlanted;
+	
+	/** The plants removed. */
 	int plantsRemoved;
+	
+	/** The win. */
 	boolean win = false;
+	
+	/** The level. */
 	int level;
+	
+	/** The screen height. */
 	int screenHeight;
+	
+	/** The screen width. */
 	int screenWidth;
+	
+	/** The random 1. */
 	Random random1;
+	
+	/** The random 2. */
 	Random random2;
+	
+	/** The randomx. */
 	int randomx;
+	
+	/** The randomy. */
 	int randomy;
 
+	/**
+	 * Instantiates a new model.
+	 */
 	Model() {
 		// initialize local variables
 		player = new PlayerCharacter();
@@ -38,26 +77,57 @@ public class Model {
 		// levelPreset(level);
 	}
 	
+	/**
+	 * Sets the level.
+	 *
+	 * @param lev the new level
+	 */
 	public void setLevel(int lev) {
 		level = lev;
 	}
 
+	/**
+	 * Gets the screen height.
+	 *
+	 * @return the screen height
+	 */
 	public int getScreenHeight() {
 		return screenHeight;
 	}
 
+	/**
+	 * Sets the screen height.
+	 *
+	 * @param screenHeight the new screen height
+	 */
 	public void setScreenHeight(int screenHeight) {
 		this.screenHeight = screenHeight;
 	}
 
+	/**
+	 * Gets the screen width.
+	 *
+	 * @return the screen width
+	 */
 	public int getScreenWidth() {
 		return screenWidth;
 	}
 
+	/**
+	 * Sets the screen width.
+	 *
+	 * @param screenWidth the new screen width
+	 */
 	public void setScreenWidth(int screenWidth) {
 		this.screenWidth = screenWidth;
 	}
 
+	/**
+	 * Adds the native plant.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 */
 	public void addNativePlant(int x, int y) {
 		// only plant if there is an unplanted patch of ground at this x and y
 
@@ -74,6 +144,12 @@ public class Model {
 		}
 	}
 
+	/**
+	 * Removes the invasive plant.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 */
 	public void removeInvasivePlant(int x, int y) {
 		// removes an InvasivePlant with the x and y specified from the list of
 		// invasive plants
@@ -85,6 +161,9 @@ public class Model {
 
 	}
 
+	/**
+	 * Check lvl up.
+	 */
 	public void checkLvlUp() {
 		System.out.println("Levelup checked: Level is: "+level);
 		if (groundList.isEmpty() && invasivePlants.isEmpty()) {
@@ -99,6 +178,10 @@ public class Model {
 			}
 		}
 	}
+	
+	/**
+	 * Escape reset.
+	 */
 	public void escapeReset() {
 		nativePlants.clear();
 		invasivePlants.clear();
@@ -108,6 +191,11 @@ public class Model {
 		player.setYloc(10);
 	}
 
+	/**
+	 * Level preset.
+	 *
+	 * @param lvl the lvl
+	 */
 	public void levelPreset(int lvl) {
 		switch (lvl) {
 		case 0: {
@@ -237,6 +325,11 @@ public class Model {
 		}
 	}
 	
+	/**
+	 * Check and move.
+	 *
+	 * @param e the e
+	 */
 	//Checks for obstacles 
 	public void checkAndMove(KeyEvent e) {
 		// TODO Make character move diagonally
@@ -305,6 +398,12 @@ public class Model {
 
 
 //**----------------------------For testing-----------------------------------**//
+/**
+ * Check move.
+ *
+ * @param s the s
+ * @return true, if successful
+ */
 //**--------------------------------------------------------------------------**//
 	public boolean checkMove(String s) {
 		// checks to see if player's move is valid
@@ -330,6 +429,11 @@ public class Model {
 
 	}
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		Model m = new Model();
 		// Use a loop and a scanner class that takes input of arrow keys to make test
