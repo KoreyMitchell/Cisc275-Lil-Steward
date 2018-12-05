@@ -157,14 +157,10 @@ public class Model {
 		}
 		case 2: {
 			// TODO: level two
-<<<<<<< HEAD
-			System.out.println("Level " +level +" selected");
 
-=======
 			System.out.println("Level two selected" + screenHeight);
 			player.setXloc(0);
 			player.setYloc(0);
->>>>>>> 8a9cf95ff9bb4a16bb871bce7886ed9578341f95
 			for (int i = 0; i < 15; i++) {
 				GroundPatch grp1 = new GroundPatch(20 * i, 30 * i);
 				groundList.add(grp1);
@@ -199,18 +195,12 @@ public class Model {
 		}
 		case 3: {
 			// TODO: level three
-<<<<<<< HEAD
-			System.out.println("Level " +level +" selected");
-			InvasivePlant inv1 = new InvasivePlant(10, 10);
-			invasivePlants.add(inv1);
 
-=======
 			System.out.println("Level three selected");
 			player.setXloc(0);
 			player.setYloc(0);
 			levelPreset(2);
 			
->>>>>>> 8a9cf95ff9bb4a16bb871bce7886ed9578341f95
 			break;
 		}
 

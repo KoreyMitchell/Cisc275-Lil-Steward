@@ -374,6 +374,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
+		System.out.println(screenWidth);
 		int mx = e.getX();	//x value of mouse
 		int my = e.getY();	//y value of mouse
 
