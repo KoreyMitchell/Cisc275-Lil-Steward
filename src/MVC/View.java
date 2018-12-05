@@ -9,7 +9,6 @@ import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -42,13 +41,13 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 	int screenHeight = (int) screenSize.getHeight();
-	int screenWidth = (int) screenSize.width;
+	int screenWidth = screenSize.getSize().width;
 	
 	static int plantedCount = 0;
 	static int plantsRemoved = 0;
 	int manFrameCountRight = 0;
 	
-	int level;
+	int level = 0;
 
 	Image playerimgFront;
 	Image playerimgBack;
@@ -75,7 +74,6 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	//private EndGameTest test;
 	
 	ToolBar toolbar;
-	Menu menu;
     
 	//TODO: Will use these to check for multiple key presses
 	boolean isUpPressed, isDownPressed, isRightPressed,isLeftPressed;
@@ -219,15 +217,13 @@ public class View extends JPanel implements MouseListener, KeyListener{
 
 		//if in GAME state
 		if(State == STATE.GAME) {
-			level=0;
 			if(level == 0) {
-			
 				g2d.drawImage(scaled_bg_img, 0, 0, null);
 				g2d.drawImage(tutorialNote1, screenWidth-500, 10, null);
 				g2d.drawImage(tutorialNote2, screenWidth-500, 350, null);
 				
 				g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
-				// need reset
+			// need reset
 				
 				// draw each of the game objects
 				for (GroundPatch gr : groundList) {
@@ -249,10 +245,10 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			
 				
 			}
-			else if(level <=3 && level !=0) {
-		
+			else if(level == 1) {
+				
 			g2d.drawImage(scaled_bg_img, 0, 0, null);
-			
+	
 			// draw each of the game objects
 			for (GroundPatch gr : groundList) {
 				g2d.drawImage(groundimg, gr.getXloc(), gr.getYloc(), null);
@@ -266,10 +262,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			for (NativePlant n : nativePlants) {
 				g2d.drawImage(nplantimg, n.getXloc(), n.getYloc(), null);
 			}	
-			
 			//draw the playerimage
 			g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
-			
 			}
 		
 		}else if (State == STATE.TEST) {
@@ -347,7 +341,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			control.click(mx,my);
 		}
 		if(State == STATE.END) {
-			if(mx>screenWidth/2-400 && mx<screenWidth/2+100 && my>600 && my<1000) {
+			if(mx>screenWidth/2&&mx<screenWidth/2+500&&my>600&&my<1000) {
 				View.State = View.STATE.MENU;
 			}
 		}
@@ -388,14 +382,16 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println(screenWidth);
 		int mx = e.getX();	//x value of mouse
 		int my = e.getY();	//y value of mouse
-	
-//		 	Rectangle playButton = new Rectangle(screenWidth/2-35,150,100,50);
-//			Rectangle quitButton = new Rectangle(screenWidth/2-35,250,100,50);
-//			Rectangle anotherButton = new Rectangle(screenWidth/2-35,350,100,50);
-			
+
+		/*
+		 * 	public Rectangle playButton = new Rectangle(screenWidth/2-35,150,100,50);
+			public Rectangle quitButton = new Rectangle(screenWidth/2-35,250,100,50);
+			public Rectangle anotherButton = new Rectangle(screenWidth/2-35,350,100,50);
+		 */
+
+		
 		if(State == STATE.MENU) {
 		if(mx >= screenWidth/5+10 && mx <= screenWidth/5+200 )
 
@@ -430,7 +426,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		// TODO Auto-generated method stub
 		control.key(e);
 	 
-		//System.out.println("Key pressed");
+		System.out.println("Key pressed");
 	
 	}
 
@@ -442,14 +438,18 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		//System.out.println("Key pressed");
+		System.out.println("Key pressed");
 		control.key(e);
-		
-	//	int s = e.getKeyCode();
-	
 	}
 	
-
+	public void drawEndScreen() {
+		
+		super.paintComponent(g);
+		Font fnt0 = new Font("arial",Font.BOLD,50); //font,bold,size		
+		g.setFont(fnt0);		
+		g.setColor(Color.ORANGE);
+		g.drawString("Game Over",screenWidth/2-150,100 );
+	}
 	
 //**-------------------------------Testing-----------------------------------------------**//
 	public void printStuff() {
