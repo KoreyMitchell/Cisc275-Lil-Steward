@@ -2,6 +2,7 @@ package MVC;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Model {
@@ -17,7 +18,10 @@ public class Model {
 	int level;
 	int screenHeight;
 	int screenWidth;
-	//Random random = new Random();
+	Random random1;
+	Random random2;
+	int randomx;
+	int randomy;
 
 	Model() {
 		// initialize local variables
@@ -29,7 +33,7 @@ public class Model {
 		tool = new Tool(false);
 		plantsPlanted = 0;
 		plantsRemoved = 0;
-		level =1;
+		level = 0;
 
 		// levelPreset(level);
 	}
@@ -82,9 +86,9 @@ public class Model {
 	}
 
 	public void checkLvlUp() {
-		System.out.println("Levelup checked");
+		System.out.println("Levelup checked: Level is: "+level);
 		if (groundList.isEmpty() && invasivePlants.isEmpty()) {
-			if (level < 3) {
+			if (level < 4) {
 				System.out.println(invasivePlants.isEmpty());
 				levelPreset(level);
 				System.out.println(invasivePlants.isEmpty());
@@ -95,24 +99,46 @@ public class Model {
 			}
 		}
 	}
+	public void escapeReset() {
+		nativePlants.clear();
+		invasivePlants.clear();
+		groundList.clear();
+		obstacleList.clear();
+		player.setXloc(10);
+		player.setYloc(10);
+	}
 
 	public void levelPreset(int lvl) {
 		switch (lvl) {
 		case 0: {
 			// TODO: tutorial mode
+			nativePlants.clear();
+			invasivePlants.clear();
+			groundList.clear();
+			obstacleList.clear();
+			player.setXloc(0);
+			player.setYloc(0);
 			System.out.println("Tutorial mode selected");
 			Obstacle ob1 = new Obstacle(90, 90);
 			obstacleList.add(ob1);
 			InvasivePlant inv1 = new InvasivePlant(300, 100);
+			InvasivePlant inv2 = new InvasivePlant(400, 100);
 			invasivePlants.add(inv1);
+			invasivePlants.add(inv2);
 			break;
 		}
 
 		case 1: {
+			nativePlants.clear();
+			invasivePlants.clear();
+			groundList.clear();
+			obstacleList.clear();
+			player.setXloc(0);
+			player.setYloc(0);
 			// TODO: level one
 			System.out.println("Level one selected");
 			// board conditions at start
-			for(int i = 0; i<24;i++) {
+			for(int i = 0; i<3;i++) {
 			GroundPatch grp1 = new GroundPatch(20, 120*i);
 			
 			groundList.add(grp1);
@@ -136,10 +162,15 @@ public class Model {
 		case 2: {
 			// TODO: level two
 			System.out.println("Level two selected" + screenHeight);
-
-			for (int i = 0; i < 15; i++) {
-				GroundPatch grp1 = new GroundPatch(20 * i, 30 * i);
-				groundList.add(grp1);
+			player.setXloc(0);
+			player.setYloc(0);
+			
+			for (int i = 0; i < 15; i++) {//set to 15
+				random1 = new Random();
+				randomx = random1.nextInt(screenWidth-100);
+				random2 = new Random();
+				randomy = random2.nextInt(screenHeight-100);
+				
 				if (90 * i < screenWidth - 300) {
 					Obstacle ob1 = new Obstacle(90 * i, 90);
 					obstacleList.add(ob1);
@@ -162,16 +193,43 @@ public class Model {
 
 				// .add(ob4);
 				
+				GroundPatch grp1 = new GroundPatch(randomx, randomy);
+				if(!obstacleList.contains(grp1)) {
+					groundList.add(grp1);
+				}
 				
-				InvasivePlant inv1 = new InvasivePlant(25 * i, 13 * i);
+				InvasivePlant inv1 = new InvasivePlant((randomx*3)%(screenWidth-100), (randomy*4)%(screenHeight-100));
 				invasivePlants.add(inv1);
+				if(!obstacleList.contains(inv1)) {
+					invasivePlants.add(inv1);
+				}
 			}
 			break;
 		}
 		case 3: {
 			// TODO: level three
 			System.out.println("Level three selected");
+			player.setXloc(0);
+			player.setYloc(0);
+			
 			levelPreset(2);
+			for (int i = 0; i < 25; i++) {//set to 25
+				random1 = new Random();
+				randomx = random1.nextInt(screenWidth-100);
+				random2 = new Random();
+				randomy = random2.nextInt(screenHeight-100);
+				Obstacle ob = new Obstacle((randomx*2)%(screenWidth-300), (randomy*5)%(screenHeight-500));
+				obstacleList.add(ob);
+				GroundPatch grp1 = new GroundPatch(randomx, randomy);
+				if(!obstacleList.contains(grp1)) {
+					groundList.add(grp1);
+				}
+				InvasivePlant inv2 = new InvasivePlant((randomx*3)%(screenWidth-100), (randomy*4)%(screenHeight-100));
+				
+				if(!obstacleList.contains(inv2)) {
+					invasivePlants.add(inv2);
+				}
+			}
 			
 			break;
 		}
@@ -329,6 +387,7 @@ public class Model {
 			}
 		}
 
+		sc.close();
 	}
 
 }

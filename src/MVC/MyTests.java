@@ -84,7 +84,8 @@ public class MyTests {
     	assertThat(tester.hashCode(), is(not(0)));
     	
     	//assertThat(tester.updatePlayerLocation(e);) TODO figure out how to make example keyevent for testing
-    	KeyEvent key;
+    	@SuppressWarnings("unused")
+		KeyEvent key;
     	
     	//test movement method, both when it does and does not work
     	//Does work:
@@ -120,7 +121,7 @@ public class MyTests {
 	    }
     
     
- 
+
     @Test
     public void Tool() {
     	Tool tester = new Tool(false);
