@@ -67,6 +67,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	Graphics g;
 	
+	//Menu
+	private Menu menu;
 	
 	//EndScreen
 	private EndScreen endScreen;
@@ -204,6 +206,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			//create a a new endgame test
 			//test  = new  EndGameTest();
 			
+		 //Menu stuff
+		menu= new Menu();
 			//toolbar = new ToolBar();
 			
 			endScreen = new EndScreen();
@@ -271,7 +275,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			//test.EndGameTest();
 		}else if(State ==STATE.MENU) {//if game state is not in game,draw menu
 			g2d.drawImage(scaled_bg_img_menu, 0, 0, null);
-		
+			menu.renderMenu(g);
 		}else if(State == STATE.END) {
 			endScreen.render(g);
 		}
