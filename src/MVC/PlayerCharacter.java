@@ -14,6 +14,7 @@ public class PlayerCharacter extends GameObject{
 		setImic(new ImageIcon("images/Person_FRONT.png"));
 	}
 	
+	
 	public void updatePlayerLocation(KeyEvent e) {
 		//TODO: use String version of this method but with KeyEvents
 		System.out.println("Player moved");

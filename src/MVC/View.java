@@ -67,8 +67,6 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	Graphics g;
 	
-	//Menu
-	private Menu menu;
 	
 	//EndScreen
 	private EndScreen endScreen;
@@ -82,6 +80,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	boolean[] keyArray = new boolean[4];
 	
     
+	
 	public View() {
 		player = new PlayerCharacter();
 		nativePlants = new ArrayList<NativePlant>();
@@ -201,9 +200,6 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	        setVisible(true);
 		
 	        addKeyListener(this); 	//makes player move		
-
-			//Create a new Menu
-			menu= new Menu();
 			
 			//create a a new endgame test
 			//test  = new  EndGameTest();
@@ -275,7 +271,6 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			//test.EndGameTest();
 		}else if(State ==STATE.MENU) {//if game state is not in game,draw menu
 			g2d.drawImage(scaled_bg_img_menu, 0, 0, null);
-			menu.renderMenu(g);
 		
 		}else if(State == STATE.END) {
 			endScreen.render(g);
@@ -344,7 +339,12 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		if(State == STATE.GAME) 
 		{
 			control.click(mx,my);
-		}	 
+		}
+		if(State == STATE.END) {
+			if(mx>screenWidth/2&&mx<screenWidth/2+500&&my>600&&my<1000) {
+				View.State = View.STATE.MENU;
+			}
+		}
 			System.out.println("Mouse clicked");
 	
 	}
@@ -394,6 +394,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		
 		if(State == STATE.MENU) {
 		if(mx >= 165 && mx <= 386 )
+
 		{	//first button
 			if(my >= 308 && my <= 386)
 			{
@@ -402,6 +403,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 				level = 0;
 				View.State = View.STATE.GAME;
 			}
+<<<<<<< HEAD
 // 			//second button
 // 			if(my >= 280 && my <= 330)
 // 			{
@@ -410,6 +412,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 // 				View.State = View.STATE.GAME;
 // 			}
 			//third button
+=======
+			//second button
+>>>>>>> 3968f21948e3c01e35b257d57800277f535e35f3
 			if(my >= 423 && my <= 501)
 			{
 				//Pressed other button
