@@ -5,16 +5,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
-
 public class EndGameTest extends JFrame {
 
-
 private static final long serialVersionUID = 1L;
+public JFrame f;
+public JTextField userInput;
+public JTextField userInput1;
+public JTextField userInput2;
 
-private JTextField userInput;
-private JTextField userInput1;
-private JTextField userInput2;
+Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+int screenHeight = (int) screenSize.getHeight();
+int screenWidth = screenSize.getSize().width;
 
 public int question=1;
 String answer; //correct answer to the questions
@@ -23,14 +24,22 @@ int aCounter = 0; //counter for correct answers
 
 public EndGameTest() {
 super("Test your Knowledge");
-setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+f = new JFrame();
+f.setLayout(new BorderLayout());
+
+JPanel p = new JPanel(new GridLayout(10,10));
+JPanel p2 = new JPanel();
+JPanel p3 = new JPanel(new BorderLayout());
 
 
-setLayout(new FlowLayout());
-Container c = getContentPane();
-
-
-JButton answerButton = new JButton("Enter Answer");
+JButton d = new JButton("answer");
+p2.add(d);
+p3.add(p2, BorderLayout.EAST);
+f.add(p3, BorderLayout.SOUTH);
+f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+f.pack();
+f.setVisible(true);
 
 //test questions
 JLabel question1 = new JLabel("How many Phragmites were there?");
@@ -42,26 +51,31 @@ userInput = new JTextField(8);
 userInput1 = new JTextField(8);
 userInput2= new JTextField(8);
 
+//set location
+userInput.setBounds(screenWidth/2-75,150,100,50);
+userInput1.setBounds(screenWidth/2-75,250,100,50);
+userInput2.setBounds(screenWidth/2-75,350,100,50);
+
 //display order
-c.add(question1);
-c.add(userInput);
+p.add(question1);
+p.add(userInput);
 
-c.add(question2);
-c.add(userInput1);
+p.add(question2);
+p.add(userInput1);
 
-c.add(question3);
-c.add(userInput2);
+p.add(question3);
+p.add(userInput2);
 
-c.add(answerButton);
-
-
-setSize(340, 200);
-setLocationRelativeTo(null);
-setVisible(true);
-setResizable(false);
+f.add(p, BorderLayout.CENTER);
 
 
-answerButton.addActionListener(new answerButtonHandler());
+f.setSize(screenSize);
+f.setLocationRelativeTo(null);
+f.setVisible(true);
+f.setResizable(false);
+
+
+d.addActionListener(new answerButtonHandler());
 
 }
 
@@ -131,8 +145,6 @@ private class answerButtonHandler implements ActionListener {
 		}
 	}
 }
-
-
 
 
 public static void main(String args[]) {
