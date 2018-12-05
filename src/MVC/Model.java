@@ -2,6 +2,7 @@ package MVC;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Model {
@@ -17,7 +18,10 @@ public class Model {
 	int level;
 	int screenHeight;
 	int screenWidth;
-	//Random random = new Random();
+	Random random1;
+	Random random2;
+	int randomx;
+	int randomy;
 
 	Model() {
 		// initialize local variables
@@ -84,7 +88,7 @@ public class Model {
 	public void checkLvlUp() {
 		System.out.println("Levelup checked: Level is: "+level);
 		if (groundList.isEmpty() && invasivePlants.isEmpty()) {
-			if (level < 3) {
+			if (level <= 3) {
 				System.out.println(invasivePlants.isEmpty());
 				levelPreset(level);
 				System.out.println(invasivePlants.isEmpty());
@@ -160,9 +164,13 @@ public class Model {
 			System.out.println("Level two selected" + screenHeight);
 			player.setXloc(0);
 			player.setYloc(0);
+			
 			for (int i = 0; i < 15; i++) {
-				GroundPatch grp1 = new GroundPatch(20 * i, 30 * i);
-				groundList.add(grp1);
+				random1 = new Random();
+				randomx = random1.nextInt(screenWidth-100);
+				random2 = new Random();
+				randomy = random2.nextInt(screenHeight-100);
+				
 				if (90 * i < screenWidth - 300) {
 					Obstacle ob1 = new Obstacle(90 * i, 90);
 					obstacleList.add(ob1);
@@ -185,10 +193,16 @@ public class Model {
 
 				// .add(ob4);
 				
+				GroundPatch grp1 = new GroundPatch(randomx, randomy);
+				if(!obstacleList.contains(grp1)) {
+					groundList.add(grp1);
+				}
 				
-				
-				InvasivePlant inv1 = new InvasivePlant(25 * i, 13 * i);
+				InvasivePlant inv1 = new InvasivePlant((randomx*3)%(screenWidth-100), (randomy*4)%(screenHeight-100));
 				invasivePlants.add(inv1);
+				if(!obstacleList.contains(inv1)) {
+					invasivePlants.add(inv1);
+				}
 			}
 			break;
 		}
@@ -197,7 +211,25 @@ public class Model {
 			System.out.println("Level three selected");
 			player.setXloc(0);
 			player.setYloc(0);
+			
 			levelPreset(2);
+			for (int i = 0; i < 25; i++) {
+				random1 = new Random();
+				randomx = random1.nextInt(screenWidth-100);
+				random2 = new Random();
+				randomy = random2.nextInt(screenHeight-100);
+				Obstacle ob = new Obstacle((randomx*2)%(screenWidth-100), (randomy*5)%(screenHeight-100));
+				obstacleList.add(ob);
+				GroundPatch grp1 = new GroundPatch(randomx, randomy);
+				if(!obstacleList.contains(grp1)) {
+					groundList.add(grp1);
+				}
+				InvasivePlant inv2 = new InvasivePlant((randomx*3)%(screenWidth-100), (randomy*4)%(screenHeight-100));
+				
+				if(!obstacleList.contains(inv2)) {
+					invasivePlants.add(inv2);
+				}
+			}
 			
 			break;
 		}
