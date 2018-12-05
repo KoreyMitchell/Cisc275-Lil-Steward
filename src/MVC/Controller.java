@@ -148,6 +148,7 @@ public class Controller {
 		//System.out.println(model.player.getXloc());
 		syncViewToModel(model);
 		view.repaint();
+		//
 	}
 	
 
