@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import javax.swing.JFrame;
 
 public class EndScreen extends View{
+	
 	/**
 	 * 
 	 */

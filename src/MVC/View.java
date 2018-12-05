@@ -81,6 +81,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	boolean[] keyArray = new boolean[4];
 	
     
+	
 	public View() {
 		player = new PlayerCharacter();
 		nativePlants = new ArrayList<NativePlant>();
