@@ -17,16 +17,16 @@ public class PlayerCharacter extends GameObject{
 	
 	public void updatePlayerLocation(KeyEvent e) {
 		//TODO: use String version of this method but with KeyEvents
-		System.out.println("Player moved");
+	//	System.out.println("Player moved");
 		int id = e.getKeyCode();
 		int temp;
-		System.out.println("The id is " + id);
+	//	System.out.println("The id is " + id);
 		
 		
 		switch( id ) { 
         case KeyEvent.VK_LEFT:
             // up 
-        	System.out.println("Up pressed");
+        	//System.out.println("Up pressed");
         	temp = getXloc()-10;
 			setXloc(temp);
             break;

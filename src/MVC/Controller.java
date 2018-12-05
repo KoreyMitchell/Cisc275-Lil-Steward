@@ -58,7 +58,7 @@ public class Controller {
  
 	
 	public void click(int x, int y) {
-		System.out.println("Controller read click from view");
+		//System.out.println("Controller read click from view");
 		//TODO: call click methods from model 
 		
 
@@ -77,7 +77,7 @@ public class Controller {
 	}
 	
 	public void key(KeyEvent e) {
-		System.out.println("Controller read key from view");
+		//System.out.println("Controller read key from view");
 		int s = e.getKeyCode();
 		if(s==KeyEvent.VK_UP) {
 			view.playerimg = view.playerimgBack; 
@@ -91,6 +91,13 @@ public class Controller {
 		if(s==KeyEvent.VK_LEFT) {
 			view.playerimg = view.playerimgLeft; 
 		}
+
+
+
+
+
+
+
 		if(s==KeyEvent.VK_ESCAPE) {
 			view.State = STATE.MENU;
 			model.escapeReset();
@@ -98,8 +105,9 @@ public class Controller {
 			view.level = view.level-1;
 		}
 		
+
 		model.checkAndMove(e);
-		System.out.println(model.player.getXloc());
+		//System.out.println(model.player.getXloc());
 		syncViewToModel(model);
 		view.repaint();
 	}

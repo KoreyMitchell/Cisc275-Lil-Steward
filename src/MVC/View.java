@@ -67,6 +67,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	Graphics g;
 	
+	//Menu
+	private Menu menu;
 	
 	//EndScreen
 	private EndScreen endScreen;
@@ -204,6 +206,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			//create a a new endgame test
 			//test  = new  EndGameTest();
 			
+		 //Menu stuff
+		menu= new Menu();
 			//toolbar = new ToolBar();
 			
 			endScreen = new EndScreen();
@@ -271,7 +275,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			//test.EndGameTest();
 		}else if(State ==STATE.MENU) {//if game state is not in game,draw menu
 			g2d.drawImage(scaled_bg_img_menu, 0, 0, null);
-		
+			menu.renderMenu(g);
 		}else if(State == STATE.END) {
 			endScreen.render(g);
 		}
@@ -393,29 +397,18 @@ public class View extends JPanel implements MouseListener, KeyListener{
 
 		
 		if(State == STATE.MENU) {
-		if(mx >= 0 && mx <= 386 )
+		if(mx >= screenWidth/5+10 && mx <= screenWidth/5+200 )
 
 		{	//first button
-			if(my >= 0 && my <= 386)
+			if(my >= screenHeight/3+28 && my <= screenHeight/3+103)
 			{
 				System.out.print(mx + " " +  my);
 				//Pressed play button
 				level = 0;
 				View.State = View.STATE.GAME;
 			}
-//<<<<<<< HEAD
-// 			//second button
-// 			if(my >= 280 && my <= 330)
-// 			{
-// 				//Pressed tutorial button
-// 				level = 0;
-// 				View.State = View.STATE.GAME;
-// 			}
-			//third button
-//=======
-			//second button
-//>>>>>>> 3968f21948e3c01e35b257d57800277f535e35f3
-			if(my >= 423 && my <= 501)
+
+			if(my >= (screenHeight/4*2)+28 && my <= ((screenHeight/4*2)+103))
 			{
 				//Pressed other button
 				System.exit(1);
