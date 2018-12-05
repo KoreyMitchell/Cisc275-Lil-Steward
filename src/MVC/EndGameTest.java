@@ -18,7 +18,6 @@ private static final long serialVersionUID = 1L;
 /** the f. */
 public JFrame f;
 
->>>>>>> 788de237a773460fb46bfb8c69be9e370760ab5f
 public JTextField userInput;
 
 /** The user input 1. */
@@ -123,15 +122,12 @@ aButton.addActionListener(new answerButtonHandler());
 
 }
 
-<<<<<<< HEAD
 
 /**
  * Change answer.
  *
  * @return the string
  */
-=======
->>>>>>> 788de237a773460fb46bfb8c69be9e370760ab5f
 public String changeAnswer() {
 	switch (question) {
 	case 1:
@@ -226,19 +222,8 @@ void testRender() {
 		
 	new EndGameTest();
 
-<<<<<<< HEAD
-/**
- * The main method.
- *
- * @param args the arguments
- */
-public static void main(String args[]) {
 
- @SuppressWarnings("unused")
-EndGameTest tester = new EndGameTest();
-=======
 }
->>>>>>> 788de237a773460fb46bfb8c69be9e370760ab5f
 
 public static void main(String args[]) {
 	new EndGameTest();
