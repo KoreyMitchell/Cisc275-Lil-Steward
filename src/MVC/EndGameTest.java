@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class EndGameTest extends JFrame {
+	
 boolean passedTest = false;
 private static final long serialVersionUID = 1L;
 public JFrame f;
