@@ -63,6 +63,7 @@ public class Model {
 
 		GroundPatch g = new GroundPatch(player.getXloc(), player.getYloc());
 		if (groundList.contains(g)&&g.equals(player)) {
+			System.out.println("You can plant here!");
 			// add new plant to the list of native plants
 			
 			NativePlant n = new NativePlant(player.getXloc(), player.getYloc());
@@ -90,11 +91,10 @@ public class Model {
 			if (level < 4) {
 				System.out.println(invasivePlants.isEmpty());
 				levelPreset(level);
-				System.out.println("Level "+level+" complete");
+				System.out.println(invasivePlants.isEmpty());
 				level++;
 				//break;
 			} else {
-				System.out.println("Level " + level + " end game");
 				win = true;
 			}
 		}
@@ -136,7 +136,7 @@ public class Model {
 			player.setXloc(0);
 			player.setYloc(0);
 			// TODO: level one
-			System.out.println("Level " +level +" selected");
+			System.out.println("Level one selected");
 			// board conditions at start
 			for(int i = 0; i<3;i++) {
 			GroundPatch grp1 = new GroundPatch(20, 120*i);
@@ -161,7 +161,6 @@ public class Model {
 		}
 		case 2: {
 			// TODO: level two
-
 			System.out.println("Level two selected" + screenHeight);
 			player.setXloc(0);
 			player.setYloc(0);
@@ -201,19 +200,14 @@ public class Model {
 				
 				InvasivePlant inv1 = new InvasivePlant((randomx*3)%(screenWidth-100), (randomy*4)%(screenHeight-100));
 				invasivePlants.add(inv1);
-<<<<<<< HEAD
-				break;
-
-=======
 				if(!obstacleList.contains(inv1)) {
 					invasivePlants.add(inv1);
 				}
->>>>>>> 7b5ea6184ec77c8d55b6aa9fcb2602e83a0a6ded
 			}
+			break;
 		}
 		case 3: {
 			// TODO: level three
-
 			System.out.println("Level three selected");
 			player.setXloc(0);
 			player.setYloc(0);
@@ -298,7 +292,7 @@ public class Model {
 		}
 
 		if (obstacleList.contains(o)||outBound) {
-			//System.out.println("You can't move there");
+			System.out.println("You can't move there");
 
 		} 
 		
@@ -328,7 +322,7 @@ public class Model {
 		// if the list of obstacles contains an obstacle with the x and y given, the
 		// player cannot move there
 		if (obstacleList.contains(o)) {
-			//System.out.println("You hit an obstacle");
+			System.out.println("You hit an obstacle");
 			return false;
 		}
 		// if not, the player can move

@@ -347,7 +347,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			control.click(mx,my);
 		}
 		if(State == STATE.END) {
-			if(mx>screenWidth/2&&mx<screenWidth/2+500&&my>600&&my<1000) {
+			if(mx>screenWidth/2-400 && mx<screenWidth/2+100 && my>600 && my<1000) {
 				View.State = View.STATE.MENU;
 			}
 		}
@@ -407,25 +407,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 				level = 0;
 				View.State = View.STATE.GAME;
 			}
-<<<<<<< HEAD
 
-			//second button
-			if(my >= screenHeight/2)
-=======
-//<<<<<<< HEAD
-// 			//second button
-// 			if(my >= 280 && my <= 330)
-// 			{
-// 				//Pressed tutorial button
-// 				level = 0;
-// 				View.State = View.STATE.GAME;
-// 			}
-			//third button
-//=======
-			//second button
-//>>>>>>> 3968f21948e3c01e35b257d57800277f535e35f3
+
 			if(my >= 423 && my <= 501)
->>>>>>> bddb85b6c541265655048ef1171f49cbfbfe4533
 			{
 				//Pressed other button
 				System.exit(1);
@@ -466,14 +450,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	}
 	
-	public void drawEndScreen() {
-		
-		super.paintComponent(g);
-		Font fnt0 = new Font("arial",Font.BOLD,50); //font,bold,size		
-		g.setFont(fnt0);		
-		g.setColor(Color.ORANGE);
-		g.drawString("Game Over",screenWidth/2-150,100 );
-	}
+
 	
 //**-------------------------------Testing-----------------------------------------------**//
 	public void printStuff() {
