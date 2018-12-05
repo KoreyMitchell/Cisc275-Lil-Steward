@@ -397,20 +397,35 @@ public class View extends JPanel implements MouseListener, KeyListener{
 //			Rectangle anotherButton = new Rectangle(screenWidth/2-35,350,100,50);
 			
 		if(State == STATE.MENU) {
-			menu.renderMenu(g);
-		if(mx <= screenWidth/2 )
+		if(mx >= 0 && mx <= 386 )
 
 		{	//first button
-			if((my <= screenHeight/2)&&(my>=(screenHeight/2)-150))
+			if(my >= 0 && my <= 386)
 			{
 				System.out.print(mx + " " +  my);
 				//Pressed play button
 				level = 0;
 				View.State = View.STATE.GAME;
 			}
+<<<<<<< HEAD
 
 			//second button
 			if(my >= screenHeight/2)
+=======
+//<<<<<<< HEAD
+// 			//second button
+// 			if(my >= 280 && my <= 330)
+// 			{
+// 				//Pressed tutorial button
+// 				level = 0;
+// 				View.State = View.STATE.GAME;
+// 			}
+			//third button
+//=======
+			//second button
+//>>>>>>> 3968f21948e3c01e35b257d57800277f535e35f3
+			if(my >= 423 && my <= 501)
+>>>>>>> bddb85b6c541265655048ef1171f49cbfbfe4533
 			{
 				//Pressed other button
 				System.exit(1);
