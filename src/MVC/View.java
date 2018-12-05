@@ -63,6 +63,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	Image menuimg;
 	Image scaled_bg_img_menu;
 	Image tutorialNote1;
+	Image tutorialNote2;
 	
 	Graphics g;
 	
@@ -98,6 +99,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		ImageIcon bgImage = new ImageIcon("images/grass_template2.jpg");
 		ImageIcon bgMenuImage = new ImageIcon("images/background.png");
 		ImageIcon tutNote1 = new ImageIcon("images/stickynote_phragmites.png");
+		ImageIcon tutNote2 = new ImageIcon("images/stickynote.png");
 		
 		//Items
 		ImageIcon groundicon = new ImageIcon("images/ground.png");
@@ -124,6 +126,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		backgroundimg = bgImage.getImage();
 		menuimg = bgMenuImage.getImage();
 		tutorialNote1 = tutNote1.getImage();
+		tutorialNote2 = tutNote2.getImage();
 		
 		
 		//scale image to screen size
@@ -179,10 +182,10 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			frame.addMouseListener(this);
 			frame.addKeyListener(this);
 			
-			GraphicsEnvironment env =
-		            GraphicsEnvironment.getLocalGraphicsEnvironment();
-		        GraphicsDevice device = env.getDefaultScreenDevice();
-		        device.setFullScreenWindow(frame);
+//			GraphicsEnvironment env =
+//		            GraphicsEnvironment.getLocalGraphicsEnvironment();
+//		        GraphicsDevice device = env.getDefaultScreenDevice();
+//		        device.setFullScreenWindow(frame);
 			//test
 			
 	        
@@ -220,7 +223,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		if(State == STATE.GAME) {
 			if(level == 0) {
 				g2d.drawImage(scaled_bg_img, 0, 0, null);
-				g2d.drawImage(tutorialNote1, 50, 50, null);
+				g2d.drawImage(tutorialNote1, screenWidth-500, 10, null);
+				g2d.drawImage(tutorialNote2, screenWidth-500, 350, null);
+				
 				g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
 			// need reset
 				
@@ -236,7 +241,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 				}
 				for (NativePlant n : nativePlants) {
 					g2d.drawImage(nplantimg, n.getXloc(), n.getYloc(), null);
-				}	
+				}
+			
 				//draw the playerimage
 				g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
 				
@@ -387,9 +393,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 
 		
 		if(State == STATE.MENU) {
-		if(mx >= screenWidth/2-65 && mx <= screenWidth/2 + 35 )
+		if(mx >= 165 && mx <= 386 )
 		{	//first button
-			if(my >= 230 && my <= 280)
+			if(my >= 308 && my <= 386)
 			{
 				System.out.print(mx + " " +  my);
 				//Pressed play button
@@ -404,7 +410,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 // 				View.State = View.STATE.GAME;
 // 			}
 			//third button
-			if(my >= 330 && my <= 380)
+			if(my >= 423 && my <= 501)
 			{
 				//Pressed other button
 				System.exit(1);
