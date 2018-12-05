@@ -55,7 +55,7 @@ public class Controller {
 		model.setLevel(v.level);
 	}
 	
-
+ 
 	
 	public void click(int x, int y) {
 		//System.out.println("Controller read click from view");

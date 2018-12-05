@@ -79,6 +79,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	boolean[] keyArray = new boolean[4];
 	
     
+	
 	public View() {
 		player = new PlayerCharacter();
 		nativePlants = new ArrayList<NativePlant>();
@@ -336,8 +337,13 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		if(State == STATE.GAME) 
 		{
 			control.click(mx,my);
-		}	 
-			//System.out.println("Mouse clicked");
+		}
+		if(State == STATE.END) {
+			if(mx>screenWidth/2&&mx<screenWidth/2+500&&my>600&&my<1000) {
+				View.State = View.STATE.MENU;
+			}
+		}
+			System.out.println("Mouse clicked");
 	
 	}
 
