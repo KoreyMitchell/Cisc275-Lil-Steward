@@ -393,17 +393,17 @@ public class View extends JPanel implements MouseListener, KeyListener{
 
 		
 		if(State == STATE.MENU) {
-		if(mx >= 165 && mx <= 386 )
+		if(mx >= 0 && mx <= 386 )
 
 		{	//first button
-			if(my >= 308 && my <= 386)
+			if(my >= 0 && my <= 386)
 			{
 				System.out.print(mx + " " +  my);
 				//Pressed play button
 				level = 0;
 				View.State = View.STATE.GAME;
 			}
-<<<<<<< HEAD
+//<<<<<<< HEAD
 // 			//second button
 // 			if(my >= 280 && my <= 330)
 // 			{
@@ -412,9 +412,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 // 				View.State = View.STATE.GAME;
 // 			}
 			//third button
-=======
+//=======
 			//second button
->>>>>>> 3968f21948e3c01e35b257d57800277f535e35f3
+//>>>>>>> 3968f21948e3c01e35b257d57800277f535e35f3
 			if(my >= 423 && my <= 501)
 			{
 				//Pressed other button

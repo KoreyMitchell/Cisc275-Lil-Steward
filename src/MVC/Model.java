@@ -88,7 +88,7 @@ public class Model {
 	public void checkLvlUp() {
 		System.out.println("Levelup checked: Level is: "+level);
 		if (groundList.isEmpty() && invasivePlants.isEmpty()) {
-			if (level <= 3) {
+			if (level < 4) {
 				System.out.println(invasivePlants.isEmpty());
 				levelPreset(level);
 				System.out.println(invasivePlants.isEmpty());
@@ -165,7 +165,7 @@ public class Model {
 			player.setXloc(0);
 			player.setYloc(0);
 			
-			for (int i = 0; i < 15; i++) {
+			for (int i = 0; i < 15; i++) {//set to 15
 				random1 = new Random();
 				randomx = random1.nextInt(screenWidth-100);
 				random2 = new Random();
@@ -213,12 +213,12 @@ public class Model {
 			player.setYloc(0);
 			
 			levelPreset(2);
-			for (int i = 0; i < 25; i++) {
+			for (int i = 0; i < 25; i++) {//set to 25
 				random1 = new Random();
 				randomx = random1.nextInt(screenWidth-100);
 				random2 = new Random();
 				randomy = random2.nextInt(screenHeight-100);
-				Obstacle ob = new Obstacle((randomx*2)%(screenWidth-100), (randomy*5)%(screenHeight-100));
+				Obstacle ob = new Obstacle((randomx*2)%(screenWidth-300), (randomy*5)%(screenHeight-500));
 				obstacleList.add(ob);
 				GroundPatch grp1 = new GroundPatch(randomx, randomy);
 				if(!obstacleList.contains(grp1)) {
