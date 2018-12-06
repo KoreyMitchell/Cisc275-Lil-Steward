@@ -11,6 +11,7 @@ public class Model {
 	ArrayList<InvasivePlant> invasivePlants;
 	ArrayList<GroundPatch> groundList;
 	ArrayList<Obstacle> obstacleList;
+	ArrayList<GameObject> tutorialNotes;
 	Tool tool;
 	int plantsPlanted;
 	int plantsRemoved;
@@ -30,6 +31,7 @@ public class Model {
 		invasivePlants = new ArrayList<InvasivePlant>();
 		groundList = new ArrayList<GroundPatch>();
 		obstacleList = new ArrayList<Obstacle>();
+		tutorialNotes = new ArrayList<GameObject>();
 		tool = new Tool(false);
 		plantsPlanted = 0;
 		plantsRemoved = 0;
@@ -57,6 +59,7 @@ public class Model {
 	public void setScreenWidth(int screenWidth) {
 		this.screenWidth = screenWidth;
 	}
+
 
 	public void addNativePlant(int x, int y) {
 		// only plant if there is an unplanted patch of ground at this x and y
@@ -119,12 +122,26 @@ public class Model {
 			player.setXloc(0);
 			player.setYloc(0);
 			System.out.println("Tutorial mode selected");
-			Obstacle ob1 = new Obstacle(90, 90);
-			obstacleList.add(ob1);
-			InvasivePlant inv1 = new InvasivePlant(300, 100);
-			InvasivePlant inv2 = new InvasivePlant(400, 100);
-			invasivePlants.add(inv1);
+			for(int i = 0; i < 40; i++) {
+				if(i != 18 && i != 19 && i != 20 && i != 21) {
+				Obstacle i1 = new Obstacle(getScreenWidth() - (i*50), getScreenHeight()/2);
+				obstacleList.add(i1);
+				}
+			}
+			TutorialNotePhragmites tut1 = new TutorialNotePhragmites(screenWidth-500, 10);
+			tutorialNotes.add(tut1);
+			TutorialNoteAster tut2 = new TutorialNoteAster(screenWidth-500, screenHeight-310);
+			tutorialNotes.add(tut2);
+			TutorialNoteInkberry tut3 = new TutorialNoteInkberry(10, (screenHeight/2)-200);
+			tutorialNotes.add(tut3);
+			TutorialNoteDirection tut4 = new TutorialNoteDirection(10, screenHeight-210);
+			tutorialNotes.add(tut4);
+//			InvasivePlant inv1 = new InvasivePlant(600, 100);
+			InvasivePlant inv2 = new InvasivePlant(700, 75);
+//			invasivePlants.add(inv1);
 			invasivePlants.add(inv2);
+			GroundPatch grp1 = new GroundPatch(700, getScreenHeight()-150);
+			groundList.add(grp1);
 			break;
 		}
 
@@ -133,6 +150,7 @@ public class Model {
 			invasivePlants.clear();
 			groundList.clear();
 			obstacleList.clear();
+			tutorialNotes.clear();
 			player.setXloc(0);
 			player.setYloc(0);
 			// TODO: level one
@@ -236,6 +254,10 @@ public class Model {
 
 		}
 	}
+//	public void setTutorialNotes(ArrayList<Object> n) {
+//		tutorialNotes.clear();
+//		tutorialNotes.addAll(n);
+//	}
 	
 	//Checks for obstacles 
 	public void checkAndMove(KeyEvent e) {

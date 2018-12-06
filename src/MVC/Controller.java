@@ -13,8 +13,11 @@ public class Controller {
 		// makes an instance of Controller
 		Controller c = new Controller();
 		
+		
 		c.view.initialize();
 		c.view.setControl(c);
+		MakeSong m = new MakeSong();
+		m.playSound("images/BackGroundMusic.wav");
 		
 		
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
@@ -45,7 +48,7 @@ public class Controller {
 		view.setPatches(m.groundList);
 		view.setObstacles(m.obstacleList);
 		view.setTool(m.tool);
-
+		view.setTutorialNotes(m.tutorialNotes);
 		view.setPlantedCount(m.plantsPlanted);
 		view.setPlantsRemoved(m.plantsRemoved);
 		
