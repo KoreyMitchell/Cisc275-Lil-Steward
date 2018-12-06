@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
  */
 public class EndGameTest extends View {
 		
+	/** The passed test. */
 	boolean passedTest = false;
 	/** The Constant serialVersionUID.  */
 	private static final long serialVersionUID = 1L;
@@ -18,6 +19,7 @@ public class EndGameTest extends View {
 	/** the f. */
 	public JFrame f;
 	
+	/** The user input. */
 	public JTextField userInput;
 	
 	/** The user input 1. */
@@ -25,8 +27,14 @@ public class EndGameTest extends View {
 	
 	/** The user input 2. */
 	public JTextField userInput2;
+	
+	/** The user input 3. */
 	public JTextField userInput3;
+	
+	/** The user input 4. */
 	public JTextField userInput4;
+	
+	/** The user input 5. */
 	public JTextField userInput5;
 	
 	/** The screen size. */
@@ -221,6 +229,9 @@ private class answerButtonHandler implements ActionListener {
 	}
 }
 
+/**
+ * Test render.
+ */
 void testRender() {	
 		
 	new EndGameTest();
@@ -228,6 +239,11 @@ void testRender() {
 
 }
 
+/**
+ * The main method.
+ *
+ * @param args the arguments
+ */
 public static void main(String args[]) {
 	new EndGameTest();
 	

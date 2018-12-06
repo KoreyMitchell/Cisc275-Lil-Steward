@@ -69,18 +69,19 @@ public class EndSurvey extends View {
 		//Question 3
 		g2d.setFont(fnt1);		
 		g2d.setColor(Color.BLACK);
-		g2d.drawString("How tall are Phragmites? (Click One)",screenWidth/2-385,630);
+		g2d.drawString("What is the type of bush that birds love to feed on? (Click One)",screenWidth/2-385,630);
 		
-		g2d.drawString("6 ft",screenWidth/2-255,672);
-		g2d.drawString("1 in",screenWidth/2-385,672);
-		g2d.drawString("1 ft",screenWidth/2-145,672);
-		g2d.drawString("100 ft",screenWidth/2-2,672);
+		g2d.drawString("Blueberry",screenWidth/2-255,672);
+		g2d.drawString("Inkberry",screenWidth/2-400,672);
+		g2d.drawString("Bananaberry",screenWidth/2-75,672);
+		g2d.drawString("Chocolateberry",screenWidth/2+135,672);
 
 
 		
 		if (q1Correct == true) {
 			g2d.setColor(Color.GREEN);
 			g2d.drawString("Correct",screenWidth/2-600,300);
+			
 		}
 		
 		if (q2Correct == true) {

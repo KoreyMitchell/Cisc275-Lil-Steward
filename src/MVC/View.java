@@ -127,6 +127,10 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	Image tutorialNoteAster;
 	Image tutorialNoteInkberry;
 	Image tutorialNoteDirection;
+	
+	String noAnswer = "Pick one:";
+	String correctAnswer = "Correct!";
+	String wrongAnswer = "Try again!";
 
 	
 	/** The g. */
@@ -215,7 +219,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 //		tutorialNote2 = tutNote2.getImage();
 		
 
-		
+		int i =0;
+
 		
 		//scale image to screen size
 		scaled_bg_img = backgroundimg.getScaledInstance(screenWidth, screenHeight, Image.SCALE_DEFAULT);   
@@ -282,7 +287,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		
 			
 			
-			frame.setTitle("Wetlands Game");
+			frame.setTitle("Li'l Steward");
 			frame.setLayout(new GridLayout(1,1));
 			frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 			frame.setSize(screenSize);
@@ -335,6 +340,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	
 	int c = 0;
+
+	protected int i;
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
@@ -351,7 +358,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 				g2d.drawImage(scaled_bg_img, 0, 0, null);
 				g2d.setFont(new Font("Dialog", Font.BOLD,18));
 				g2d.setColor(Color.white);
-				g2d.drawString("White Wood Asters planted: " + plantedCount + "   Phragmites Removed: " + plantsRemoved + " Time: " + secondsPassed, 5, 20);
+				g2d.drawString("White Wood Asters planted: " + plantedCount + "  |   Phragmites Removed: " + plantsRemoved + "  |   Time: " + secondsPassed, 5, 20);
 				
 				
 				
@@ -625,11 +632,12 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			}
 		}
 		else if(State == STATE.TEST) {
-//			System.out.println("test: "+mx+" , "+my);
-//			System.out.println(screenWidth/2);
+			System.out.println("test: "+mx+" , "+my);
+			System.out.println(screenWidth/2);
 			//Question 1
 			if(mx>screenWidth/2-136 && mx<screenWidth/2-50 && my>262 && my<407) {
 				endSurvey.q1Correct= true;
+				i=1;
 				//System.out.println("works");
 			}
 			//Question 2
@@ -637,12 +645,10 @@ public class View extends JPanel implements MouseListener, KeyListener{
 				endSurvey.q2Correct= true;
 			}
 			//Question 3
-			if(mx>screenWidth/2-273 && mx<screenWidth/2-193 && my>667 && my<723) {
+			if(mx>screenWidth/2-415 && mx<screenWidth/2-270 && my>667 && my<723) {
 				endSurvey.q3Correct= true;
 			}
-//			if(endSurvey.q1Correct== true &&endSurvey.q2Correct== true &&endSurvey.q3Correct== true) {
-//				
-//			}
+
 			
 		}
 			System.out.println("Mouse clicked");

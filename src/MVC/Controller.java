@@ -19,7 +19,7 @@ public class Controller {
 	 * The functionality of the program
 	 * */
 	Model model;
-	
+	  private int i = 60;
 	/** The view. 
 	 * 	The visuals of the program
 	 * */
@@ -111,7 +111,7 @@ public class Controller {
 	public void click(int x, int y) {
 		//System.out.println("Controller read click from view");
 		//TODO: call click methods from model fs
-		
+
 		if(model.level >= 2 && t1) {
 			setTimer(model.level);
 			t1 = false;
@@ -137,6 +137,7 @@ public class Controller {
 	
 	}
 	boolean finalstage = true;
+	boolean lvl2 = true;
 	
 	public void setTimer(int levels) {
 		int lev = levels;
@@ -145,14 +146,18 @@ public class Controller {
 	// Note that timer has been declared final, to allow use in anon. class below
 	timer.schedule( new TimerTask()
 	{
-	    private int i = 60;
+	  
+	    int levelcount = 1;
+
 	    public void run()
 	    { 
-	        System.out.println("1 Second Later");
+	        System.out.println(i);
 	        model.secondsPassed--;
 	    
 	        view.setSeconds(model.secondsPassed);
 	        view.repaint();
+	        
+	   
 	        if (--i < 1 ) {
 	        	model.groundList.clear();
 	        	model.invasivePlants.clear();
@@ -162,7 +167,15 @@ public class Controller {
 	        	i = 60;
 	        	view.repaint();
 	        }
-	        if(model.level > 3 && finalstage) {
+	        if(model.level==3 && lvl2) {
+	        	lvl2 = false;
+	        	i=60;
+	        	model.secondsPassed = 60;
+	        	model.checkLvlUp();
+	        	syncViewToModel(model);
+	        	view.repaint();
+	        }
+	        if(model.level > 4 && finalstage) {
 	        	finalstage = false;
 	        	view.State = STATE.END;
 	        	view.repaint();
@@ -220,13 +233,18 @@ public class Controller {
 			view.playerimg = view.playerimgLeft; 
 		}
 
-
+		int startlevel =0;
+		
 
 		if(s==KeyEvent.VK_ESCAPE) {
 			view.State = STATE.MENU;
 			model.escapeReset();
 			model.level = model.level-1;
 			view.level = view.level-1;
+		}
+		if(s==KeyEvent.VK_Q) {
+			view.State = STATE.MENU;
+		
 		}
 		
 

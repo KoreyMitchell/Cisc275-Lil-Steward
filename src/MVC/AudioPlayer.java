@@ -5,10 +5,20 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AudioPlayer.
+ */
 public class AudioPlayer {
 	
+	/** The clip. */
 	private Clip clip;
 
+	/**
+	 * Instantiates a new audio player.
+	 *
+	 * @param s the s
+	 */
 	public AudioPlayer(String s) {
 		
 		try {
@@ -40,6 +50,9 @@ public class AudioPlayer {
 		}
 	}
 	
+	/**
+	 * Play.
+	 */
 	public void play() {
 		if(clip == null) return;
 		stop();
@@ -47,10 +60,16 @@ public class AudioPlayer {
 		clip.start();
 	}
 	
+	/**
+	 * Stop.
+	 */
 	public void stop() {
 		if(clip.isRunning()) clip.stop();
 	}
 
+	/**
+	 * Close.
+	 */
 	public void close() {
 		stop();
 		clip.close();

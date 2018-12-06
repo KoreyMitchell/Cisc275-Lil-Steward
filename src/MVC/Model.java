@@ -326,7 +326,7 @@ public class Model implements Runnable {
 				if (90 * i < screenWidth - 300) {
 					Obstacle ob1 = new Obstacle(90 * i, 90);
 					obstacleList.add(ob1);
-					Obstacle ob3 = new Obstacle(90 * i + 300, 300);
+					Obstacle ob3 = new Obstacle(90 * i + 550, 480);
 					obstacleList.add(ob3);
 					Obstacle ob5 = new Obstacle(90 * i, screenHeight - 300);
 
@@ -419,7 +419,7 @@ public class Model implements Runnable {
 			player.setYloc(0);
 			
 			levelPreset(2);
-			for (int i = 0; i < 11; i++) {//set to 25
+			for (int i = 0; i < 10; i++) {//set to 25
 				random1 = new Random();
 				randomx = random1.nextInt(screenWidth-100);
 				random2 = new Random();

@@ -14,7 +14,7 @@ public class LevelUpSound implements Runnable {
 	@Override
 	public void run() {
 		if(level>1) {
-		t.get("levelUp").playSound();
+		//t.get("levelUp").playSound();
 		}
 	}
 
