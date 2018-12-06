@@ -23,64 +23,137 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class View.
+ */
 public class View extends JPanel implements MouseListener, KeyListener{
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/** The player. */
 	PlayerCharacter player;
+	
+	/** The native plants. */
 	ArrayList<NativePlant> nativePlants;
+	
+	/** The invasive plants. */
 	ArrayList<InvasivePlant> invasivePlants;
+	
+	/** The ground list. */
 	ArrayList<GroundPatch> groundList;
+	
+	/** The obstacle list. */
 	ArrayList<Obstacle> obstacleList;
+	ArrayList<GameObject> tutorialNotes;
+	
+	/** The tool. */
 	Tool tool;
+	
+	/** The control. */
 	Controller control;
 	
+	/** The frame. */
 	JFrame frame;
 	
+	/** The screen size. */
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	
+	/** The screen height. */
 	int screenHeight = (int) screenSize.getHeight();
+	
+	/** The screen width. */
 	int screenWidth = screenSize.getSize().width;
 	
+	/** The planted count. */
 	static int plantedCount = 0;
+	
+	/** The plants removed. */
 	static int plantsRemoved = 0;
+	
+	/** The man frame count right. */
 	int manFrameCountRight = 0;
 	
+	/** The level. */
 	int level = 0;
 
+	/** The playerimg front. */
 	Image playerimgFront;
-	Image playerimgBack;
-	Image playerimgRight;
-	Image playerimgLeft;
-	Image playerimg;
-	Image groundimg;
-	Image nplantimg;
-	Image iplantimg;
-	Image rockimg;
-	Image backgroundimg;
-	Image scaled_bg_img;
-	Image menuimg;
-	Image scaled_bg_img_menu;
-	Image tutorialNote1;
-	Image tutorialNote2;
 	
+	/** The playerimg back. */
+	Image playerimgBack;
+	
+	/** The playerimg right. */
+	Image playerimgRight;
+	
+	/** The playerimg left. */
+	Image playerimgLeft;
+	
+	/** The playerimg. */
+	Image playerimg;
+	
+	/** The groundimg. */
+	Image groundimg;
+	
+	/** The nplantimg. */
+	Image nplantimg;
+	
+	/** The iplantimg. */
+	Image iplantimg;
+	
+	/** The rockimg. */
+	Image rockimg;
+	
+	/** The backgroundimg. */
+	Image backgroundimg;
+	
+	/** The scaled bg img. */
+	Image scaled_bg_img;
+	
+	/** The menuimg. */
+	Image menuimg;
+	
+	/** The scaled bg img menu. */
+	Image scaled_bg_img_menu;
+
+	Image tutorialNotePhragmites;
+	Image tutorialNoteAster;
+	Image tutorialNoteInkberry;
+	Image tutorialNoteDirection;
+
+	
+	/** The g. */
 	Graphics g;
 	
+	/** The menu. */
+	//Menu
+	private Menu menu;
 	
+	/** The end screen. */
 	//EndScreen
 	private EndScreen endScreen;
 	//TEST
-	//private EndGameTest test;
+	EndGameTest endGameTest;
 	
+	/** The toolbar. */
 	ToolBar toolbar;
     
+	/** The is left pressed. */
 	//TODO: Will use these to check for multiple key presses
 	boolean isUpPressed, isDownPressed, isRightPressed,isLeftPressed;
+	
+	/** The key array. */
 	boolean[] keyArray = new boolean[4];
+
+	EndSurvey endSurvey;
+
 	
     
 	
+	/**
+	 * Instantiates a new view.
+	 */
 	public View() {
 		player = new PlayerCharacter();
 		nativePlants = new ArrayList<NativePlant>();
@@ -88,6 +161,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		groundList = new ArrayList<GroundPatch>();
 		obstacleList = new ArrayList<Obstacle>();
 		tool = new Tool(true);
+		tutorialNotes = new ArrayList<GameObject>();
 		
 		setFocusable(true);
 		
@@ -98,7 +172,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		ImageIcon bgImage = new ImageIcon("images/grass_template2.jpg");
 		ImageIcon bgMenuImage = new ImageIcon("images/background.png");
 		ImageIcon tutNote1 = new ImageIcon("images/stickynote_phragmites.png");
-		ImageIcon tutNote2 = new ImageIcon("images/stickynote.png");
+		ImageIcon tutNote2 = new ImageIcon("images/stickynote_aster.png");
+		ImageIcon tutNote3 = new ImageIcon("images/stickynote_inkberry.png");
+		ImageIcon tutNote4 = new ImageIcon("images/stickynote_directions.png");
 		
 		//Items
 		ImageIcon groundicon = new ImageIcon("images/ground.png");
@@ -124,8 +200,14 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		rockimg = rockicon.getImage();
 		backgroundimg = bgImage.getImage();
 		menuimg = bgMenuImage.getImage();
-		tutorialNote1 = tutNote1.getImage();
-		tutorialNote2 = tutNote2.getImage();
+		tutorialNotePhragmites = tutNote1.getImage();
+		tutorialNoteAster = tutNote2.getImage();
+		tutorialNoteInkberry = tutNote3.getImage();
+		tutorialNoteDirection = tutNote4.getImage();
+;//		tutorialNote1 = tutNote1.getImage();
+//		tutorialNote2 = tutNote2.getImage();
+		
+
 		
 		
 		//scale image to screen size
@@ -133,6 +215,13 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		scaled_bg_img_menu = menuimg.getScaledInstance(screenWidth, screenHeight, Image.SCALE_DEFAULT);   
 	}
 	
+	/**
+	 * Paint planted info.
+	 *
+	 * @param plantedCount the planted count
+	 * @param x the x
+	 * @param y the y
+	 */
 	public void paintPlantedInfo(int plantedCount,int x, int y) {
 	    final JOptionPane pane = new JOptionPane("You've planted " + plantedCount + " native plants and removed " + plantsRemoved + " invasive Phragmites plants!");
 	    final JDialog d = pane.createDialog((JFrame)null, "New Message!");
@@ -144,19 +233,35 @@ public class View extends JPanel implements MouseListener, KeyListener{
 //                JOptionPane.PLAIN_MESSAGE);
 		
 	}
+	
+	/**
+	 * The Enum STATE.
+	 */
 	//state of game
 	public enum STATE{
+		
+		/** The menu. */
 		MENU,
+		
+		/** The game. */
 		GAME,
+		
+		/** The test. */
 		TEST,
+		
+		/** The end. */
 		END
 	};
 	
 	
 	
+	/** The State. */
 	//Initialize state to Menu, to skip menu for testing change state to GAME
 	public static STATE State = STATE.MENU;
 
+	/**
+	 * Initialize.
+	 */
 	@SuppressWarnings("static-access")
 	public void initialize() {
 		// this method was meant to add the Controller listeners to View, but we're
@@ -181,10 +286,10 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			frame.addMouseListener(this);
 			frame.addKeyListener(this);
 			
-//			GraphicsEnvironment env =
-//		            GraphicsEnvironment.getLocalGraphicsEnvironment();
-//		        GraphicsDevice device = env.getDefaultScreenDevice();
-//		        device.setFullScreenWindow(frame);
+			GraphicsEnvironment env =
+		            GraphicsEnvironment.getLocalGraphicsEnvironment();
+		        GraphicsDevice device = env.getDefaultScreenDevice();
+		        device.setFullScreenWindow(frame);
 			//test
 			
 	        
@@ -204,11 +309,17 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			//create a a new endgame test
 			//test  = new  EndGameTest();
 			
+	        //Menu stuff
+	        menu= new Menu();
 			//toolbar = new ToolBar();
 			
 			endScreen = new EndScreen();
+			endSurvey = new EndSurvey();
 	}
 
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
@@ -219,8 +330,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		if(State == STATE.GAME) {
 			if(level == 0) {
 				g2d.drawImage(scaled_bg_img, 0, 0, null);
-				g2d.drawImage(tutorialNote1, screenWidth-500, 10, null);
-				g2d.drawImage(tutorialNote2, screenWidth-500, 350, null);
+				
 				
 				g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
 			// need reset
@@ -238,9 +348,28 @@ public class View extends JPanel implements MouseListener, KeyListener{
 				for (NativePlant n : nativePlants) {
 					g2d.drawImage(nplantimg, n.getXloc(), n.getYloc(), null);
 				}
+				for (GameObject n : tutorialNotes) {
+					if(n instanceof TutorialNotePhragmites) {
+						g2d.drawImage(tutorialNotePhragmites, n.getXloc(), n.getYloc(), null);
+					}
+					else if(n instanceof TutorialNoteAster) {
+						g2d.drawImage(tutorialNoteAster, n.getXloc(), n.getYloc(), null);
+					}
+					else if(n instanceof TutorialNoteInkberry) {
+						g2d.drawImage(tutorialNoteInkberry, n.getXloc(), n.getYloc(), null);
+					}
+					else if(n instanceof TutorialNoteDirection) {
+						g2d.drawImage(tutorialNoteDirection, n.getXloc(), n.getYloc(), null);
+					}
+					
+				}
+				
+			
+
 			
 				//draw the playerimage
 				g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
+				
 				
 			
 				
@@ -248,6 +377,10 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			else if(level == 1) {
 				
 			g2d.drawImage(scaled_bg_img, 0, 0, null);
+			
+			
+
+		
 	
 			// draw each of the game objects
 			for (GroundPatch gr : groundList) {
@@ -266,63 +399,180 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
 			}
 		
-		}else if (State == STATE.TEST) {
-			g2d.drawImage(scaled_bg_img_menu, 0, 0, null);
-			//test.EndGameTest();
+
 		}else if(State ==STATE.MENU) {//if game state is not in game,draw menu
 			g2d.drawImage(scaled_bg_img_menu, 0, 0, null);
-		
+			menu.renderMenu(g);
 		}else if(State == STATE.END) {
 			endScreen.render(g);
+		}else if(State == STATE.TEST) {
+			//endGameTest=new EndGameTest();
+			endSurvey.render(g2d);
+			endSurvey.EndGameTest();
 		}
 		
 	}
 	
+	/**
+	 * Sets the level.
+	 *
+	 * @param lev the new level
+	 */
 	//set view's level to match model's
 	public void setLevel(int lev) {
 		level = lev;
 	}
 	
+	/**
+	 * Sets the control.
+	 *
+	 * @param c the new control
+	 */
 	//set view's controller to match input controller
 	public void setControl(Controller c) {
 		control = c;
 	}
 
+	/**
+	 * Sets the player.
+	 *
+	 * @param p the new player
+	 */
 	// set player location to match input player
 	public void setPlayer(PlayerCharacter p) {
 		player.setXloc(p.getXloc());
 		player.setYloc(p.getYloc());
 	}
 
+	/**
+	 * Sets the native plants.
+	 *
+	 * @param n the new native plants
+	 */
 	// set list of native plants to input
 	public void setNativePlants(ArrayList<NativePlant> n) {
 		nativePlants.clear();
 		nativePlants.addAll(n);
 	}
+	public void checkTut() {
+		if(level > 1) {
+			tutorialNotes.clear();
+		}
+	}
+	
+	public void setTutorialNotes(ArrayList<GameObject> n) {
+		tutorialNotes.clear();
+		tutorialNotes.addAll(n);
+	}
 
+	/**
+	 * Sets the invasive plants.
+	 *
+	 * @param in the new invasive plants
+	 */
 	// set list of invasive plants to input
 	public void setInvasivePlants(ArrayList<InvasivePlant> in) {
 		invasivePlants.clear();
 		invasivePlants.addAll(in);
 	}
 
+	/**
+	 * Sets the patches.
+	 *
+	 * @param g the new patches
+	 */
 	// set list of plantable ground to input
 	public void setPatches(ArrayList<GroundPatch> g) {
 		groundList.clear();
 		groundList.addAll(g);
 	}
 
+	/**
+	 * Sets the obstacles.
+	 *
+	 * @param o the new obstacles
+	 */
 	// set obstacles to input
 	public void setObstacles(ArrayList<Obstacle> o) {
 		obstacleList.clear();
 		obstacleList.addAll(o);
 	}
 
+	/**
+	 * Sets the tool.
+	 *
+	 * @param t the new tool
+	 */
 	// set tool to input
 	public void setTool(Tool t) {
 		tool = t;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
+	 */
+
+
+	/**
+	 * Gets the planted count.
+	 *
+	 * @return the planted count
+	 */
+	public int getPlantedCount() {
+		return plantedCount;
+	}
+
+	/**
+	 * Sets the planted count.
+	 *
+	 * @param plantedCount the new planted count
+	 */
+	public void setPlantedCount(int plantedCount) {
+		this.plantedCount = plantedCount;
+	}
+
+	/**
+	 * Gets the plants removed.
+	 *
+	 * @return the plants removed
+	 */
+	public int getPlantsRemoved() {
+		return plantsRemoved;
+	}
+
+	/**
+	 * Sets the plants removed.
+	 *
+	 * @param plantsRemoved the new plants removed
+	 */
+	public void setPlantsRemoved(int plantsRemoved) {
+		this.plantsRemoved = plantsRemoved;
+}
+		
+	
+
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)
+	 */
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)
+	 */
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
+	 */
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -338,100 +588,66 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		
 		if(State == STATE.GAME) 
 		{
+		//	System.out.println("Game: "+mx+" , "+my);
 			control.click(mx,my);
 		}
-		if(State == STATE.END) {
-			if(mx>screenWidth/2&&mx<screenWidth/2+500&&my>600&&my<1000) {
-				View.State = View.STATE.MENU;
+		else if(State == STATE.END)
+		{
+			if(mx>screenWidth/2-175 && mx<screenWidth/2+170 && my>772 && my<865) {
+			//	System.out.println(screenWidth/2);
+			//	System.out.println("End: "+mx+","+my);
+				View.State=STATE.TEST;	
 			}
+		}
+		else if(State == STATE.TEST) {
+		//	System.out.println("Test: "+mx+","+my);
+			//if(mx >screenWidth/2-385,300)
 		}
 			System.out.println("Mouse clicked");
 	
 	}
-
-	public int getPlantedCount() {
-		return plantedCount;
-	}
-
-	public void setPlantedCount(int plantedCount) {
-		this.plantedCount = plantedCount;
-	}
-
-	public int getPlantsRemoved() {
-		return plantsRemoved;
-	}
-
-	public void setPlantsRemoved(int plantsRemoved) {
-		this.plantsRemoved = plantsRemoved;
-}
-		
-	
-
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		int mx = e.getX();	//x value of mouse
 		int my = e.getY();	//y value of mouse
 
-		/*
-		 * 	public Rectangle playButton = new Rectangle(screenWidth/2-35,150,100,50);
-			public Rectangle quitButton = new Rectangle(screenWidth/2-35,250,100,50);
-			public Rectangle anotherButton = new Rectangle(screenWidth/2-35,350,100,50);
-		 */
-
 		
 		if(State == STATE.MENU) {
-		if(mx >= 0 && mx <= 386 )
-
-		{	//first button
-			if(my >= 0 && my <= 386)
-			{
-				System.out.print(mx + " " +  my);
-				//Pressed play button
-				level = 0;
-				View.State = View.STATE.GAME;
+			if(mx >= screenWidth/5+10 && mx <= screenWidth/5+200 )
+	
+			{	//Play button
+				if(my >= screenHeight/3+28 && my <= screenHeight/3+103)
+				{
+					System.out.print(mx + " " +  my);
+					//Pressed play button
+					level = 0;
+					View.State = View.STATE.GAME;
+				}
+	
+				if(my >= (screenHeight/4*2)+28 && my <= ((screenHeight/4*2)+103))
+				{
+					//Pressed other button
+					System.exit(1);
+				}
 			}
-//<<<<<<< HEAD
-// 			//second button
-// 			if(my >= 280 && my <= 330)
-// 			{
-// 				//Pressed tutorial button
-// 				level = 0;
-// 				View.State = View.STATE.GAME;
-// 			}
-			//third button
-//=======
-			//second button
-//>>>>>>> 3968f21948e3c01e35b257d57800277f535e35f3
-			if(my >= 423 && my <= 501)
-			{
-				//Pressed other button
-				System.exit(1);
-			}
-		}
 
 		}
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
+	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
@@ -441,27 +657,28 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
+	 */
 	@Override
 	public void keyReleased(KeyEvent e) {
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)
+	 */
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println("Key pressed");
 		control.key(e);
 	}
+
 	
-	public void drawEndScreen() {
-		
-		super.paintComponent(g);
-		Font fnt0 = new Font("arial",Font.BOLD,50); //font,bold,size		
-		g.setFont(fnt0);		
-		g.setColor(Color.ORANGE);
-		g.drawString("Game Over",screenWidth/2-150,100 );
-	}
-	
+/**
+ * Prints the stuff.
+ */
 //**-------------------------------Testing-----------------------------------------------**//
 	public void printStuff() {
 		// For testing purposes: prints the location of all the objects to console

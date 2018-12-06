@@ -5,24 +5,64 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Model.
+ */
 public class Model {
+	
+	/** The player. */
 	PlayerCharacter player;
+	
+	/** The native plants. */
 	ArrayList<NativePlant> nativePlants;
+	
+	/** The invasive plants. */
 	ArrayList<InvasivePlant> invasivePlants;
+	
+	/** The ground list. */
 	ArrayList<GroundPatch> groundList;
+	
+	/** The obstacle list. */
 	ArrayList<Obstacle> obstacleList;
+	ArrayList<GameObject> tutorialNotes;
+	
+	/** The tool. */
 	Tool tool;
+	
+	/** The plants planted. */
 	int plantsPlanted;
+	
+	/** The plants removed. */
 	int plantsRemoved;
+	
+	/** The win. */
 	boolean win = false;
+	
+	/** The level. */
 	int level;
+	
+	/** The screen height. */
 	int screenHeight;
+	
+	/** The screen width. */
 	int screenWidth;
+	
+	/** The random 1. */
 	Random random1;
+	
+	/** The random 2. */
 	Random random2;
+	
+	/** The randomx. */
 	int randomx;
+	
+	/** The randomy. */
 	int randomy;
 
+	/**
+	 * Instantiates a new model.
+	 */
 	Model() {
 		// initialize local variables
 		player = new PlayerCharacter();
@@ -30,34 +70,67 @@ public class Model {
 		invasivePlants = new ArrayList<InvasivePlant>();
 		groundList = new ArrayList<GroundPatch>();
 		obstacleList = new ArrayList<Obstacle>();
+		tutorialNotes = new ArrayList<GameObject>();
 		tool = new Tool(false);
 		plantsPlanted = 0;
 		plantsRemoved = 0;
-		level = 0;
+		level = 4;
 
 		// levelPreset(level);
 	}
 	
+	/**
+	 * Sets the level.
+	 *
+	 * @param lev the new level
+	 */
 	public void setLevel(int lev) {
 		level = lev;
 	}
 
+	/**
+	 * Gets the screen height.
+	 *
+	 * @return the screen height
+	 */
 	public int getScreenHeight() {
 		return screenHeight;
 	}
 
+	/**
+	 * Sets the screen height.
+	 *
+	 * @param screenHeight the new screen height
+	 */
 	public void setScreenHeight(int screenHeight) {
 		this.screenHeight = screenHeight;
 	}
 
+	/**
+	 * Gets the screen width.
+	 *
+	 * @return the screen width
+	 */
 	public int getScreenWidth() {
 		return screenWidth;
 	}
 
+	/**
+	 * Sets the screen width.
+	 *
+	 * @param screenWidth the new screen width
+	 */
 	public void setScreenWidth(int screenWidth) {
 		this.screenWidth = screenWidth;
 	}
 
+
+	/**
+	 * Adds the native plant.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 */
 	public void addNativePlant(int x, int y) {
 		// only plant if there is an unplanted patch of ground at this x and y
 
@@ -74,6 +147,12 @@ public class Model {
 		}
 	}
 
+	/**
+	 * Removes the invasive plant.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 */
 	public void removeInvasivePlant(int x, int y) {
 		// removes an InvasivePlant with the x and y specified from the list of
 		// invasive plants
@@ -85,6 +164,9 @@ public class Model {
 
 	}
 
+	/**
+	 * Check lvl up.
+	 */
 	public void checkLvlUp() {
 		System.out.println("Levelup checked: Level is: "+level);
 		if (groundList.isEmpty() && invasivePlants.isEmpty()) {
@@ -99,6 +181,10 @@ public class Model {
 			}
 		}
 	}
+	
+	/**
+	 * Escape reset.
+	 */
 	public void escapeReset() {
 		nativePlants.clear();
 		invasivePlants.clear();
@@ -108,6 +194,11 @@ public class Model {
 		player.setYloc(10);
 	}
 
+	/**
+	 * Level preset.
+	 *
+	 * @param lvl the lvl
+	 */
 	public void levelPreset(int lvl) {
 		switch (lvl) {
 		case 0: {
@@ -119,12 +210,26 @@ public class Model {
 			player.setXloc(0);
 			player.setYloc(0);
 			System.out.println("Tutorial mode selected");
-			Obstacle ob1 = new Obstacle(90, 90);
-			obstacleList.add(ob1);
-			InvasivePlant inv1 = new InvasivePlant(300, 100);
-			InvasivePlant inv2 = new InvasivePlant(400, 100);
-			invasivePlants.add(inv1);
+			for(int i = 0; i < 40; i++) {
+				if(i != 18 && i != 19 && i != 20 && i != 21) {
+				Obstacle i1 = new Obstacle(getScreenWidth() - (i*50), getScreenHeight()/2);
+				obstacleList.add(i1);
+				}
+			}
+			TutorialNotePhragmites tut1 = new TutorialNotePhragmites(screenWidth-500, 10);
+			tutorialNotes.add(tut1);
+			TutorialNoteAster tut2 = new TutorialNoteAster(screenWidth-500, screenHeight-310);
+			tutorialNotes.add(tut2);
+			TutorialNoteInkberry tut3 = new TutorialNoteInkberry(10, (screenHeight/2)-200);
+			tutorialNotes.add(tut3);
+			TutorialNoteDirection tut4 = new TutorialNoteDirection(10, screenHeight-210);
+			tutorialNotes.add(tut4);
+//			InvasivePlant inv1 = new InvasivePlant(600, 100);
+			InvasivePlant inv2 = new InvasivePlant(700, 75);
+//			invasivePlants.add(inv1);
 			invasivePlants.add(inv2);
+			GroundPatch grp1 = new GroundPatch(700, getScreenHeight()-150);
+			groundList.add(grp1);
 			break;
 		}
 
@@ -133,30 +238,78 @@ public class Model {
 			invasivePlants.clear();
 			groundList.clear();
 			obstacleList.clear();
+			tutorialNotes.clear();
 			player.setXloc(0);
 			player.setYloc(0);
 			// TODO: level one
 			System.out.println("Level one selected");
 			// board conditions at start
-			for(int i = 0; i<3;i++) {
-			GroundPatch grp1 = new GroundPatch(20, 120*i);
-			
-			groundList.add(grp1);
+//			for(int i = 0; i<3;i++) {
+//			GroundPatch grp1 = new GroundPatch(20, 120*i);
+//			
+//			groundList.add(grp1);
+//			}
+//
+//			Obstacle ob1 = new Obstacle(90, 90);
+//			obstacleList.add(ob1);
+//
+//			InvasivePlant inv1 = new InvasivePlant(10, 10);
+//			InvasivePlant inv2 = new InvasivePlant(200, 200);
+//			InvasivePlant inv3 = new InvasivePlant(300, 30);
+//			InvasivePlant inv4 = new InvasivePlant(20, 100);
+//			InvasivePlant inv5 = new InvasivePlant(300, 100);
+//			invasivePlants.add(inv1);
+//			invasivePlants.add(inv2);
+//			invasivePlants.add(inv3);
+//			invasivePlants.add(inv4);
+//			invasivePlants.add(inv5);
+//			break;
+			for (int i = 0; i < 15; i++) {//set to 15
+				random1 = new Random();
+				randomx = random1.nextInt(screenWidth-100);
+				random2 = new Random();
+				randomy = random2.nextInt(screenHeight-100);
+				
+				if (90 * i < screenWidth - 300) {
+					Obstacle ob1 = new Obstacle(90 * i, 90);
+					obstacleList.add(ob1);
+					Obstacle ob3 = new Obstacle(90 * i + 300, 300);
+					obstacleList.add(ob3);
+					Obstacle ob5 = new Obstacle(90 * i, screenHeight - 300);
+
+					obstacleList.add(ob5);
+				}
 			}
+			for (int i = 0; i < 5; i++) {//set to 7
+				random1 = new Random();
+				randomx = random1.nextInt(screenWidth-100);
+				random2 = new Random();
+				randomy = random2.nextInt(screenHeight-100);
 
-			Obstacle ob1 = new Obstacle(90, 90);
-			obstacleList.add(ob1);
 
-			InvasivePlant inv1 = new InvasivePlant(10, 10);
-			InvasivePlant inv2 = new InvasivePlant(200, 200);
-			InvasivePlant inv3 = new InvasivePlant(300, 30);
-			InvasivePlant inv4 = new InvasivePlant(20, 100);
-			InvasivePlant inv5 = new InvasivePlant(300, 100);
-			invasivePlants.add(inv1);
-			invasivePlants.add(inv2);
-			invasivePlants.add(inv3);
-			invasivePlants.add(inv4);
-			invasivePlants.add(inv5);
+				// Obstacle ob2 = new Obstacle (300, 20*i+300);
+				// Obstacle ob4 = new Obstacle (1000, 30*i+600);
+
+//				for (int j = 0; j < 10; j++) {
+//					Obstacle ob = new Obstacle(250 + 500 * j, screenHeight - (20 * i) - 300);
+//					Obstacle ob2 = new Obstacle(500 * j, 20 * i + 300);
+//					obstacleList.add(ob);
+//					obstacleList.add(ob2);
+//				}
+
+				// .add(ob4);
+				
+				GroundPatch grp1 = new GroundPatch(randomx, randomy);
+				if(!obstacleList.contains(grp1)) {
+					groundList.add(grp1);
+				}
+				
+				InvasivePlant inv1 = new InvasivePlant((randomx*3)%(screenWidth-100), (randomy*4)%(screenHeight-100));
+				invasivePlants.add(inv1);
+				if(!obstacleList.contains(inv1)) {
+					invasivePlants.add(inv1);
+				}
+			}
 			break;
 		}
 		case 2: {
@@ -165,7 +318,7 @@ public class Model {
 			player.setXloc(0);
 			player.setYloc(0);
 			
-			for (int i = 0; i < 15; i++) {//set to 15
+			for (int i = 0; i < 7; i++) {//set to 15
 				random1 = new Random();
 				randomx = random1.nextInt(screenWidth-100);
 				random2 = new Random();
@@ -184,7 +337,7 @@ public class Model {
 				// Obstacle ob2 = new Obstacle (300, 20*i+300);
 				// Obstacle ob4 = new Obstacle (1000, 30*i+600);
 
-				for (int j = 0; j < 10; j++) {
+				for (int j = 0; j < 9; j++) {
 					Obstacle ob = new Obstacle(250 + 500 * j, screenHeight - (20 * i) - 300);
 					Obstacle ob2 = new Obstacle(500 * j, 20 * i + 300);
 					obstacleList.add(ob);
@@ -213,7 +366,7 @@ public class Model {
 			player.setYloc(0);
 			
 			levelPreset(2);
-			for (int i = 0; i < 25; i++) {//set to 25
+			for (int i = 0; i < 11; i++) {//set to 25
 				random1 = new Random();
 				randomx = random1.nextInt(screenWidth-100);
 				random2 = new Random();
@@ -236,7 +389,16 @@ public class Model {
 
 		}
 	}
+//	public void setTutorialNotes(ArrayList<Object> n) {
+//		tutorialNotes.clear();
+//		tutorialNotes.addAll(n);
+//	}
 	
+	/**
+	 * Check and move.
+	 *
+	 * @param e the e
+	 */
 	//Checks for obstacles 
 	public void checkAndMove(KeyEvent e) {
 		// TODO Make character move diagonally
@@ -305,6 +467,12 @@ public class Model {
 
 
 //**----------------------------For testing-----------------------------------**//
+/**
+ * Check move.
+ *
+ * @param s the s
+ * @return true, if successful
+ */
 //**--------------------------------------------------------------------------**//
 	public boolean checkMove(String s) {
 		// checks to see if player's move is valid
@@ -330,6 +498,11 @@ public class Model {
 
 	}
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		Model m = new Model();
 		// Use a loop and a scanner class that takes input of arrow keys to make test

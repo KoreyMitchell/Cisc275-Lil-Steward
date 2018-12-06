@@ -2,16 +2,30 @@ package MVC;
 
 import javax.swing.ImageIcon;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Obstacle.
+ */
 public class Obstacle extends GameObject {
 
+/** The name. */
 String name = "rock";
 	
+	/**
+	 * Instantiates a new obstacle.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 */
 	public Obstacle(int x, int y) {
 		setXloc(x);
 		setYloc(y);
 		setImic(new ImageIcon("images/rock.png"));
 	}
 	
+	/* (non-Javadoc)
+	 * @see MVC.GameObject#equals(java.lang.Object)
+	 */
 	@Override
     public boolean equals(Object o) {
 

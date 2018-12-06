@@ -1,12 +1,19 @@
-package MVC;
+opackage MVC;
 
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PlayerCharacter.
+ */
 public class PlayerCharacter extends GameObject{
 
+	/**
+	 * Instantiates a new player character.
+	 */
 	PlayerCharacter(){
 		setXloc(10);
 		setYloc(10);
@@ -15,18 +22,23 @@ public class PlayerCharacter extends GameObject{
 	}
 	
 	
+	/**
+	 * Update player location.
+	 *
+	 * @param e the e
+	 */
 	public void updatePlayerLocation(KeyEvent e) {
 		//TODO: use String version of this method but with KeyEvents
-		System.out.println("Player moved");
+	//	System.out.println("Player moved");
 		int id = e.getKeyCode();
 		int temp;
-		System.out.println("The id is " + id);
+	//	System.out.println("The id is " + id);
 		
 		
 		switch( id ) { 
         case KeyEvent.VK_LEFT:
             // up 
-        	System.out.println("Up pressed");
+        	//System.out.println("Up pressed");
         	temp = getXloc()-10;
 			setXloc(temp);
             break;
@@ -58,7 +70,12 @@ public class PlayerCharacter extends GameObject{
 	
 	
 	
-	 //----------------------Used for testing Model-------------------------//
+	 /**
+ 	 * Update player location.
+ 	 *
+ 	 * @param input the input
+ 	 */
+ 	//----------------------Used for testing Model-------------------------//
 	public void updatePlayerLocation(String input) {
 		// takes a string as input and updates location
 		int temp;
@@ -83,23 +100,54 @@ public class PlayerCharacter extends GameObject{
 			setYloc(temp);
 		}
 	}
+	
+	/**
+	 * The Enum Direction.
+	 */
 	public enum Direction {
 
+		/** The north. */
 		NORTH("north"),
+		
+		/** The northeast. */
 		NORTHEAST("northeast"),
+		
+		/** The east. */
 		EAST("east"),
+		
+		/** The southeast. */
 		SOUTHEAST("southeast"),
+		
+		/** The south. */
 		SOUTH("south"),
+		
+		/** The southwest. */
 		SOUTHWEST("southwest"),
+		
+		/** The west. */
 		WEST("west"),
+		
+		/** The northwest. */
 		NORTHWEST("northwest");
 		
+		/** The name. */
 		private String name = null;
 		
 		
+		/**
+		 * Instantiates a new direction.
+		 *
+		 * @param s the s
+		 */
 		private Direction(String s){
 			name = s;
 		}
+		
+		/**
+		 * Gets the name.
+		 *
+		 * @return the name
+		 */
 		public String getName() {
 			return name;
 		}
