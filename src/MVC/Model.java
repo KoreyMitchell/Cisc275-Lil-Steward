@@ -1,15 +1,31 @@
 package MVC;
 
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
+
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.SourceDataLine;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class Model.
  */
-public class Model {
+public class Model implements Runnable {
+	Thread t;
+	
+	int soundCount;
+	HashMap<String, MakeSong> sfx;
 	
 	/** The player. */
 	PlayerCharacter player;
@@ -27,6 +43,7 @@ public class Model {
 	ArrayList<Obstacle> obstacleList;
 	ArrayList<GameObject> tutorialNotes;
 	
+	Thread t1;
 	/** The tool. */
 	Tool tool;
 	
@@ -59,6 +76,8 @@ public class Model {
 	
 	/** The randomy. */
 	int randomy;
+	
+	int secondsPassed;
 
 	/**
 	 * Instantiates a new model.
@@ -74,9 +93,20 @@ public class Model {
 		tool = new Tool(false);
 		plantsPlanted = 0;
 		plantsRemoved = 0;
-		level = 4;
+		
+		level = 0;
+		sfx = new HashMap<String, MakeSong>();
+		sfx.put("levelUp", new MakeSong("images/levelUp.wav"));
+		sfx.put("rewardSound", new MakeSong("images/rewardSound.wav"));
+		soundCount = 0;
+		secondsPassed = 60;
+		
 
+		
 		// levelPreset(level);
+	}
+	public int getSeconds() {
+		return secondsPassed;
 	}
 	
 	/**
@@ -144,6 +174,8 @@ public class Model {
 			// remove the plantable ground, since it is now planted
 			groundList.remove(g);
 			plantsPlanted++;
+			t1 = new Thread(new Model());
+			t1.start();
 		}
 	}
 
@@ -160,9 +192,27 @@ public class Model {
 		if (invasivePlants.contains(inv)&&inv.equals(player)) {
 			plantsRemoved++;
 			invasivePlants.remove(inv);
+			t1 = new Thread(new Model());
+			t1.start();
 		}
 
 	}
+
+	
+
+	@Override
+	public void run() {
+		if(soundCount == 0) {
+		sfx.get("rewardSound").playSound();
+		}
+		else if(soundCount == 1) {
+			sfx.get("levelUp").playSound();
+		}
+	}
+	
+
+
+
 
 	/**
 	 * Check lvl up.
@@ -175,6 +225,8 @@ public class Model {
 				levelPreset(level);
 				System.out.println(invasivePlants.isEmpty());
 				level++;
+				t1 = new Thread(new LevelUpSound(sfx,level));
+				t1.start();
 				//break;
 			} else {
 				win = true;
@@ -216,6 +268,7 @@ public class Model {
 				obstacleList.add(i1);
 				}
 			}
+			
 			TutorialNotePhragmites tut1 = new TutorialNotePhragmites(screenWidth-500, 10);
 			tutorialNotes.add(tut1);
 			TutorialNoteAster tut2 = new TutorialNoteAster(screenWidth-500, screenHeight-310);
@@ -562,5 +615,9 @@ public class Model {
 
 		sc.close();
 	}
+
+	
+
+
 
 }
