@@ -244,25 +244,72 @@ public class Model {
 			// TODO: level one
 			System.out.println("Level one selected");
 			// board conditions at start
-			for(int i = 0; i<3;i++) {
-			GroundPatch grp1 = new GroundPatch(20, 120*i);
-			
-			groundList.add(grp1);
+//			for(int i = 0; i<3;i++) {
+//			GroundPatch grp1 = new GroundPatch(20, 120*i);
+//			
+//			groundList.add(grp1);
+//			}
+//
+//			Obstacle ob1 = new Obstacle(90, 90);
+//			obstacleList.add(ob1);
+//
+//			InvasivePlant inv1 = new InvasivePlant(10, 10);
+//			InvasivePlant inv2 = new InvasivePlant(200, 200);
+//			InvasivePlant inv3 = new InvasivePlant(300, 30);
+//			InvasivePlant inv4 = new InvasivePlant(20, 100);
+//			InvasivePlant inv5 = new InvasivePlant(300, 100);
+//			invasivePlants.add(inv1);
+//			invasivePlants.add(inv2);
+//			invasivePlants.add(inv3);
+//			invasivePlants.add(inv4);
+//			invasivePlants.add(inv5);
+//			break;
+			for (int i = 0; i < 15; i++) {//set to 15
+				random1 = new Random();
+				randomx = random1.nextInt(screenWidth-100);
+				random2 = new Random();
+				randomy = random2.nextInt(screenHeight-100);
+				
+				if (90 * i < screenWidth - 300) {
+					Obstacle ob1 = new Obstacle(90 * i, 90);
+					obstacleList.add(ob1);
+					Obstacle ob3 = new Obstacle(90 * i + 300, 300);
+					obstacleList.add(ob3);
+					Obstacle ob5 = new Obstacle(90 * i, screenHeight - 300);
+
+					obstacleList.add(ob5);
+				}
 			}
+			for (int i = 0; i < 5; i++) {//set to 7
+				random1 = new Random();
+				randomx = random1.nextInt(screenWidth-100);
+				random2 = new Random();
+				randomy = random2.nextInt(screenHeight-100);
 
-			Obstacle ob1 = new Obstacle(90, 90);
-			obstacleList.add(ob1);
 
-			InvasivePlant inv1 = new InvasivePlant(10, 10);
-			InvasivePlant inv2 = new InvasivePlant(200, 200);
-			InvasivePlant inv3 = new InvasivePlant(300, 30);
-			InvasivePlant inv4 = new InvasivePlant(20, 100);
-			InvasivePlant inv5 = new InvasivePlant(300, 100);
-			invasivePlants.add(inv1);
-			invasivePlants.add(inv2);
-			invasivePlants.add(inv3);
-			invasivePlants.add(inv4);
-			invasivePlants.add(inv5);
+				// Obstacle ob2 = new Obstacle (300, 20*i+300);
+				// Obstacle ob4 = new Obstacle (1000, 30*i+600);
+
+//				for (int j = 0; j < 10; j++) {
+//					Obstacle ob = new Obstacle(250 + 500 * j, screenHeight - (20 * i) - 300);
+//					Obstacle ob2 = new Obstacle(500 * j, 20 * i + 300);
+//					obstacleList.add(ob);
+//					obstacleList.add(ob2);
+//				}
+
+				// .add(ob4);
+				
+				GroundPatch grp1 = new GroundPatch(randomx, randomy);
+				if(!obstacleList.contains(grp1)) {
+					groundList.add(grp1);
+				}
+				
+				InvasivePlant inv1 = new InvasivePlant((randomx*3)%(screenWidth-100), (randomy*4)%(screenHeight-100));
+				invasivePlants.add(inv1);
+				if(!obstacleList.contains(inv1)) {
+					invasivePlants.add(inv1);
+				}
+			}
 			break;
 		}
 		case 2: {
@@ -271,7 +318,7 @@ public class Model {
 			player.setXloc(0);
 			player.setYloc(0);
 			
-			for (int i = 0; i < 15; i++) {//set to 15
+			for (int i = 0; i < 7; i++) {//set to 15
 				random1 = new Random();
 				randomx = random1.nextInt(screenWidth-100);
 				random2 = new Random();
@@ -290,7 +337,7 @@ public class Model {
 				// Obstacle ob2 = new Obstacle (300, 20*i+300);
 				// Obstacle ob4 = new Obstacle (1000, 30*i+600);
 
-				for (int j = 0; j < 10; j++) {
+				for (int j = 0; j < 9; j++) {
 					Obstacle ob = new Obstacle(250 + 500 * j, screenHeight - (20 * i) - 300);
 					Obstacle ob2 = new Obstacle(500 * j, 20 * i + 300);
 					obstacleList.add(ob);
@@ -319,7 +366,7 @@ public class Model {
 			player.setYloc(0);
 			
 			levelPreset(2);
-			for (int i = 0; i < 25; i++) {//set to 25
+			for (int i = 0; i < 11; i++) {//set to 25
 				random1 = new Random();
 				randomx = random1.nextInt(screenWidth-100);
 				random2 = new Random();

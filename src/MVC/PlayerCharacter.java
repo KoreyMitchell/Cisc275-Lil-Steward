@@ -39,22 +39,22 @@ public class PlayerCharacter extends GameObject{
         case KeyEvent.VK_LEFT:
             // up 
         	//System.out.println("Up pressed");
-        	temp = getXloc()-30;
+        	temp = getXloc()-10;
 			setXloc(temp);
             break;
         case KeyEvent.VK_RIGHT:
             // down 
-        	temp = getXloc()+30;
+        	temp = getXloc()+10;
 			setXloc(temp);
             break;
         case KeyEvent.VK_UP:
             // left
-        	temp = getYloc()-30;
+        	temp = getYloc()-10;
 			setYloc(temp);
             break;
         case KeyEvent.VK_DOWN :
             // right
-        	temp = getYloc()+30;
+        	temp = getYloc()+10;
 			setYloc(temp);
             break;
 	
