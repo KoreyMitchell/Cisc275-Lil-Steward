@@ -46,6 +46,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	/** The obstacle list. */
 	ArrayList<Obstacle> obstacleList;
+	ArrayList<GameObject> tutorialNotes;
 	
 	/** The tool. */
 	Tool tool;
@@ -115,12 +116,19 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	/** The scaled bg img menu. */
 	Image scaled_bg_img_menu;
+<<<<<<< HEAD
+	Image tutorialNotePhragmites;
+	Image tutorialNoteAster;
+	Image tutorialNoteInkberry;
+	Image tutorialNoteDirection;
+=======
 	
 	/** The tutorial note 1. */
 	Image tutorialNote1;
 	
 	/** The tutorial note 2. */
 	Image tutorialNote2;
+>>>>>>> b5f0232d3f0f3b14f8a80f8122ba309e91cc468e
 	
 	/** The g. */
 	Graphics g;
@@ -160,6 +168,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		groundList = new ArrayList<GroundPatch>();
 		obstacleList = new ArrayList<Obstacle>();
 		tool = new Tool(true);
+		tutorialNotes = new ArrayList<GameObject>();
 		
 		setFocusable(true);
 		
@@ -170,7 +179,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		ImageIcon bgImage = new ImageIcon("images/grass_template2.jpg");
 		ImageIcon bgMenuImage = new ImageIcon("images/background.png");
 		ImageIcon tutNote1 = new ImageIcon("images/stickynote_phragmites.png");
-		ImageIcon tutNote2 = new ImageIcon("images/stickynote.png");
+		ImageIcon tutNote2 = new ImageIcon("images/stickynote_aster.png");
+		ImageIcon tutNote3 = new ImageIcon("images/stickynote_inkberry.png");
+		ImageIcon tutNote4 = new ImageIcon("images/stickynote_directions.png");
 		
 		//Items
 		ImageIcon groundicon = new ImageIcon("images/ground.png");
@@ -196,8 +207,14 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		rockimg = rockicon.getImage();
 		backgroundimg = bgImage.getImage();
 		menuimg = bgMenuImage.getImage();
-		tutorialNote1 = tutNote1.getImage();
-		tutorialNote2 = tutNote2.getImage();
+		tutorialNotePhragmites = tutNote1.getImage();
+		tutorialNoteAster = tutNote2.getImage();
+		tutorialNoteInkberry = tutNote3.getImage();
+		tutorialNoteDirection = tutNote4.getImage();
+;//		tutorialNote1 = tutNote1.getImage();
+//		tutorialNote2 = tutNote2.getImage();
+		
+
 		
 		
 		//scale image to screen size
@@ -276,10 +293,10 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			frame.addMouseListener(this);
 			frame.addKeyListener(this);
 			
-//			GraphicsEnvironment env =
-//		            GraphicsEnvironment.getLocalGraphicsEnvironment();
-//		        GraphicsDevice device = env.getDefaultScreenDevice();
-//		        device.setFullScreenWindow(frame);
+			GraphicsEnvironment env =
+		            GraphicsEnvironment.getLocalGraphicsEnvironment();
+		        GraphicsDevice device = env.getDefaultScreenDevice();
+		        device.setFullScreenWindow(frame);
 			//test
 			
 	        
@@ -320,8 +337,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		if(State == STATE.GAME) {
 			if(level == 0) {
 				g2d.drawImage(scaled_bg_img, 0, 0, null);
-				g2d.drawImage(tutorialNote1, screenWidth-500, 10, null);
-				g2d.drawImage(tutorialNote2, screenWidth-500, 350, null);
+				
 				
 				g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
 			// need reset
@@ -339,9 +355,28 @@ public class View extends JPanel implements MouseListener, KeyListener{
 				for (NativePlant n : nativePlants) {
 					g2d.drawImage(nplantimg, n.getXloc(), n.getYloc(), null);
 				}
+				for (GameObject n : tutorialNotes) {
+					if(n instanceof TutorialNotePhragmites) {
+						g2d.drawImage(tutorialNotePhragmites, n.getXloc(), n.getYloc(), null);
+					}
+					else if(n instanceof TutorialNoteAster) {
+						g2d.drawImage(tutorialNoteAster, n.getXloc(), n.getYloc(), null);
+					}
+					else if(n instanceof TutorialNoteInkberry) {
+						g2d.drawImage(tutorialNoteInkberry, n.getXloc(), n.getYloc(), null);
+					}
+					else if(n instanceof TutorialNoteDirection) {
+						g2d.drawImage(tutorialNoteDirection, n.getXloc(), n.getYloc(), null);
+					}
+					
+				}
+				
+			
+
 			
 				//draw the playerimage
 				g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
+				
 				
 			
 				
@@ -349,6 +384,10 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			else if(level == 1) {
 				
 			g2d.drawImage(scaled_bg_img, 0, 0, null);
+			
+			
+
+		
 	
 			// draw each of the game objects
 			for (GroundPatch gr : groundList) {
@@ -420,6 +459,16 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	public void setNativePlants(ArrayList<NativePlant> n) {
 		nativePlants.clear();
 		nativePlants.addAll(n);
+	}
+	public void checkTut() {
+		if(level > 1) {
+			tutorialNotes.clear();
+		}
+	}
+	
+	public void setTutorialNotes(ArrayList<GameObject> n) {
+		tutorialNotes.clear();
+		tutorialNotes.addAll(n);
 	}
 
 	/**
