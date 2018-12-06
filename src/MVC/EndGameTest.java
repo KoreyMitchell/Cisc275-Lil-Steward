@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 /**
  * The Class EndGameTest.
  */
-public class EndGameTest extends JFrame {
+public class EndGameTest extends View {
 	
 boolean passedTest = false;
 /** The Constant serialVersionUID.  */
@@ -229,4 +229,7 @@ public static void main(String args[]) {
 	new EndGameTest();
 	
 }
+
+
+
 }

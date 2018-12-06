@@ -134,8 +134,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	//EndScreen
 	private EndScreen endScreen;
 	//TEST
-	//private EndGameTest test;
-	
+	EndGameTest endGameTest;
 	
 	/** The toolbar. */
 	ToolBar toolbar;
@@ -146,6 +145,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	/** The key array. */
 	boolean[] keyArray = new boolean[4];
+
+	EndSurvey endSurvey;
+
 	
     
 	
@@ -307,11 +309,12 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			//create a a new endgame test
 			//test  = new  EndGameTest();
 			
-		 //Menu stuff
-		menu= new Menu();
+	        //Menu stuff
+	        menu= new Menu();
 			//toolbar = new ToolBar();
 			
 			endScreen = new EndScreen();
+			endSurvey = new EndSurvey();
 	}
 
 	/* (non-Javadoc)
@@ -396,14 +399,16 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
 			}
 		
-		}else if (State == STATE.TEST) {
-			g2d.drawImage(scaled_bg_img_menu, 0, 0, null);
-			//test.EndGameTest();
+
 		}else if(State ==STATE.MENU) {//if game state is not in game,draw menu
 			g2d.drawImage(scaled_bg_img_menu, 0, 0, null);
 			menu.renderMenu(g);
 		}else if(State == STATE.END) {
 			endScreen.render(g);
+		}else if(State == STATE.TEST) {
+			//endGameTest=new EndGameTest();
+			endSurvey.render(g2d);
+			endSurvey.EndGameTest();
 		}
 		
 	}
@@ -506,31 +511,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	/* (non-Javadoc)
 	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)
 	 */
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		//System.out.println("Mouse clicked");
-		System.out.println("Mouse clicked");
-		System.out.println(e.getX() + " " + e.getY());
-		control.click(e.getX(),e.getY());
-		//plantedCount++;
-		//paintPlantedInfo(plantedCount, e.getX(), e.getY());
-		
-		int mx = e.getX();	//x value of mouse
-		int my = e.getY();	//y value of mouse
-		
-		if(State == STATE.GAME) 
-		{
-			control.click(mx,my);
-		}
-		if(State == STATE.END) {
-			if(mx>screenWidth/2&&mx<screenWidth/2+500&&my>600&&my<1000) {
-				View.State = View.STATE.MENU;
-			}
-		}
-			System.out.println("Mouse clicked");
-	
-	}
+
 
 	/**
 	 * Gets the planted count.
@@ -591,37 +572,65 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	/* (non-Javadoc)
 	 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
 	 */
+	
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		//System.out.println("Mouse clicked");
+		System.out.println("Mouse clicked");
+		System.out.println(e.getX() + " " + e.getY());
+		control.click(e.getX(),e.getY());
+		//plantedCount++;
+		//paintPlantedInfo(plantedCount, e.getX(), e.getY());
+		
+		int mx = e.getX();	//x value of mouse
+		int my = e.getY();	//y value of mouse
+		
+		if(State == STATE.GAME) 
+		{
+		//	System.out.println("Game: "+mx+" , "+my);
+			control.click(mx,my);
+		}
+		else if(State == STATE.END)
+		{
+			if(mx>screenWidth/2-175 && mx<screenWidth/2+170 && my>772 && my<865) {
+			//	System.out.println(screenWidth/2);
+			//	System.out.println("End: "+mx+","+my);
+				View.State=STATE.TEST;	
+			}
+		}
+		else if(State == STATE.TEST) {
+		//	System.out.println("Test: "+mx+","+my);
+			//if(mx >screenWidth/2-385,300)
+		}
+			System.out.println("Mouse clicked");
+	
+	}
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		int mx = e.getX();	//x value of mouse
 		int my = e.getY();	//y value of mouse
 
-		/*
-		 * 	public Rectangle playButton = new Rectangle(screenWidth/2-35,150,100,50);
-			public Rectangle quitButton = new Rectangle(screenWidth/2-35,250,100,50);
-			public Rectangle anotherButton = new Rectangle(screenWidth/2-35,350,100,50);
-		 */
-
 		
 		if(State == STATE.MENU) {
-		if(mx >= screenWidth/5+10 && mx <= screenWidth/5+200 )
-
-		{	//first button
-			if(my >= screenHeight/3+28 && my <= screenHeight/3+103)
-			{
-				System.out.print(mx + " " +  my);
-				//Pressed play button
-				level = 0;
-				View.State = View.STATE.GAME;
+			if(mx >= screenWidth/5+10 && mx <= screenWidth/5+200 )
+	
+			{	//Play button
+				if(my >= screenHeight/3+28 && my <= screenHeight/3+103)
+				{
+					System.out.print(mx + " " +  my);
+					//Pressed play button
+					level = 0;
+					View.State = View.STATE.GAME;
+				}
+	
+				if(my >= (screenHeight/4*2)+28 && my <= ((screenHeight/4*2)+103))
+				{
+					//Pressed other button
+					System.exit(1);
+				}
 			}
-
-			if(my >= (screenHeight/4*2)+28 && my <= ((screenHeight/4*2)+103))
-			{
-				//Pressed other button
-				System.exit(1);
-			}
-		}
 
 		}
 		
@@ -665,18 +674,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		System.out.println("Key pressed");
 		control.key(e);
 	}
-	
-	/**
-	 * Draw end screen.
-	 */
-	public void drawEndScreen() {
-		
-		super.paintComponent(g);
-		Font fnt0 = new Font("arial",Font.BOLD,50); //font,bold,size		
-		g.setFont(fnt0);		
-		g.setColor(Color.ORANGE);
-		g.drawString("Game Over",screenWidth/2-150,100 );
-	}
+
 	
 /**
  * Prints the stuff.

@@ -1,4 +1,4 @@
-package MVC;
+opackage MVC;
 
 import java.awt.event.KeyEvent;
 
