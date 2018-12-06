@@ -74,7 +74,6 @@ public class Controller {
 		view.setPlantedCount(m.plantsPlanted);
 		view.setPlantsRemoved(m.plantsRemoved);
 		
-		
 	}
 	
 	/**
@@ -98,7 +97,10 @@ public class Controller {
 		//System.out.println("Controller read click from view");
 		//TODO: call click methods from model 
 		
-
+		if(model.win == true) {
+			View.State = STATE.END;
+			
+		}
 		model.addNativePlant(x, y);
 		model.removeInvasivePlant(x, y);
 		//model.player.setXloc(x);
@@ -107,9 +109,8 @@ public class Controller {
 		syncViewToModel(model);
 		view.repaint();
 		model.checkLvlUp();
-		if(model.win == true) {
-			View.State = STATE.END;
-		}
+	
+
 	
 	}
 	

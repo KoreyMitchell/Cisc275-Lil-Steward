@@ -72,7 +72,7 @@ public class Model {
 		tool = new Tool(false);
 		plantsPlanted = 0;
 		plantsRemoved = 0;
-		level = 0;
+		level = 4;
 
 		// levelPreset(level);
 	}

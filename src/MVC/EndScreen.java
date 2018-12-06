@@ -18,11 +18,10 @@ public class EndScreen extends View{
 //	Rectangle PlayRec = new Rectangle(screenWidth/2-410,450,765,60);
 	
 	/** The Constant serialVersionUID. */
-private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;    
 	
-	/** The f. */
-	JFrame f;
-
+	Color mixed;	//(red,green,blue) saturation
+	
 	/**
 	 * Render.
 	 *
@@ -33,7 +32,7 @@ private static final long serialVersionUID = 1L;
 		Graphics2D g2d= (Graphics2D) g;
 		
 		g2d.drawOval(screenWidth/2 -230,25,450,125);	//congrats oval
-		g2d.setColor(Color.DARK_GRAY);
+		g2d.setColor(mixed = new Color(30, 60, 25));
 		g2d.fillOval(screenWidth/2 -230,25,450,125);
 		
 		//g2d.draw(plantedRec);
@@ -44,10 +43,10 @@ private static final long serialVersionUID = 1L;
 		g2d.setColor(Color.DARK_GRAY);
 		g2d.fillRect(screenWidth/2-410,450,765,60);
 		
-		
-		g2d.drawOval(screenWidth/2 -230,25,450,125);	//congrats oval
-		g2d.setColor(Color.DARK_GRAY);
-		g2d.fillOval(screenWidth/2-200,745,313,80);
+		//congrats circle
+		g2d.drawOval(screenWidth/2-180,745,350,80);	//play again oval
+		g2d.setColor(mixed = new Color(30, 60, 25));
+		g2d.fillOval(screenWidth/2-180,745,350,80);
 		
 		//Title 
 		Font fnt0 = new Font("arial",Font.BOLD,50); //font,bold,size		
@@ -59,7 +58,7 @@ private static final long serialVersionUID = 1L;
 
 		g.drawString("You removed " + plantsRemoved + " invasive plants!", screenWidth/2-400,500);
 
-		g.drawString("Play again", screenWidth/2-170,800);
+		g.drawString("Take Survey", screenWidth/2-150,800);
 
 
 		
