@@ -14,12 +14,18 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -147,6 +153,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	boolean[] keyArray = new boolean[4];
 
 	EndSurvey endSurvey;
+	int counter;
 
 	
     
@@ -271,7 +278,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			frame = new JFrame();
 			frame.add(this);
 			frame.pack();
-			frame.setResizable(false);     
+			frame.setResizable(false);    
+		
+			
 			
 			frame.setTitle("Wetlands Game");
 			frame.setLayout(new GridLayout(1,1));
@@ -279,7 +288,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			frame.setSize(screenSize);
 			//frame.setSize(700, 365);
 			//frame.pack();
-			
+	
 			
 			frame.setVisible(true);
 			frame.setLocationRelativeTo(null);
@@ -320,6 +329,12 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	/* (non-Javadoc)
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
 	 */
+	
+
+	
+	
+	
+	int c = 0;
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
@@ -329,7 +344,15 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		//if in GAME state
 		if(State == STATE.GAME) {
 			if(level == 0) {
+				
+				
+				
+
 				g2d.drawImage(scaled_bg_img, 0, 0, null);
+				g2d.setFont(new Font("Dialog", Font.BOLD,18));
+				g2d.setColor(Color.white);
+				g2d.drawString("White Wood Asters planted: " + plantedCount + "   Phragmites Removed: " + plantsRemoved + " Time: " + secondsPassed, 5, 20);
+				
 				
 				
 				g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
@@ -688,6 +711,17 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		System.out.println("Key pressed");
 		control.key(e);
 	}
+	
+	int secondsPassed = 60;
+	
+	
+	public void setSeconds(int s) {
+		this.secondsPassed = s;
+	}
+	
+	
+	
+
 
 	
 /**

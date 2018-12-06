@@ -1,6 +1,10 @@
 package MVC;
 
 import java.awt.event.KeyEvent;
+import java.util.Timer;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.TimerTask;
 
 import MVC.View.STATE;
 
@@ -20,6 +24,10 @@ public class Controller {
 	 * 	The visuals of the program
 	 * */
 	View view;
+	
+	LevelUpSound lus;
+	
+	int lvl1count = 2;
 
 	private int count;
 
@@ -31,12 +39,12 @@ public class Controller {
 	public static void main(String[] args) {
 		// makes an instance of Controller
 		Controller c = new Controller();
-		int count =0;
+		
 		
 		c.view.initialize();
 		c.view.setControl(c);
-		MakeSong m = new MakeSong();
-		m.playSound("images/BackGroundMusic.wav");
+		MakeSong m = new MakeSong("images/BackGroundMusic.wav");
+		m.playSound();
 		
 		
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
@@ -98,9 +106,16 @@ public class Controller {
 	 * @param x the x
 	 * @param y the y
 	 */
+	
+	boolean t1 = true;
 	public void click(int x, int y) {
 		//System.out.println("Controller read click from view");
-		//TODO: call click methods from model 
+		//TODO: call click methods from model fs
+		
+		if(model.level >= 2 && t1) {
+			setTimer(model.level);
+			t1 = false;
+		}
 		
 		if(model.win == true && count == 0) {
 			View.State = STATE.END;
@@ -121,7 +136,69 @@ public class Controller {
 
 	
 	}
+	boolean finalstage = true;
 	
+	public void setTimer(int levels) {
+		int lev = levels;
+	
+	final Timer timer = new Timer();
+	// Note that timer has been declared final, to allow use in anon. class below
+	timer.schedule( new TimerTask()
+	{
+	    private int i = 60;
+	    public void run()
+	    { 
+	        System.out.println("1 Second Later");
+	        model.secondsPassed--;
+	    
+	        view.setSeconds(model.secondsPassed);
+	        view.repaint();
+	        if (--i < 1 ) {
+	        	model.groundList.clear();
+	        	model.invasivePlants.clear();
+	        	model.checkLvlUp();
+	        	syncViewToModel(model);
+	        	model.secondsPassed = 60;
+	        	i = 60;
+	        	view.repaint();
+	        }
+	        if(model.level > 3 && finalstage) {
+	        	finalstage = false;
+	        	view.State = STATE.END;
+	        	view.repaint();
+	        }
+	        
+	    }
+	}, 1000, 1000 //Note the second argument for repetition
+	);}
+
+	
+	
+	
+//	
+//	Runnable runnable = new Runnable() {
+//		  @Override public void run() {
+//		    model.secondsPassed++;
+//		    view.setSeconds(model.secondsPassed);
+//		    view.repaint();
+//		    
+//		    
+//		  }
+//		 
+//		};
+//	
+//	void startTimer(int delaySeconds) {
+//		  Executors.newSingleThreadScheduledExecutor().schedule(
+//		    runnable,
+//		    delaySeconds,
+//		    TimeUnit.SECONDS);
+//		
+//
+//	
+//	
+//
+//	}
+//	
 	/**
 	 * Key.
 	 *

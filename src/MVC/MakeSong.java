@@ -17,11 +17,16 @@ public class MakeSong {
     private AudioInputStream audioStream;
     private AudioFormat audioFormat;
     private SourceDataLine sourceLine;
+    String filename;
+    
+    public MakeSong(String name) {
+    	this.filename = name;
+    }
 
     /**
      * @param filename the name of the file that is going to be played
      */
-    public void playSound(String filename){
+    public void playSound(){
 
         String strFilename = filename;
 
