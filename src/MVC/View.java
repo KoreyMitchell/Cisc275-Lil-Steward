@@ -593,28 +593,33 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		}
 		else if(State == STATE.END)
 		{
+			System.out.println(screenWidth/2);
+			System.out.println("End: "+mx+","+my);
 			if(mx>screenWidth/2-175 && mx<screenWidth/2+170 && my>772 && my<865) {
-			//	System.out.println(screenWidth/2);
-			//	System.out.println("End: "+mx+","+my);
+				System.out.println(screenWidth/2);
+				System.out.println("End: "+mx+","+my);
 				View.State=STATE.TEST;	
 			}
 		}
 		else if(State == STATE.TEST) {
-			System.out.println("test: "+mx+" , "+my);
-			System.out.println(screenWidth/2);
+//			System.out.println("test: "+mx+" , "+my);
+//			System.out.println(screenWidth/2);
 			//Question 1
 			if(mx>screenWidth/2-136 && mx<screenWidth/2-50 && my>262 && my<407) {
 				endSurvey.q1Correct= true;
 				//System.out.println("works");
 			}
 			//Question 2
-			if(mx>screenWidth/2+22 && mx<screenWidth/2+89 && my>504 && my<626) {
+			if(mx>screenWidth/2-20 && mx<screenWidth/2+89 && my>504 && my<626) {
 				endSurvey.q2Correct= true;
 			}
 			//Question 3
 			if(mx>screenWidth/2-273 && mx<screenWidth/2-193 && my>667 && my<723) {
 				endSurvey.q3Correct= true;
 			}
+//			if(endSurvey.q1Correct== true &&endSurvey.q2Correct== true &&endSurvey.q3Correct== true) {
+//				
+//			}
 			
 		}
 			System.out.println("Mouse clicked");
