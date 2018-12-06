@@ -4,11 +4,28 @@ import java.awt.event.KeyEvent;
 
 import MVC.View.STATE;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Controller.
+ * Connects the Model and View
+ */
 public class Controller {
 
+	/** The model. 
+	 * The functionality of the program
+	 * */
 	Model model;
+	
+	/** The view. 
+	 * 	The visuals of the program
+	 * */
 	View view;
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		// makes an instance of Controller
 		Controller c = new Controller();
@@ -31,6 +48,9 @@ public class Controller {
 
 	}
 
+	/**
+	 * Instantiates a new controller.
+	 */
 	Controller() {
 		model = new Model();
 		view = new View();
@@ -40,6 +60,11 @@ public class Controller {
 		// model.levelPreset(model.level);
 	}
 
+	/**
+	 * Sync view to model.
+	 *
+	 * @param m the m
+	 */
 	public void syncViewToModel(Model m) {
 		// sets all variables in view to match their equivalents in the model
 		view.setPlayer(m.player);
@@ -54,12 +79,24 @@ public class Controller {
 		
 		
 	}
+	
+	/**
+	 * Sync model to view.
+	 *
+	 * @param v the v
+	 */
 	public void syncModelToView(View v) {
 		model.setLevel(v.level);
 	}
 	
  
 	
+	/**
+	 * Click.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 */
 	public void click(int x, int y) {
 		//System.out.println("Controller read click from view");
 		//TODO: call click methods from model 
@@ -79,6 +116,11 @@ public class Controller {
 	
 	}
 	
+	/**
+	 * Key.
+	 *
+	 * @param e the e
+	 */
 	public void key(KeyEvent e) {
 		//System.out.println("Controller read key from view");
 		int s = e.getKeyCode();
@@ -97,10 +139,6 @@ public class Controller {
 
 
 
-
-
-
-
 		if(s==KeyEvent.VK_ESCAPE) {
 			view.State = STATE.MENU;
 			model.escapeReset();
@@ -113,8 +151,8 @@ public class Controller {
 		//System.out.println(model.player.getXloc());
 		syncViewToModel(model);
 		view.repaint();
+		//
 	}
-	
 
 
 }

@@ -8,8 +8,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.awt.event.KeyEvent;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MyTests.
+ */
 public class MyTests {
 
+    /**
+     * Controller test.
+     */
     @Test
     public void ControllerTest() {
         Controller tester = new Controller(); // MyClass is tested
@@ -25,6 +32,9 @@ public class MyTests {
         tester.click(0, 0);
     }
     
+    /**
+     * Game object test.
+     */
     @Test
 	public void GameObjectTest() {
     	GameObject tester = new GameObject(); // MyClass is tested
@@ -33,6 +43,10 @@ public class MyTests {
     	assertThat(tester.equals("horse"), is(false));
     	assertThat(tester.equals(tester2), is(true));
 	    }
+    
+    /**
+     * Ground patch test.
+     */
     @Test
     public void GroundPatchTest() {
     	GroundPatch tester= new GroundPatch(0, 0);
@@ -41,6 +55,9 @@ public class MyTests {
 	    }
 
     
+    /**
+     * Invasive plant test.
+     */
     @Test
     public void InvasivePlantTest() {
     	InvasivePlant tester = new InvasivePlant(0, 0);
@@ -50,6 +67,9 @@ public class MyTests {
     	
 	    }
     
+    /**
+     * Model test.
+     */
     @Test
     public void ModelTest() {
     	Model tester = new Model();
@@ -60,6 +80,10 @@ public class MyTests {
     	
 
 	    }
+    
+    /**
+     * Native plant test.
+     */
     @Test
     public void NativePlantTest() {
     	NativePlant tester = new NativePlant(0, 0);
@@ -67,6 +91,10 @@ public class MyTests {
 
     	assertEquals(0, tester.hashCode(), "this should fail");
 	    }
+    
+    /**
+     * Obstacle test.
+     */
     @Test
     public void ObstacleTest() {
     	Obstacle tester = new Obstacle(0, 0);
@@ -74,6 +102,10 @@ public class MyTests {
 
     	assertEquals(0, tester.hashCode(), "this should fail");
 	    }
+    
+    /**
+     * Player test.
+     */
     @Test
     public void PlayerTest() {
     	PlayerCharacter tester = new PlayerCharacter();
@@ -122,6 +154,9 @@ public class MyTests {
     
     
 
+    /**
+     * Tool.
+     */
     @Test
     public void Tool() {
     	Tool tester = new Tool(false);
@@ -136,6 +171,10 @@ public class MyTests {
     	tester.setShovel(false);
     	assertThat(tester.isShovel(),is(false));
 	    }
+    
+    /**
+     * View test.
+     */
     @Test
     public void ViewTest() {
     	View tester = new View();
