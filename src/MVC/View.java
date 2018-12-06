@@ -116,19 +116,11 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	/** The scaled bg img menu. */
 	Image scaled_bg_img_menu;
-<<<<<<< HEAD
 	Image tutorialNotePhragmites;
 	Image tutorialNoteAster;
 	Image tutorialNoteInkberry;
 	Image tutorialNoteDirection;
-=======
-	
-	/** The tutorial note 1. */
-	Image tutorialNote1;
-	
-	/** The tutorial note 2. */
-	Image tutorialNote2;
->>>>>>> b5f0232d3f0f3b14f8a80f8122ba309e91cc468e
+
 	
 	/** The g. */
 	Graphics g;
@@ -413,8 +405,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		}else if(State == STATE.END) {
 			endScreen.render(g);
 		}else if(State == STATE.TEST) {
-			endGameTest=new EndGameTest();
-			//endSurvey.render(g2d);
+			//endGameTest=new EndGameTest();
+			endSurvey.render(g2d);
+			endSurvey.EndGameTest();
 		}
 		
 	}

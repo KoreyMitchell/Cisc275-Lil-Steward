@@ -21,6 +21,8 @@ public class Controller {
 	 * */
 	View view;
 
+	private int count;
+
 	/**
 	 * The main method.
 	 *
@@ -29,7 +31,7 @@ public class Controller {
 	public static void main(String[] args) {
 		// makes an instance of Controller
 		Controller c = new Controller();
-		
+		int count =0;
 		
 		c.view.initialize();
 		c.view.setControl(c);
@@ -100,9 +102,12 @@ public class Controller {
 		//System.out.println("Controller read click from view");
 		//TODO: call click methods from model 
 		
-		if(model.win == true) {
+		if(model.win == true && count == 0) {
 			View.State = STATE.END;
+			count = 1;
 			
+		}else if(model.win == true && count ==1) {
+			View.State = STATE.TEST;
 		}
 		model.addNativePlant(x, y);
 		model.removeInvasivePlant(x, y);
