@@ -408,7 +408,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		}else if(State == STATE.TEST) {
 			//endGameTest=new EndGameTest();
 			endSurvey.render(g2d);
-			endSurvey.EndGameTest();
+			
 		}
 		
 	}
@@ -600,8 +600,22 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			}
 		}
 		else if(State == STATE.TEST) {
-		//	System.out.println("Test: "+mx+","+my);
-			//if(mx >screenWidth/2-385,300)
+			System.out.println("test: "+mx+" , "+my);
+			System.out.println(screenWidth/2);
+			//Question 1
+			if(mx>screenWidth/2-136 && mx<screenWidth/2-50 && my>262 && my<407) {
+				endSurvey.q1Correct= true;
+				//System.out.println("works");
+			}
+			//Question 2
+			if(mx>screenWidth/2+22 && mx<screenWidth/2+89 && my>504 && my<626) {
+				endSurvey.q2Correct= true;
+			}
+			//Question 3
+			if(mx>screenWidth/2-273 && mx<screenWidth/2-193 && my>667 && my<723) {
+				endSurvey.q3Correct= true;
+			}
+			
 		}
 			System.out.println("Mouse clicked");
 	
