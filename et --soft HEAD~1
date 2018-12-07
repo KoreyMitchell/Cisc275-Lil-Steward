@@ -1,0 +1,282 @@
+[33mcommit 6d6a83b6b3510fffee2f0aef89271f41e7a74363[m[33m ([m[1;36mHEAD -> [m[1;32mcleanedbeta[m[33m, [m[1;31morigin/cleanedbeta[m[33m)[m
+Merge: f61d845 eea3ea6
+Author: Toby Boyd <eboyd@udel.edu>
+Date:   Wed Dec 5 22:59:40 2018 -0500
+
+    Merge branch 'cleanedbeta' of https://github.com/CISC275-Fall-2018/project-fall-2018-team-11-1 into cleanedbeta
+
+[33mcommit f61d845403fa8f737341537630d5b0dbc68e961f[m
+Author: Toby Boyd <eboyd@udel.edu>
+Date:   Wed Dec 5 22:59:20 2018 -0500
+
+    Added person back view
+
+[33mcommit eea3ea68b89cfe06009e14e1964a521209aea939[m
+Merge: af17acd cca68eb
+Author: Korey Mitchell <koreymitchell@wifi-roaming-128-4-164-71.wifi.udel.edu>
+Date:   Wed Dec 5 21:54:45 2018 -0500
+
+    Level updates
+
+[33mcommit af17acdac7f3a606910867a70c4430d6b4fc2d23[m
+Author: Korey Mitchell <koreymitchell@wifi-roaming-128-4-164-71.wifi.udel.edu>
+Date:   Wed Dec 5 21:52:13 2018 -0500
+
+    Level updates
+
+[33mcommit cca68ebbac8475187e6a954499f2d3634451b59f[m
+Author: Matt Lee <mattlee@udel.edu>
+Date:   Wed Dec 5 21:28:56 2018 -0500
+
+    testing
+
+[33mcommit e61582b84c60b730669ac78e3d034fe985e94d91[m
+Merge: e9736b1 faff243
+Author: Matt Lee <mattlee@udel.edu>
+Date:   Wed Dec 5 21:11:07 2018 -0500
+
+    Merge branch 'cleanedbeta' of https://github.com/CISC275-Fall-2018/project-fall-2018-team-11-1 into cleanedbeta
+
+[33mcommit faff243bf772de360ce3087d56369ecef4e78deb[m
+Merge: c3c39fe b5f0232
+Author: Korey Mitchell <koreymitchell@wifi-roaming-128-4-164-71.wifi.udel.edu>
+Date:   Wed Dec 5 21:10:11 2018 -0500
+
+    update
+
+[33mcommit e9736b1450fac28cc68ea927424e0232b3cb1df6[m
+Author: Matt Lee <mattlee@udel.edu>
+Date:   Wed Dec 5 21:05:38 2018 -0500
+
+    endsurvey
+
+[33mcommit c3c39fe1cc9e520becbf8ad3a6ecf80bb4a7f412[m
+Author: Korey Mitchell <koreymitchell@wifi-roaming-128-4-164-71.wifi.udel.edu>
+Date:   Wed Dec 5 21:05:34 2018 -0500
+
+    Working tutorial
+
+[33mcommit b5f0232d3f0f3b14f8a80f8122ba309e91cc468e[m
+Author: Matt Lee <mattlee@udel.edu>
+Date:   Wed Dec 5 15:05:48 2018 -0500
+
+    fixed
+
+[33mcommit 7caa6ffeea715b1d9f868e2dfbb355a5259c229b[m
+Author: Matt Lee <mattlee@udel.edu>
+Date:   Wed Dec 5 14:56:50 2018 -0500
+
+    added javadoc comments
+
+[33mcommit c3e2848741912631fcea40218e0dd46666ebbea2[m
+Merge: 03c33dd 788de23
+Author: Matt Lee <mattlee@udel.edu>
+Date:   Wed Dec 5 14:53:29 2018 -0500
+
+    added jdoc
+
+[33mcommit 03c33ddd624bdaaf718d56d3415a25b4520275eb[m
+Author: Matt Lee <mattlee@udel.edu>
+Date:   Wed Dec 5 14:51:15 2018 -0500
+
+    comments
+
+[33mcommit 788de237a773460fb46bfb8c69be9e370760ab5f[m
+Author: Awah <awahndin@udel.edu>
+Date:   Wed Dec 5 12:57:17 2018 -0500
+
+    -images
+
+[33mcommit f2279cd71b961e40a992cac3901cffad11033c79[m
+Merge: 7efc957 9dfea5f
+Author: Awah <awahndin@udel.edu>
+Date:   Wed Dec 5 12:45:00 2018 -0500
+
+    Merge branch 'cleanedbeta' of https://github.com/CISC275-Fall-2018/project-fall-2018-team-11-1.git into cleanedbeta
+
+[33mcommit 7efc9573b1b9929f165378b66cd4afd3bd59f725[m
+Author: Awah <awahndin@udel.edu>
+Date:   Wed Dec 5 12:44:03 2018 -0500
+
+    -images
+
+[33mcommit af05de1c1466cbfed6f5bcb2952f316cf32c2d8d[m
+Author: Awah <awahndin@udel.edu>
+Date:   Wed Dec 5 12:03:31 2018 -0500
+
+    -images/background
+
+[33mcommit effa42d373aed0dfaa0e74d2bb08f9b63779d325[m
+Author: Awah <awahndin@udel.edu>
+Date:   Wed Dec 5 12:01:57 2018 -0500
+
+    -added images/background
+
+[33mcommit 9dfea5f7cac282bf0c5ffa945be9797b6bd55b28[m
+Merge: 6ef143f b42ec79
+Author: Matt Lee <mattlee@udel.edu>
+Date:   Tue Dec 4 21:39:57 2018 -0500
+
+    Merge branch 'cleanedbeta' of https://github.com/CISC275-Fall-2018/project-fall-2018-team-11-1 into cleanedbeta
+
+[33mcommit 6ef143f67f219de5c6ea33b37047f8bee57e3fa1[m
+Author: Matt Lee <mattlee@udel.edu>
+Date:   Tue Dec 4 21:39:53 2018 -0500
+
+    f
+
+[33mcommit b42ec79e325aab12aa596f6165ed922c46cedcfd[m
+Author: RodneyNickles <36527686+RodneyNickles@users.noreply.github.com>
+Date:   Tue Dec 4 21:39:08 2018 -0500
+
+    Update View.java
+
+[33mcommit 105f8d05029ed53509fafe3f6f6dfc8e881f0b72[m
+Merge: c567d2a a67a773
+Author: Matt Lee <mattlee@udel.edu>
+Date:   Tue Dec 4 21:34:48 2018 -0500
+
+    g
+
+[33mcommit c567d2a93023722c55b5423e6305ed32adbfad6b[m
+Author: Matt Lee <mattlee@udel.edu>
+Date:   Tue Dec 4 21:32:13 2018 -0500
+
+    f
+
+[33mcommit a67a773561fe8086a095cbd8af045b9433416ec6[m
+Author: RodneyNickles <36527686+RodneyNickles@users.noreply.github.com>
+Date:   Tue Dec 4 21:31:43 2018 -0500
+
+    Add files via upload
+
+[33mcommit 30a9b16d7bb6922a37f6516abd5b54df7e11b145[m
+Author: RodneyNickles <36527686+RodneyNickles@users.noreply.github.com>
+Date:   Tue Dec 4 21:31:06 2018 -0500
+
+    menu buttons
+
+[33mcommit da20a5d3ada1cefcecb183454f7b7a53c7863cae[m
+Merge: 3938f7c 469a894
+Author: Matt Lee <mattlee@udel.edu>
+Date:   Tue Dec 4 21:30:20 2018 -0500
+
+    Merge branch 'cleanedbeta' of https://github.com/CISC275-Fall-2018/project-fall-2018-team-11-1 into cleanedbeta
+
+[33mcommit 469a89444e01ba3c266c2e441bb43f031f25e20d[m
+Merge: cee637b 6efcbc4
+Author: Toby Boyd <eboyd@udel.edu>
+Date:   Tue Dec 4 20:46:57 2018 -0500
+
+    Merge branch 'cleanedbeta' of https://github.com/CISC275-Fall-2018/project-fall-2018-team-11-1 into cleanedbeta
+
+[33mcommit cee637b6e252d04497f1f3132c9c7f7a011edf1c[m
+Author: Toby Boyd <eboyd@udel.edu>
+Date:   Tue Dec 4 20:46:44 2018 -0500
+
+    new title image
+
+[33mcommit 6efcbc40355e6402f597063d9822f9ab5401e0b2[m
+Author: Awah <awahndin@udel.edu>
+Date:   Tue Dec 4 20:42:23 2018 -0500
+
+    fixed: Resize and 2nd window
+
+[33mcommit e9e5b110960a4ce8f44a82c8b3903d51b274a67b[m
+Merge: 0772512 bddb85b
+Author: Awah <awahndin@udel.edu>
+Date:   Tue Dec 4 20:25:30 2018 -0500
+
+    resize issues
+
+[33mcommit 3938f7cd6cd53bf8df822a680fa0f5414c851c5f[m
+Merge: 3d4d4ac bddb85b
+Author: Matt Lee <mattlee@udel.edu>
+Date:   Tue Dec 4 20:24:51 2018 -0500
+
+    l
+
+[33mcommit 3d4d4ac9dbb0b89da7d882c0e370849c5090190b[m
+Merge: d1f3894 7b5ea61
+Author: Matt Lee <mattlee@udel.edu>
+Date:   Tue Dec 4 20:22:58 2018 -0500
+
+    m
+
+[33mcommit 07725123edf6e52deffdd44251c97f3e276be517[m
+Author: Awah <awahndin@udel.edu>
+Date:   Tue Dec 4 20:22:12 2018 -0500
+
+    resize issues
+
+[33mcommit bddb85b6c541265655048ef1171f49cbfbfe4533[m
+Author: Toby Boyd <eboyd@udel.edu>
+Date:   Tue Dec 4 20:21:57 2018 -0500
+
+    Level presets
+
+[33mcommit d1f3894ec457109330bea4ae53266bd5b88052c1[m
+Author: Matt Lee <mattlee@udel.edu>
+Date:   Tue Dec 4 20:21:19 2018 -0500
+
+    f
+
+[33mcommit 7b5ea6184ec77c8d55b6aa9fcb2602e83a0a6ded[m
+Author: Toby Boyd <eboyd@udel.edu>
+Date:   Tue Dec 4 20:06:23 2018 -0500
+
+    added randomization to level presets
+
+[33mcommit 0eaa450ef2e0f288127546bd08ad8ff75959f880[m
+Merge: 4c36462 e133a96
+Author: Matt Lee <mattlee@udel.edu>
+Date:   Tue Dec 4 19:50:29 2018 -0500
+
+    Merge branch 'cleanedbeta' of https://github.com/CISC275-Fall-2018/project-fall-2018-team-11-1 into cleanedbeta
+
+[33mcommit e133a9615f8ed1743d268fb24065ac3983389bf2[m
+Merge: e90de66 3968f21
+Author: Korey Mitchell <koreymitchell@wifi-roaming-128-4-166-174.wifi.udel.edu>
+Date:   Tue Dec 4 19:49:44 2018 -0500
+
+    Updates
+
+[33mcommit e90de6614bd00b0090bf5301e696db8804f4ff91[m
+Author: Korey Mitchell <koreymitchell@wifi-roaming-128-4-166-174.wifi.udel.edu>
+Date:   Tue Dec 4 19:46:22 2018 -0500
+
+    Updates
+
+[33mcommit 4c364625c8c6774321eab65d644d5599018d6cb2[m
+Merge: 2661e8b 3968f21
+Author: Matt Lee <mattlee@udel.edu>
+Date:   Tue Dec 4 19:32:37 2018 -0500
+
+    m
+
+[33mcommit 2661e8b5be72dd3b34385ea99f81e8cd917d98c3[m
+Author: Matt Lee <mattlee@udel.edu>
+Date:   Tue Dec 4 19:31:13 2018 -0500
+
+    m
+
+[33mcommit 3968f21948e3c01e35b257d57800277f535e35f3[m
+Merge: 38d4781 2062a87
+Author: Toby Boyd <eboyd@udel.edu>
+Date:   Tue Dec 4 19:27:22 2018 -0500
+
+    Merge branch 'cleanedbeta' of https://github.com/CISC275-Fall-2018/project-fall-2018-team-11-1 into cleanedbeta
+
+[33mcommit 38d4781a18bd996080c4434a605808d1865511f5[m
+Author: Toby Boyd <eboyd@udel.edu>
+Date:   Tue Dec 4 19:27:11 2018 -0500
+
+    end can restart game
+
+[33mcommit f47c9ab19953e9a5a40a55bfd4e2b6aa9b5ade3e[m
+Author: Toby Boyd <eboyd@udel.edu>
+Date:   Tue Dec 4 19:14:54 2018 -0500
+
+    added some spaces
+
+[33mcommit 39b44af9aa524f2eb3102b5d7e
