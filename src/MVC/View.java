@@ -376,21 +376,19 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		if(State == STATE.GAME) {
 			if(level == 0) {
 				
-				g2d.drawImage(scaled_bg_img, 0, 0, null);//draw background
+				//g2d.drawImage(scaled_bg_img, 0, 0, null);//draw background
 				g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);//draw player 
 
 				
 				g2d.setFont(new Font("Dialog", Font.BOLD,30));
-				g2d.setColor(Color.white);
 				g2d.drawRect(0, 0, 450, 140);
+				g2d.setColor(Color.white);
+				g2d.fillRect(0, 0, 450, 140);
+				g2d.setColor(Color.BLACK);
+
 				g2d.drawString("White Wood Asters planted: " + plantedCount,5, 30);
 				g2d.drawString("Phragmites Removed: " + plantsRemoved ,5, 70);
-				g2d.drawString("Time: " + secondsPassed ,5, 110);
-
-						
-				
-				
-				
+				g2d.drawString("Time: " + secondsPassed ,5, 110);	
 				
 				// draw each of the game objects
 				for (GroundPatch gr : groundList) {
@@ -420,25 +418,13 @@ public class View extends JPanel implements MouseListener, KeyListener{
 					}
 					
 				}
-				
-			
-
 			
 				//draw the playerimage
 				g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
-				
-				
-			
-				
+								
 			}
 			else if(level == 1) {
-				
-			g2d.drawImage(scaled_bg_img, 0, 0, null);
-			
-			
-
-		
-	
+					
 			// draw each of the game objects
 			for (GroundPatch gr : groundList) {
 				g2d.drawImage(groundimg, gr.getXloc(), gr.getYloc(), null);
