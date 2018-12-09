@@ -30,6 +30,13 @@ private static final long serialVersionUID = 1L;
 	public void render(Graphics g) {
 		//g.drawImage(scaled_bg_img, 0, 0, null);
 		Graphics2D g2d= (Graphics2D) g;
+		double scale =(double)screenHeight/(double)screenWidth;
+		System.out.println("start");
+		System.out.println(screenWidth);
+		System.out.println(screenHeight);
+		System.out.println(scale);
+		System.out.println("end");
+		g2d.scale(1,.75);
 		//Congratulations
 		g2d.drawOval(screenWidth/2 -230,25,450,125);	//congrats oval
 		g2d.setColor(mixed = new Color(30, 60, 25));

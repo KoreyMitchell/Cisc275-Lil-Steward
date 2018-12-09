@@ -1,5 +1,7 @@
 package MVC;
 
+import java.io.Serializable;
+
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -9,7 +11,7 @@ import javax.sound.sampled.Clip;
 /**
  * The Class AudioPlayer.
  */
-public class AudioPlayer {
+public class AudioPlayer implements Serializable{
 	
 	/** The clip. */
 	private Clip clip;

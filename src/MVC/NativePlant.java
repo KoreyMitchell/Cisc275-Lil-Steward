@@ -1,12 +1,14 @@
 package MVC;
 
+import java.io.Serializable;
+
 import javax.swing.ImageIcon;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class NativePlant.
  */
-public class NativePlant extends GameObject {
+public class NativePlant extends GameObject implements Serializable{
 
 	/** The name. */
 	String name = "native";

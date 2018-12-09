@@ -9,6 +9,7 @@ import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.MediaTracker;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -68,6 +69,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	/** The screen height. */
 	int screenHeight = (int) screenSize.getHeight();
+	//int screenHeight = screenSize.getSize().height;
 	
 	/** The screen width. */
 	int screenWidth = screenSize.getSize().width;
@@ -225,6 +227,15 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		//scale image to screen size
 		scaled_bg_img = backgroundimg.getScaledInstance(screenWidth, screenHeight, Image.SCALE_DEFAULT);   
 		scaled_bg_img_menu = menuimg.getScaledInstance(screenWidth, screenHeight, Image.SCALE_DEFAULT);   
+		
+		
+		
+		System.out.println("start");
+		System.out.println(screenWidth);
+		System.out.println(screenHeight);
+		System.out.println(scaled_bg_img.getWidth(null));
+		System.out.println(scaled_bg_img.getHeight(null));
+		System.out.println("end");
 	}
 	
 	/**
@@ -345,13 +356,14 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
-		
+		g2d.scale(1,1);
+
 		g2d.drawImage(scaled_bg_img, 0, 0, null);
+		
 
 		//if in GAME state
 		if(State == STATE.GAME) {
 			if(level == 0) {
-				
 				
 				
 
