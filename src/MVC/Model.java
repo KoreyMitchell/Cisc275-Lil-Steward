@@ -22,9 +22,14 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * The Class Model.
  */
 public class Model implements Runnable {
+	
+	/** The t. */
 	Thread t;
 	
+	/** The sound count. */
 	int soundCount;
+	
+	/** The sfx. */
 	HashMap<String, MakeSong> sfx;
 	
 	/** The player. */
@@ -41,8 +46,11 @@ public class Model implements Runnable {
 	
 	/** The obstacle list. */
 	ArrayList<Obstacle> obstacleList;
+	
+	/** The tutorial notes. */
 	ArrayList<GameObject> tutorialNotes;
 	
+	/** The t 1. */
 	Thread t1;
 	/** The tool. */
 	Tool tool;
@@ -77,6 +85,7 @@ public class Model implements Runnable {
 	/** The randomy. */
 	int randomy;
 	
+	/** The seconds passed. */
 	int secondsPassed;
 
 	/**
@@ -105,6 +114,12 @@ public class Model implements Runnable {
 		
 		// levelPreset(level);
 	}
+	
+	/**
+	 * Gets the seconds.
+	 *
+	 * @return the seconds
+	 */
 	public int getSeconds() {
 		return secondsPassed;
 	}
@@ -200,6 +215,9 @@ public class Model implements Runnable {
 
 	
 
+	/* (non-Javadoc)
+	 * @see java.lang.Runnable#run()
+	 */
 	@Override
 	public void run() {
 		if(soundCount == 0) {
