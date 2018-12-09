@@ -138,8 +138,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	Image tutorialNoteDirection;
 	
 	Image brownBannerImg;
-	/** The no answer. */
 	Image greyBannerImg;
+	Image blueBannerImg;
+	/** The no answer. */
 
 	String noAnswer = "Pick one:";
 	
@@ -224,10 +225,12 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		
 		ImageIcon brownBanner = new ImageIcon("images/buttonLong_brown_pressed.png");
 		ImageIcon greyBanner = new ImageIcon("images/buttonLong_grey.png");
+		ImageIcon blueBanner = new ImageIcon("images/buttonLong_blue_pressed.png");
 
 		
 		brownBannerImg = brownBanner.getImage();
 		greyBannerImg = greyBanner.getImage();
+		blueBannerImg = blueBanner.getImage();
 
 		playerimgFront = playerImageFront.getImage();
 		playerimgBack = playerImageBack.getImage();

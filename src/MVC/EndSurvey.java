@@ -58,24 +58,30 @@ public class EndSurvey extends View {
 		Graphics2D g2d= (Graphics2D) g;
 
 		//Survey Oval Graphic
-		g2d.drawOval(screenWidth/2 -230,25,350,125);	//congrats oval
-		g2d.setColor(mixed = new Color(30, 60, 25));
-		g2d.fillOval(screenWidth/2 -230,25,350,125);
-		
+//		g2d.drawOval(screenWidth/2 -230,25,350,125);	//congrats oval
+//		g2d.setColor(mixed = new Color(30, 60, 25));
+//		g2d.fillOval(screenWidth/2 -230,25,350,125);
+		g2d.drawImage(greyBannerImg, screenWidth/2 -170,25,350,125, null);
+
 		//Survey Text
 		Font fnt0 = new Font("arial",Font.BOLD,50); //font,bold,size		
 		g2d.setFont(fnt0);		
-		g2d.setColor(Color.WHITE);
-		g2d.drawString("Survey",screenWidth/2 -140,100 );
+		g2d.setColor(Color.BLACK);
+		g2d.drawString("Survey",screenWidth/2 -79,100 );
 		
+		//draw banner for questions
+		g2d.drawImage(blueBannerImg, screenWidth/2-480,110,1010,670, null);
+
 		//Question 1
 		Font fnt1 = new Font("arial",Font.BOLD,30); //font,bold,size		
 		g2d.setFont(fnt1);		
 		g2d.setColor(Color.BLACK);
 		g2d.drawString("Which one is the Invasive Specie? (Click One)",screenWidth/2-385,210);
-			//First Choice
+			
 			g2d.setFont(new Font("Dialog", Font.ITALIC,18));
 			g2d.setColor(new Color(20,20,100));
+			
+			//First Choice
 			g2d.drawString("Dirt", screenWidth/2-373,380);
 			g2d.drawImage(groundimg, screenWidth/2-385,300, null);
 			
@@ -95,11 +101,26 @@ public class EndSurvey extends View {
 		//Question 2
 		g2d.setFont(fnt1);		
 		g2d.setColor(Color.BLACK);
-		g2d.drawString("Which species was planted? (Click One)",screenWidth/2-385,430);
-		g2d.drawImage(groundimg, screenWidth/2-385,500, null);
-		g2d.drawImage(rockimg, screenWidth/2-250, 500, null);
-		g2d.drawImage(iplantimg, screenWidth/2-120, 450, null);
-		g2d.drawImage(nplantimg, screenWidth/2-5, 500, null);
+		g2d.drawString("Which species was planted? (Click One)",screenWidth/2-385,415);
+			
+			g2d.setFont(new Font("Dialog", Font.ITALIC,18));
+			g2d.setColor(new Color(20,20,100));
+			
+			//First Choice
+			g2d.drawString("Dirt", screenWidth/2-373,580);
+			g2d.drawImage(groundimg, screenWidth/2-385,500, null);
+			
+			//Second Choice
+			g2d.drawString("Inkberry Bush", screenWidth/2-280,580);
+			g2d.drawImage(rockimg, screenWidth/2-250, 500, null);
+			
+			//Third Choice
+			g2d.drawString("Phragmite", screenWidth/2-130,580);
+			g2d.drawImage(iplantimg, screenWidth/2-120, 430, null);
+			
+			//Fourth Choice
+			g2d.drawString("Aster", screenWidth/2,580);
+			g2d.drawImage(nplantimg, screenWidth/2-5, 500, null);
 		
 		//Question 3
 		g2d.setFont(fnt1);		
@@ -155,7 +176,7 @@ public class EndSurvey extends View {
 			Font fnt2 = new Font("arial",Font.BOLD,50); //font,bold,size	
 			g2d.setFont(fnt2);		
 			g2d.setColor(Color.YELLOW);
-			g2d.drawString("Wow! You got all questions correct!",screenWidth/2-400,810);
+			g2d.drawString("Wow! You got all questions correct!",screenWidth/2-400,840);
 			//Image newplayerimgRight = playerimgRight.getScaledInstance(500, 500, Image.SCALE_DEFAULT);
 			g2d.drawImage(playerimgRight, screenWidth/2-700,710, 270, 300, null);
 
