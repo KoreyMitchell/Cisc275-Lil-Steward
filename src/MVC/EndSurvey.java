@@ -61,16 +61,18 @@ public class EndSurvey extends View {
 //		g2d.drawOval(screenWidth/2 -230,25,350,125);	//congrats oval
 //		g2d.setColor(mixed = new Color(30, 60, 25));
 //		g2d.fillOval(screenWidth/2 -230,25,350,125);
-		g2d.drawImage(greyBannerImg, screenWidth/2 -170,25,350,125, null);
-
-		//Survey Text
-		Font fnt0 = new Font("arial",Font.BOLD,50); //font,bold,size		
-		g2d.setFont(fnt0);		
-		g2d.setColor(Color.BLACK);
-		g2d.drawString("Survey",screenWidth/2 -79,100 );
 		
 		//draw banner for questions
 		g2d.drawImage(blueBannerImg, screenWidth/2-480,110,1010,670, null);
+
+		//Survey Text
+		Font fnt0 = new Font("arial",Font.BOLD,50); //font,bold,size
+		g2d.drawImage(greyBannerImg, screenWidth/2 -170,30,350,100, null);
+		g2d.setFont(fnt0);		
+		g2d.setColor(Color.BLACK);
+		g2d.drawString("Survey",screenWidth/2 -79,100 );
+
+		
 
 		//Question 1
 		Font fnt1 = new Font("arial",Font.BOLD,30); //font,bold,size		

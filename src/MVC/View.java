@@ -140,6 +140,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	Image brownBannerImg;
 	Image greyBannerImg;
 	Image blueBannerImg;
+	Image plantToolImg;
 	/** The no answer. */
 
 	String noAnswer = "Pick one:";
@@ -226,11 +227,14 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		ImageIcon brownBanner = new ImageIcon("images/buttonLong_brown_pressed.png");
 		ImageIcon greyBanner = new ImageIcon("images/buttonLong_grey.png");
 		ImageIcon blueBanner = new ImageIcon("images/buttonLong_blue_pressed.png");
+		ImageIcon plantTool = new ImageIcon("images/cursorHand_grey.png");
 
 		
 		brownBannerImg = brownBanner.getImage();
 		greyBannerImg = greyBanner.getImage();
 		blueBannerImg = blueBanner.getImage();
+		
+		plantToolImg = plantTool.getImage();
 
 		playerimgFront = playerImageFront.getImage();
 		playerimgBack = playerImageBack.getImage();
@@ -242,7 +246,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		groundimg = groundicon.getImage();
 		nplantimg = nplanticon.getImage();
 		iplantimg = iplanticon.getImage();
-		rockimg = rockicon.getImage();
+		rockimg = rockicon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 		backgroundimg = bgImage.getImage();
 		menuimg = bgMenuImage.getImage();
 		tutorialNotePhragmites = tutNote1.getImage();
@@ -394,13 +398,13 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			if(level == 0) {
 
 				//Draw time graphics
-
 				g2d.drawImage(scaled_bg_img, 0, 0, null);
 				g2d.setFont(new Font("Dialog", Font.BOLD,25));
 				g2d.setColor(Color.white);
 				g2d.drawString("White Wood Asters planted: " + plantedCount + "  |   Phragmites Removed: " + plantsRemoved + 
 						"  |   Time: " + secondsPassed, screenWidth/2-400, 30);
 					
+				g2d.drawImage(plantToolImg, screenWidth/2,screenHeight- plantToolImg.getHeight(null),null);
 				
 				// draw each of the game objects
 				for (GroundPatch gr : groundList) {
