@@ -103,7 +103,7 @@ public class Model implements Runnable {
 		plantsPlanted = 0;
 		plantsRemoved = 0;
 		
-		level = 4;
+		level = 0;
 		sfx = new HashMap<String, MakeSong>();
 		sfx.put("levelUp", new MakeSong("images/levelUp.wav"));
 		sfx.put("rewardSound", new MakeSong("images/rewardSound.wav"));

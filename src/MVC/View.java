@@ -15,6 +15,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
+import java.io.File;
+import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -22,6 +26,7 @@ import java.util.TimerTask;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JButton;
@@ -205,8 +210,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		
 		requestFocusInWindow();
 		
+		String filename ="images/grass_template2.jpg";
 		//Images
-	
+		
 		ImageIcon bgImage = new ImageIcon("images/grass_template2.jpg");
 		ImageIcon bgMenuImage = new ImageIcon("images/background.png");
 		ImageIcon tutNote1 = new ImageIcon("images/stickynote_phragmites.png");
@@ -238,23 +244,24 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		
 		plantToolImg = plantTool.getImage();
 
-		playerimgFront = playerImageFront.getImage();
-		playerimgBack = playerImageBack.getImage();
-		playerimgRight = playerImageRight.getImage();
-		playerimgLeft = playerImageLeft.getImage();
+		playerimgFront = playerImageFront.getImage().getScaledInstance(playerImageFront.getIconWidth(),playerImageFront.getIconHeight() , Image.SCALE_SMOOTH);
+		playerimgBack = playerImageBack.getImage().getScaledInstance(playerImageBack.getIconWidth(),playerImageBack.getIconHeight() , Image.SCALE_SMOOTH);;
+		playerimgRight = playerImageRight.getImage().getScaledInstance(playerImageRight.getIconWidth(),playerImageRight.getIconHeight() , Image.SCALE_SMOOTH);;
+		playerimgLeft = playerImageLeft.getImage().getScaledInstance(playerImageLeft.getIconWidth(),playerImageLeft.getIconHeight() , Image.SCALE_SMOOTH);;
 		playerimg = playerimgFront;
 		
 		//Get image from ImageIcon and store in Image variables
-		groundimg = groundicon.getImage();
-		nplantimg = nplanticon.getImage();
-		iplantimg = iplanticon.getImage();
-		rockimg = rockicon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-		backgroundimg = bgImage.getImage();
-		menuimg = bgMenuImage.getImage();
-		tutorialNotePhragmites = tutNote1.getImage();
-		tutorialNoteAster = tutNote2.getImage();
-		tutorialNoteInkberry = tutNote3.getImage();
-		tutorialNoteDirection = tutNote4.getImage();
+		groundimg = groundicon.getImage().getScaledInstance(groundicon.getIconWidth(),groundicon.getIconHeight() , Image.SCALE_SMOOTH);
+		nplantimg = nplanticon.getImage().getScaledInstance(nplanticon.getIconWidth(),nplanticon.getIconHeight() , Image.SCALE_SMOOTH);
+		iplantimg = iplanticon.getImage().getScaledInstance(iplanticon.getIconWidth(),iplanticon.getIconHeight() , Image.SCALE_SMOOTH);
+		rockimg = rockicon.getImage().getScaledInstance(rockicon.getIconWidth(),rockicon.getIconHeight() , Image.SCALE_SMOOTH);
+		backgroundimg = bgImage.getImage().getScaledInstance(bgImage.getIconWidth(),bgImage.getIconHeight() , Image.SCALE_SMOOTH);;;
+		menuimg = bgMenuImage.getImage().getScaledInstance(bgMenuImage.getIconWidth(),bgMenuImage.getIconHeight() , Image.SCALE_SMOOTH);;;
+		tutorialNotePhragmites = tutNote1.getImage().getScaledInstance(tutNote1.getIconWidth(),tutNote1.getIconHeight() , Image.SCALE_SMOOTH);;;
+		tutorialNoteAster = tutNote2.getImage().getScaledInstance(tutNote2.getIconWidth(),tutNote2.getIconHeight() , Image.SCALE_SMOOTH);;;
+		tutorialNoteInkberry = tutNote3.getImage().getScaledInstance(tutNote3.getIconWidth(),tutNote3.getIconHeight() , Image.SCALE_SMOOTH);;;
+		tutorialNoteDirection = tutNote4.getImage().getScaledInstance(tutNote4.getIconWidth(),tutNote4.getIconHeight() , Image.SCALE_SMOOTH);;;
+	//	.getScaledInstance(width, height, Image.SCALE_SMOOTH)
 ;//		tutorialNote1 = tutNote1.getImage();
 //		tutorialNote2 = tutNote2.getImage();
 		
@@ -603,6 +610,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	public int getPlantedCount() {
 		return plantedCount;
 	}
+	
+
 
 	/**
 	 * Sets the planted count.
