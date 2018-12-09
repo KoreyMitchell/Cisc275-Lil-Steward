@@ -103,6 +103,7 @@ public class PlayerCharacter extends GameObject{
 	
 	/**
 	 * The Enum Direction.
+	 * This code is not being used
 	 */
 	public enum Direction {
 

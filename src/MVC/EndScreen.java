@@ -37,6 +37,9 @@ private static final long serialVersionUID = 1L;
 		g2d.fillOval(screenWidth/2 -230,25,450,125);
 		
 		//Num planted
+		g2d.setColor(Color.WHITE);
+		g2d.drawRect(screenWidth/2-360,250,685,60);
+
 		g2d.setColor(Color.BLACK);
 		g2d.fillRect(screenWidth/2-360,250,685,60);
 

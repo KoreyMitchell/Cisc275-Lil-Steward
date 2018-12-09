@@ -238,7 +238,6 @@ public class View extends JPanel implements MouseListener, KeyListener{
 //		tutorialNote2 = tutNote2.getImage();
 		
 
-		int i =0;
 
 		
 		//scale image to screen size
@@ -377,18 +376,21 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		if(State == STATE.GAME) {
 			if(level == 0) {
 				
-				
-				
+				g2d.drawImage(scaled_bg_img, 0, 0, null);//draw background
+				g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);//draw player 
 
-				g2d.drawImage(scaled_bg_img, 0, 0, null);
-				g2d.setFont(new Font("Dialog", Font.BOLD,18));
+				
+				g2d.setFont(new Font("Dialog", Font.BOLD,30));
 				g2d.setColor(Color.white);
-				g2d.drawString("White Wood Asters planted: " + plantedCount + "  |   Phragmites Removed: " + plantsRemoved + "  |   Time: " + secondsPassed, 5, 20);
+				g2d.drawRect(0, 0, 450, 140);
+				g2d.drawString("White Wood Asters planted: " + plantedCount,5, 30);
+				g2d.drawString("Phragmites Removed: " + plantsRemoved ,5, 70);
+				g2d.drawString("Time: " + secondsPassed ,5, 110);
+
+						
 				
 				
 				
-				g2d.drawImage(playerimg, player.getXloc(), player.getYloc(), null);
-			// need reset
 				
 				// draw each of the game objects
 				for (GroundPatch gr : groundList) {
@@ -641,8 +643,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		//System.out.println("Mouse clicked");
-		System.out.println("Mouse clicked");
-		System.out.println(e.getX() + " " + e.getY());
+		//System.out.println("Mouse clicked");
+		//System.out.println(e.getX() + " " + e.getY());
 		control.click(e.getX(),e.getY());
 		//plantedCount++;
 		//paintPlantedInfo(plantedCount, e.getX(), e.getY());
@@ -656,31 +658,53 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			control.click(mx,my);
 		}
 		else if(State == STATE.END)
-		{
+		{			
 			System.out.println(screenWidth/2);
 			System.out.println("End: "+mx+","+my);
+		
+			control.click(mx,my);
 			if(mx>screenWidth/2-175 && mx<screenWidth/2+170 && my>772 && my<865) {
-				System.out.println(screenWidth/2);
 				System.out.println("End: "+mx+","+my);
 				View.State=STATE.TEST;	
+
 			}
 		}
 		else if(State == STATE.TEST) {
+			control.click(mx,my);
 			System.out.println("test: "+mx+" , "+my);
 			System.out.println(screenWidth/2);
+			System.out.println(screenHeight/2);
+
 			//Question 1
 			if(mx>screenWidth/2-136 && mx<screenWidth/2-50 && my>262 && my<407) {
 				endSurvey.q1Correct= true;
+				endSurvey.q1Incorrect = false;
+
 				i=1;
-				//System.out.println("works");
+			}else if(mx>screenWidth/2-406 && mx<screenWidth/2+91 && my>screenHeight/2-244 &&my<screenHeight/2-134 && endSurvey.q1Correct==false) {
+				endSurvey.q1Incorrect = true;
+				endSurvey.q1Correct= false;
+
 			}
+			
 			//Question 2
 			if(mx>screenWidth/2-20 && mx<screenWidth/2+89 && my>504 && my<626) {
 				endSurvey.q2Correct= true;
+				endSurvey.q2Incorrect = false;
+
+			}else if(mx>screenWidth/2-406 && mx<screenWidth/2+91 && my>screenHeight/2-29 && my<screenHeight/2 +72 && endSurvey.q2Correct ==false) {
+				endSurvey.q2Incorrect = true;
+				endSurvey.q2Correct= false;
 			}
+			
 			//Question 3
-			if(mx>screenWidth/2-415 && mx<screenWidth/2-270 && my>667 && my<723) {
+			if(mx>screenWidth/2-415 && mx<screenWidth/2-270 && my>screenHeight/2 +127 && my<screenHeight/2 +183) {
 				endSurvey.q3Correct= true;
+				endSurvey.q3Incorrect = false;
+
+			}else if(mx>screenWidth/2+2 && mx<screenWidth/2+2728 && my>screenHeight/2 +127 && my<screenHeight/2 +183&& endSurvey.q3Correct ==false) {
+				endSurvey.q3Incorrect = true;
+				endSurvey.q3Correct= false;
 			}
 
 			

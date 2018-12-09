@@ -36,12 +36,16 @@ public class EndSurvey extends View {
 	
 	/** The q 1 correct. */
 	boolean q1Correct = false;
-	
+
 	/** The q 2 correct. */
 	boolean q2Correct = false;
 	
 	/** The q 3 correct. */
 	boolean q3Correct = false;
+
+	boolean q1Incorrect = false;
+	boolean q2Incorrect = false;
+	boolean q3Incorrect = false;
 
 	
 	/**
@@ -89,28 +93,47 @@ public class EndSurvey extends View {
 		g2d.setColor(Color.BLACK);
 		g2d.drawString("What is the type of bush that birds love to feed on? (Click One)",screenWidth/2-385,630);
 		
+		Font fnt3 = new Font("arial",Font.BOLD,20); //font,bold,size	
+		g2d.setColor(Color.GREEN);
+		g2d.setFont(fnt3);		
 		g2d.drawString("Blueberry",screenWidth/2-255,672);
 		g2d.drawString("Inkberry",screenWidth/2-400,672);
 		g2d.drawString("Bananaberry",screenWidth/2-75,672);
 		g2d.drawString("Chocolateberry",screenWidth/2+135,672);
 
-
-		
-		if (q1Correct == true) {
+		//Q1 correct/incorrect draw
+		if (q1Correct == true && q1Incorrect ==false) {
 			g2d.setColor(Color.GREEN);
 			g2d.drawString("Correct",screenWidth/2-600,300);
 			
+		}		
+		if(q1Incorrect ==true && q1Correct ==false) {
+			g2d.setColor(Color.RED);
+			g2d.drawString("Incorrect", screenWidth/2-600,300);
 		}
 		
-		if (q2Correct == true) {
+		//Q2 correct/incorrect draw
+		if (q2Correct == true && q2Incorrect ==false) {
 			g2d.setColor(Color.GREEN);
 			g2d.drawString("Correct",screenWidth/2-600,530);
 		}
+		if(q2Incorrect ==true && q2Correct ==false) {
+			g2d.setColor(Color.RED);
+			g2d.drawString("Incorrect", screenWidth/2-600,530);
+		}
 		
-		if (q3Correct == true) {
+		//	Q3 correct/incorrect draw
+		if (q3Correct == true&& q3Incorrect ==false) {
 			g2d.setColor(Color.GREEN);
 			g2d.drawString("Correct",screenWidth/2-600,660);
 		}
+		
+		if(q3Incorrect ==true && q3Correct ==false) {
+			g2d.setColor(Color.RED);
+			g2d.drawString("Incorrect", screenWidth/2-600,660);
+		}
+		
+		//Draw if all q's are correct
 		if(q1Correct && q2Correct && q3Correct) {
 			Font fnt2 = new Font("arial",Font.BOLD,50); //font,bold,size	
 			g2d.setFont(fnt2);		
@@ -120,6 +143,8 @@ public class EndSurvey extends View {
 			g2d.drawImage(playerimgRight, screenWidth/2-700,710, 270, 300, null);
 
 		}
+		
+
 	}
 	
 

@@ -128,12 +128,12 @@ public class Controller {
 		}
 		
 		if(model.win == true && count == 0) {
-			View.State = STATE.END;
 			count = 1;
+			View.State = STATE.END;
 			
-		}else if(model.win == true && count ==1) {
-			View.State = STATE.TEST;
+
 		}
+		
 		model.addNativePlant(x, y);
 		model.removeInvasivePlant(x, y);
 		//model.player.setXloc(x);
@@ -170,7 +170,7 @@ public class Controller {
 
 	    public void run()
 	    { 
-	        System.out.println(i);
+	       // System.out.println(i);
 	        model.secondsPassed--;
 	    
 	        view.setSeconds(model.secondsPassed);
