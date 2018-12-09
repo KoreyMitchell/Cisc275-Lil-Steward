@@ -52,6 +52,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	/** The obstacle list. */
 	ArrayList<Obstacle> obstacleList;
+	
+	/** The tutorial notes. */
 	ArrayList<GameObject> tutorialNotes;
 	
 	/** The tool. */
@@ -123,13 +125,25 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	/** The scaled bg img menu. */
 	Image scaled_bg_img_menu;
 
+	/** The tutorial note phragmites. */
 	Image tutorialNotePhragmites;
+	
+	/** The tutorial note aster. */
 	Image tutorialNoteAster;
+	
+	/** The tutorial note inkberry. */
 	Image tutorialNoteInkberry;
+	
+	/** The tutorial note direction. */
 	Image tutorialNoteDirection;
 	
+	/** The no answer. */
 	String noAnswer = "Pick one:";
+	
+	/** The correct answer. */
 	String correctAnswer = "Correct!";
+	
+	/** The wrong answer. */
 	String wrongAnswer = "Try again!";
 
 	
@@ -143,6 +157,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	/** The end screen. */
 	//EndScreen
 	private EndScreen endScreen;
+	
+	/** The end game test. */
 	//TEST
 	EndGameTest endGameTest;
 	
@@ -156,7 +172,10 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	/** The key array. */
 	boolean[] keyArray = new boolean[4];
 
+	/** The end survey. */
 	EndSurvey endSurvey;
+	
+	/** The counter. */
 	int counter;
 
 	
@@ -339,9 +358,15 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	
 	
 	
+	/** The c. */
 	int c = 0;
 
+	/** The i. */
 	protected int i;
+	
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
@@ -484,12 +509,21 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		nativePlants.clear();
 		nativePlants.addAll(n);
 	}
+	
+	/**
+	 * Check tut.
+	 */
 	public void checkTut() {
 		if(level > 1) {
 			tutorialNotes.clear();
 		}
 	}
 	
+	/**
+	 * Sets the tutorial notes.
+	 *
+	 * @param n the new tutorial notes
+	 */
 	public void setTutorialNotes(ArrayList<GameObject> n) {
 		tutorialNotes.clear();
 		tutorialNotes.addAll(n);
@@ -654,6 +688,10 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			System.out.println("Mouse clicked");
 	
 	}
+	
+	/* (non-Javadoc)
+	 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
@@ -723,9 +761,15 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		control.key(e);
 	}
 	
+	/** The seconds passed. */
 	int secondsPassed = 60;
 	
 	
+	/**
+	 * Sets the seconds.
+	 *
+	 * @param s the new seconds
+	 */
 	public void setSeconds(int s) {
 		this.secondsPassed = s;
 	}

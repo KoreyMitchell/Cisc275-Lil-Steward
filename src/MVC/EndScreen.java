@@ -20,6 +20,7 @@ public class EndScreen extends View{
 	/** The Constant serialVersionUID. */
 private static final long serialVersionUID = 1L;    
 	
+	/** The mixed. */
 	Color mixed;	//(red,green,blue) saturation
 	
 	/**

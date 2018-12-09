@@ -10,21 +10,41 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MakeSong.
+ */
 public class MakeSong {
 
+    /** The buffer size. */
     private final int BUFFER_SIZE = 128000;
+    
+    /** The sound file. */
     private File soundFile;
+    
+    /** The audio stream. */
     private AudioInputStream audioStream;
+    
+    /** The audio format. */
     private AudioFormat audioFormat;
+    
+    /** The source line. */
     private SourceDataLine sourceLine;
+    
+    /** The filename. */
     String filename;
     
+    /**
+     * Instantiates a new make song.
+     *
+     * @param name the name
+     */
     public MakeSong(String name) {
     	this.filename = name;
     }
 
     /**
-     * @param filename the name of the file that is going to be played
+     * Play sound.
      */
     public void playSound(){
 

@@ -22,15 +22,33 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EndSurvey.
+ */
 public class EndSurvey extends View {
 
+	/** The f. */
 	JFrame f;
+	
+	/** The mixed. */
 	Color mixed;	//(red,green,blue) saturation
+	
+	/** The q 1 correct. */
 	boolean q1Correct = false;
+	
+	/** The q 2 correct. */
 	boolean q2Correct = false;
+	
+	/** The q 3 correct. */
 	boolean q3Correct = false;
 
 	
+	/**
+	 * Render.
+	 *
+	 * @param g the g
+	 */
 	public void render(Graphics g) {
 		//f = new JFrame();
 		Graphics2D g2d= (Graphics2D) g;

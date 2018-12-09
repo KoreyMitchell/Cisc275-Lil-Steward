@@ -16,19 +16,24 @@ import MVC.View.STATE;
 public class Controller {
 
 	/** The model. 
-	 * The functionality of the program
+	 * The logic  of the program
 	 * */
 	Model model;
-	  private int i = 60;
+	  
+  	/** The i. */
+  	private int i = 60;
 	/** The view. 
 	 * 	The visuals of the program
 	 * */
 	View view;
 	
+	/** The lus. */
 	LevelUpSound lus;
 	
+	/** The lvl 1 count. */
 	int lvl1count = 2;
 
+	/** The count. */
 	private int count;
 
 	/**
@@ -103,11 +108,16 @@ public class Controller {
 	/**
 	 * Click.
 	 *
-	 * @param x the x
-	 * @param y the y
 	 */
 	
 	boolean t1 = true;
+	
+	/**
+	 * Click.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 */
 	public void click(int x, int y) {
 		//System.out.println("Controller read click from view");
 		//TODO: call click methods from model fs
@@ -136,9 +146,18 @@ public class Controller {
 
 	
 	}
+	
+	/** The finalstage. */
 	boolean finalstage = true;
+	
+	/** The lvl 2. */
 	boolean lvl2 = true;
 	
+	/**
+	 * Sets the timer.
+	 *
+	 * @param levels the new timer
+	 */
 	public void setTimer(int levels) {
 		int lev = levels;
 	
