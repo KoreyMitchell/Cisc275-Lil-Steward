@@ -73,11 +73,24 @@ public class EndSurvey extends View {
 		g2d.setFont(fnt1);		
 		g2d.setColor(Color.BLACK);
 		g2d.drawString("Which one is the Invasive Specie? (Click One)",screenWidth/2-385,210);
-		
-		g2d.drawImage(groundimg, screenWidth/2-385,300, null);
-		g2d.drawImage(rockimg, screenWidth/2-250, 300, null);
-		g2d.drawImage(iplantimg, screenWidth/2-120, 235, null);
-		g2d.drawImage(nplantimg, screenWidth/2-5, 300, null);
+			//First Choice
+			g2d.setFont(new Font("Dialog", Font.ITALIC,18));
+			g2d.setColor(new Color(20,20,100));
+			g2d.drawString("Dirt", screenWidth/2-373,380);
+			g2d.drawImage(groundimg, screenWidth/2-385,300, null);
+			
+			
+			//Second Choice
+			g2d.drawString("Inkberry Bush", screenWidth/2-280,380);
+			g2d.drawImage(rockimg, screenWidth/2-250, 300, null);
+			
+			//Third Choice
+			g2d.drawString("Phragmite", screenWidth/2-130,380);
+			g2d.drawImage(iplantimg, screenWidth/2-120, 235, null);
+			
+			//Fourth Choice
+			g2d.drawString("Aster", screenWidth/2,380);
+			g2d.drawImage(nplantimg, screenWidth/2-5, 300, null);
 
 		//Question 2
 		g2d.setFont(fnt1);		
@@ -94,22 +107,26 @@ public class EndSurvey extends View {
 		g2d.drawString("What is the type of bush that birds love to feed on? (Click One)",screenWidth/2-385,630);
 		
 		Font fnt3 = new Font("arial",Font.BOLD,20); //font,bold,size	
-		g2d.setColor(Color.GREEN);
 		g2d.setFont(fnt3);		
+		g2d.setColor(new Color(100,20,60));
+		g2d.drawRect(screenWidth/2-255,672, 100, -50);
 		g2d.drawString("Blueberry",screenWidth/2-255,672);
 		g2d.drawString("Inkberry",screenWidth/2-400,672);
 		g2d.drawString("Bananaberry",screenWidth/2-75,672);
 		g2d.drawString("Chocolateberry",screenWidth/2+135,672);
 
+		int numIncorrect=0;
 		//Q1 correct/incorrect draw
 		if (q1Correct == true && q1Incorrect ==false) {
 			g2d.setColor(Color.GREEN);
-			g2d.drawString("Correct",screenWidth/2-600,300);
+			g2d.drawString("Correct!",screenWidth/2-600,300);
 			
 		}		
 		if(q1Incorrect ==true && q1Correct ==false) {
 			g2d.setColor(Color.RED);
-			g2d.drawString("Incorrect", screenWidth/2-600,300);
+			if(numIncorrect==0)
+				g2d.drawString("Sorry, Try Again", screenWidth/2-600,300);
+
 		}
 		
 		//Q2 correct/incorrect draw
