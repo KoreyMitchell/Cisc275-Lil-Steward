@@ -244,23 +244,23 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		
 		plantToolImg = plantTool.getImage();
 
-		playerimgFront = playerImageFront.getImage().getScaledInstance(playerImageFront.getIconWidth(),playerImageFront.getIconHeight() , Image.SCALE_SMOOTH);
-		playerimgBack = playerImageBack.getImage().getScaledInstance(playerImageBack.getIconWidth(),playerImageBack.getIconHeight() , Image.SCALE_SMOOTH);;
-		playerimgRight = playerImageRight.getImage().getScaledInstance(playerImageRight.getIconWidth(),playerImageRight.getIconHeight() , Image.SCALE_SMOOTH);;
-		playerimgLeft = playerImageLeft.getImage().getScaledInstance(playerImageLeft.getIconWidth(),playerImageLeft.getIconHeight() , Image.SCALE_SMOOTH);;
+		playerimgFront = playerImageFront.getImage();
+		playerimgBack = playerImageBack.getImage();
+		playerimgRight = playerImageRight.getImage();
+		playerimgLeft = playerImageLeft.getImage();
 		playerimg = playerimgFront;
 		
 		//Get image from ImageIcon and store in Image variables
-		groundimg = groundicon.getImage().getScaledInstance(groundicon.getIconWidth(),groundicon.getIconHeight() , Image.SCALE_SMOOTH);
-		nplantimg = nplanticon.getImage().getScaledInstance(nplanticon.getIconWidth(),nplanticon.getIconHeight() , Image.SCALE_SMOOTH);
-		iplantimg = iplanticon.getImage().getScaledInstance(iplanticon.getIconWidth(),iplanticon.getIconHeight() , Image.SCALE_SMOOTH);
-		rockimg = rockicon.getImage().getScaledInstance(rockicon.getIconWidth(),rockicon.getIconHeight() , Image.SCALE_SMOOTH);
-		backgroundimg = bgImage.getImage().getScaledInstance(bgImage.getIconWidth(),bgImage.getIconHeight() , Image.SCALE_SMOOTH);;;
-		menuimg = bgMenuImage.getImage().getScaledInstance(bgMenuImage.getIconWidth(),bgMenuImage.getIconHeight() , Image.SCALE_SMOOTH);;;
-		tutorialNotePhragmites = tutNote1.getImage().getScaledInstance(tutNote1.getIconWidth(),tutNote1.getIconHeight() , Image.SCALE_SMOOTH);;;
-		tutorialNoteAster = tutNote2.getImage().getScaledInstance(tutNote2.getIconWidth(),tutNote2.getIconHeight() , Image.SCALE_SMOOTH);;;
-		tutorialNoteInkberry = tutNote3.getImage().getScaledInstance(tutNote3.getIconWidth(),tutNote3.getIconHeight() , Image.SCALE_SMOOTH);;;
-		tutorialNoteDirection = tutNote4.getImage().getScaledInstance(tutNote4.getIconWidth(),tutNote4.getIconHeight() , Image.SCALE_SMOOTH);;;
+		groundimg = groundicon.getImage();
+		nplantimg = nplanticon.getImage();
+		iplantimg = iplanticon.getImage();
+		rockimg = rockicon.getImage();
+		backgroundimg = bgImage.getImage();
+		menuimg = bgMenuImage.getImage();
+		tutorialNotePhragmites = tutNote1.getImage();
+		tutorialNoteAster = tutNote2.getImage();
+		tutorialNoteInkberry = tutNote3.getImage();
+		tutorialNoteDirection = tutNote4.getImage();
 	//	.getScaledInstance(width, height, Image.SCALE_SMOOTH)
 ;//		tutorialNote1 = tutNote1.getImage();
 //		tutorialNote2 = tutNote2.getImage();
