@@ -1,12 +1,14 @@
 package MVC;
 
+import java.io.Serializable;
+
 import javax.swing.ImageIcon;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class TutorialNoteAster.
  */
-public class TutorialNoteAster extends GameObject {
+public class TutorialNoteAster extends GameObject implements Serializable{
 
 	/**
 	 * Instantiates a new tutorial note aster.

@@ -1,6 +1,7 @@
 package MVC;
 
 import java.awt.event.KeyEvent;
+import java.io.Serializable;
 
 import javax.swing.ImageIcon;
 
@@ -9,7 +10,7 @@ import javax.swing.ImageIcon;
 /**
  * The Class PlayerCharacter.
  */
-public class PlayerCharacter extends GameObject{
+public class PlayerCharacter extends GameObject implements Serializable{
 
 	/**
 	 * Instantiates a new player character.

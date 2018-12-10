@@ -15,10 +15,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.io.File;
-import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -26,7 +22,6 @@ import java.util.TimerTask;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JButton;
@@ -210,9 +205,8 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		
 		requestFocusInWindow();
 		
-		String filename ="images/grass_template2.jpg";
 		//Images
-		
+	
 		ImageIcon bgImage = new ImageIcon("images/grass_template2.jpg");
 		ImageIcon bgMenuImage = new ImageIcon("images/background.png");
 		ImageIcon tutNote1 = new ImageIcon("images/stickynote_phragmites.png");
@@ -254,14 +248,13 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		groundimg = groundicon.getImage();
 		nplantimg = nplanticon.getImage();
 		iplantimg = iplanticon.getImage();
-		rockimg = rockicon.getImage();
+		rockimg = rockicon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 		backgroundimg = bgImage.getImage();
 		menuimg = bgMenuImage.getImage();
 		tutorialNotePhragmites = tutNote1.getImage();
 		tutorialNoteAster = tutNote2.getImage();
 		tutorialNoteInkberry = tutNote3.getImage();
 		tutorialNoteDirection = tutNote4.getImage();
-	//	.getScaledInstance(width, height, Image.SCALE_SMOOTH)
 ;//		tutorialNote1 = tutNote1.getImage();
 //		tutorialNote2 = tutNote2.getImage();
 		
@@ -610,8 +603,6 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	public int getPlantedCount() {
 		return plantedCount;
 	}
-	
-
 
 	/**
 	 * Sets the planted count.

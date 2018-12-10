@@ -1,12 +1,14 @@
 package MVC;
 
+import java.io.Serializable;
+
 import javax.swing.ImageIcon;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class InvasivePlant.
  */
-public class InvasivePlant extends GameObject {
+public class InvasivePlant extends GameObject implements Serializable{
 
 	/** The name. */
 	String name = "invasive";

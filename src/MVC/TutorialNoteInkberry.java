@@ -1,12 +1,14 @@
 package MVC;
 
+import java.io.Serializable;
+
 import javax.swing.ImageIcon;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class TutorialNoteInkberry.
  */
-public class TutorialNoteInkberry extends GameObject {
+public class TutorialNoteInkberry extends GameObject implements Serializable{
 
 	/**
 	 * Instantiates a new tutorial note inkberry.

@@ -30,9 +30,7 @@ private static final long serialVersionUID = 1L;
 	 */
 	public void render(Graphics g) {
 		//g.drawImage(scaled_bg_img, 0, 0, null);
-		//Congratulations
-		Graphics2D g2d = (Graphics2D) g;
-
+		Graphics2D g2d= (Graphics2D) g;
 		g2d.setFont(new Font("arial",Font.BOLD,50)); //font,bold,size		
 		g2d.drawImage(greyBannerImg, screenWidth/2 -230,25,450,125, null);
 		g.setColor(Color.BLACK);

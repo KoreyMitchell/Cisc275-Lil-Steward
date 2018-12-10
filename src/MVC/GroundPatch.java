@@ -1,12 +1,14 @@
 package MVC;
 
+import java.io.Serializable;
+
 import javax.swing.ImageIcon;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class GroundPatch.
  */
-public class GroundPatch extends GameObject {
+public class GroundPatch extends GameObject implements Serializable{
 
 	/**
 	 * Instantiates a new ground patch.

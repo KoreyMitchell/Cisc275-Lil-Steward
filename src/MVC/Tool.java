@@ -1,10 +1,12 @@
 package MVC;
 
+import java.io.Serializable;
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class Tool.
  */
-public class Tool {
+public class Tool implements Serializable{
 
 	/** The is shovel. */
 	private boolean isShovel;

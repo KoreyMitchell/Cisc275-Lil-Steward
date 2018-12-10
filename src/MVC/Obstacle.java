@@ -1,12 +1,14 @@
 package MVC;
 
+import java.io.Serializable;
+
 import javax.swing.ImageIcon;
 
 // TODO: Auto-generated Javadoc
 /**
  * The Class Obstacle.
  */
-public class Obstacle extends GameObject {
+public class Obstacle extends GameObject implements Serializable {
 
 /** The name. */
 String name = "rock";
