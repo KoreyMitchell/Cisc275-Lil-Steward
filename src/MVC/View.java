@@ -61,7 +61,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	Tool tool;
 	
 	/** The control. */
-	Controller control;
+	private Controller control;
 	
 	/** The frame. */
 	JFrame frame;
@@ -661,7 +661,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		//System.out.println("Mouse clicked");
 		//System.out.println("Mouse clicked");
 		//System.out.println(e.getX() + " " + e.getY());
-		control.click(e.getX(),e.getY());
+		getControl().click(e.getX(),e.getY());
 		//plantedCount++;
 		//paintPlantedInfo(plantedCount, e.getX(), e.getY());
 		
@@ -671,14 +671,14 @@ public class View extends JPanel implements MouseListener, KeyListener{
 		if(State == STATE.GAME) 
 		{
 		//	System.out.println("Game: "+mx+" , "+my);
-			control.click(mx,my);
+			getControl().click(mx,my);
 		}
 		else if(State == STATE.END)
 		{			
 			System.out.println(screenWidth/2);
 			System.out.println("End: "+mx+","+my);
 		
-			control.click(mx,my);
+			getControl().click(mx,my);
 			if(mx>screenWidth/2-175 && mx<screenWidth/2+170 && my>772 && my<865) {
 				System.out.println("End: "+mx+","+my);
 				View.State=STATE.TEST;	
@@ -686,7 +686,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			}
 		}
 		else if(State == STATE.TEST) {
-			control.click(mx,my);
+			getControl().click(mx,my);
 			System.out.println("test: "+mx+" , "+my);
 			System.out.println(screenWidth/2);
 			System.out.println(screenHeight/2);
@@ -778,7 +778,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		control.key(e);
+		getControl().key(e);
 	 
 		System.out.println("Key pressed");
 	
@@ -799,7 +799,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println("Key pressed");
-		control.key(e);
+		getControl().key(e);
 	}
 	
 	/** The seconds passed. */
@@ -841,5 +841,9 @@ public class View extends JPanel implements MouseListener, KeyListener{
 			System.out.println("Obstacle" + " at " + ob.getXloc() + " and " + ob.getYloc());
 		}
 	}
+
+public Controller getControl() {
+	return control;
+}
 
 }

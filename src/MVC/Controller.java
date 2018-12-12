@@ -66,7 +66,7 @@ public class Controller {
 	/**
 	 * Instantiates a new controller.
 	 */
-	Controller() {
+	public Controller() {
 		model = new Model();
 		view = new View();
 		model.setScreenWidth(view.screenWidth);
@@ -85,7 +85,7 @@ public class Controller {
 		view.setPlayer(m.player);
 		view.setInvasivePlants(m.invasivePlants);
 		view.setNativePlants(m.nativePlants);
-		view.setPatches(m.groundList);
+		view.setPatches(m.getGroundList());
 		view.setObstacles(m.obstacleList);
 		view.setTool(m.tool);
 		view.setTutorialNotes(m.tutorialNotes);
@@ -178,7 +178,7 @@ public class Controller {
 	        
 	   
 	        if (--i < 1 ) {
-	        	model.groundList.clear();
+	        	model.getGroundList().clear();
 	        	model.invasivePlants.clear();
 	        	model.checkLvlUp();
 	        	syncViewToModel(model);
