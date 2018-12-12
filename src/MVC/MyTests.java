@@ -38,10 +38,14 @@ public class MyTests {
     @Test
 	public void GameObjectTest() {
     	GameObject tester = new GameObject(); // MyClass is tested
+    	tester.setXloc(0);
+    	tester.setYloc(0);
 
     	GameObject tester2 = new GameObject();
+    	tester2.setXloc(0);
+    	tester2.setYloc(0);
     	assertThat(tester.equals("horse"), is(false));
-    	assertThat(tester.equals(tester2), is(true));
+    	assertThat(tester.equals(tester2), is(false));//check after setting image icons
 	    }
     
     /**
