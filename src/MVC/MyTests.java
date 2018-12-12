@@ -81,6 +81,7 @@ public class MyTests {
     	assertThat(tester.checkMove("down"), is(not(0)));
     	assertThat(tester.checkMove("left"), is(not(0)));
     	assertThat(tester.checkMove("right"), is(not(0)));
+    	assertThat(tester.getSeconds(), is(60));
     	
 
 	    }
