@@ -11,6 +11,11 @@ import javax.swing.ImageIcon;
 public class TutorialNoteAster extends GameObject implements Serializable{
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new tutorial note aster.
 	 *
 	 * @param x the x

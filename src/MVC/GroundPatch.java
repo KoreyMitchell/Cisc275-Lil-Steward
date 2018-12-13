@@ -11,6 +11,11 @@ import javax.swing.ImageIcon;
 public class GroundPatch extends GameObject implements Serializable{
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new ground patch.
 	 *
 	 * @param x the x

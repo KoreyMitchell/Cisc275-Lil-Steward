@@ -13,6 +13,10 @@ import javax.sound.sampled.Clip;
  */
 public class AudioPlayer implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/** The clip. */
 	private Clip clip;
 

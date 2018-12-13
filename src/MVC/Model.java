@@ -20,6 +20,14 @@ public class Model implements Runnable {
 	/** The sound count. */
 	int soundCount;
 	
+	public boolean isWin() {
+		return win;
+	}
+
+	public void setWin(boolean win) {
+		this.win = win;
+	}
+
 	/** The sfx. */
 	HashMap<String, MakeSong> sfx;
 	
@@ -276,6 +284,7 @@ public class Model implements Runnable {
 	 *
 	 * @param lvl the lvl
 	 */
+	@SuppressWarnings("unlikely-arg-type")
 	public void levelPreset(int lvl) {
 		switch (lvl) {
 		case 0: {

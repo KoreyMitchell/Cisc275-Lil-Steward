@@ -10,6 +10,10 @@ import javax.swing.ImageIcon;
  */
 public class InvasivePlant extends GameObject implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/** The name. */
 	String name = "invasive";
 	

@@ -9,24 +9,17 @@ import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridLayout;
 import java.awt.Image;
-import java.awt.MediaTracker;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -392,8 +385,6 @@ public class View extends JPanel implements MouseListener, KeyListener{
 
 	/** The i. */
 	protected int i;
-
-	private Color mixed;
 	
 	/* (non-Javadoc)
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
@@ -609,6 +600,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	 *
 	 * @param plantedCount the new planted count
 	 */
+	@SuppressWarnings("static-access")
 	public void setPlantedCount(int plantedCount) {
 		this.plantedCount = plantedCount;
 	}
@@ -627,6 +619,7 @@ public class View extends JPanel implements MouseListener, KeyListener{
 	 *
 	 * @param plantsRemoved the new plants removed
 	 */
+	@SuppressWarnings("static-access")
 	public void setPlantsRemoved(int plantsRemoved) {
 		this.plantsRemoved = plantsRemoved;
 }

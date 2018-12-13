@@ -2,8 +2,6 @@ package MVC;
 
 import java.awt.event.KeyEvent;
 import java.util.Timer;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 import java.util.TimerTask;
 
 import MVC.View.STATE;
@@ -147,6 +145,16 @@ public class Controller {
 	
 	}
 	
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+
+
 	/** The finalstage. */
 	boolean finalstage = true;
 	
@@ -158,17 +166,14 @@ public class Controller {
 	 *
 	 * @param levels the new timer
 	 */
-	public void setTimer(int levels) {
-		int lev = levels;
-	
+	public void setTimer(int levels) {	
 	final Timer timer = new Timer();
 	// Note that timer has been declared final, to allow use in anon. class below
 	timer.schedule( new TimerTask()
 	{
 	  
-	    int levelcount = 1;
-
-	    public void run()
+	    @SuppressWarnings("static-access")
+		public void run()
 	    { 
 	       // System.out.println(i);
 	        model.secondsPassed--;
@@ -236,6 +241,7 @@ public class Controller {
 	 *
 	 * @param e the e
 	 */
+	@SuppressWarnings("static-access")
 	public void key(KeyEvent e) {
 		//System.out.println("Controller read key from view");
 		int s = e.getKeyCode();
@@ -252,7 +258,6 @@ public class Controller {
 			view.playerimg = view.playerimgLeft; 
 		}
 
-		int startlevel =0;
 		
 
 		if(s==KeyEvent.VK_ESCAPE) {
