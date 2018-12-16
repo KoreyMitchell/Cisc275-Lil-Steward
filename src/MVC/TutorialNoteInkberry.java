@@ -11,6 +11,11 @@ import javax.swing.ImageIcon;
 public class TutorialNoteInkberry extends GameObject implements Serializable{
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new tutorial note inkberry.
 	 *
 	 * @param x the x

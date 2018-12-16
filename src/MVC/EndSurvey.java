@@ -1,25 +1,12 @@
 package MVC;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+
 
 
 // TODO: Auto-generated Javadoc
@@ -27,6 +14,11 @@ import javax.swing.JTextField;
  * The Class EndSurvey.
  */
 public class EndSurvey extends View {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/** The f. */
 	JFrame f;
@@ -47,7 +39,6 @@ public class EndSurvey extends View {
 	boolean q2Incorrect = false;
 	boolean q3Incorrect = false;
 
-	
 	/**
 	 * Render.
 	 *
@@ -187,6 +178,65 @@ public class EndSurvey extends View {
 
 	}
 	
+	
+	public boolean isQ1Correct() {
+		return q1Correct;
+	}
+
+
+	public void setQ1Correct(boolean q1Correct) {
+		this.q1Correct = q1Correct;
+	}
+
+
+	public boolean isQ2Correct() {
+		return q2Correct;
+	}
+
+
+	public void setQ2Correct(boolean q2Correct) {
+		this.q2Correct = q2Correct;
+	}
+
+
+	public boolean isQ3Correct() {
+		return q3Correct;
+	}
+
+
+	public void setQ3Correct(boolean q3Correct) {
+		this.q3Correct = q3Correct;
+	}
+
+
+	public boolean isQ1Incorrect() {
+		return q1Incorrect;
+	}
+
+
+	public void setQ1Incorrect(boolean q1Incorrect) {
+		this.q1Incorrect = q1Incorrect;
+	}
+
+
+	public boolean isQ2Incorrect() {
+		return q2Incorrect;
+	}
+
+
+	public void setQ2Incorrect(boolean q2Incorrect) {
+		this.q2Incorrect = q2Incorrect;
+	}
+
+
+	public boolean isQ3Incorrect() {
+		return q3Incorrect;
+	}
+
+
+	public void setQ3Incorrect(boolean q3Incorrect) {
+		this.q3Incorrect = q3Incorrect;
+	}
 
 	
 }

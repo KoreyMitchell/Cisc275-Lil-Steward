@@ -11,6 +11,11 @@ import javax.swing.ImageIcon;
 public class TutorialNote extends GameObject implements Serializable{
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new tutorial note.
 	 *
 	 * @param x the x

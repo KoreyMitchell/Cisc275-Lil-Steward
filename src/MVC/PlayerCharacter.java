@@ -13,6 +13,11 @@ import javax.swing.ImageIcon;
 public class PlayerCharacter extends GameObject implements Serializable{
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * Instantiates a new player character.
 	 */
 	PlayerCharacter(){
@@ -145,6 +150,10 @@ public class PlayerCharacter extends GameObject implements Serializable{
 			name = s;
 		}
 		
+		public void setName(String name) {
+			this.name = name;
+		}
+
 		/**
 		 * Gets the name.
 		 *

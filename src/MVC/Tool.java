@@ -8,6 +8,10 @@ import java.io.Serializable;
  */
 public class Tool implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/** The is shovel. */
 	private boolean isShovel;
 

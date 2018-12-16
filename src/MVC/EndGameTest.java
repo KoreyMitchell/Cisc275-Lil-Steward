@@ -134,6 +134,16 @@ public class EndGameTest extends View {
 }
 
 
+public String getAnswer() {
+		return answer;
+	}
+
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+
+
 /**
  * Change answer.
  *
